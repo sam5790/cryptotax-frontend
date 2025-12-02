@@ -1,7 +1,6 @@
 <template>
   <div class="">
 
-
     <div>
       <input v-model="name" type="text" class="w-full px-4 py-2 border border-gray-300 mb-3" placeholder="Name" />
     </div>
@@ -11,13 +10,11 @@
         Enter API Keys to fetch account data
       </p>
 
-
       <div>
 
         <input v-model="apiKey" type="text" class="w-full px-4 py-3 border border-gray-300  my-8"
           placeholder="APIKEY" />
       </div>
-
 
       <div>
 
@@ -43,7 +40,6 @@ const secret = ref("");
 const props = defineProps({
   account: Object
 });
-
 
 console.log("account", props.account)
 </script>

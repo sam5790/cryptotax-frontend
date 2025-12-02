@@ -11,7 +11,7 @@
           <button class="md:p-4 p-1 md:text-xl" @click="router.push('/tax')">Tax Guide</button>
           <button class="md:p-4 p-1 md:text-xl">Export Data</button>
           <button class="md:p-4 p-1 md:text-xl" @click="router.push('/mywallet')">My Wallet</button>
-          <button class="md:p-4 p-1 md:text-xl" @click="router.push('reports')">Reports</button>
+          <button class="md:p-4 p-1 md:text-xl" @click="router.push('/reports')">Reports</button>
           <button class="md:p-4 p-1 md:text-xl" @click="router.push('/Aboutus')">About Us</button>
           <button class="md:p-4 p-1 md:text-xl" @click="router.push('/Price')">Pricing</button>
         </div>
