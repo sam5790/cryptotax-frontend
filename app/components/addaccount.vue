@@ -21,6 +21,7 @@
       </div>
 
       <!-- <addapikey :account="account" v-if="type == 'API'" /> -->
+      <!-- <add-api-key :account="account" v-if="type == 'API'"/> -->
       <add-api-key :account="account" v-if="type == 'API'"/>
       <uploadfile :account="account" v-if="type == 'CSV'" />
 
@@ -29,6 +30,8 @@
 </template>
 
 <script setup>
+// import Addapikey from './addApiKey.vue';
+
 
 const type = ref("API")
 
