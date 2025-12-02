@@ -8,7 +8,7 @@
             <path d="M13 13H11V7H13M13 17H11V15H13M1 21H23L12 2" />
           </svg>
         </div>
-        <p class="text-xl font-medium">Missing Transactions</p>
+        <p class="text-xl font-medium whitespace-nowrap">Missing Transactions</p>
         <p class="text-2xl font-medium">0</p>
       </div>
 
@@ -38,6 +38,7 @@
         <p class="text-2xl font-medium">0</p>
       </div>
     </div>
+
     <div class="container bg-white mx-auto w-full md:p-7 shadow-lg md:my-8" v-if="transactions.length > 0">
       <div class="flex flex-col sm:flex-row justify-end gap-3 p-4 md:p-7">
         <button class="rounded-full text-sm py-2 px-3 sm:px-4 text-teal-500 font-medium shadow">
