@@ -1,7 +1,7 @@
 <template>
-<AboutusOnestopsolution/>
-<AboutusHistory/>
-<AboutusFounders/>
-<AboutusMission/>
+<AboutUsOneStopSolution/>
+<AboutUsHistory/>
+<AboutUsFounders/>
+<AboutUsMission/>
 <Footer/>
 </template>

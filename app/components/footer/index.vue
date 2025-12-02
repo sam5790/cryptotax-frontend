@@ -64,16 +64,16 @@
         <div class="flex flex-col justify-start">
           <p class="mb-1 ml-2">We Support</p>
           <div class="flex">
-            <img src="/upi.png" class="md:">
-            <img src="/visa.png" class="md:" />
-            <img src="/master-card.png" class="md:" />
-            <img src="/american-express.png" class="md:" />
+            <img src="/upi.png" class="h-8">
+            <img src="/visa.png" class="h-8" />
+            <img src="/master-card.png" class="h-8" />
+            <img src="/american-express.png" class="h-8" />
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="bg-gray-600">
-    <p class="lg:text-lg text-white flex justify-center p-2">©2023-2024 CryptoTax | All rights are reserved</p>
+    <p class="lg:text-lg text-gray-200 flex justify-center p-2">©2023-2024 CryptoTax | All rights are reserved</p>
   </div>
 </template>

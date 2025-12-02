@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Loginnavigation />
+        <LoginNavigation />
         <slot></slot>
     </div>
 </template>

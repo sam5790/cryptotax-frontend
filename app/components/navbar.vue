@@ -13,7 +13,7 @@
           <button class="md:p-4 p-1 md:text-xl" @click="router.push('/mywallet')">My Wallet</button>
           <button class="md:p-4 p-1 md:text-xl" @click="router.push('reports')">Reports</button>
           <button class="md:p-4 p-1 md:text-xl" @click="router.push('/Aboutus')">About Us</button>
-          <Button class="md:p-4 p-1 md:text-xl">Pricing</Button>
+          <button class="md:p-4 p-1 md:text-xl" @click="router.push('/Price')">Pricing</button>
         </div>
 
         <div class="flex items-center">
@@ -22,7 +22,7 @@
             LogIn
           </button>
 
-          <button v-else class="px-6 py-1 text-red-500 border border-red-500 rounded-3xl ml-3  md:text-lg"
+          <button v-else class="px-6 py-1 text-teal-500 border border-teal-500 rounded-3xl ml-3  md:text-lg"
             @click="handleLogout">
             Logout
           </button>

@@ -92,16 +92,15 @@
 
       <p class="text-sm sm:text-base m-0 ml-3 sm:ml-5">Add a new account</p>
     </div>
-
-    <Exchangeslist v-if="exchange" @close="exchange = false" @select="openDetails" />
-    <addaccount v-if="showDetails" :account="selectedAccount" @close="showDetails = false" />
+    <ExchangesList v-if="exchange" @close="exchange = false" @select="openDetails" />
+     <AddAccount v-if="showDetails" :account="selectedAccount" @close="showDetails = false"/>
   </div>
   <Footer />
 </template>
 
 <script setup>
-import Exchangeslist from "../exchangeslist.vue";
-import { mainStore } from "~/store/mainstore";
+// import Exchangeslist from '../exchangesList.vue'
+import { mainStore } from '~/store/mainstore'
 
 const store = mainStore();
 const { transactions, PNL_TOTAL } = storeToRefs(store);
