@@ -112,14 +112,14 @@
         Add a new account
       </p>
     </div>
-    <Exchangeslist v-if="exchange" @close="exchange = false" @select="openDetails" />
-    <addaccount v-if="showDetails" :account="selectedAccount" @close="showDetails = false" />
+    <ExchangesList v-if="exchange" @close="exchange = false" @select="openDetails" />
+     <AddAccount v-if="showDetails" :account="selectedAccount" @close="showDetails = false"/>
   </div>
   <Footer />
 </template>
 
 <script setup>
-import Exchangeslist from '../exchangeslist.vue'
+// import Exchangeslist from '../exchangesList.vue'
 import { mainStore } from '~/store/mainstore'
 
 const store = mainStore()

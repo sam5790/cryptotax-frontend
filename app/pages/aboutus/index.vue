@@ -1,3 +1,3 @@
 <template>
-<Aboutus/>
+<AboutUs/>
 </template>

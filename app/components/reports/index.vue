@@ -87,7 +87,7 @@
 <script setup>
 import { mainStore } from '~/store/mainstore';
 import Transactions from '../accounts/transactions.vue';
-import Index from '../aboutus/index.vue';
+import Index from '../aboutUs/index.vue';
 const store = mainStore()
 const { transactions, pnl } = storeToRefs(store)
 

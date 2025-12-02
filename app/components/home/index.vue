@@ -1,12 +1,12 @@
 <template>
 <HomeHero/>
-<HomeHappyusers/>
-<HomeTrustedby/>
-<HomeCryptotax/>
+<HomeHappyUsers/>
+<HomeTrustedBy/>
+<HomeCryptoTax/>
 <HomeLatest/>
 <HomeTestimonials/>
-<HomeWorkingofcryptotax/>
+<HomeWorkingOfCryptotax/>
 <HomeBlog/>
-<HomeFreqquestions/>
+<HomeFreqQuestions/>
 <Footer/>
 </template>

@@ -1,5 +1,6 @@
 <template>
-  <div class=" flex items-center justify-center bg-gray md:p-10">
+  
+<div class=" flex items-center justify-center bg-gray md:p-10">
 
     <div class="shadow-2xl rounded-2xl p-16 w-full max-w-2xl border-gray-200">
       <h2 class="text-4xl font-semibold text-center mb-5"><span class="text-teal-500 underline-text">Welcome</span> back
@@ -66,10 +67,12 @@
       </div>
       <div class="flex justify-center items-center mt-6">
 
-        <GoogleLoginButton :verify-on-server="true" :options="{ theme: 'filled_blue', size: 'large' }"
-          @success="onSuccess" @verified="onVerified" @error="onError" />
-        <!-- <button class="rounded-md border p-2 flex"  ><img src="/google.svg"
-            class="h-6 mr-2"><span>Sign In With Google</span></button> -->
+  <GoogleSignInButton
+    @success="handleLoginSuccess"
+    @error="handleLoginError"
+  ></GoogleSignInButton>
+
+     
       </div>
       <p class="text-body text-center mt-6 text-sm text-gray-500">Dont have an account? <u
           @click="router.push('/register')"><b>SignUp</b></u></p>
@@ -78,7 +81,9 @@
   </div>
 
   <Footer />
-</template>
+
+  
+  </template>
 
 <style scoped>
 .underline-text {
@@ -109,7 +114,9 @@ import { ref } from "vue";
 import { userLogin } from "~/composables/auth";
 
 import { useAuthStore } from "~/store/auth";
-
+import {
+  GoogleSignInButton,
+} from "vue3-google-signin";
 
 const authData = useAuthStore()
 
@@ -138,18 +145,6 @@ const login = async () => {
   }
 }
 
-// eslint-disable-next-line no-console
-const onSuccess = (e) => {
-  console.log('success:', e.claims, e.credential.slice(0, 20) + '…')
-}
-// eslint-disable-next-line no-console
-const onVerified = (data) => {
-  console.log('verified:', data)
-}
-// eslint-disable-next-line no-console
-const onError = (err) => {
-  console.error('error:', err)
-}
 
 const emailRules = [
   (v) => !!v || "Email is required",
@@ -161,26 +156,14 @@ const passwordRules = [
   (v) => v.length >= 6 || "Password must be at least 6 characters",
 ];
 
-// import { signInWithPopup, signOut } from "firebase/auth";
 
-// const { $auth, $provider } = useNuxtApp(); 
+const handleLoginSuccess = (response) => {
+  const { credential } = response;
+  console.log("Access Token", credential);
+};
 
-// const user = ref(null);
-
-// const loginWithGoogle = async () => {
-//   try {
-//     const result = await signInWithPopup($auth, $provider);
-//     user.value = result.user;
-//     console.log("User Info:", result.user);
-//   } catch (error) {
-//     console.error("Login Error:", error);
-//   }
-// };
-
-// const logout = async () => {
-//   await signOut($auth);
-//   user.value = null;
-// };
-
+const handleLoginError = () => {
+  console.error("Login failed");
+};
 
 </script>

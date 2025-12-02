@@ -9,14 +9,19 @@ export default defineNuxtConfig({
     },
   },
   modules: [
-    '@nuxtjs/tailwindcss',
-    '@pinia/nuxt',
-    'nuxt-toast',
-    'nuxt-google-auth',
-    'pinia-plugin-persistedstate/nuxt',
-    '@nuxt/fonts',
+   '@nuxtjs/tailwindcss',
+   '@pinia/nuxt',
+   'nuxt-toast',
+   'nuxt-google-auth',
+   'pinia-plugin-persistedstate/nuxt',
+   '@nuxt/fonts',
+   'nuxt-vue3-google-signin',
+   '@nuxtjs/google-fonts',
+   '@nuxtjs/google-fonts'
   ],
-  
+ googleSignIn: {
+    clientId: process.env.NUXT_PUBLIC_GOOGLE_CLIENT_ID,
+  },
     googleFonts: {
     families: {
       Poppins: [100, 200, 300, 400, 500, 600, 700, 800, 900],
