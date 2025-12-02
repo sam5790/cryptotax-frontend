@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
     <Login/>
     </template>
 
@@ -6,8 +6,6 @@
 definePageMeta({
   layout: 'login' 
 })
-</script> -->
+</script>
 
-<template>
-    <HowDoesItWork/>
-</template>
+
