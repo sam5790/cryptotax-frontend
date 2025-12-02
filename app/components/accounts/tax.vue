@@ -38,13 +38,13 @@
         </div>
       </div>
       <div class="bg-white shadow-2xl flex justify-center items-center p-4 w-[300px] sm:w-[350px] xl:w-[400px]">
-        <img src="/line-chart.png" class="w-full max-w-[350px]">
+        <img :src="'/line-chart.png'" class="w-full max-w-[350px]" key="line-chart">
       </div>
       <div
         class="bg-white shadow-2xl rounded-lg text-center flex flex-col justify-center items-center p-6 w-[300px] sm:w-[200px]">
-        <img src="/avatar.png" class="w-12" />
+        <img :src="'/avatar.png'" class="w-12" key="avatar" />
         <p class="font-medium mt-2">{{ user?.name }}</p>
-        <img src="/my-accounts.png" class="mt-2" />
+        <img :src="'/my-accounts.png'" class="mt-2" key="my-accounts" />
         <button @click="router.push('/mywallet')"
           class="mt-4 border border-teal-600 text-teal-600 px-4 py-1 rounded-full">
           My Wallet

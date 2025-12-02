@@ -3,7 +3,7 @@
     <div class="flex flex-col justify-center items-center">
       <div class="flex flex-col justify-center items-center shadow-2xl p-10 rounded-xl relative">
         <div class="absolute -top-10 left-1/2 -translate-x-1/2">
-          <img src="/avatar.png" class="w-20 h-20 rounded-full ring-4 ring-white shadow-lg" />
+          <img :src="'/avatar.png'" class="w-20 h-20 rounded-full ring-4 ring-white shadow-lg" key="avatar"/>
         </div>
         <h2 class="text-center text-xl font-medium">Total Exchanges</h2>
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 sm:gap-10 mt-6 w-full">
@@ -100,6 +100,7 @@
 
 <script setup>
 // import Exchangeslist from '../exchangesList.vue'
+import AddAccount from '~/components/addaccount.vue'
 import { mainStore } from '~/store/mainstore'
 
 const store = mainStore();

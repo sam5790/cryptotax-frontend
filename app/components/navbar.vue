@@ -4,7 +4,7 @@
       <div class="hidden sm:flex flex justify-between md:h-20">
 
         <div class=" flex items-center">
-          <img class="md:h-full h-12 mt-2" @click="router.push('/')" src="/logo.png" />
+          <img class="md:h-full h-12 mt-2" @click="router.push('/')" :src="'/logo.png'" key="logo"/>
         </div>
         <div class="flex justify-center ">
           <button class="md:p-4 p-1 md:text-xl" @click="router.push('/dashboard')">Account</button>
@@ -12,8 +12,8 @@
           <button class="md:p-4 p-1 md:text-xl">Export Data</button>
           <button class="md:p-4 p-1 md:text-xl" @click="router.push('/mywallet')">My Wallet</button>
           <button class="md:p-4 p-1 md:text-xl" @click="router.push('/reports')">Reports</button>
-          <button class="md:p-4 p-1 md:text-xl" @click="router.push('/Aboutus')">About Us</button>
-          <button class="md:p-4 p-1 md:text-xl" @click="router.push('/Price')">Pricing</button>
+          <button class="md:p-4 p-1 md:text-xl" @click="router.push('/aboutus')">About Us</button>
+          <button class="md:p-4 p-1 md:text-xl" @click="router.push('/price')">Pricing</button>
         </div>
 
         <div class="flex items-center">
@@ -44,7 +44,7 @@
           </button>
 
 
-          <img class="h-10" @click="router.push('/')" src="/logo.png" />
+          <img class="h-10" @click="router.push('/')" :src="'/logo.png'" key="logo"/>
         </div>
 
 
