@@ -3,5 +3,4 @@
 <AboutUsHistory/>
 <AboutUsFounders/>
 <AboutUsMission/>
-<Footer/>
 </template>

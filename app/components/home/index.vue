@@ -8,5 +8,4 @@
 <HomeWorkingOfCryptotax/>
 <HomeBlog/>
 <HomeFreqQuestions/>
-<Footer/>
 </template>

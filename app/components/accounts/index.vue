@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-50 flex flex-col items-center ">
 
-    <div class="bg-white flex rounded-full shadow-lg p-2 gap-2 tabs md:mt-10 max-sm:mb-10">
+    <div class="bg-white flex rounded-full shadow-md p-2 gap-2 relative tabs md:mt-10 max-sm:mb-10">
 
       <button class=" text-center rounded-full font-medium tab-btn text-base max-sm:text-xs" :class="{ active: tab === 'tax' }"
         @click="tab = 'tax'">
@@ -20,12 +20,11 @@
       <span class="shape"></span>
     </div>
 
-    <div class="mt-10">
+    <div class="mt-10 w-screen">
       <AccountsTax v-if="tab === 'tax'" />
       <AccountsTransactions v-if="tab === 'transactions'" />
        <AccountsAccountnew  v-if="tab === 'accounts'"/>
     </div>
-
   </div>
 </template>
 
@@ -44,45 +43,42 @@ const tab = ref("tax")
 
 </script>
 
-
 <style scoped>
 .tabs {
   position: relative;
   display: flex;
   width: 100%;
-  max-width: 360px;
+  max-width:420px;
   justify-content: space-between;
 }
 
 .shape {
   position: absolute;
-  top: 13px;
-  left: 3px;
+  top: 8px;
   height: 30px;
   background: #027c6e;
   border-radius: 999px;
   z-index: 1;
   transition: all 0.3s ease;
-  width: calc(100% / 3 - 6px);
+  width: calc(100% / 3 - 20px);
+  left: 10px;
 }
 
-.tabs .tab-btn.active:nth-of-type(1)~.shape {
-  left: 3px;
+.tabs .tab-btn.active:nth-of-type(1) ~ .shape {
+  left: 10px;
 }
 
-.tabs .tab-btn.active:nth-of-type(2)~.shape {
-  left: calc(100% / 3 + 3px);
+.tabs .tab-btn.active:nth-of-type(2) ~ .shape {
+  left: calc(100% / 3 + 10px);
 }
 
-.tabs .tab-btn.active:nth-of-type(3)~.shape {
-  left: calc((100% / 3) * 2 + 3px);
+.tabs .tab-btn.active:nth-of-type(3) ~ .shape {
+  left: calc((100% / 3) * 2 + 10px);
 }
-
-
 
 .tab-btn {
   flex: 1;
-  height: 40px;
+  height: 30px;
   border-radius: 999px;
   color: #555;
   font-weight: 600;

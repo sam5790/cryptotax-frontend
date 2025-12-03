@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div>
     <div class="mb-8 md:mb-12">
       <p class="text-center text-base md:text-xl font-medium p-2">PRICING</p>
       <p class="text-center text-2xl md:text-4xl font-semibold p-2">
@@ -261,8 +261,6 @@
         </div>
       </div>
     </div>
-
-    <Footer />
   </div>
 </template>
 

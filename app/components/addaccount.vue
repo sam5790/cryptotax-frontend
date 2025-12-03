@@ -24,7 +24,6 @@
       
        <!-- <add-api-key :account="account" v-if="type == 'API'"/> -->
       <uploadfile :account="account" v-if="type == 'CSV'" />
-
     </div>
   </div>
 </template>

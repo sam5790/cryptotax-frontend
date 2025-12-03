@@ -1,3 +1,3 @@
 <template>
-    <Harvesting/>
-    </template>
+<Harvesting/>
+</template>
