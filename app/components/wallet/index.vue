@@ -6,12 +6,12 @@
     <p class="text-md md:text-xl my-4 text-center">A brief summary of your crypto portfolio</p>
     <div class="container shadow-2xl p-4 w-full overflow-x-auto">
       <table class="min-w-[600px] md:min-w-full text-center">
-        <thead class="bg-[#f1f1f1]">
+        <thead class=" text-gray-400">
           <tr>
-            <th class="py-2 px-4 border-b">#</th>
-            <th class="py-2 px-4 border-b">Exchange</th>
-            <th class="py-2 px-4 border-b">Coin</th>
-            <th class="py-2 px-4 border-b">Balance</th>
+            <th class="py-2 px-4 border-b font-semibold">#</th>
+            <th class="py-2 px-4 border-b font-semibold">Exchange</th>
+            <th class="py-2 px-4 border-b font-semibold">Coin</th>
+            <th class="py-2 px-4 border-b font-semibold">Balance</th>
           </tr>
         </thead>
         <tbody v-if="store.coin_balance.length">

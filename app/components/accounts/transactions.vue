@@ -40,15 +40,15 @@
       </div>
       <div class="overflow-x-auto hidden md:block">
         <table class="w-full text-left">
-          <thead>
-            <tr class="bg-gray-100">
-              <th class="py-2 px-4 border-b">#</th>
-              <th class="py-2 px-4 border-b">Exchange</th>
-              <th class="py-2 px-4 border-b">Coin</th>
-              <th class="py-2 px-4 border-b">Timestamp</th>
-              <th class="py-2 px-4 border-b">Quantity</th>
-              <th class="py-2 px-4 border-b">Amount</th>
-              <th class="py-2 px-4 border-b">TDS</th>
+          <thead class="bg-gray-100">
+            <tr class="text-gray-400">
+              <th class="py-2 px-4 border-b font-semibold">#</th>
+              <th class="py-2 px-4 border-b font-semibold">Exchange</th>
+              <th class="py-2 px-4 border-b font-semibold">Coin</th>
+              <th class="py-2 px-4 border-b font-semibold">Timestamp</th>
+              <th class="py-2 px-4 border-b font-semibold">Quantity</th>
+              <th class="py-2 px-4 border-b font-semibold">Amount</th>
+              <th class="py-2 px-4 border-b font-semibold">TDS</th>
             </tr>
           </thead>
           <tbody>

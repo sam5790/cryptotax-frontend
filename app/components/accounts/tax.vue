@@ -64,14 +64,14 @@
       <div class=" bg-white w-full hidden sm:hidden md:block overflow-x-auto">
         <table class="w-full text-left">
           <thead class="bg-[#f1f1f1]">
-            <tr>
-              <th class="py-2 px-4 border-b">#</th>
-              <th class="py-2 px-4 border-b">Exchange</th>
-              <th class="py-2 px-4 border-b">Coin</th>
-              <th class="py-2 px-4 border-b">Timestamp</th>
-              <th class="py-2 px-4 border-b">Quantity</th>
-              <th class="py-2 px-4 border-b">Amount</th>
-              <th class="py-2 px-4 border-b">Type</th>
+            <tr class="text-gray-400">
+              <th class="py-2 px-4 border-b font-semibold">#</th>
+              <th class="py-2 px-4 border-b font-semibold">Exchange</th>
+              <th class="py-2 px-4 border-b font-semibold">Coin</th>
+              <th class="py-2 px-4 border-b font-semibold">Timestamp</th>
+              <th class="py-2 px-4 border-b font-semibold">Quantity</th>
+              <th class="py-2 px-4 border-b font-semibold">Amount</th>
+              <th class="py-2 px-4 border-b font-semibold">Type</th>
             </tr>
           </thead>
           <tbody>
