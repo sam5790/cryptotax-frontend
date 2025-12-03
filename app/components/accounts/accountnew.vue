@@ -1,9 +1,9 @@
 <template>
   <div class="md:p-10">
     <div class="flex flex-col justify-center items-center">
-      <div class="flex flex-col justify-center items-center shadow-2xl p-10 rounded-xl relative mt-4">
+      <div class="flex flex-col justify-center items-center shadow-md p-10 rounded-xl relative mt-4">
         <div class="absolute -top-10 left-1/2 -translate-x-1/2">
-          <img :src="'/avatar.png'" class="w-20 h-20 rounded-full ring-4 ring-white shadow-lg" key="avatar" />
+          <img :src="'/avatar.png'" class="w-20 h-20 rounded-full ring-4 ring-white shadow-md" key="avatar" />
         </div>
         <h2 class="text-center text-xl font-medium">Total Exchanges</h2>
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 sm:gap-10 mt-6 w-full">
