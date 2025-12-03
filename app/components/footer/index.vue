@@ -98,6 +98,7 @@
       </div>
     </div>
   </div>
+  </div>
   <div class="bg-gray-600">
     <p class="lg:text-lg text-gray-200 flex justify-center p-2">
       ©2023-2024 CryptoTax | All rights are reserved
