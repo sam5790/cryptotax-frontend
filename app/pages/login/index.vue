@@ -8,6 +8,4 @@ definePageMeta({
 })
 </script>
 
-<!-- <template>
-    <HowDoesItWork/>
-</template> -->
+

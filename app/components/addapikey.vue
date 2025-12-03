@@ -35,6 +35,5 @@ const props = defineProps({
   account: Object
 });
 
-
 console.log("account", props.account)
 </script>
