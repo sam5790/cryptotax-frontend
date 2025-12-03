@@ -8,8 +8,9 @@
 
     <div class="p-4 md:flex justify-center items-center gap-4">
 
-
+ <a href="https://youtu.be/DP09ao5S0k4" target="_blank">
       <div class="border flex flex-col items-center md:w-60 md:h-[400px] rounded-2xl overflow-hidden mb-2">
+       
         <div class="h-40 flex justify-center items-center bg-white w-full bg-white">
           <img src="/news1.png" class="h-28" />
         </div>
@@ -19,9 +20,11 @@
             <b> Deconstructing Tax Implications On Cryptocurrencies</b>
           </p>
         </div>
-      </div>
 
+      </div></a>
 
+<a  href="https://www.forbes.com/sites/joshwilson/2023/02/08/record-breaking-cryptocurrency-adoption-leads-the-irs-to-release-new-reporting-requirements/?sh=131bf7e73710"
+          target="_blank">
       <div class="border flex flex-col items-center md:w-60 md:h-[400px] rounded-2xl overflow-hidden mb-2">
         <div class="h-40 flex justify-center items-center w-full bg-white">
           <img src="/money-control.jpeg" class="h-16" />
@@ -33,7 +36,10 @@
           </p>
         </div>
       </div>
+      </a>
 
+      <a href="https://www.forbes.com/sites/joshwilson/2023/02/08/record-breaking-cryptocurrency-adoption-leads-the-irs-to-release-new-reporting-requirements/?sh=131bf7e73710"
+          target="_blank">
       <div class="border flex flex-col items-center md:w-60 md:h-[400px] rounded-2xl overflow-hidden mb-2">
         <div class="h-40 flex justify-center items-center w-full bg-white">
           <img src="/forbes1.png" class="h-16" />
@@ -45,8 +51,9 @@
           </p>
         </div>
       </div>
+</a>
 
-
+<a href="https://www.laweekly.com/author-abhinav-r-soomaney-examines-cryptocurrency-industry-and-tax-saving-tips-in-amazon-best-selling-new-book/" target="_blank">
       <div class="border flex flex-col items-center md:w-60 md:h-[400px] rounded-2xl overflow-hidden mb-2">
         <div class="h-40 flex justify-center items-center w-full bg-white">
           <img src="/laweekly.png" class="h-16" />
@@ -59,6 +66,7 @@
           </p>
         </div>
       </div>
+      </a>
 
     </div>
 

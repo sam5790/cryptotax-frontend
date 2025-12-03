@@ -2,15 +2,15 @@
   <div class="bg-black">
     <div class="grid md:grid-cols-6  p-12">
       <div class="col-span-1">
-        <img :src="'/logo-white.png'" class="h-32" key="logo">
+        <img :src="'/logo-white.png'" class="h-32" @click="router.push('/')" key="logo">
       </div>
       <div class="flex flex-col text-white ">
         <b> Quick Links</b>
-        <p>About Us</p>
+        <p @click="router.push('/aboutus')">About Us</p>
         <p>Contact Us</p>
         <p>Careers</p>
         <p>Solutions</p>
-        <p>Scope</p>
+        <p @click="router.push('/faq')">Faq</p>
       </div>
       <div class="flex flex-col text-white ">
         <b>Legal</b>
@@ -39,11 +39,18 @@
     <div class="grid md:grid-cols-4 p-12">
       <div class="text-white">
         <div class="flex">
-          <img :src="'/x.png'" class="mr-4" key="x"/>
-          <img :src="'/fb.png'" class="mr-4" key="fb"/>
-          <img :src="'/instagram.png'" class="mr-4" key="instagram" />
-          <img :src="'/linkedin.png'" class="mr-4" key="linkedin"/>
-          <img :src="'/whatsapp.png'" class="mr-4" key="whatsapp"/>
+          <a
+           href="https://twitter.com/i/flow/login?redirect_after_login=%2Fcryptotax_int"
+            target="_blank">
+          <img :src="'/x.png'" class="mr-4" key="x"/></a>
+          <a href="https://m.facebook.com/cryptotaxinternational" target="_blank">
+          <img :src="'/fb.png'" class="mr-4" key="fb"/></a>
+          <a href="https://www.instagram.com/cryptotax_in/" target="_blank">
+          <img :src="'/instagram.png'" class="mr-4" key="instagram" /></a>
+          <a href="https://www.linkedin.com/company/crypto-tax-software/" target="_blank">
+          <img :src="'/linkedin.png'" class="mr-4" key="linkedin"/></a>
+          <a href="https://wa.me/+919996669951" target="_blank">
+          <img :src="'/whatsapp.png'" class="mr-4" key="whatsapp"/></a>
         </div>
         <p class="mt-5"><b>Disclaimer:</b> CryptoTax services provided herein are for informational purposes only and
           should not be considered as financial, investment, or legal advice. We are not financial advisors, and our
@@ -77,3 +84,9 @@
     <p class="lg:text-lg text-gray-200 flex justify-center p-2">©2023-2024 CryptoTax | All rights are reserved</p>
   </div>
 </template>
+
+<script setup>
+
+const router=useRouter()
+
+</script>
