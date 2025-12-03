@@ -22,7 +22,7 @@ useHead({
 <style>
 
 body{
-  font-family:"poppins",sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 </style>

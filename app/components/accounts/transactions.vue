@@ -109,7 +109,7 @@
       <p class="text-sm sm:text-base m-0 ml-3 sm:ml-5">Call an Expert Now</p>
     </div>
   </div>
-  <Footer />
+  <!-- <Footer /> -->
 </template>
 
 <script setup>

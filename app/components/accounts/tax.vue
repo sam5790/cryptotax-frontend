@@ -1,62 +1,69 @@
 <template>
   <div class="p-4 md:p-16 bg-gray-50">
-    <div class="flex flex-col sm:flex-row justify-center items-center gap-6 flex-wrap">
-      <div class="bg-white shadow-2xl rounded-lg p-6 w-full sm:w-[350px] xl:w-[450px]">
-        <div class="flex flex-wrap items-center justify-between gap-2">
-          <div class="flex flex-wrap items-center gap-2">
-            <p class="px-4 py-1 text-white bg-teal-600 rounded-full">HIFO</p>
-            <p class="text-gray-700">LIFO</p>
-            <p class="text-gray-700">FIFO</p>
+    <div class=" px-4 sm:px-6 lg:px-8 xl:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        <div class="bg-white shadow-md rounded-lg p-6 flex flex-col justify-between col-span-1 lg:col-span-5">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap items-center gap-2">
+              <p class="px-4 py-1 text-white bg-teal-600 rounded-full">HIFO</p>
+              <p class="text-gray-700">LIFO</p>
+              <p class="text-gray-700">FIFO</p>
+            </div>
+            <p class="font-semibold">FY 22-23</p>
           </div>
-          <p class="font-semibold">FY 22-23</p>
+          <div class="border-b-2 border-dashed mt-3"></div>
+          <div class="flex flex-wrap justify-between gap-4 py-5 mt-3">
+            <div>
+              <p class="text-xl max-sm:text-sm">Income</p>
+              <span class="text-green-700 text-2xl font-bold mt-2">$0</span>
+            </div>
+            <div v-if="PNL_TOTAL > 0">
+              <p class="text-xl max-sm:text-sm">Capital Gain</p>
+              <span class="text-green-700 text-2xl font-bold mt-2">{{ PNL_TOTAL.toFixed(2) }}</span>
+            </div>
+            <div v-else>
+              <p class="text-xl max-sm:text-sm">Capital Loss</p>
+              <span class="text-red-600 text-2xl font-bold mt-2">{{ PNL_TOTAL.toFixed(2) }}</span>
+            </div>
+            <div>
+              <p class="text-xl max-sm:text-sm">TDS</p>
+              <span class="text-xl font-bold mt-2">{{ TDS_TOTAL.toFixed(2) }}</span>
+            </div>
+          </div>
         </div>
-        <div class="border-b-2 border-dashed mt-3"></div>
-        <div class="flex flex-wrap justify-between gap-4 py-5 mt-3">
-          <div>
-            <p class="text-xl max-sm:text-sm">Income</p>
-            <span class="text-green-700 text-2xl font-bold mt-2">$0</span>
-          </div>
-          <div v-if="PNL_TOTAL > 0">
-            <p class="text-xl max-sm:text-sm">Capital Gain</p>
-            <span class="text-green-700 text-2xl font-bold mt-2">{{ PNL_TOTAL.toFixed(2) }}</span>
-          </div>
-          <div v-else>
-            <p class="text-xl max-sm:text-sm">Capital Loss</p>
-            <span class="text-red-600 text-2xl font-bold mt-2">{{ PNL_TOTAL.toFixed(2) }}</span>
-          </div>
-          <div>
-            <p class="text-xl max-sm:text-sm">TDS</p>
-            <span class="text-xl font-bold mt-2">{{ TDS_TOTAL.toFixed(2) }}</span>
-          </div>
+
+        <div
+          class="bg-white shadow-md rounded-lg flex justify-center items-center p-4 col-span-1 lg:col-span-5 lg:min-h-[205px]">
+          <img :src="'/line-chart.png'" class="w-full max-w-[350px]" key="line-chart">
+        </div>
+
+        <div
+          class="bg-white shadow-md rounded-lg text-center flex flex-col justify-center items-center p-6 col-span-1 lg:col-span-2">
+          <img :src="'/avatar.png'" class="w-12" key="avatar" />
+          <p class="font-medium mt-2">{{ user?.name }}</p>
+          <img :src="'/my-accounts.png'" class="mt-2" key="my-accounts" />
+          <button @click="router.push('/mywallet')"
+            class="mt-4 border border-teal-600 text-teal-600 px-4 py-1 rounded-full">
+            My Wallet
+          </button>
         </div>
       </div>
-      <div class="bg-white shadow-2xl flex justify-center items-center p-4 w-full sm:w-[350px] xl:w-[400px]">
-        <img :src="'/line-chart.png'" class="w-full max-w-[350px]" key="line-chart">
-      </div>
-      <div
-        class="bg-white shadow-2xl rounded-lg text-center flex flex-col justify-center items-center p-6 w-full sm:w-[200px]">
-        <img :src="'/avatar.png'" class="w-12" key="avatar" />
-        <p class="font-medium mt-2">{{ user?.name }}</p>
-        <img :src="'/my-accounts.png'" class="mt-2" key="my-accounts" />
-        <button @click="router.push('/mywallet')"
-          class="mt-4 border border-teal-600 text-teal-600 px-4 py-1 rounded-full">
-          My Wallet
-        </button>
+
+      <div class="flex justify-center mt-5">
+        <div class=" shadow-md rounded-lg p-6 sm:p-8 lg:p-10 flex flex-col items-center w-full bg-white">
+          <h2 class="text-center text-lg sm:text-xl md:text-2xl font-semibold">Optimise your Tax Harvesting 💰</h2>
+          <button class="mt-8 px-6 py-2 bg-teal-600 rounded-3xl text-white" @click="router.push('/harvesting')">
+            Go to Tax Harvesting
+          </button>
+        </div>
       </div>
     </div>
-    <div class="flex justify-center px-4 sm:px-6 lg:px-8 xl:p-10">
-      <div class="my-8 shadow-2xl rounded-lg p-6 sm:p-8 lg:p-10 flex flex-col items-center w-full max-w-4xl">
-        <h2 class="text-center text-lg sm:text-xl md:text-2xl font-semibold">Optimise your Tax Harvesting 💰</h2>
-        <button class="mt-8 px-6 py-2 bg-teal-600 rounded-3xl text-white" @click="router.push('/harvesting')">
-          Go to Tax Harvesting
-        </button>
-      </div>
-    </div>
+
     <div class="lg:p-8 flex flex-col justify-center items-center w-full" v-if="transactions.length > 0">
-      <h2 class="text-3xl md:text-4xl font-semibold my-5">Transactions</h2>
-      <div class="container p-5 shadow-2xl bg-white xl:w-[1100px] rounded-xl hidden sm:hidden md:block overflow-x-auto">
-        <table class="w-full text-left min-w-[700px]">
-          <thead>
+      <h2 class="text-3xl md:text-4xl font-semibold my-10">Transactions</h2>
+      <div class="container shadow-xl bg-white rounded-xl hidden sm:hidden md:block overflow-x-auto">
+        <table class="w-full text-left">
+          <thead class=" bg-[#f1f1f1]">
             <tr>
               <th class="py-2 px-4 border-b">#</th>
               <th class="py-2 px-4 border-b">Exchange</th>
@@ -139,7 +146,7 @@
       </div>
     </div>
   </div>
-  <Footer />
+  <!-- <Footer /> -->
 </template>
 <script setup>
 import { mainStore } from '~/store/mainstore';

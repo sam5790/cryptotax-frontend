@@ -25,8 +25,8 @@
       <AccountsTransactions v-if="tab === 'transactions'" />
       <AccountsAccountnew  v-if="tab === 'accounts'"/>
     </div>
-
   </div>
+<Footer/>
 </template>
 
 <script setup>
@@ -50,7 +50,7 @@ const tab = ref("tax")
   position: relative;
   display: flex;
   width: 100%;
-  max-width: 360px;
+  max-width:420px;
   justify-content: space-between;
 }
 

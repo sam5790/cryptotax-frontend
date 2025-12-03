@@ -94,7 +94,7 @@
     <ExchangesList v-if="exchange" @close="exchange = false" @select="openDetails" />
     <AddAccount v-if="showDetails" :account="selectedAccount" @close="showDetails = false" />
   </div>
-  <Footer />
+  <!-- <Footer /> -->
 </template>
 
 <script setup>

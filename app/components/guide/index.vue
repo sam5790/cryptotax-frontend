@@ -140,7 +140,6 @@
                 </div>
 
         </div>
-        <Footer />
 </template>
 
 

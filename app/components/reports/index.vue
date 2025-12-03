@@ -1,5 +1,5 @@
 <template>
-  <div class="md:p-10 flex flex-col justify-center items-center bg-gray-50">
+  <div class=" flex flex-col justify-center items-center bg-gray-50 h-auto">
     <h2 class="text-2xl md:text-4xl font-semibold my-5">Transactions</h2>
     <div class="w-full overflow-x-auto shadow-2xl md:p-8 bg-white rounded-lg p-4">
       <table class="w-full min-w-[700px] text-left">
@@ -84,8 +84,6 @@
         </tbody>
       </table>
     </div>
-
-    <Footer class="mt-10" />
   </div>
 </template>
 

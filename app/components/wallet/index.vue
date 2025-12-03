@@ -30,11 +30,7 @@
       </table>
     </div>
   </div>
-
-  <Footer class="fixed" />
 </template>
-
-
 <script setup>
 
 import { mainStore } from '~/store/mainstore';
