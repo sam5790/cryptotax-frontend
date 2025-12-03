@@ -1,21 +1,29 @@
 <template>
   <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50" @click="$emit('close')">
-    <div class="bg-white p-10 rounded-2xl shadow-2xl max-h-full overflow-y-auto" @click.stop>
-      <h2 class="text-2xl font-medium text-center">
+    <div class="bg-white p-6 md:p-10 rounded-2xl shadow-2xl max-h-full overflow-y-auto w-[95%] max-w-5xl relative"
+      @click.stop>
+      <button @click="$emit('close')" class="absolute top-0 right-0 p-2 rounded-full hover:bg-gray-200 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <h2 class="text-xl md:text-2xl font-medium text-center">
         Enter the correct details to create your new account!
       </h2>
 
-
-      <div class=" md:mt-10 flex">
+      <div class="mt-6 md:mt-10">
         <input v-model="searchText" type="text" placeholder="e.g. Binance, WazirX, Ethereum"
-          class="relative w-full rounded-full border border-gray-300 px-12 py-3 shadow-sm " />
+          class="w-full rounded-full border border-gray-300 px-6 md:px-12 py-3 shadow-sm" />
       </div>
 
-      <div class="border rounded-2xl lg:min-w-[1200px] mt-6 p-5">
+      <div class="border rounded-2xl mt-6 p-5 w-full">
 
-        <div class="flex justify-center">
+        <div class="flex flex-col lg:flex-row gap-6">
 
-          <div class="mr-4 ">
+          <div class="w-full lg:w-auto lg:mr-4">
             <ul>
               <li class="text-md font-medium py-1">All</li>
               <li class="text-md font-medium py-1">Chains</li>
@@ -25,20 +33,22 @@
             </ul>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4  w-full">
-            <div class="border flex p-6" v-for="item in filteredList" :key="item.title" @click="openIntegration(item)">
-              <img :src="item.icon" class="w-8 mx-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 w-full">
+
+            <div class="border flex items-center p-4 rounded-xl cursor-pointer" v-for="item in filteredList"
+              :key="item.title" @click="openIntegration(item)">
+              <img :src="item.icon" class="w-8 h-8 mr-4">
               <h2 class="text-lg font-medium">{{ item.title }}</h2>
             </div>
+
           </div>
         </div>
-
       </div>
 
     </div>
-
   </div>
 </template>
+
 
 
 <script setup>
@@ -141,5 +151,4 @@ const filteredList = computed(() => {
   }
   return list.value;
 });
-
 </script>

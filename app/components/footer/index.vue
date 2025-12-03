@@ -1,41 +1,50 @@
 <template>
   <div class="bg-black">
-    <div class="grid md:grid-cols-6  p-12">
-      <div class="col-span-1">
-        <img src="/logo-white.png" class="h-32">
+    <div
+      class="grid grid-cols-1 md:grid-cols-6 gap-8 p-12 text-center md:text-left"
+    >
+      <div class="w-full flex justify-center md:block">
+        <img src="/logo-white.png" class="h-32" />
       </div>
-      <div class="flex flex-col text-white ">
-        <b> Quick Links</b>
+
+      <div class="flex flex-col text-white w-full items-center md:items-start">
+        <b>Quick Links</b>
         <p>About Us</p>
         <p>Contact Us</p>
         <p>Careers</p>
         <p>Solutions</p>
         <p>Scope</p>
       </div>
-      <div class="flex flex-col text-white ">
+
+      <div class="flex flex-col text-white w-full items-center md:items-start">
         <b>Legal</b>
         <p>Terms and Conditions</p>
         <p>Privacy Policy</p>
       </div>
-      <div class=" flex flex-col text-white col-span-2">
+
+      <div
+        class="flex flex-col text-white md:col-span-2 w-full items-center md:items-start"
+      >
         <b>Subscribe to Our News Letter</b>
         <p class="mb-2">Subscribe to our news letter to stay updated!</p>
 
-        <div class="flex items-center">
-          <div class=" flex-1 relative">
-            <input type="text" class="rounded-md w-full ps-9 pe-3 py-3 border border-gray-500"
-              placeholder="Enter your email">
-          </div>
+        <div
+          class="flex flex-col lg:flex-row items-center w-full lg:w-auto gap-3"
+        >
+          <input
+            type="text"
+            class="rounded-md w-full lg:w-64 px-3 py-3 border border-gray-500"
+            placeholder="Enter your email"
+          />
 
-          <button class="bg-teal-500 ml-2 px-4 py-3 text-white rounded-md">
+          <button
+            class="bg-teal-500 px-6 py-3 text-white rounded-md w-full lg:w-auto"
+          >
             SUBSCRIBE
           </button>
         </div>
       </div>
-
     </div>
-
-
     <div class="grid md:grid-cols-4 p-12">
       <div class="text-white">
         <div class="flex">
@@ -45,10 +54,14 @@
           <img src="/linkedin.png" class="mr-4" />
           <img src="/whatsapp.png" class="mr-4" />
         </div>
-        <p class="mt-5"><b>Disclaimer:</b> CryptoTax services provided herein are for informational purposes only and
-          should not be considered as financial, investment, or legal advice. We are not financial advisors, and our
-          services do not constitute personalized financial or legal recommendations. You should consult with a
-          qualified financial or legal professional before making any cryptocurrency-related decisions.</p>
+        <p class="mt-5">
+          <b>Disclaimer:</b> CryptoTax services provided herein are for
+          informational purposes only and should not be considered as financial,
+          investment, or legal advice. We are not financial advisors, and our
+          services do not constitute personalized financial or legal
+          recommendations. You should consult with a qualified financial or
+          legal professional before making any cryptocurrency-related decisions.
+        </p>
       </div>
       <div class="flex flex-col text-white justify-end md:items-center">
         <p>We are certified by</p>
@@ -64,7 +77,7 @@
         <div class="flex flex-col justify-start">
           <p class="mb-1 ml-2">We Support</p>
           <div class="flex">
-            <img src="/upi.png" class="h-8">
+            <img src="/upi.png" class="h-8" />
             <img src="/visa.png" class="h-8" />
             <img src="/master-card.png" class="h-8" />
             <img src="/american-express.png" class="h-8" />
@@ -74,6 +87,8 @@
     </div>
   </div>
   <div class="bg-gray-600">
-    <p class="lg:text-lg text-gray-200 flex justify-center p-2">©2023-2024 CryptoTax | All rights are reserved</p>
+    <p class="lg:text-lg text-gray-200 flex justify-center p-2">
+      ©2023-2024 CryptoTax | All rights are reserved
+    </p>
   </div>
 </template>

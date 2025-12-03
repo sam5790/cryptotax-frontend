@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div class="md:min-w-[700px] md:mt-10 flex max-sm:mt-5 mb-4">
+      <div class="md:min-w-[700px] md:mt-10 flex max-sm:mt-5 mb-4 mt-5">
         <input type="text" placeholder="Search your account"
           class="relative w-full rounded-full border border-gray-300 px-12 py-3 shadow-sm" />
       </div>
