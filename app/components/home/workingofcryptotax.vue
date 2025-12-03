@@ -5,7 +5,7 @@
           class="text-teal-500 underline-text">Cryptotax</span> works ?</h2>
       <p class="text-md  md:text-xl text-gray-500 my-6 text-center max-w-[400px]">Discover how we help you simplify
         your crypto taxes.</p>
-      <video class="my-5 rounded-lg" controls>
+      <video class="my-5 rounded-2xl" controls>
         <source src="https://cryptotax-videos.s3.ap-south-1.amazonaws.com/cryptotax-video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>

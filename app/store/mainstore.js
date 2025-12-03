@@ -15,11 +15,12 @@ export const mainStore = defineStore("main", () => {
       (total, rec) => total + parseFloat(rec.tds || 0),
       0
     );
-  });
-  console.log("transactions",transactions.value)
+  });//need to change from the front-end and fetch it from the backend
+  
 
   function setTransactions(value){
   transactions.value=value
+  console.log("transactions",transactions.value)
   } 
 
   function setCoinBalance(value){
@@ -44,5 +45,5 @@ export const mainStore = defineStore("main", () => {
     setPnl,
   };
 },
-
+  { persist: true, storage: "localStorage" }
 );

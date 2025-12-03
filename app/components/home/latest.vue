@@ -6,12 +6,12 @@
 
 
 
-    <div class="p-4 md:flex justify-center items-center gap-4">
+    <div class="p-4 md:flex justify-center items-center gap-12">
 
  <a href="https://youtu.be/DP09ao5S0k4" target="_blank">
-      <div class="border flex flex-col items-center md:w-60 md:h-[400px] rounded-2xl overflow-hidden mb-2">
+      <div class="border flex flex-col items-center md:w-[300px] md:h-[400px] rounded-2xl overflow-hidden mb-2">
        
-        <div class="h-40 flex justify-center items-center bg-white w-full bg-white">
+        <div class="h-40 flex justify-center items-center bg-white w-full bg-white p-4">
           <img src="/news1.png" class="h-28" />
         </div>
 
@@ -25,8 +25,8 @@
 
 <a  href="https://www.forbes.com/sites/joshwilson/2023/02/08/record-breaking-cryptocurrency-adoption-leads-the-irs-to-release-new-reporting-requirements/?sh=131bf7e73710"
           target="_blank">
-      <div class="border flex flex-col items-center md:w-60 md:h-[400px] rounded-2xl overflow-hidden mb-2">
-        <div class="h-40 flex justify-center items-center w-full bg-white">
+      <div class="border flex flex-col items-center md:w-[300px] md:h-[400px] rounded-2xl overflow-hidden mb-2">
+        <div class="h-40 flex justify-center items-center w-full bg-white p-4">
           <img src="/money-control.jpeg" class="h-16" />
         </div>
 
@@ -40,8 +40,8 @@
 
       <a href="https://www.forbes.com/sites/joshwilson/2023/02/08/record-breaking-cryptocurrency-adoption-leads-the-irs-to-release-new-reporting-requirements/?sh=131bf7e73710"
           target="_blank">
-      <div class="border flex flex-col items-center md:w-60 md:h-[400px] rounded-2xl overflow-hidden mb-2">
-        <div class="h-40 flex justify-center items-center w-full bg-white">
+      <div class="border flex flex-col items-center md:w-[300px] md:h-[400px] rounded-2xl overflow-hidden mb-2">
+        <div class="h-40 flex justify-center items-center w-full bg-white p-4">
           <img src="/forbes1.png" class="h-16" />
         </div>
 
@@ -54,8 +54,8 @@
 </a>
 
 <a href="https://www.laweekly.com/author-abhinav-r-soomaney-examines-cryptocurrency-industry-and-tax-saving-tips-in-amazon-best-selling-new-book/" target="_blank">
-      <div class="border flex flex-col items-center md:w-60 md:h-[400px] rounded-2xl overflow-hidden mb-2">
-        <div class="h-40 flex justify-center items-center w-full bg-white">
+      <div class="border flex flex-col items-center md:w-[300px] md:h-[400px] rounded-2xl overflow-hidden mb-2">
+        <div class="h-40 flex justify-center items-center w-full bg-white p-4">
           <img src="/laweekly.png" class="h-16" />
         </div>
 
@@ -70,6 +70,13 @@
 
     </div>
 
+
+
+
+
+    <div class="flex justify-center p-10">
+      <button class="bg-teal-500 rounded-full px-5 py-2 text-white text-md md:text-xl" @click="router.push('/register')">Sign up</button>
+    </div>
 
     <!-- <div class="p-4 flex  justify-center  gap-4 ">
 <div class=" flex flex-col border items-center shadow-2xl">
@@ -145,3 +152,7 @@
 
 }
 </style>
+
+<script setup>
+const router=useRouter()
+</script>

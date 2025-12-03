@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-50 flex flex-col items-center ">
 
-    <div class="bg-white flex rounded-full shadow-lg p-2 gap-2 relative tabs md:mt-10 max-sm:mb-10">
+    <div class="bg-white flex rounded-full shadow-lg p-2 gap-2 tabs md:mt-10 max-sm:mb-10">
 
       <button class=" text-center rounded-full font-medium tab-btn text-base max-sm:text-xs" :class="{ active: tab === 'tax' }"
         @click="tab = 'tax'">
@@ -23,7 +23,7 @@
     <div class="mt-10">
       <AccountsTax v-if="tab === 'tax'" />
       <AccountsTransactions v-if="tab === 'transactions'" />
-       <AccountsAccountNew  v-if="tab === 'accounts'"/>
+       <AccountsAccountnew  v-if="tab === 'accounts'"/>
     </div>
 
   </div>

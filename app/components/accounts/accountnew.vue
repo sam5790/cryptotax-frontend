@@ -92,7 +92,8 @@
 
       <p class="text-sm sm:text-base m-0 ml-3 sm:ml-5">Add a new account</p>
     </div>
-    <ExchangesList v-if="exchange" @close="exchange = false" @select="openDetails" />
+    <!-- <ExchangesList v-if="exchange" @close="exchange = false" @select="openDetails" /> -->
+     <Exchangeslist v-if="exchange" @close="exchange = false" @select="openDetails"/>
      <AddAccount v-if="showDetails" :account="selectedAccount" @close="showDetails = false"/>
   </div>
   <Footer />

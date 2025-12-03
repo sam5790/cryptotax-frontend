@@ -4,7 +4,7 @@
       <img src="/pattern.png" width="100%">
       <div class="text-position ">
         <h2 class=" text-3xl text-center md:text-4xl font-semibold mt-6">We have a large no of <span
-            class="text-teal-500 underline-text">happyusers</span></h2>
+            class="text-teal-500 underline-text whitespace-nowrap">happy users</span></h2>
         <p class="mt-6 text-center text-lg md:text-xl">Start your journey right now by registering yourself:</p>
         <p class="text-xl md:text-3xl font-semibold text-center mt-4 my-4"><b>90,403,304+</b></p>
         <div class="flex justify-center items-center mb-16">

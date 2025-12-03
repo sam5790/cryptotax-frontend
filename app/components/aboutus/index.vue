@@ -1,5 +1,5 @@
 <template>
-<AboutUsOneStopSolution/>
+<AboutUsOnestopsolution/>
 <AboutUsHistory/>
 <AboutUsFounders/>
 <AboutUsMission/>

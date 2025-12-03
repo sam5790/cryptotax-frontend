@@ -7,37 +7,74 @@
                 for your
                 Crypto currency taxes.</p>
         </div>
-        <div class="grid grid-cols-2  text-xl font-semibold">
+        <!-- <div class="grid grid-cols-2  text-xl font-semibold">
             <div class=" flex justify-center p-5">
-                <img src="">
+                <img src="/reason1.png">
                 <p class=" ">Experience with crypto audits</p>
             </div>
             <div class=" flex justify-center p-5">
-                <img src="">
+                <img src="/reason2.png">
                 <p class="text-xl">Transfer and Tracking cost basis</p>
 
             </div>
 
             <div class=" flex justify-center p-5">
-                <img src="">
+                <img src="/reason3.png">
                 <p class="text-xl">Timely documentation & record keeping of all trades</p>
             </div>
             <div class=" flex justify-center p-5">
-                <img src="">
+                <img src="/reason4.png">
                 <p class="text-xl">Tax audit/income tax notice!</p>
             </div>
             <div class=" flex justify-center p-5">
-                <img src="">
+                <img src="/reason5.png">
                 <p class="text-xl">Expertise with Crypto Tax Laws</p>
             </div>
             <div class=" flex justify-center p-5">
-                <img src="">
+                <img src="/reason6.png">
                 <p class="text-xl">Audit Support</p>
             </div>
 
-        </div>
+        </div> -->
+<div class="flex justify-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xl font-semibold">
+  <div class="flex items-start p-5 space-x-4">
+    <img src="/reason1.png" class="w-12 h-12 object-contain">
+    <p class="flex-1">Experience with crypto audits</p>
+  </div>
+
+  <div class="flex justify-end items-center p-5 space-x-4">
+    
+    <p class="">Transfer and Tracking cost basis</p>
+    <img src="/reason2.png" class="w-12 h-12 ">
+  </div>
+
+  <div class="flex items-start p-5 space-x-4">
+    <img src="/reason3.png" class="w-12 h-12 object-contain">
+    <p class="flex-1">Timely documentation & record keeping of all trades</p>
+  </div>
+
+  <div class="flex justify-end items-center p-5 space-x-4">
+    
+    <p class="">Tax audit/income tax notice!</p>
+    <img src="/reason4.png" class="w-12 h-12 object-contain">
+  </div>
+
+  <div class="flex items-start p-5 space-x-4">
+    <img src="/reason5.png" class="w-12 h-12 object-contain">
+    <p class="flex-1">Expertise with Crypto Tax Laws</p>
+  </div>
+
+  <div class="flex justify-end items-center p-5 space-x-4">
+    
+    <p class="">Audit Support</p>
+    <img src="/reason6.png" class="w-12 h-12 object-contain">
+  </div>
+</div>
+</div>
+
         <div class="flex justify-center">
-            <button class="mt-8 px-6 py-2 bg-teal-500 rounded-3xl text-white ">Sign Up</button>
+            <button class="mt-8 px-6 py-2 bg-teal-500 rounded-3xl text-white " @click="router.push('/register')">Sign Up</button>
         </div>
     </div>
 </template>
@@ -68,3 +105,6 @@
     }
 }
 </style>
+<script setup>
+const router=useRouter()
+</script>

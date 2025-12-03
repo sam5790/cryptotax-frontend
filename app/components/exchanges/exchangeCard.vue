@@ -1,0 +1,172 @@
+<template>
+<div>
+    <h2 class=" text-center text-2xl md:text-3xl font-semibold py-5">Exchanges: How to  <span class="text-teal-500 underline-text whitespace-nowrap">Export API or CSV?</span></h2>
+
+    <div class="p-8 md:flex justify-center items-center gap-6 ">
+
+      <div class="border flex flex-col items-center md:w-60  rounded-2xl overflow-hidden mb-2">
+       
+        <div class="h-40 flex justify-center items-center bg-white w-full bg-white">
+          <img src="/news1.png" class="h-28" />
+        </div>
+
+        <div class=" w-full py-4 px-3 flex flex-col justify-center items-center">
+            <div class="flex justify-center items-center gap-2 p-3">
+        <img src="/binance.png" class="h-6"/>
+        <p>Binance</p>
+            </div>
+          <p class="text-center text-sm ">
+             Lorem ipsum dolor sit amet consectetur adipiscing elit dolor posuere vel venenatis eu sit massa volutpat.
+          </p>
+            <div class="p-3 flex justify-center items-center">
+            <button class="text-teal-500 border border-teal-500 rounded-full px-3">Learn More</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="border flex flex-col items-center md:w-60 rounded-2xl overflow-hidden mb-2">
+        <div class="h-40 flex justify-center items-center w-full bg-white">
+          <img src="/money-control.jpeg" class="h-16" />
+        </div>
+
+        <div class="w-full py-4 px-3 flex flex-col justify-center items-center">
+            <div class="flex justify-center items-center gap-2 p-3">
+        <img src="/bibox.png" class="h-6"/>
+        <p>Bibox</p>
+            </div>
+          <p class="text-center text-sm ">
+             Lorem ipsum dolor sit amet consectetur adipiscing elit dolor posuere vel venenatis eu sit massa volutpat. 
+          </p>
+          <div class="p-3 flex justify-center items-center">
+            <button class="text-teal-500 border border-teal-500 rounded-full px-3">Learn More</button>
+          </div>
+        </div>
+      </div>
+     
+      <div class="border flex flex-col items-center md:w-60 rounded-2xl overflow-hidden mb-2">
+        <div class="h-40 flex justify-center items-center w-full bg-white">
+          <img src="/forbes1.png" class="h-16" />
+        </div>
+
+        <div class=" w-full py-4 px-3 flex flex-col justify-center items-center">
+            <div class="flex justify-center items-center gap-2 p-3">
+        <img src="/bitfyer.png" class="h-6"/>
+        <p>Bitfyer</p>
+            </div>
+          <p class="text-center text-sm ">
+             Lorem ipsum dolor sit amet consectetur adipiscing elit dolor posuere vel venenatis eu sit massa volutpat.
+          </p>
+            <div class="p-3 flex justify-center items-center">
+            <button class="text-teal-500 border border-teal-500 rounded-full px-3">Learn More</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="border flex flex-col items-center md:w-60  rounded-2xl overflow-hidden mb-2">
+        <div class="h-40 flex justify-center items-center w-full bg-white">
+          <img src="/laweekly.png" class="h-16" />
+        </div>
+
+        <div class=" w-full py-4 px-3 flex flex-col justify-center items-center">
+            <div class="flex justify-center items-center gap-2 p-3">
+        <img src="/Bitfinex.png" class="h-6"/>
+        <p>Bitfinex</p>
+            </div>
+          <p class="text-center text-sm ">
+            Lorem ipsum dolor sit amet consectetur adipiscing elit dolor posuere vel venenatis eu sit massa volutpat.
+          </p>
+            <div class="p-3 flex justify-center items-center">
+            <button class="text-teal-500 border border-teal-500 rounded-full px-3">Learn More</button>
+          </div>
+        </div>
+      </div>
+   
+
+      <div class="border flex flex-col items-center md:w-60  rounded-2xl overflow-hidden mb-2">
+       
+        <div class="h-40 flex justify-center items-center bg-white w-full bg-white">
+          <img src="/news1.png" class="h-28" />
+        </div>
+
+        <div class=" w-full py-4 px-3 flex flex-col justify-center items-center">
+            <div class="flex justify-center items-center gap-2 p-3">
+        <img src="/bigone.png" class="h-6"/>
+        <p>Bigone</p>
+            </div>
+          <p class="text-center text-sm ">
+             Lorem ipsum dolor sit amet consectetur adipiscing elit dolor posuere vel venenatis eu sit massa volutpat.
+          </p>
+            <div class="p-3 flex justify-center items-center">
+            <button class="text-teal-500 border border-teal-500 rounded-full px-3">Learn More</button>
+          </div>
+        </div>
+
+      </div>
+    
+
+    </div>
+
+    <div class="flex justify-center items-center p-3">
+<button class="text-white text-center bg-teal-500 rounded-full px-5 py-2">Show More</button>
+    </div>
+</div>
+</template>
+
+<style scoped>
+.underline-text {
+  position: relative;
+  color: #4aabab;
+}
+
+.underline-text::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: -25px;
+  width: 300px;
+  height: 30px;
+  background-image: url("underline.svg");
+  background-size: cover;
+}
+
+
+@media (max-width: 1600px) {
+  .underline-text::after {
+    left: -20px;
+    width: 300px;
+    height: 30px;
+    bottom: -15px;
+  }
+}
+
+
+@media (max-width: 1280px) {
+  .underline-text::after {
+    left: -20px;
+    width: 300px;
+    height: 25px;
+    bottom: -10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .underline-text::after {
+    left: -15px;
+    width: 300px;
+    height: 20px;
+    bottom: -8px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .underline-text::after {
+    left: -15px;
+    width: 250px;
+    height: 15px;
+    bottom: -5px;
+  }
+}
+</style>

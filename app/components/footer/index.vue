@@ -51,15 +51,15 @@
           <a
            href="https://twitter.com/i/flow/login?redirect_after_login=%2Fcryptotax_int"
             target="_blank">
-          <img :src="'/x.png'" class="mr-4" key="x"/></a>
+          <img src="/x.png" class="mr-4"/></a>
           <a href="https://m.facebook.com/cryptotaxinternational" target="_blank">
-          <img :src="'/fb.png'" class="mr-4" key="fb"/></a>
+          <img src="/fb.png" class="mr-4"/></a>
           <a href="https://www.instagram.com/cryptotax_in/" target="_blank">
-          <img :src="'/instagram.png'" class="mr-4" key="instagram" /></a>
+          <img src="/instagram.png" class="mr-4" /></a>
           <a href="https://www.linkedin.com/company/crypto-tax-software/" target="_blank">
-          <img :src="'/linkedin.png'" class="mr-4" key="linkedin"/></a>
+          <img src="/linkedin.png" class="mr-4" /></a>
           <a href="https://wa.me/+919996669951" target="_blank">
-          <img :src="'/whatsapp.png'" class="mr-4" key="whatsapp"/></a>
+          <img src="/whatsapp.png" class="mr-4" /></a>
         </div>
         <p class="mt-5">
           <b>Disclaimer:</b> CryptoTax services provided herein are for
@@ -72,7 +72,7 @@
       </div>
       <div class="flex flex-col text-white justify-end md:items-center">
         <p>We are certified by</p>
-        <img :src="'/start-up-india.png'" class="w-[150px]" key="start-up-india"/>
+        <img src="/start-up-india.png" class="w-[150px]"/>
         <p><b>Certificate No: 1093092030221202</b></p>
       </div>
       <div class="flex flex-col text-white justify-end md:items-center">
@@ -84,10 +84,10 @@
         <div class="flex flex-col justify-start">
           <p class="mb-1 ml-2">We Support</p>
           <div class="flex">
-            <img :src="'/upi.png'" class="h-8" key="upi" />
-            <img :src="'/visa.png'" class="h-8" key="visa"/>
-            <img :src="'/master-card.png'" class="h-8" key="master-card"/>
-            <img :src="'/american-express.png'" class="h-8" key="american-express"/>
+            <img src="/upi.png" class="h-8"/>
+            <img src="/visa.png" class="h-8"/>
+            <img src="/master-card.png" class="h-8"/>
+            <img src="/american-express.png" class="h-8"/>
           </div>
         </div>
       </div>
