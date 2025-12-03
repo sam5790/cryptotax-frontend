@@ -43,7 +43,6 @@ const tab = ref("tax")
 
 </script>
 
-
 <style scoped>
 .tabs {
   position: relative;
@@ -55,7 +54,7 @@ const tab = ref("tax")
 
 .shape {
   position: absolute;
-  top: 13px;
+  top: 8px;
   height: 30px;
   background: #027c6e;
   border-radius: 999px;
@@ -79,7 +78,7 @@ const tab = ref("tax")
 
 .tab-btn {
   flex: 1;
-  height: 40px;
+  height: 30px;
   border-radius: 999px;
   color: #555;
   font-weight: 600;

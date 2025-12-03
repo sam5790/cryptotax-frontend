@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="p-10">
     <div class="flex flex-col sm:flex-row justify-center items-center gap-6 p-5 flex-wrap">
       <div class="shadow-md p-6 text-center rounded-2xl relative w-full sm:w-64 h-28">
         <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-white shadow-lg w-12 h-12 rounded-full flex items-center justify-center">
