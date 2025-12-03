@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="">
     <div class="flex flex-col sm:flex-row justify-center items-center gap-6 p-5 flex-wrap">
-      <div class="shadow-2xl p-6 text-center rounded-2xl relative w-full sm:w-64 h-28">
+      <div class="shadow-md p-6 text-center rounded-2xl relative w-full sm:w-64 h-28">
         <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-white shadow-lg w-12 h-12 rounded-full flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-500" viewBox="0 0 24 24" fill="currentColor">
             <path d="M13 13H11V7H13M13 17H11V15H13M1 21H23L12 2" />
@@ -11,7 +11,7 @@
         <p class="text-2xl font-medium">0</p>
       </div>
 
-      <div class="shadow-2xl p-6 text-center rounded-2xl relative w-full sm:w-64 h-28 mt-2 sm:mt-0">
+      <div class="shadow-md p-6 text-center rounded-2xl relative w-full sm:w-64 h-28 mt-2 sm:mt-0">
         <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-white shadow-lg w-12 h-12 rounded-full flex items-center justify-center">
           <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
             <path stroke="green" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 14 3-3m-3 3 3 3m-3-3h16v-3m2-7-3 3m3-3-3-3m3 3H3v3" />
@@ -21,7 +21,7 @@
         <p class="text-2xl font-medium">{{ transactions.length }}</p>
       </div>
 
-      <div class="shadow-2xl p-6 text-center rounded-2xl relative w-full sm:w-64 h-28 mt-2 sm:mt-0">
+      <div class="shadow-md p-6 text-center rounded-2xl relative w-full sm:w-64 h-28 mt-2 sm:mt-0">
         <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-white shadow-lg w-12 h-12 rounded-full flex items-center justify-center">
           <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="orange" viewBox="0 0 20 20">
             <path d="M1 5h1.424a3.228 3.228 0 0 0 6.152 0H19a1 1 0 1 0 0-2H8.576a3.228 3.228 0 0 0-6.152 0H1a1 1 0 1 0 0 2Zm18 4h-1.424a3.228 3.228 0 0 0-6.152 0H1a1 1 0 1 0 0 2h10.424a3.228 3.228 0 0 0 6.152 0H19a1 1 0 0 0 0-2Zm0 6H8.576a3.228 3.228 0 0 0-6.152 0H1a1 1 0 0 0 0 2h1.424a3.228 3.228 0 0 0 6.152 0H19a1 1 0 0 0 0-2Z" />
@@ -32,14 +32,14 @@
       </div>
     </div>
 
-    <div class="container bg-white mx-auto w-full md:p-7 shadow-lg md:my-8">
+    <div class=" bg-white mx-auto w-full md:p-7 shadow-lg md:my-8">
       <div class="flex flex-col sm:flex-row justify-end gap-3 p-4 md:p-7 flex-wrap">
         <button class="rounded-full text-sm py-2 px-3 sm:px-4 text-teal-500 font-medium shadow">ADD MISSING TRANSACTIONS</button>
         <button class="rounded-full text-sm py-2 px-3 sm:px-4 text-teal-500 font-medium shadow" @click="exportTransactions">EXPORT TRANSACTIONS</button>
         <button class="rounded-full text-sm py-2 px-3 sm:px-4 bg-teal-500 text-white font-medium" @click="exportPnl">EXPORT PNL</button>
       </div>
       <div class="overflow-x-auto hidden md:block">
-        <table class="w-full text-left min-w-[700px]">
+        <table class="w-full text-left">
           <thead>
             <tr class="bg-gray-100">
               <th class="py-2 px-4 border-b">#</th>
@@ -61,10 +61,10 @@
               <td class="py-4 px-4">{{ item.coin }}</td>
               <td class="py-4 px-4">{{ item.date }}</td>
               <td class="py-4 px-4">
-                <span :class="item.type === 'buy' ? 'text-green-500' : 'text-red-500'">{{ item.quantity }}</span>
+                <span :class="item.type === 'buy' ? 'text-green-500 fontPoppins' : 'text-red-500 fontPoppins'">{{ item.quantity }}</span>
               </td>
-              <td class="py-4 px-4">{{ item.total }}</td>
-              <td class="py-4 px-4">{{ item.tds || 0 }}</td>
+              <td class="py-4 px-4 fontPoppins">{{ item.total }}</td>
+              <td class="py-4 px-4 fontPoppins">{{ item.tds || 0 }}</td>
             </tr>
           </tbody>
         </table>
@@ -86,15 +86,15 @@
           </div>
           <div class="flex justify-between mb-1">
             <span>Quantity:</span>
-            <span :class="item.type === 'buy' ? 'text-green-500' : 'text-red-500'">{{ item.quantity }}</span>
+            <span :class="item.type === 'buy' ? 'text-green-500 fontPoppins' : 'text-red-500 fontPoppins'">{{ item.quantity }}</span>
           </div>
           <div class="flex justify-between mb-1">
             <span>Amount:</span>
-            <span>{{ item.total }}</span>
+            <span class="fontPoppins">{{ item.total }}</span>
           </div>
           <div class="flex justify-between">
             <span>TDS:</span>
-            <span>{{ item.tds || 0 }}</span>
+            <span class="fontPoppins">{{ item.tds || 0 }}</span>
           </div>
         </div>
       </div>
@@ -134,3 +134,10 @@ const exportPnl = () => {
   $exportExcel(pnl.value, "pnl");
 };
 </script>
+<style scoped>
+
+.fontPoppins {
+  font-family: "Poppins", sans-serif !important;
+}
+
+</style>

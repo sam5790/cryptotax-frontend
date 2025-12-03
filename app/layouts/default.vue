@@ -2,6 +2,6 @@
     <div>
         <Navbar />
         <slot></slot>
-        <!-- <Footer></Footer> -->
+        <Footer></Footer>
     </div>
 </template>

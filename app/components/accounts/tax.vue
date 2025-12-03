@@ -15,7 +15,7 @@
           <div class="flex flex-wrap justify-between gap-4 py-5 mt-3">
             <div>
               <p class="text-xl max-sm:text-sm">Income</p>
-              <span class="text-green-700 text-2xl font-bold mt-2">$0</span>
+              <span class="text-green-700 text-2xl font-bold mt-2 fontPoppins">$0</span>
             </div>
             <div v-if="PNL_TOTAL > 0">
               <p class="text-xl max-sm:text-sm">Capital Gain</p>
@@ -23,11 +23,11 @@
             </div>
             <div v-else>
               <p class="text-xl max-sm:text-sm">Capital Loss</p>
-              <span class="text-red-600 text-2xl font-bold mt-2">{{ PNL_TOTAL.toFixed(2) }}</span>
+              <span class="text-red-600 text-2xl font-bold mt-2 fontPoppins">{{ PNL_TOTAL.toFixed(2) }}</span>
             </div>
             <div>
               <p class="text-xl max-sm:text-sm">TDS</p>
-              <span class="text-xl font-bold mt-2">{{ TDS_TOTAL.toFixed(2) }}</span>
+              <span class="text-xl font-bold mt-2 fontPoppins">{{ TDS_TOTAL.toFixed(2) }}</span>
             </div>
           </div>
         </div>
@@ -61,9 +61,9 @@
 
     <div class="lg:p-8 flex flex-col justify-center items-center w-full" v-if="transactions.length > 0">
       <h2 class="text-3xl md:text-4xl font-semibold my-10">Transactions</h2>
-      <div class="container shadow-xl bg-white rounded-xl hidden sm:hidden md:block overflow-x-auto">
+      <div class=" bg-white w-full hidden sm:hidden md:block overflow-x-auto">
         <table class="w-full text-left">
-          <thead class=" bg-[#f1f1f1]">
+          <thead class="bg-[#f1f1f1]">
             <tr>
               <th class="py-2 px-4 border-b">#</th>
               <th class="py-2 px-4 border-b">Exchange</th>
@@ -84,14 +84,14 @@
               <td class="py-4 px-4">{{ item.coin }}</td>
               <td class="py-4 px-4">{{ item.date }}</td>
               <td class="py-4 px-4">
-                <p v-if="item.type == buy" class="text-green-500 flex items-center gap-1">
+                <p v-if="item.type == 'buy'" class="text-green-500 flex items-center gap-1 fontPoppins">
                   <svg class="w-3 h-2" fill="green" viewBox="0 0 16 10">
                     <path
                       d="M15.434 1.235A2 2 0 0 0 13.586 0H2.414A2 2 0 0 0 1 3.414L6.586 9a2 2 0 0 0 2.828 0L15 3.414a2 2 0 0 0 .434-2.179Z" />
                   </svg>
                   {{ item.quantity }}
                 </p>
-                <p v-else class="text-red-500 flex items-center gap-1">
+                <p v-else class="text-red-500 flex items-center gap-1 fontPoppins">
                   <svg class="w-4 h-2" fill="red" viewBox="0 0 16 10">
                     <path
                       d="M15.434 1.235A2 2 0 0 0 13.586 0H2.414A2 2 0 0 0 1 3.414L6.586 9a2 2 0 0 0 2.828 0L15 3.414a2 2 0 0 0 .434-2.179Z" />
@@ -99,7 +99,7 @@
                   {{ item.quantity }}
                 </p>
               </td>
-              <td class="py-4 px-4">{{ item.total }}</td>
+              <td class="py-4 px-4 fontPoppins">{{ item.total }}</td>
               <td class="py-4 px-4">{{ item.type }}</td>
             </tr>
           </tbody>
@@ -122,7 +122,7 @@
           <div class="flex justify-between mb-1">
             <span class="font-medium">Quantity</span>
             <span
-              :class="item.type == buy ? 'text-green-500 flex items-center gap-1' : 'text-red-500 flex items-center gap-1'">
+              :class="item.type == buy ? 'text-green-500 flex items-center gap-1 fontPoppins' : 'text-red-500 flex items-center gap-1 fontPoppins'">
               <svg v-if="item.type == buy" class="w-3 h-2" fill="green" viewBox="0 0 16 10">
                 <path
                   d="M15.434 1.235A2 2 0 0 0 13.586 0H2.414A2 2 0 0 0 1 3.414L6.586 9a2 2 0 0 0 2.828 0L15 3.414a2 2 0 0 0 .434-2.179Z" />
@@ -136,7 +136,7 @@
           </div>
           <div class="flex justify-between mb-1">
             <span class="font-medium">Amount</span>
-            <span>{{ item.total }}</span>
+            <span class="fontPoppins">{{ item.total }}</span>
           </div>
           <div class="flex justify-between">
             <span class="font-medium">Type</span>
@@ -157,3 +157,11 @@ const { transactions, TDS_TOTAL, PNL_TOTAL } = storeToRefs(store)
 const { user } = storeToRefs(auth)
 const router = useRouter()
 </script>
+<style scoped>
+
+
+.fontPoppins {
+  font-family: "Poppins", sans-serif !important;
+}
+
+</style>

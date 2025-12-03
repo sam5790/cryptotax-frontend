@@ -1,4 +1,3 @@
 <template>
  <Guide/>
- <Footer/>
 </template>

@@ -1,4 +1,3 @@
 <template>
 <Reports/>
-<Footer/>
 </template>

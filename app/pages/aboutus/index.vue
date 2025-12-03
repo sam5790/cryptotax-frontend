@@ -1,4 +1,3 @@
 <template>
 <AboutUs/>
-<Footer/>
 </template>

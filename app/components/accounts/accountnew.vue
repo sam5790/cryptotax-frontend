@@ -8,29 +8,29 @@
         <h2 class="text-center text-xl font-medium">Total Exchanges</h2>
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 sm:gap-10 mt-6 w-full">
           <div class="text-center sm:p-2">
-            <h2 class="text-xl font-medium">
+            <h2 class="text-xl font-medium fontPoppins">
               {{ transactions.length }}
             </h2>
             <p>Total Transactions</p>
           </div>
           <div class="text-center bg-green-200 rounded-2xl p-4 sm:p-2">
             <div v-if="PNL_TOTAL == 0">
-              <h2 class="text-xl font-medium text-green-400">0</h2>
+              <h2 class="text-xl font-medium text-green-400 fontPoppins">0</h2>
             </div>
             <div v-else-if="PNL_TOTAL > 0">
-              <h2 class="text-xl font-medium text-green-500">
+              <h2 class="text-xl font-medium text-green-500 fontPoppins">
                 {{ PNL_TOTAL.toFixed(2) }}
               </h2>
             </div>
             <div v-else>
-              <h2 class="text-xl font-medium text-red-600">
+              <h2 class="text-xl font-medium text-red-600 fontPoppins">
                 {{ PNL_TOTAL.toFixed(2) }}
               </h2>
             </div>
             <p>Total Account Income</p>
           </div>
           <div class="text-center sm:p-2">
-            <h2 class="text-xl font-medium">01</h2>
+            <h2 class="text-xl font-medium fontPoppins">01</h2>
             <p>Total Imported Files</p>
           </div>
         </div>
@@ -42,15 +42,14 @@
     </div>
 
     <div class="flex w-30 gap-4 md:mt-3 md:p-16 md:ml-10 max-sm:mb-3 ml-5 mb-4 p-1">
-      <div class="shadow-2xl rounded-2xl p-5" v-if="transactions.length > 0">
+      <div class=" bg-white shadow-sm p-4" v-if="transactions.length > 0">
         <div class="flex gap-4 items-center justify-between">
           <!-- <div v-if="transactions[0].exchange==='CoinDCX'">
-              <img src="/icons/coindcx.png" class="w-8 h-8" />
-      
-                         </div>
-                      <div v-else>
-                            <img src="/icons/wazirx.png" class="w-8 h-8" />
-                                </div> -->
+            <img src="/icons/coindcx.png" class="w-8 h-8" />
+          </div>
+          <div v-else>
+            <img src="/icons/wazirx.png" class="w-8 h-8" />
+          </div> -->
 
           <div>
             <img :src="`/icons/${transactions[0].exchange}.png`" class="w-8 h-8" />
@@ -75,7 +74,7 @@
         </div>
 
         <div class="mt-4 ml-16">
-          <h2 class="text-lg font-medium">{{ transactions.length }}</h2>
+          <h2 class="text-lg font-medium fontPoppins">{{ transactions.length }}</h2>
         </div>
       </div>
     </div>
@@ -120,3 +119,11 @@ function openDetails(item) {
   exchange.value = false;
 }
 </script>
+<style scoped>
+
+
+.fontPoppins {
+  font-family: "Poppins", sans-serif !important;
+}
+
+</style>

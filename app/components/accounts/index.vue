@@ -20,13 +20,12 @@
       <span class="shape"></span>
     </div>
 
-    <div class="mt-10">
+    <div class="mt-10 w-full">
       <AccountsTax v-if="tab === 'tax'" />
       <AccountsTransactions v-if="tab === 'transactions'" />
       <AccountsAccountnew  v-if="tab === 'accounts'"/>
     </div>
   </div>
-<Footer/>
 </template>
 
 <script setup>
@@ -57,28 +56,26 @@ const tab = ref("tax")
 .shape {
   position: absolute;
   top: 13px;
-  left: 3px;
   height: 30px;
   background: #027c6e;
   border-radius: 999px;
   z-index: 1;
   transition: all 0.3s ease;
-  width: calc(100% / 3 - 6px);
+  width: calc(100% / 3 - 20px);
+  left: 10px;
 }
 
-.tabs .tab-btn.active:nth-of-type(1)~.shape {
-  left: 3px;
+.tabs .tab-btn.active:nth-of-type(1) ~ .shape {
+  left: 10px;
 }
 
-.tabs .tab-btn.active:nth-of-type(2)~.shape {
-  left: calc(100% / 3 + 3px);
+.tabs .tab-btn.active:nth-of-type(2) ~ .shape {
+  left: calc(100% / 3 + 10px);
 }
 
-.tabs .tab-btn.active:nth-of-type(3)~.shape {
-  left: calc((100% / 3) * 2 + 3px);
+.tabs .tab-btn.active:nth-of-type(3) ~ .shape {
+  left: calc((100% / 3) * 2 + 10px);
 }
-
-
 
 .tab-btn {
   flex: 1;

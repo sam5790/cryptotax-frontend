@@ -1,4 +1,3 @@
 <template>
 <Pricing/>
-<Footer/>
 </template>

@@ -1,4 +1,3 @@
 <template>
 <Wallet/>
-<Footer/>
 </template>
