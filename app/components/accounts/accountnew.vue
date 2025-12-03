@@ -1,9 +1,9 @@
 <template>
   <div class="md:p-10">
     <div class="flex flex-col justify-center items-center">
-      <div class="flex flex-col justify-center items-center shadow-2xl p-10 rounded-xl relative">
+      <div class="flex flex-col justify-center items-center shadow-2xl p-10 rounded-xl relative mt-4">
         <div class="absolute -top-10 left-1/2 -translate-x-1/2">
-          <img :src="'/avatar.png'" class="w-20 h-20 rounded-full ring-4 ring-white shadow-lg" key="avatar"/>
+          <img :src="'/avatar.png'" class="w-20 h-20 rounded-full ring-4 ring-white shadow-lg" key="avatar" />
         </div>
         <h2 class="text-center text-xl font-medium">Total Exchanges</h2>
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 sm:gap-10 mt-6 w-full">
@@ -41,16 +41,16 @@
       </div>
     </div>
 
-    <div class="flex w-30 gap-4 md:mt-6 md:p-16 md:ml-10 max-sm:mb-5 ml-5">
+    <div class="flex w-30 gap-4 md:mt-3 md:p-16 md:ml-10 max-sm:mb-3 ml-5 mb-4 p-1">
       <div class="shadow-2xl rounded-2xl p-5" v-if="transactions.length > 0">
         <div class="flex gap-4 items-center justify-between">
           <!-- <div v-if="transactions[0].exchange==='CoinDCX'">
-      <img src="/icons/coindcx.png" class="w-8 h-8" />
+              <img src="/icons/coindcx.png" class="w-8 h-8" />
       
-    </div>
-    <div v-else>
-      <img src="/icons/wazirx.png" class="w-8 h-8" />
-    </div> -->
+                         </div>
+                      <div v-else>
+                            <img src="/icons/wazirx.png" class="w-8 h-8" />
+                                </div> -->
 
           <div>
             <img :src="`/icons/${transactions[0].exchange}.png`" class="w-8 h-8" />
@@ -81,26 +81,25 @@
     </div>
 
     <div @click="buttonclick"
-      class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 bg-white border border-teal-500 rounded-xl flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 shadow-md z-10">
-
-      <div class="w-10 h-10 sm:w-12 sm:h-12 bg-teal-500 rounded-full flex items-center justify-center">
+      class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 bg-white border border-teal-500 rounded-xl flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 shadow-md z-10 opacity-80">
+      <div class="w-10 h-10 sm:w-12 sm:h-12 bg-teal-500 rounded-full flex items-center justify-center opacity-90">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white"
           class="w-6 h-6 sm:w-8 sm:h-8">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
         </svg>
       </div>
-
-      <p class="text-sm sm:text-base m-0 ml-3 sm:ml-5">Add a new account</p>
+      <p class="text-sm sm:text-base m-0 ml-3 sm:ml-5 opacity-90">Add a new account</p>
     </div>
+
     <ExchangesList v-if="exchange" @close="exchange = false" @select="openDetails" />
-     <AddAccount v-if="showDetails" :account="selectedAccount" @close="showDetails = false"/>
+    <AddAccount v-if="showDetails" :account="selectedAccount" @close="showDetails = false" />
   </div>
   <Footer />
 </template>
 
 <script setup>
 // import Exchangeslist from '../exchangesList.vue'
-import AddAccount from '~/components/addaccount.vue'
+// import AddAccount from '~/components/addaccount.vue'
 import { mainStore } from '~/store/mainstore'
 
 const store = mainStore();
