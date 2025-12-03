@@ -1,82 +1,114 @@
 <template>
   <nav class="bg-white">
-    <div class=" px-4 sm:px-6 lg:px-8 bg-gray-50">
-      <div class="hidden sm:flex flex justify-between md:h-20">
-
-        <div class=" flex items-center">
-          <img class="md:h-full h-12 mt-2" @click="router.push('/')" :src="'/logo.png'" key="logo"/>
-        </div>
-        <div class="flex justify-center ">
-          <button class="md:p-4 p-1 md:text-xl" @click="router.push('/dashboard')">Account</button>
-          <button class="md:p-4 p-1 md:text-xl" @click="router.push('/tax')">Tax Guide</button>
-          <button class="md:p-4 p-1 md:text-xl">Export Data</button>
-          <button class="md:p-4 p-1 md:text-xl" @click="router.push('/mywallet')">My Wallet</button>
-          <button class="md:p-4 p-1 md:text-xl" @click="router.push('/reports')">Reports</button>
-          <button class="md:p-4 p-1 md:text-xl" @click="router.push('/aboutus')">About Us</button>
-          <button class="md:p-4 p-1 md:text-xl" @click="router.push('/price')">Pricing</button>
-        </div>
-
-        <div class="flex items-center">
-          <button v-if="!auth.token" class="px-6 py-1 bg-teal-500 rounded-3xl ml-3 text-white md:text-lg"
-            @click="router.push('/login')">
-            LogIn
-          </button>
-
-          <button v-else class="px-6 py-1 text-teal-500 border border-teal-500 rounded-3xl ml-3  md:text-lg"
-            @click="handleLogout">
-            Logout
-          </button>
-        </div>
-
-      </div>
-      <div class="flex sm:hidden justify-between items-center h-16">
-
-
-        <div class="flex items-center space-x-3">
-
-          <button @click="isOpen = !isOpen" class="p-2">
-            <svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 6h16"></path>
-              <path d="M4 12h16"></path>
-              <path d="M4 18h16"></path>
-            </svg>
-          </button>
-
-
-          <img class="h-10" @click="router.push('/')" :src="'/logo.png'" key="logo"/>
-        </div>
-
-
-        <button class="px-4 py-1 bg-teal-500 rounded-xl text-white text-sm">
-          Sign Up
+    <div class="px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+      <div class="flex items-center gap-3">
+        <button @click="isOpen = true" class="md:hidden p-2">
+          <svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
         </button>
 
+        <img class="h-10 cursor-pointer hidden md:block" @click="router.push('/')" src="/logo.png" />
       </div>
 
-      <div v-if="isOpen" class="sm:hidden shadow p-4 ">
-        <button class="block w-full text-left p-2 text-gray-700" @click="router.push('/dashboard')">Account</button>
-        <button class="block w-full text-left p-2 text-gray-700" @click="router.push('/tax')">Tax Guide</button>
-        <button class="block w-full text-left p-2 text-gray-700">Export Data</button>
-        <button class="md:p-4 p-1 md:text-xl" @click="router.push('/mywallet')">My Wallet</button>
-        <button class="md:p-4 p-1 md:text-xl">Reports</button>
-        <button class="block w-full text-left p-2 text-gray-700" @click="router.push('/Aboutus')">About Us</button>
-        <button class="block w-full text-left p-2 text-gray-700">Pricing</button>
+      <div class="hidden md:flex gap-4 lg:gap-6 items-center">
+        <button class=" font-semibold whitespace-nowrap cursor-pointer" @click="router.push('/dashboard')">Account</button>
+        <button class="font-semibold whitespace-nowrap cursor-pointer" @click="router.push('/tax')">Tax Guide</button>
+        <button class="font-semibold whitespace-nowrap cursor-pointer">Export Data</button>
+        <button class="font-semibold whitespace-nowrap cursor-pointer" @click="router.push('/mywallet')">My Wallet</button>
+        <button class="font-semibold whitespace-nowrap cursor-pointer" @click="router.push('/reports')">Reports</button>
+        <button class="font-semibold whitespace-nowrap cursor-pointer" @click="router.push('/aboutus')">About Us</button>
+        <button class="font-semibold whitespace-nowrap cursor-pointer" @click="router.push('/Price')">Pricing</button>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button v-if="!auth.token" class="px-4 py-1 bg-teal-500 rounded-3xl text-white text-sm"
+          @click="router.push('/login')">
+          LogIn
+        </button>
+        <button v-else class="px-4 py-1 text-teal-500 border border-teal-500 rounded-3xl text-sm" @click="handleLogout">
+          Logout
+        </button>
       </div>
     </div>
+
+
+    <!-- in mobile -->
+
+    <transition name="slide" class="md:hidden">
+      <div v-if="isOpen" class="fixed inset-0 z-50 flex ">
+        <div @click="isOpen = false"></div>
+        <div class="relative bg-white w-64 h-full shadow-xl p-6">
+          <button class="absolute top-4 right-4" @click="isOpen = false">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <div>
+            <img class="h-10 cursor-pointer" @click="router.push('/')" src="/logo.png" />
+          </div>
+
+          <div class="flex flex-col mt-10 gap-4">
+            <button class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
+              @click="navigate('/dashboard')">Account</button>
+            <button class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded" @click="navigate('/tax')">Tax
+              Guide</button>
+            <button class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded">Export Data</button>
+            <button class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded" @click="navigate('/mywallet')">My
+              Wallet</button>
+            <button class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
+              @click="navigate('/reports')">Reports</button>
+            <button class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded" @click="navigate('/aboutus')">About
+              Us</button>
+            <button class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
+              @click="navigate('/Price')">Pricing</button>
+          </div>
+        </div>
+      </div>
+    </transition>
   </nav>
 </template>
 
+
 <script setup>
-import { useAuthStore } from "~/store/auth";
-const auth = useAuthStore();
+import { useAuthStore } from '~/store/auth';
 
 const isOpen = ref(false);
-const router = useRouter()
+const router = useRouter();
+const auth = useAuthStore();
 
 const handleLogout = () => {
   auth.logout();
-  router.push("/");
+  router.push('/');
 };
 
+const navigate = (path) => {
+  router.push(path);
+  isOpen.value = false;
+};
 </script>
+
+<style scoped>
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.3s ease;
+}
+
+.slide-enter-from {
+  transform: translateX(-100%);
+}
+
+.slide-enter-to {
+  transform: translateX(0%);
+}
+
+.slide-leave-from {
+  transform: translateX(0%);
+}
+
+.slide-leave-to {
+  transform: translateX(-100%);
+}
+</style>
