@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <div class=" bg-white mx-auto w-full md:p-7 shadow-md md:my-8">
+    <div class="mx-auto w-full md:p-7 md:my-8">
       <div class="flex flex-col sm:flex-row justify-end gap-3 p-4 md:p-7 flex-wrap">
         <button class="rounded-full text-sm py-2 px-3 sm:px-4 text-teal-500 font-medium shadow">ADD MISSING TRANSACTIONS</button>
         <button class="rounded-full text-sm py-2 px-3 sm:px-4 text-teal-500 font-medium shadow" @click="exportTransactions">EXPORT TRANSACTIONS</button>
