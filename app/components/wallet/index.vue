@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col items-center md:p-10 bg-gray-50">
+  <div class="flex flex-col items-center md:p-10">
     <h2 class="text-3xl md:text-4xl font-semibold text-center">
       My <span class="text-teal-500 underline-text">Wallet</span>
     </h2>
     <p class="text-md md:text-xl my-4 text-center">A brief summary of your crypto portfolio</p>
-    <div class="container shadow-2xl p-4 w-full overflow-x-auto">
+    <div class="container  p-4 w-full overflow-x-auto">
       <table class="min-w-[600px] md:min-w-full text-center">
         <thead class=" text-gray-400">
           <tr>

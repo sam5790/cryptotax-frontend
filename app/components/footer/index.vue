@@ -75,24 +75,24 @@
           legal professional before making any cryptocurrency-related decisions.
         </p>
       </div>
-      <div class="flex flex-col text-white justify-end md:items-center">
+      <div class="flex flex-col text-white justify-end md:items-center p-3 mb-3 mt-3">
         <p>We are certified by</p>
         <img src="/start-up-india.png" class="w-[150px]"/>
         <p><b>Certificate No: 1093092030221202</b></p>
       </div>
-      <div class="flex flex-col text-white justify-end md:items-center">
+      <div class="flex flex-col text-white justify-end md:items-center mt-2">
         <p>You can reach us at this number from 10 AM to 7 PM</p>
         <p>(Monday to Friday) :</p>
         <p><b>+91 99966 69951</b></p>
       </div>
-      <div class="flex flex-col text-white justify-end md:items-center">
+      <div class="flex flex-col text-white justify-end md:items-center mt-3 mb-3">
         <div class="flex flex-col justify-start">
           <p class="mb-1 ml-2">We Support</p>
           <div class="flex">
-            <img src="/upi.png" class="h-8"/>
-            <img src="/visa.png" class="h-8"/>
-            <img src="/master-card.png" class="h-8"/>
-            <img src="/american-express.png" class="h-8"/>
+            <img src="/upi.png" class="h-7 bg-white mr-1"/>
+            <img src="/visa.png" class="h-7 bg-white mr-1"/>
+            <img src="/master-card.png" class="h-7 bg-white mr-1"/>
+            <img src="/american-express.png" class="h-7 mr-2 bg-white"/>
           </div>
         </div>
       </div>
