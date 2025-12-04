@@ -73,7 +73,7 @@
         </button>
       </div>
 
-      <div class="flex items-center justify-center gap-3">
+      <div class="flex items-center justify-center gap-3 mt-5">
         <img src="/divider.svg" class="divider">
         <p class=" whitespace-nowrap">or continue with</p>
         <img src="/divider.svg" class="divider">

@@ -3,7 +3,7 @@
 
     <div class="shadow-2xl rounded-2xl p-6 md:p-16 w-full max-w-2xl border-gray-200">
       <h2 class="text-3xl md:text-4xl font-semibold text-center mb-5">
-        New <span class="text-teal-500 underline-text">User!</span>
+        New <span class="text-teal-500 underline-text">user!</span>
       </h2>
 
       <p class="text-center mb-10 md:mb-14 text-gray-700">
@@ -177,13 +177,13 @@ const register = async () => {
 .underline-text::after {
   content: "";
   position: absolute;
-  bottom: -0.2em;
-  left: 0;
-  width: 100%;
-  height: 0.5em;
+  bottom: -0.3em;
+  left: -0.4em;
+  width: 140%;
+  height: 0.6em;
   background-image: url("underline-new-user.png");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100% 100%;
   pointer-events: none;
 }
 
