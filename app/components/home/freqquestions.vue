@@ -2,7 +2,7 @@
   <div class="bg-[linear-gradient(100deg,rgb(240,240,252)_11.73%,rgba(240,240,252,0)_104.43%)] p-10">
     <h2 class="text-3xl md:text-4xl font-semibold text-center">Frequently Asked <span
         class="text-teal-500 underline-text">Questions</span></h2>
-    <p class="my-8 text-gray-500 text-md md:text-xl text-center">Some frequently asked questions.</p>
+    <p class="mt-3 mb-8 text-gray-500 text-md md:text-xl text-center">Some frequently asked questions.</p>
 
 
 

@@ -17,13 +17,13 @@
               <p class="text-xl max-sm:text-sm">Income</p>
               <span class="text-green-700 text-2xl font-bold mt-2 fontPoppins">$0</span>
             </div>
-            <div v-if="PNL_TOTAL > 0">
+            <div v-if="total_pnl[0]?.totalPnl > 0">
               <p class="text-xl max-sm:text-sm">Capital Gain</p>
-              <span class="text-green-700 text-2xl font-bold mt-2">{{ PNL_TOTAL.toFixed(2) }}</span>
+              <span class="text-green-700 text-2xl font-bold mt-2">{{ (total_pnl[0].totalPnl).toFixed(2) }}</span>
             </div>
             <div v-else>
               <p class="text-xl max-sm:text-sm">Capital Loss</p>
-              <span class="text-red-600 text-2xl font-bold mt-2 fontPoppins">{{ PNL_TOTAL.toFixed(2) }}</span>
+              <span class="text-red-600 text-2xl font-bold mt-2 fontPoppins">{{ (total_pnl[0].totalPnl).toFixed(2) }}</span>
             </div>
             <div>
               <p class="text-xl max-sm:text-sm">TDS</p>
@@ -40,7 +40,7 @@
         <div
           class="bg-white shadow-md rounded-lg text-center flex flex-col justify-center items-center p-6 col-span-1 lg:col-span-2">
           <img :src="'/avatar.png'" class="w-12" key="avatar" />
-          <p class="font-medium mt-2">{{ user?.name }}</p>
+          <p class="font-medium mt-2">{{ total_pnl[0]?.user?.name }}</p>
           <img :src="'/my-accounts.png'" class="mt-2" key="my-accounts" />
           <button @click="router.push('/mywallet')"
             class="mt-4 border border-teal-600 text-teal-600 px-4 py-1 rounded-full">
@@ -151,11 +151,15 @@
 <script setup>
 import { mainStore } from '~/store/mainstore';
 import { useAuthStore } from '~/store/auth';
+ await getpnlDetails()
 const auth = useAuthStore()
 const store = mainStore()
-const { transactions, TDS_TOTAL, PNL_TOTAL } = storeToRefs(store)
+const { transactions, TDS_TOTAL, pnl,total_pnl} = storeToRefs(store)
 const { user } = storeToRefs(auth)
 const router = useRouter()
+
+console.log("totalPnl",total_pnl.value)
+
 </script>
 <style scoped>
 
@@ -165,3 +169,4 @@ const router = useRouter()
 }
 
 </style>
+

@@ -9,22 +9,27 @@
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 sm:gap-10 mt-6 w-full">
           <div class="text-center sm:p-2">
             <h2 class="text-xl font-medium fontPoppins">
-              {{ transactions.length }}
+              {{ total_pnl[0]?.totalTransaction }}
             </h2>
+            
             <p>Total Transactions</p>
+            <div class="flex justify-center mt-2">
+              <svg class="w-5 h-5 text-gray-800 dark:text-white"  aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 14 3-3m-3 3 3 3m-3-3h16v-3m2-7-3 3m3-3-3-3m3 3H3v3"/>
+</svg></div>
           </div>
           <div class="text-center bg-green-200 rounded-2xl p-4 sm:p-2">
-            <div v-if="PNL_TOTAL == 0">
+            <div v-if="total_pnl[0]?.totalPnl == 0">
               <h2 class="text-xl font-medium text-green-400 fontPoppins">0</h2>
             </div>
-            <div v-else-if="PNL_TOTAL > 0">
+            <div v-else-if="total_pnl[0]?.totalPnl > 0">
               <h2 class="text-xl font-medium text-green-500 fontPoppins">
-                {{ PNL_TOTAL.toFixed(2) }}
+                {{ (total_pnl[0]?.totalPnl).toFixed(2) }}
               </h2>
             </div>
             <div v-else>
               <h2 class="text-xl font-medium text-red-600 fontPoppins">
-                {{ PNL_TOTAL.toFixed(2) }}
+                {{ (total_pnl[0]?.totalPnl).toFixed(2) }}
               </h2>
             </div>
             <p>Total Account Income</p>
@@ -32,6 +37,11 @@
           <div class="text-center sm:p-2">
             <h2 class="text-xl font-medium fontPoppins">01</h2>
             <p>Total Imported Files</p>
+            <div class="flex justify-center mt-2">
+              <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="teal-500" viewBox="0 0 16 20">
+    <path d="M16 14V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 0 0 0-2h-1v-2a2 2 0 0 0 2-2ZM4 2h2v12H4V2Zm8 16H3a1 1 0 0 1 0-2h9v2Z"/>
+</svg>
+            </div>
           </div>
         </div>
       </div>
@@ -41,8 +51,9 @@
       </div>
     </div>
 
-    <div class="flex w-30 gap-4 md:mt-3 md:p-16 md:ml-10 max-sm:mb-3 ml-5 mb-4 p-1">
-      <div class=" bg-white shadow-sm p-4" v-if="transactions.length > 0">
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 w-30 gap-4 md:mt-3 md:p-16 md:ml-10 max-sm:mb-3 ml-5 mb-4 p-1">
+      <div class=" bg-white shadow-sm p-4" v-for="item in total_pnl" :key="item._id" 
+      >
         <div class="flex gap-4 items-center justify-between">
           <!-- <div v-if="transactions[0].exchange==='CoinDCX'">
             <img src="/icons/coindcx.png" class="w-8 h-8" />
@@ -52,12 +63,12 @@
           </div> -->
 
           <div>
-            <img :src="`/icons/${transactions[0].exchange}.png`" class="w-8 h-8" />
+            <img :src="`/icons/${item?.exchange}.png`" class="w-8 h-8" />
           </div>
 
           <div>
             <h2 class="text-lg font-medium capitalize">
-              {{ transactions[0].exchange }}
+              {{ item?.exchange }}
             </h2>
           </div>
 
@@ -66,15 +77,24 @@
           </div>
 
           <div class="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="gray"
-              class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
-            </svg>
+           <svg xmlns="http://www.w3.org/2000/svg" fill="none" 
+         viewBox="0 0 24 24" stroke-width="1.5" stroke="black"
+         class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" 
+            d="M12 5a1 1 0 110-2 1 1 0 010 2zm0 9a1 1 0 110-2 1 1 0 010 2zm0 9a1 1 0 110-2 1 1 0 010 2z" />
+    </svg>
+
           </div>
         </div>
 
-        <div class="mt-4 ml-16">
-          <h2 class="text-lg font-medium fontPoppins">{{ transactions.length }}</h2>
+        <div class="flex  mt-4 ml-16">
+          
+          <button>
+       <svg class="w-5 h-5 text-gray-800 dark:text-white"  aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 14 3-3m-3 3 3 3m-3-3h16v-3m2-7-3 3m3-3-3-3m3 3H3v3"/>
+</svg>
+</button>
+          <h2 class="text-lg font-medium fontPoppins -mt-1 ml-2">{{ item?.totalTransaction }}</h2>
         </div>
       </div>
     </div>
@@ -102,13 +122,16 @@
 import { mainStore } from '~/store/mainstore'
 
 const store = mainStore();
-const { transactions, PNL_TOTAL } = storeToRefs(store);
+await getpnlDetails()
+const { transactions, PNL_TOTAL,total_pnl } = storeToRefs(store);
 
 const router = useRouter();
 const exchange = ref(false);
 const showDetails = ref(false);
 const selectedAccount = ref(null);
 
+ 
+console.log("totalpnl",total_pnl.value)
 const buttonclick = () => {
   exchange.value = true;
 };
@@ -118,6 +141,8 @@ function openDetails(item) {
   showDetails.value = true;
   exchange.value = false;
 }
+
+
 </script>
 <style scoped>
 

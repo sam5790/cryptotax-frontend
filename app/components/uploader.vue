@@ -27,7 +27,10 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { mainStore } from '~/store/mainstore'
+import { useAuthStore } from '~/store/auth'
 
+const auth=useAuthStore()
+const {token }=storeToRefs(auth)
 const store = mainStore()
 const emit = defineEmits(['uploadSuccess'])
 const props = defineProps({
@@ -63,12 +66,15 @@ const uploadFile = async () => {
   Array.from(files.value).forEach(file =>
     formData.append('excelFiles', file)
   )
-
+  
   try {
     const BASE_URL = useRuntimeConfig().public.apiBase;
     const res = await $fetch(`${BASE_URL}/${props.uploadEndpoint}`, {
       method: "POST",
       body: formData,
+         headers: {
+        Authorization: `Bearer ${token.value}`,
+      },
     });
 
     console.log("Upload success:", res)

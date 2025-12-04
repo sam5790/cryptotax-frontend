@@ -32,13 +32,16 @@
 import { useAuthStore } from '~/store/auth';
 const auth = useAuthStore()
 const { user } = storeToRefs(auth)
-onMounted(() => {
-  if (!user.value || !user.value.name) {
-    router.push('/login');
-    console.log("user existed or not", user.value)
-  }
-});
 const router = useRouter()
+onMounted(() => {
+if (!auth.token) {
+  router.push("/login");
+   console.log("user existed or not", user.value)
+}
+   
+  
+});
+
 const tab = ref("tax")
 
 </script>

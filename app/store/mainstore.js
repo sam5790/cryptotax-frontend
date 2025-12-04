@@ -5,6 +5,7 @@ export const mainStore = defineStore("main", () => {
   const transactions = ref([]);
   const coin_balance = ref([]);
   const pnl = ref([]);
+  const total_pnl=ref([])
 
   const PNL_TOTAL = computed(() => {
     return pnl.value.reduce((total, rec) => total + rec.pnl, 0);
@@ -31,11 +32,16 @@ export const mainStore = defineStore("main", () => {
     pnl.value=value
   }
 
+  function setTotalPnl(value){
+    console.log("totalpnl",total_pnl.value)
+    total_pnl.value=value
+  }
   return {
     
     transactions,
     coin_balance,
     pnl,
+    total_pnl,
 
     PNL_TOTAL,
     TDS_TOTAL,
@@ -43,6 +49,7 @@ export const mainStore = defineStore("main", () => {
     setTransactions,
     setCoinBalance,
     setPnl,
+    setTotalPnl
   };
 },
   { persist: true, storage: "localStorage" }

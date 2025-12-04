@@ -121,10 +121,11 @@ const login = async () => {
   }
 
   const { data } = await userLogin(payload);
+  console.log(data.data)
   if (data?.success) {
     authData.addUser({
-      user: data.customer,
-      token: data.token,
+      user: data.data.user.name,
+      token: data.data.token,
     });
 
     router.push("/dashboard");

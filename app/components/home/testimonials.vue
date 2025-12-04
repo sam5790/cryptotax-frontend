@@ -1,9 +1,9 @@
 <template>
   <div class="bg-gray-50 p-4">
     <div class="flex justify-center">
-      <h2 class="text-3xl text-teal-500 md:text-4xl text-center  underline-text">Testimonials</h2>
+      <h2 class="text-3xl text-teal-500 md:text-4xl text-center font-semibold  underline-text">Testimonials</h2>
     </div>
-    <p class="text-center text-md md:text-xl my-7 text-gray-500">What our satisfied clients has to
+    <p class="text-center text-md md:text-xl mt-5 mb-7 text-gray-500">What our satisfied clients has to
       say about us.
     </p>
 

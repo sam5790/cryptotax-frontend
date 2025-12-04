@@ -18,7 +18,7 @@
           </svg>
         </div>
         <p class="text-xl font-medium">Total Transactions</p>
-        <p class="text-2xl font-medium">{{ transactions.length }}</p>
+        <p class="text-2xl font-medium">{{ total_pnl[0].totalTransaction }}</p>
       </div>
 
       <div class="shadow-md p-6 text-center rounded-2xl relative w-full sm:w-64 h-28 mt-2 sm:mt-0">
@@ -115,7 +115,12 @@
 <script setup>
 import { mainStore } from "~/store/mainstore";
 const store = mainStore();
-const { transactions, pnl } = storeToRefs(store);
+await getpnlDetails()
+const { transactions, pnl,total_pnl } = storeToRefs(store);
+
+
+ 
+console.log("totalpnl",total_pnl.value)
 
 const logpnl = () => {
   console.log("PNL:", pnl);

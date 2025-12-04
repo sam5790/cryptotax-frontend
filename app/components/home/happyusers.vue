@@ -5,8 +5,9 @@
       <div class="text-position ">
         <h2 class=" text-3xl text-center md:text-4xl font-semibold mt-8 p-3">We have a large no of <span
             class="text-teal-500 underline-text whitespace-nowrap">happy users</span></h2>
-        <p class="mt-3 text-center text-lg md:text-xl">Start your journey right now by registering yourself:</p>
+        <p class="mt-2 text-center text-lg md:text-xl">Start your journey right now by registering yourself:</p>
         <p class="text-2xl md:text-4xl font-semibold text-center mt-4 my-4"><b>90,403,304+</b></p>
+      
         <div class="flex justify-center items-center mb-16">
           <img src="/customers.png" class="w-22 h-12 mt-5">
         </div>
@@ -54,7 +55,6 @@
     height: 20px;
     bottom: -10px
   }
-
-
 }
+
 </style>
