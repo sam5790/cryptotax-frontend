@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-center bg-gray px-4 py-10 md:p-10 min-h-screen ">
-    <div class="shadow-2xl rounded-2xl p-6 md:p-16 w-full max-w-lg border-gray-200">
+    <div class="shadow-2xl rounded-2xl p-6 md:p-16 w-full max-w-xl border-gray-200">
 
       <h2 class="text-3xl md:text-4xl font-semibold text-center mb-5">
         <span class="text-teal-500 underline-text">Welcome</span> Back
@@ -27,7 +27,7 @@
 
       <div class="mb-4 relative">
         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <svg class="w-5 text-gray-400" fill="none" viewBox="0 0 24 24">
+          <svg class="w-4 text-gray-400" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z"/>
           </svg>
@@ -87,7 +87,7 @@
         />
       </div>
 
-      <p class="text-center mt-6 text-sm text-gray-500">
+      <p class="text-center mt-6 text-xs text-gray-500">
         Don’t have an account?
         <u @click="router.push('/register')" class="font-bold">SignUp</u>
       </p>
