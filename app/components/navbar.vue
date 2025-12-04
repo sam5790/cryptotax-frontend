@@ -9,7 +9,7 @@
           </svg>
         </button>
 
-        <img class="h-10 cursor-pointer hidden md:block" @click="router.push('/')" src="/logo.png" />
+        <img class="h-10 cursor-pointer" @click="router.push('/')" src="/logo.png" />
       </div>
 
       <div class="hidden md:flex gap-4 lg:gap-6 items-center">
@@ -46,9 +46,9 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          <div>
+          <!-- <div>
             <img class="h-10 cursor-pointer" @click="router.push('/')" src="/logo.png" />
-          </div>
+          </div> -->
 
           <div class="flex flex-col mt-10 gap-4">
             <button class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
