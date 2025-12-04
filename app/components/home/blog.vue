@@ -1,13 +1,13 @@
 <template>
   <div class="bg-gray-50 p-7">
     <div class="">
-      <h2 class="text-3xl md:text-5xl text-center font-semibold">Our <span class="underline-text">Blogs</span></h2>
-      <p class="text-center my-5 text-gray-500 text-md md:text-xl">Latest posts from our blog.</p>
+      <h2 class="text-3xl md:text-4xl text-center font-semibold">Our <span class="underline-text">Blogs</span></h2>
+      <p class="text-center mt-3 mb-5 text-gray-500 text-md md:text-xl">Latest posts from our blog.</p>
     </div>
 
     <div class="flex items-center justify-center ">
 
-      <div class=" md:w-50 p-3">
+      <div class=" md:w-[550px] p-3">
         <div class="border shadow-md bg-white p-2 rounded-lg md:flex items-center md:h-50">
           <img src="/blog006.png" class="md:h-full" />
           <div class="p-3">
@@ -19,7 +19,7 @@
         </div>
       </div>
 
-      <div class=" md:w-50  p-3">
+      <div class=" md:w-[550px]  p-3">
         <div class="border shadow-md bg-white p-2 rounded-lg md:flex items-center md:h-50">
           <img src="/blog002.png" class="md:h-full" />
           <div class="p-3">
@@ -33,7 +33,7 @@
 
     </div>
     <div class="flex items-center justify-center">
-      <div class=" md:w-50  p-3">
+      <div class=" md:w-[550px]  p-3">
         <div class="border shadow-md bg-white p-2 rounded-lg md:flex items-center md:h-50">
           <img src="/blog003.png" class="md:h-full" />
           <div class="p-3">
@@ -45,7 +45,7 @@
         </div>
       </div>
 
-      <div class=" md:w-50  p-3">
+      <div class=" md:w-[550px]  p-3">
         <div class="border shadow-md bg-white p-2 rounded-lg md:flex items-center md:h-50">
           <img src="/blog004.png" class="h-full" />
           <div class="p-3">
@@ -58,7 +58,7 @@
       </div>
     </div>
     <div class="flex items-center justify-center">
-      <div class=" md:w-50  p-3">
+      <div class=" md:w-[550px]  p-3">
         <div class="border shadow-md bg-white p-2 rounded-lg md:flex items-center md:h-50">
           <img src="/blog005.png" class="md:h-full" />
           <div class="p-3">
@@ -70,7 +70,7 @@
         </div>
       </div>
 
-      <div class=" md:w-50  p-3">
+      <div class=" md:w-[550px]  p-3">
         <div class="border shadow-md bg-white p-2 rounded-lg md:flex items-center md:h-50">
           <img src="/blog006.png" class="h-full" />
           <div class="p-3">

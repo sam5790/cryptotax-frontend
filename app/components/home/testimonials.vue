@@ -7,7 +7,7 @@
       say about us.
     </p>
 
-    <div class="md:flex justify-center gap-6 p-6 bg-gray-50">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  justify-center gap-6 p-6 bg-gray-50">
 
       <div class="border rounded-lg shadow-xl md:w-80 bg-white mb-2">
         <div class="flex items-center gap-4 p-4">
@@ -62,6 +62,10 @@
           </p>
         </div>
       </div>
+    </div>
+
+    <div class="p-6 flex justify-center">
+      <button class="py-2 px-4 border border-teal-500 text-teal-500 rounded-full">View More</button>
     </div>
 
   </div>

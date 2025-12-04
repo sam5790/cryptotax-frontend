@@ -1,7 +1,7 @@
 <template>
     <div class="bg-[linear-gradient(100deg,rgb(240,240,252)_11.73%,rgba(240,240,252,0)_104.43%)] p-4">
         <div class="flex flex-col justify-center items-center  p-10">
-            <h2 class=" text-3xl md:text-4xl text-center font-semibold ">Reasons to use <span
+            <h2 class="text-3xl md:text-4xl text-center font-semibold ">Reasons to use <span
                     class="underline-text">CryptoTax</span></h2>
             <p class="text-center max-w-[400px] mx-auto mt-5 text-gray-500">Here are six reasons for you to choose us
                 for your

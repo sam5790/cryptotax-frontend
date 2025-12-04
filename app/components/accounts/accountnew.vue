@@ -91,7 +91,7 @@
     </div>
     <!-- <ExchangesList v-if="exchange" @close="exchange = false" @select="openDetails" /> -->
      <Exchangeslist v-if="exchange" @close="exchange = false" @select="openDetails"/>
-     <AddAccount v-if="showDetails" :account="selectedAccount" @close="showDetails = false"/>
+     <Addaccount v-if="showDetails" :account="selectedAccount" @close="showDetails = false"/>
   </div>
   <!-- <Footer /> -->
 </template>

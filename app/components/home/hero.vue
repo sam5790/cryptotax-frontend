@@ -79,4 +79,14 @@
     bottom: -5px;
   }
 }
+
+@media (max-width: 768px) {
+  .underline-text::after {
+    left: -15px;
+    width: 200px;
+    height: 15px;
+    bottom: -5px;
+  }
+}
+
 </style>
