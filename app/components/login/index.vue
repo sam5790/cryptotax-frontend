@@ -3,7 +3,7 @@
     <div class="shadow-2xl rounded-2xl p-6 md:p-16 w-full max-w-lg border-gray-200">
 
       <h2 class="text-3xl md:text-4xl font-semibold text-center mb-5">
-        <span class="text-teal-500 underline-text">Welcome</span> back
+        <span class="text-teal-500 underline-text">Welcome</span> Back
       </h2>
       <p class="text-center mb-10 text-gray-700 text-sm md:text-base">
         Please enter your email & address
@@ -73,15 +73,15 @@
         </button>
       </div>
 
-      <div class="flex items-center justify-center gap-3">
+      <div class="flex items-center justify-center gap-3 mt-5">
         <img src="/divider.svg" class="divider">
         <p class=" whitespace-nowrap">or continue with</p>
         <img src="/divider.svg" class="divider">
       </div>
 
-      <div class="flex justify-center mt-6 w-full">
+      <div class="mt-6 w-full flex justify-center">
         <GoogleSignInButton
-          class="w-full max-w-xs"
+          class=" max-w-xs"
           @success="handleLoginSuccess"
           @error="handleLoginError"
         />
@@ -99,9 +99,6 @@
 </template>
 
 <script setup>
-// import { ref } from "vue";
-import { userLogin } from "~/composables/auth";
-
 import { useAuthStore } from "~/store/auth";
 import {
   GoogleSignInButton,
@@ -167,13 +164,13 @@ const handleLoginError = () => {
 .underline-text::after {
   content: "";
   position: absolute;
-  bottom: -0.2em;
-  left: 0;
-  width: 100%;
-  height: 0.5em;
+  bottom: -0.3em;
+  left: -0.6em;
+  width: 120%;
+  height: 0.6em;
   background-image: url("underline-new-user.png");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100% 100%;
   pointer-events: none;
 }
 

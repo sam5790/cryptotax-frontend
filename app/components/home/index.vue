@@ -1,8 +1,8 @@
 <template>
 <HomeHero/>
 <HomeHappyusers/>
-<HomeTrustedBy/>
-<HomeCryptoTax/>
+<HomeTrustedby/>
+<HomeCryptotax/>
 <HomeLatest/>
 <HomeTestimonials/>
 <HomeWorkingofcryptotax/>
