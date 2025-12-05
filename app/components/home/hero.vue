@@ -10,7 +10,7 @@
           structural
           changes in investment patterns</p>
         <div class="flex justify-start">
-          <button class="mt-8 px-6 py-2 bg-teal-500 rounded-3xl text-white ">Get Started</button>
+          <button class="mt-8 px-6 py-2 bg-teal-500 rounded-3xl text-white " @click="$router.push('/dashboard')">Get Started</button>
         </div>
       </div>
       <div class="flex juctify-center items-center">

@@ -81,6 +81,7 @@
             </tr>
           </thead>
           <tbody>
+             
             <tr v-for="(item, index) in transactions" :key="index" class="border-b">
               <td class="py-4 px-4">{{ index + 1 }}</td>
               <td class="py-4 px-4 flex items-center gap-2">
@@ -89,19 +90,49 @@
               </td>
               <td class="py-4 px-4">{{ item.coin }}</td>
               <td class="py-4 px-4">{{ item.date }}</td>
-              <td class="py-4 px-4">
-                <span :class="item.type === 'buy' ? 'text-green-500 fontPoppins' : 'text-red-500 fontPoppins'">{{
-                  item.quantity }}</span>
+               <td class="py-4 px-4">
+                <p v-if="item.type == 'buy' ||item.type == 'deposited' " class="text-green-500 flex items-center gap-1 fontPoppins">
+                <Icon name="mdi:menu-up" class="w-8 h-8 text-teal-600" />
+                  {{ item.quantity }}
+                </p>
+                <p v-else class="text-red-500 flex items-center gap-1 fontPoppins">
+                   <Icon name="mdi:menu-down" class="w-8 h-8 text-red-600" />
+                  {{ item.quantity }}
+                </p>
               </td>
               <td class="py-4 px-4 fontPoppins">{{ item.total }}</td>
               <td class="py-4 px-4 fontPoppins">{{ item.tds || 0 }}</td>
             </tr>
           </tbody>
         </table>
+        <div class="flex justify-center gap-3 mt-6">
+  <button
+    @click="loadTransactions(pagination.currentPage - 1)"
+    :disabled="pagination.currentPage === 1"
+    class="px-4 py-2 rounded bg-gray-200 disabled:opacity-40"
+  >
+    Previous
+  </button>
+
+  <span class="px-4 py-2">
+    Page {{ pagination.currentPage }} of {{ pagination.totalPages }}
+  </span>
+
+  <button
+    @click="loadTransactions(pagination.currentPage + 1)"
+    :disabled="pagination.currentPage === pagination.totalPages"
+    class="px-4 py-2 rounded bg-gray-200 disabled:opacity-40"
+  >
+    Next
+  </button>
+</div>
+
       </div>
 
       <div class="md:hidden flex flex-col space-y-3 p-2">
+        
         <div v-for="(item, index) in transactions" :key="index" class="border p-4 rounded-lg shadow-md bg-white">
+          
           <div class="flex justify-between items-center mb-2 flex-wrap">
             <span class="font-semibold">#{{ index + 1 }}</span>
             <span class="text-gray-400 text-sm">{{ item.date }}</span>
@@ -128,6 +159,27 @@
             <span class="fontPoppins">{{ item.tds || 0 }}</span>
           </div>
         </div>
+         <div class="flex justify-center gap-3 mt-6">
+  <button
+    @click="loadTransactions(pagination.currentPage - 1)"
+    :disabled="pagination.currentPage === 1"
+    class="px-4 py-2 rounded bg-gray-200 disabled:opacity-40"
+  >
+    Previous
+  </button>
+
+  <span class="px-4 py-2">
+    Page {{ pagination.currentPage }} of {{ pagination.totalPages }}
+  </span>
+
+  <button
+    @click="loadTransactions(pagination.currentPage + 1)"
+    :disabled="pagination.currentPage === pagination.totalPages"
+    class="px-4 py-2 rounded bg-gray-200 disabled:opacity-40"
+  >
+    Next
+  </button>
+</div>
       </div>
     </div>
 
@@ -145,13 +197,27 @@
 </template>
 
 <script setup>
+const { $exportExcel } = useNuxtApp();
 import { mainStore } from "~/store/mainstore";
 const store = mainStore();
-await getpnlDetails()
+await getPnlDetails()
+await getTransactions()
 const { transactions, pnl,total_pnl } = storeToRefs(store);
+console.log("transactionssssssloaded",transactions.value)
 
+const pagination = ref({
+  currentPage: 1,
+  totalPages: 1
+});
+const loadTransactions = async (page = 1) => {
+  const res = await getTransactions(page);
 
- 
+  if (res?.data) {
+    pagination.value = res.pagination;  
+  }
+};
+await loadTransactions(1);
+
 console.log("totalpnl",total_pnl.value)
 
 const dropdownOpen = ref(false)
@@ -168,22 +234,13 @@ document.addEventListener('click', (e) => {
 })
 
 
-const logpnl = () => {
-  console.log("PNL:", pnl);
-};
-const logtransaction = () => {
-  console.log("TRANSACTION:", transactions);
-};
-
-const { $exportExcel } = useNuxtApp();
-
 const exportTransactions = () => {
   $exportExcel(transactions.value, "transactions");
 };
-
 const exportPnl = () => {
   $exportExcel(pnl.value, "pnl");
 };
+
 </script>
 <style scoped>
 .fontPoppins {

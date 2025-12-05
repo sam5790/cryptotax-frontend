@@ -79,10 +79,10 @@ const uploadFile = async () => {
 
     console.log("Upload success:", res)
 
-    if (res.transactions) store.setTransactions(res.transactions)
-    if (res.pnlRecords) store.setPnl(res.pnlRecords)
-    if (res.finalBalances) store.setCoinBalance(res.finalBalances)
-    console.log("store", store.transactions, "storepnl", store.pnl, "store", store.coin_balance)
+    // if (res.transactions) store.setTransactions(res.transactions)
+    // if (res.pnlRecords) store.setPnl(res.pnlRecords)
+    // if (res.finalBalances) store.setCoinBalance(res.finalBalances)
+    // console.log("store", store.transactions, "storepnl", store.pnl, "store", store.coin_balance)
     emitUploadSuccess()
 
   } catch (err) {

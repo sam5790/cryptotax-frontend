@@ -9,17 +9,17 @@
           </svg>
         </button>
 
-        <img class="h-10 cursor-pointer" @click="router.push('/')" src="/logo.png" />
+        <img class="h-10 md:h-14 cursor-pointer" @click="router.push('/')" src="/logo.png" />
       </div>
 
       <div class="hidden md:flex gap-4 lg:gap-6 items-center">
-        <button class=" font-semibold whitespace-nowrap cursor-pointer" @click="router.push('/dashboard')">Account</button>
-        <button class="font-semibold whitespace-nowrap cursor-pointer" @click="router.push('/tax')">Tax Guide</button>
-        <button class="font-semibold whitespace-nowrap cursor-pointer">Export Data</button>
-        <button class="font-semibold whitespace-nowrap cursor-pointer" @click="router.push('/mywallet')">My Wallet</button>
-        <button class="font-semibold whitespace-nowrap cursor-pointer" @click="router.push('/reports')">Reports</button>
-        <button class="font-semibold whitespace-nowrap cursor-pointer" @click="router.push('/aboutus')">About Us</button>
-        <button class="font-semibold whitespace-nowrap cursor-pointer" @click="router.push('/Price')">Pricing</button>
+        <button class="whitespace-nowrap cursor-pointer" @click="router.push('/dashboard')">Account</button>
+        <button class="whitespace-nowrap cursor-pointer" @click="router.push('/tax')">Tax Guide</button>
+        <button class="whitespace-nowrap cursor-pointer">Export Data</button>
+        <button class="whitespace-nowrap cursor-pointer" @click="router.push('/mywallet')">My Wallet</button>
+        <button class="whitespace-nowrap cursor-pointer" @click="router.push('/reports')">Reports</button>
+        <button class="whitespace-nowrap cursor-pointer" @click="router.push('/aboutus')">About Us</button>
+        <button class="whitespace-nowrap cursor-pointer" @click="router.push('/Price')">Pricing</button>
       </div>
 
       <div class="flex items-center gap-2">

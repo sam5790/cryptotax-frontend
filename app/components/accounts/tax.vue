@@ -5,9 +5,31 @@
         <div class="bg-white shadow-md rounded-lg p-6 flex flex-col justify-between col-span-1 lg:col-span-5">
           <div class="flex flex-wrap items-center justify-between gap-2">
             <div class="flex flex-wrap items-center gap-2">
-              <p class="px-4 py-1 text-white bg-teal-600 rounded-full">HIFO</p>
-              <p class="text-gray-700">LIFO</p>
-              <p class="text-gray-700">FIFO</p>
+              <!-- <button class="px-4 py-1 text-white bg-teal-600 rounded-full">HIFO</button>
+              <button class="text-gray-700  rounded-full">LIFO</button>
+              <button class="text-gray-700  rounded-full">FIFO</button> -->
+
+                <input type="radio" name="method" id="hifo" class="hidden peer/hifo" >
+  <label for="hifo"
+    class="px-4 py-1 rounded-full 
+           bg-gray-300 text-black 
+           peer-checked/hifo:bg-teal-600 peer-checked/hifo:text-white">
+    HIFO
+  </label>
+   <input type="radio" name="method" id="lifo" class="hidden peer/lifo">
+  <label for="lifo"
+    class="px-4 py-1 rounded-full
+           bg-gray-300 text-black
+           peer-checked/lifo:bg-teal-600 peer-checked/lifo:text-white">
+    LIFO
+  </label>
+  <input type="radio" name="method" id="fifo" class="hidden peer/fifo">
+  <label for="fifo"
+    class="px-4 py-1 rounded-full
+           bg-gray-300 text-black
+           peer-checked/fifo:bg-teal-600 peer-checked/fifo:text-white">
+    FIFO
+  </label>
             </div>
             <p class="font-semibold">FY 22-23</p>
           </div>
@@ -19,7 +41,7 @@
             </div>
             <div v-if="total_pnl[0]?.totalPnl > 0">
               <p class="text-xl max-sm:text-sm">Capital Gain</p>
-              <span class="text-green-700 text-2xl font-bold mt-2">{{ (total_pnl[0].totalPnl).toFixed(2) }}</span>
+              <span class="text-green-700 text-2xl font-bold mt-2">{{ (total_pnl[0].totalPnl).toFixed(2)}}</span>
             </div>
             <div v-else>
               <p class="text-xl max-sm:text-sm">Capital Loss</p>
@@ -27,7 +49,7 @@
             </div>
             <div>
               <p class="text-xl max-sm:text-sm">TDS</p>
-              <span class="text-xl font-bold mt-2 fontPoppins">{{ TDS_TOTAL.toFixed(2) }}</span>
+              <!-- <span class="text-xl font-bold mt-2 fontPoppins">{{ TDS_TOTAL }}</span> -->
             </div>
           </div>
         </div>
@@ -39,9 +61,20 @@
 
         <div
           class="bg-white shadow-md rounded-lg text-center flex flex-col justify-center items-center p-6 col-span-1 lg:col-span-2">
-          <img :src="'/avatar.png'" class="w-12" key="avatar" />
+          <img src="/avatar.png" class="w-12" />
           <p class="font-medium mt-2">{{ total_pnl[0]?.user?.name }}</p>
-          <img :src="'/my-accounts.png'" class="mt-2" key="my-accounts" />
+          <!-- <img :src="`/icons/${total_pnl[0].exchange}.png`" class="mt-2 h-8" /> -->
+           <div class="flex mt-2 ">
+  <img 
+    v-for="(exchange, index) in distinctExchanges" 
+    :key="index" 
+    :src="`/icons/${exchange}.png`" 
+    :alt="exchange" 
+    class="h-8 h-8 w-8 rounded-full border-2 border-white -ml-3 first:ml-0"
+  />
+<icon name="mdi:plus" class="w-4 h-4 mt-1"/>{{ totalDistinctExchanges }}
+</div>
+
           <button @click="router.push('/mywallet')"
             class="mt-4 border border-teal-600 text-teal-600 px-4 py-1 rounded-full">
             My Wallet
@@ -61,7 +94,17 @@
 
     <div class="lg:p-8 flex flex-col justify-center items-center w-full" v-if="transactions.length > 0">
       <h2 class="text-3xl md:text-4xl font-semibold my-10">Transactions</h2>
-      <div class=" bg-white w-full hidden sm:hidden md:block overflow-x-auto">
+      
+      <div class="  w-full hidden sm:hidden md:block overflow-x-auto">
+        <div class="flex justify-between md:px-6 md:py-3 bg-none">
+         <button class="flex justify-center gap-2 shadow-xl rounded-lg px-3 py-2 border border-gray-50 font-semibold">
+          <Icon name="mdi:files" class="w-6 h-6 text-teal-600" />
+          Export Report</button>
+         <button class="flex gap-2 shadow-xl raounded-lg px-3 border border-gray-50 font-semibold">
+          Choose Account
+        <Icon name="mdi:chevron-down" class=" -mt-1 w-8 h-8 text-teal-600" />
+        </button>
+        </div>
         <table class="w-full text-left">
           <thead class="bg-[#f1f1f1]">
             <tr class="text-gray-400">
@@ -84,18 +127,12 @@
               <td class="py-4 px-4">{{ item.coin }}</td>
               <td class="py-4 px-4">{{ item.date }}</td>
               <td class="py-4 px-4">
-                <p v-if="item.type == 'buy'" class="text-green-500 flex items-center gap-1 fontPoppins">
-                  <svg class="w-3 h-2" fill="green" viewBox="0 0 16 10">
-                    <path
-                      d="M15.434 1.235A2 2 0 0 0 13.586 0H2.414A2 2 0 0 0 1 3.414L6.586 9a2 2 0 0 0 2.828 0L15 3.414a2 2 0 0 0 .434-2.179Z" />
-                  </svg>
+                <p v-if="item.type == 'buy' ||item.type == 'deposited' " class="text-green-500 flex items-center gap-1 fontPoppins">
+                <Icon name="mdi:menu-up" class="w-8 h-8 text-teal-600" />
                   {{ item.quantity }}
                 </p>
                 <p v-else class="text-red-500 flex items-center gap-1 fontPoppins">
-                  <svg class="w-4 h-2" fill="red" viewBox="0 0 16 10">
-                    <path
-                      d="M15.434 1.235A2 2 0 0 0 13.586 0H2.414A2 2 0 0 0 1 3.414L6.586 9a2 2 0 0 0 2.828 0L15 3.414a2 2 0 0 0 .434-2.179Z" />
-                  </svg>
+                   <Icon name="mdi:menu-down" class="w-8 h-8 text-red-600" />
                   {{ item.quantity }}
                 </p>
               </td>
@@ -104,6 +141,28 @@
             </tr>
           </tbody>
         </table>
+          <div class="flex justify-center gap-3 mt-6">
+  <button
+    @click="loadTransactions(pagination.currentPage - 1)"
+    :disabled="pagination.currentPage === 1"
+    class="px-4 py-2 rounded bg-gray-200 disabled:opacity-40"
+  >
+    Previous
+  </button>
+
+  <span class="px-4 py-2">
+    Page {{ pagination.currentPage }} of {{ pagination.totalPages }}
+  </span>
+
+  <button
+    @click="loadTransactions(pagination.currentPage + 1)"
+    :disabled="pagination.currentPage === pagination.totalPages"
+    class="px-4 py-2 rounded bg-gray-200 disabled:opacity-40"
+  >
+    Next
+  </button>
+</div>
+
       </div>
       <div class="w-full sm:w-full md:hidden space-y-4 px-2">
         <div v-for="(item, index) in transactions" :key="index" class="p-4 rounded-xl shadow-md bg-white border">
@@ -122,15 +181,10 @@
           <div class="flex justify-between mb-1">
             <span class="font-medium">Quantity</span>
             <span
-              :class="item.type == buy ? 'text-green-500 flex items-center gap-1 fontPoppins' : 'text-red-500 flex items-center gap-1 fontPoppins'">
-              <svg v-if="item.type == buy" class="w-3 h-2" fill="green" viewBox="0 0 16 10">
-                <path
-                  d="M15.434 1.235A2 2 0 0 0 13.586 0H2.414A2 2 0 0 0 1 3.414L6.586 9a2 2 0 0 0 2.828 0L15 3.414a2 2 0 0 0 .434-2.179Z" />
-              </svg>
-              <svg v-else class="w-4 h-2" fill="red" viewBox="0 0 16 10">
-                <path
-                  d="M15.434 1.235A2 2 0 0 0 13.586 0H2.414A2 2 0 0 0 1 3.414L6.586 9a2 2 0 0 0 2.828 0L15 3.414a2 2 0 0 0 .434-2.179Z" />
-              </svg>
+              :class="item?.type == 'buy' ? 'text-green-500 flex items-center gap-1 fontPoppins' : 'text-red-500 flex items-center gap-1 fontPoppins'">
+              
+               <Icon v-if="item?.type == 'buy'" name="mdi:menu-up" class="w-8 h-8 text-teal-600" />
+              <Icon v-else name="mdi:menu-down" class="w-8 h-8 text-red-600" />
               {{ item.quantity }}
             </span>
           </div>
@@ -151,15 +205,32 @@
 <script setup>
 import { mainStore } from '~/store/mainstore';
 import { useAuthStore } from '~/store/auth';
- await getpnlDetails()
+ await getPnlDetails()
+ await getTransactions()
 const auth = useAuthStore()
 const store = mainStore()
-const { transactions, TDS_TOTAL, pnl,total_pnl} = storeToRefs(store)
+const { transactions, pnl,total_pnl} = storeToRefs(store)
 const { user } = storeToRefs(auth)
 const router = useRouter()
 
-console.log("totalPnl",total_pnl.value)
+const pagination = ref({
+  currentPage: 1,
+  totalPages: 1
+});
+const loadTransactions = async (page = 1) => {
+  const res = await getTransactions(page);
 
+  if (res?.data) {
+    pagination.value = res.pagination;  
+  }
+};
+await loadTransactions(1);
+
+const distinctExchanges = computed(() => {
+  const exchanges = total_pnl.value.map(item => item.exchange)
+  return [...new Set(exchanges)] 
+})
+const totalDistinctExchanges = computed(() => distinctExchanges.value.length)
 </script>
 <style scoped>
 

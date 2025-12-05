@@ -17,7 +17,9 @@ export default defineNuxtConfig({
    '@nuxt/fonts',
    'nuxt-vue3-google-signin',
    '@nuxtjs/google-fonts',
-   '@nuxtjs/google-fonts'
+   '@nuxtjs/google-fonts',
+   '@nuxt/icon',
+   
   ],
  googleSignIn: {
     clientId: process.env.NUXT_PUBLIC_GOOGLE_CLIENT_ID,

@@ -52,7 +52,7 @@
           </button>
         </div>
 
-        <div class="relative">
+        <div class="relative  md:-translate-y-4 lg:-translate-y-8">
           <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-teal-600 text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
             Recommended
           </div>

@@ -12,7 +12,7 @@
           <button class="md:p-2 p-1 md:text-md whitespace-nowrap">My Wallet</button>
           <button class="md:p-2 p-1 md:text-md whitespace-nowrap">Reports</button>
           <button class="md:p-2 p-1 md:text-md whitespace-nowrap" @click="router.push('/aboutus')">About Us</button>
-          <Button class="md:p-2 p-1 md:text-md whitespace-nowrap">Pricing</Button>
+          <button class="md:p-2 p-1 md:text-md whitespace-nowrap">Pricing</button>
         </div>
         <div class="flex items-center ">
           <button class="px-6 py-1 md:px-3 bg-teal-500 rounded-3xl ml-3 text-white md:text-md"

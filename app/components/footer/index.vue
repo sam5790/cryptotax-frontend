@@ -12,11 +12,12 @@
           class="flex flex-col text-white w-full items-center md:items-start"
         >
           <b>Quick Links</b>
-          <p>About Us</p>
+          <p @click="$router.push('/aboutus')">About Us</p>
           <p>Contact Us</p>
           <p>Careers</p>
           <p>Solutions</p>
-          <p>Faq</p>
+          <p @click="$router.push('/faq')">Faq</p>
+          <p @click="$router.push('/exchanges')">Exchange</p>
         </div>
 
         <div
