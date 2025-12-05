@@ -39,7 +39,7 @@
     </div>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 .underline-text {
     position: relative;
 }
@@ -81,4 +81,60 @@
         bottom: -20px;
     }
 }
+</style> -->
+
+<style scoped>
+.underline-text {
+    position: relative;
+}
+
+.underline-text::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: -25px;
+    width: 210px;
+    height: 40px;
+    background-image: url("underline-new-user.png");
+    background-size: cover;
+}
+
+@media (max-width:767px) {
+
+    .underline-text {
+        position: relative;
+    }
+
+    .underline-text::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: -20px;
+        width: 180px;
+        height: 30px;
+        background-image: url("welcome.png");
+        background-size: cover;
+    }
+
+}
+
+@media (max-width:640px) {
+
+    .underline-text {
+        position: relative;
+    }
+
+    .underline-text::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: -20px;
+        width: 150px;
+        height: 30px;
+        background-image: url("underline-new-user.png");
+        background-size: cover;
+    }
+
+}
+
 </style>

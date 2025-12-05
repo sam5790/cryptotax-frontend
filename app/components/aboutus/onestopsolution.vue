@@ -16,7 +16,7 @@
     </div>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 .underline-text {
     position: relative;
     display: inline-block;
@@ -36,7 +36,6 @@
     background-position: center;
 }
 
-/* XS Devices (below 400px) */
 @media (max-width: 400px) {
     .underline-text::after {
         width: 220px;
@@ -45,7 +44,6 @@
     }
 }
 
-/* Small devices (640px and up) */
 @media (min-width: 640px) {
     .underline-text::after {
         width: 320px;
@@ -54,7 +52,6 @@
     }
 }
 
-/* Medium devices (768px and up) */
 @media (min-width: 768px) {
     .underline-text::after {
         width: 380px;
@@ -63,7 +60,6 @@
     }
 }
 
-/* Large devices (1024px and up) */
 @media (min-width: 1024px) {
     .underline-text::after {
         width: 450px;
@@ -72,7 +68,6 @@
     }
 }
 
-/* Extra large devices (1280px and up) */
 @media (min-width: 1280px) {
     .underline-text::after {
         width: 520px;
@@ -81,12 +76,125 @@
     }
 }
 
-/* 2XL devices (1536px and up) */
 @media (min-width: 1536px) {
     .underline-text::after {
         width: 600px;
         height: 40px;
         bottom: -20px;
     }
+}
+</style> -->
+
+<style scoped>
+.underline-text {
+    position: relative;
+}
+
+.underline-text::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: -35px;
+    width: 600px;
+    height: 40px;
+    background-image: url("underline.svg");
+    background-size: cover;
+}
+
+
+
+@media (max-width:1280px) {
+
+    .underline-text {
+        position: relative;
+    }
+
+    .underline-text::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: -25px;
+        width: 460px;
+        height: 30px;
+        background-image: url("underline.svg");
+        background-size: cover;
+    }
+
+}
+
+@media (max-width:1024px) {
+
+    .underline-text {
+        position: relative;
+    }
+
+    .underline-text::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: -25px;
+        width: 350px;
+        height: 30px;
+        background-image: url("underline.svg");
+        background-size: cover;
+    }
+
+}
+
+@media (max-width:760px) {
+
+    .underline-text {
+        position: relative;
+    }
+
+    .underline-text::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: -15px;
+        width: 300px;
+        height: 30px;
+        background-image: url("underline.svg");
+        background-size: cover;
+    }
+
+}
+
+@media (max-width:640px) {
+
+    .underline-text {
+        position: relative;
+    }
+
+    .underline-text::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: -20px;
+        width: 250px;
+        height: 30px;
+        background-image: url("welcome.png");
+        background-size: cover;
+    }
+
+}
+
+@media (max-width:360px) {
+
+    .underline-text {
+        position: relative;
+    }
+
+    .underline-text::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: -20px;
+        width: 250px;
+        height: 30px;
+        background-image: url("welcome.png");
+        background-size: cover;
+    }
+
 }
 </style>

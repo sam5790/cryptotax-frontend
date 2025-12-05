@@ -6,8 +6,8 @@
 
       <div class="border flex flex-col items-center md:w-60  rounded-2xl overflow-hidden mb-2">
        
-        <div class="h-40 flex justify-center items-center bg-white w-full bg-white">
-          <img src="/news1.png" class="h-28" />
+        <div class="h-40 flex justify-center items-center w-full bg-black opacity-85">
+          <img src="/binanceimage.png" class="h-28"/>
         </div>
 
         <div class=" w-full py-4 px-3 flex flex-col justify-center items-center">
@@ -26,8 +26,8 @@
       </div>
 
       <div class="border flex flex-col items-center md:w-60 rounded-2xl overflow-hidden mb-2">
-        <div class="h-40 flex justify-center items-center w-full bg-white">
-          <img src="/money-control.jpeg" class="h-16" />
+        <div class="h-40 flex justify-center items-center w-full bg-black opacity-85 rounded-xl">
+          <img src="/biboximage.jpg" class="h-16 " />
         </div>
 
         <div class="w-full py-4 px-3 flex flex-col justify-center items-center">
@@ -45,8 +45,8 @@
       </div>
      
       <div class="border flex flex-col items-center md:w-60 rounded-2xl overflow-hidden mb-2">
-        <div class="h-40 flex justify-center items-center w-full bg-white">
-          <img src="/forbes1.png" class="h-16" />
+        <div class="h-40 flex justify-center items-center w-full bg-black opacity-85">
+          <img src="/bitflyerimage.png" class="h-16" />
         </div>
 
         <div class=" w-full py-4 px-3 flex flex-col justify-center items-center">
@@ -65,8 +65,8 @@
 
 
       <div class="border flex flex-col items-center md:w-60  rounded-2xl overflow-hidden mb-2">
-        <div class="h-40 flex justify-center items-center w-full bg-white">
-          <img src="/laweekly.png" class="h-16" />
+        <div class="h-40 flex justify-center items-center w-full bg-black opacity-85 rounded-xl">
+          <img src="/bitfineximage.png" class="h-16" />
         </div>
 
         <div class=" w-full py-4 px-3 flex flex-col justify-center items-center">
@@ -86,8 +86,8 @@
 
       <div class="border flex flex-col items-center md:w-60  rounded-2xl overflow-hidden mb-2">
        
-        <div class="h-40 flex justify-center items-center bg-white w-full bg-white">
-          <img src="/news1.png" class="h-28" />
+        <div class="h-40 flex justify-center items-center w-full bg-black opacity-85">
+          <img src="/bigoneimage.png" class="h-28" />
         </div>
 
         <div class=" w-full py-4 px-3 flex flex-col justify-center items-center">

@@ -15,11 +15,9 @@
             presenting our in-house manual calculation process to the auditors. CryptoTax as a company has been featured
             with CNBC, economic times, money control and other media channels in the past to discuss and help solve the
             crypto tax conundrum in India.</p>
-        <button class="mt-8 px-6 py-2 bg-teal-500 rounded-3xl text-white ">Get Started</button>
+        <button class="mt-8 px-6 py-2 bg-teal-500 rounded-3xl text-white" @click="$router.push('/dashboard')">Get Started</button>
     </div>
 </template>
-
-
 
 <style scoped>
 .underline-text {
