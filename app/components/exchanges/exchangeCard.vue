@@ -71,7 +71,7 @@
 
         <div class=" w-full py-4 px-3 flex flex-col justify-center items-center">
             <div class="flex justify-center items-center gap-2 p-3">
-        <img src="/Bitfinex.png" class="h-6"/>
+        <img src="/bitfinex.png" class="h-6"/>
         <p>Bitfinex</p>
             </div>
           <p class="text-center text-sm ">
