@@ -41,11 +41,11 @@
             </div>
             <div v-if="total_pnl[0]?.totalPnl > 0">
               <p class="text-xl max-sm:text-sm">Capital Gain</p>
-              <span class="text-green-700 text-2xl font-bold mt-2">{{ (total_pnl[0].totalPnl).toFixed(2)}}</span>
+              <span class="text-green-700 text-2xl font-bold mt-2"> {{ total_pnl[0]?.totalPnl?.toFixed(2) }}</span>
             </div>
             <div v-else>
               <p class="text-xl max-sm:text-sm">Capital Loss</p>
-              <span class="text-red-600 text-2xl font-bold mt-2 fontPoppins">{{ (total_pnl[0].totalPnl).toFixed(2) }}</span>
+              <span class="text-red-600 text-2xl font-bold mt-2 fontPoppins"> {{ total_pnl[0]?.totalPnl?.toFixed(2) }}</span>
             </div>
             <div>
               <p class="text-xl max-sm:text-sm">TDS</p>
@@ -85,7 +85,7 @@
       <div class="flex justify-center mt-5">
         <div class=" shadow-md rounded-lg p-6 sm:p-8 lg:p-10 flex flex-col items-center w-full bg-white">
           <h2 class="text-center text-lg sm:text-xl md:text-2xl font-semibold">Optimise your Tax Harvesting 💰</h2>
-          <button class="mt-8 px-6 py-2 bg-teal-600 rounded-3xl text-white" @click="router.push('/harvesting')">
+          <button class="mt-8 px-6 py-2 bg-teal-600 rounded-3xl text-white" @click="$router.push('/harvesting')">
             Go to Tax Harvesting
           </button>
         </div>

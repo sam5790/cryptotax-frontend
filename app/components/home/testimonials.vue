@@ -7,8 +7,7 @@
       say about us.
     </p>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  justify-center gap-6 p-6 bg-gray-50">
-
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:flex justify-center gap-6 p-6 bg-gray-50">
       <div class="border rounded-lg shadow-xl md:w-80 bg-white mb-2">
         <div class="flex items-center gap-4 p-4">
           <img src="/testimonial01.png" class="w-16 h-16 " />

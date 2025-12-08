@@ -118,9 +118,22 @@
 import { mainStore } from '~/store/mainstore';
 import Transactions from '../accounts/transactions.vue';
 // import Index from '../aboutUs/index.vue';
+import { useAuthStore } from '~/store/auth';
+const auth = useAuthStore()
+const { user } = storeToRefs(auth)
+const router = useRouter()
+
 await getTransactions()
 const store = mainStore()
 const { transactions, pnl } = storeToRefs(store)
+
+onMounted(() => {
+  if (!auth.token) {
+    router.push("/login");
+    console.log("user existed or not", user.value)
+  }
+
+});
 
 const pagination = ref({
   currentPage: 1,

@@ -41,8 +41,21 @@
 <script setup>
 
 import { mainStore } from '~/store/mainstore';
-
 const store = mainStore()
+import { useAuthStore } from '~/store/auth';
+const auth = useAuthStore()
+const { user } = storeToRefs(auth)
+const router = useRouter()
+onMounted(() => {
+  if (!auth.token) {
+    router.push("/login");
+    console.log("user existed or not", user.value)
+  }
+
+
+});
+
+
 console.log("coin balance:", store.coin_balance)
 
 

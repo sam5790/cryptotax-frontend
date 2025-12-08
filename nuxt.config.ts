@@ -8,6 +8,9 @@ export default defineNuxtConfig({
       apiBase: process.env.NUXT_PUBLIC_API_BASE,
     },
   },
+  css :[
+    '~/assets/style.css'
+  ],
   modules: [
    '@nuxtjs/tailwindcss',
    '@pinia/nuxt',

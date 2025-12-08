@@ -34,12 +34,12 @@ const auth = useAuthStore()
 const { user } = storeToRefs(auth)
 const router = useRouter()
 onMounted(() => {
-if (!auth.token) {
-  router.push("/login");
-   console.log("user existed or not", user.value)
-}
-   
-  
+  if (!auth.token) {
+    router.push("/login");
+    console.log("user existed or not", user.value)
+  }
+
+
 });
 
 const tab = ref("tax")
