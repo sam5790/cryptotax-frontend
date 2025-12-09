@@ -90,8 +90,11 @@
       </div>
 
       <div class="flex justify-center mt-10">
-        <button class="bg-teal-500 rounded-full text-white py-2 px-4 mb-6 w-32">
-          SIGN UP
+        <button @click="register"
+          class="bg-teal-500 rounded-full text-white py-2 px-4 mb-6 w-32 flex items-center justify-center"
+          :disabled="isLoading">
+          <span v-if="!isLoading">SIGN UP</span>
+          <div v-else class="loader"></div>
         </button>
       </div>
 
@@ -133,24 +136,39 @@ const password = ref("")
 const confirmPassword = ref("")
 const showPassword = ref(false)
 const showConfirmPassword = ref(false)
+const isLoading = ref(false)
 
 const user = ref(null);
 const router = useRouter()
 const toast = useToast()
-const register = async () => {
-  const payload = {
-    name: firstName.value,
-    last_name: lastName.value,
-    email: email.value,
-    phonenumber: phoneNumber.value,
-    password: password.value,
-  }
 
-  const { data } = await createUser(payload)
-  if (data?.success) {
-    router.push('/login')
+
+const register = async () => {
+  isLoading.value = true
+  try {
+    const payload = {
+      name: firstName.value,
+      last_name: lastName.value,
+      email: email.value,
+      phonenumber: phoneNumber.value,
+      password: password.value,
+    }
+
+    const { data } = await createUser(payload)
+
+    if (data?.success) {
+      toast.success({ message: "Registration successful", position: "topCenter" })
+      router.push('/login')
+    } else {
+      toast.error({ message: "Registration failed", position: 'topCenter' })
+    }
+  } catch (error) {
+    toast.error({ message: "Something went wrong", position: "topCenter" })
+  } finally {
+    isLoading.value = false
   }
 }
+
 // const loginWithGoogle = async () => {
 //   try {
 //     const result = await signInWithPopup($auth, $provider);
@@ -218,5 +236,18 @@ const register = async () => {
   .divider {
     width: 60px;
   }
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 </style>
