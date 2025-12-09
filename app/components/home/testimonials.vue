@@ -7,7 +7,7 @@
       say about us.
     </p>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:flex justify-center gap-6 p-6 bg-gray-50">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:flex justify-center gap-6 p-6 bg-gray-50 md:block sm-flex">
       <div class="border rounded-lg shadow-xl md:w-80 bg-white mb-2">
         <div class="flex items-center gap-4 p-4">
           <img src="/testimonial01.png" class="w-16 h-16 " />
@@ -62,47 +62,6 @@
         </div>
       </div>
     </div>
-
-
-  <!-- <div class="p-6 bg-gray-50">
-    <div class="relative overflow-hidden">
-    
-      <div class="flex transition-transform duration-500"
-           :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-        <div v-for="(testimonial, index) in testimonials" :key="index" class="min-w-full px-2">
-          <div class="border rounded-lg shadow-xl bg-white mb-2">
-            <div class="flex items-center gap-4 p-4">
-              <img :src="testimonial.image" class="w-16 h-16 rounded-full" />
-              <div class="flex flex-col">
-                <h2 class="text-xl font-semibold">{{ testimonial.name }}</h2>
-                <p class="text-gray-600 text-lg">{{ testimonial.title }}</p>
-              </div>
-            </div>
-            <div class="px-4 pb-4">
-              <p class="text-gray-600 text-md">{{ testimonial.comment }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      
-      <button @click="prev" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">
-        ◀
-      </button>
-      <button @click="next" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">
-        ▶
-      </button>
-    </div>
-
-  
-    <div class="flex justify-center gap-2 mt-4">
-      <span v-for="(testimonial, index) in testimonials" :key="index"
-            class="w-3 h-3 rounded-full cursor-pointer"
-            :class="currentIndex === index ? 'bg-teal-500' : 'bg-gray-300'"
-            @click="goTo(index)">
-      </span>
-    </div>
-  </div> -->
 
     <div class="p-6 flex justify-center">
       <button class="py-2 px-4 border border-teal-500 text-teal-500 rounded-full">View More</button>
