@@ -1,88 +1,177 @@
 <template>
   <nav class="bg-white">
-    <div class=" px-4 sm:px-6 lg:px-8">
-      <div class="hidden md:flex flex justify-between md:h-20">
-        <div class=" flex items-center">
-          <img class="md:h-full h-12 mt-2" @click="router.push('/')" src="/logo.png" />
-        </div>
-        <div class="flex justify-center ">
-          <button class="md:p-2 p-1 md:text-md whitespace-nowrap" @click="router.push('/dashboard')">Account</button>
-          <button class="md:p-2 p-1 md:text-md whitespace-nowrap" @click="router.push('/tax')">Tax Guide</button>
-          <button class="md:p-2 p-1 md:text-md whitespace-nowrap">Export Data</button>
-          <button class="md:p-2 p-1 md:text-md whitespace-nowrap" @click="router.push('/mywallet')">My Wallet</button>
-          <button class="md:p-2 p-1 md:text-md whitespace-nowrap" @click="router.push('/reports')">Reports</button>
-          <button class="md:p-2 p-1 md:text-md whitespace-nowrap" @click="router.push('/aboutus')">About Us</button>
-          <button class="md:p-2 p-1 md:text-md whitespace-nowrap" @click="router.push('/Price')">Pricing</button>
-        </div>
-        <div class="flex items-center ">
-          <button class="px-6 py-1 md:px-3 bg-teal-500 rounded-3xl ml-3 text-white md:text-md"
-            @click="router.push('/login')">LogIn</button>
-          <button class="px-6 py-1 md:px-3 bg-teal-500 rounded-3xl ml-3 text-white md:text-md"
-            @click="router.push('/register')">SignUp</button>
-        </div>
-      </div>
-      <div class="flex md:hidden justify-between items-center h-16">
-        <div class="flex items-center space-x-3">
+    <div class="px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <button @click="isOpen = true" class="md:hidden p-2">
+          <svg
+            class="w-7 h-7 text-gray-700"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
 
-          <button @click="isOpen = !isOpen" class="p-2">
-            <svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 6h16"></path>
-              <path d="M4 12h16"></path>
-              <path d="M4 18h16"></path>
+        <img
+          class="h-10 md:h-20 cursor-pointer"
+          @click="router.push('/')"
+          src="/logo.png"
+        />
+      </div>
+
+      <div class="hidden md:flex gap-4 lg:gap-12 items-center">
+        <button
+          class="whitespace-nowrap cursor-pointer"
+          @click="router.push('/dashboard')"
+        >
+          Account
+        </button>
+        <button
+          class="whitespace-nowrap cursor-pointer"
+          @click="router.push('/tax')"
+        >
+          Tax Guide
+        </button>
+        <button class="whitespace-nowrap cursor-pointer">Export Data</button>
+        <button
+          class="whitespace-nowrap cursor-pointer"
+          @click="router.push('/mywallet')"
+        >
+          My Wallet
+        </button>
+        <button
+          class="whitespace-nowrap cursor-pointer"
+          @click="router.push('/reports')"
+        >
+          Reports
+        </button>
+        <button
+          class="whitespace-nowrap cursor-pointer"
+          @click="router.push('/aboutus')"
+        >
+          About Us
+        </button>
+        <button
+          class="whitespace-nowrap cursor-pointer"
+          @click="router.push('/Price')"
+        >
+          Pricing
+        </button>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button
+          v-if="$route.path === '/login'"
+          class="px-6 py-2 border border-teal-500 rounded-3xl text-teal-500 font-semibold text-sm"
+          @click="$router.push('/register')"
+        >
+          Sign up
+        </button>
+        <button
+          v-if="$route.path === '/register'"
+          class="px-6 py-2 bg-teal-500 rounded-3xl text-white font-semibold text-sm"
+          @click="$router.push('/login')"
+        >
+          Log in
+        </button>
+      </div>
+    </div>
+
+    <!-- in mobile -->
+
+    <transition name="slide" class="md:hidden">
+      <div v-if="isOpen" class="fixed inset-0 z-50 flex">
+        <div @click="isOpen = false"></div>
+        <div class="relative bg-white w-64 h-full shadow-xl p-6">
+          <button class="absolute top-4 right-4" @click="isOpen = false">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-gray-700"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
-
-
-          <img class="h-10" @click="router.push('/')" src="/logo.png" />
-        </div>
-        <div class="flex justify-end ">
-          <button class="px-4 py-1 bg-teal-500 rounded-xl text-white text-sm mr-1">LogIn</button>
-          <button class="px-4 py-1 bg-teal-500 rounded-xl text-white text-sm">
-            Sign Up
-          </button>
-        </div>
-      </div>
-
-      <transition name="slide" class="md:hidden">
-        <div v-if="isOpen" class="fixed inset-0 z-50 flex ">
-          <div @click="isOpen = false"></div>
-          <div class="relative bg-white w-64 h-full shadow-xl p-6">
-            <button class="absolute top-4 right-4" @click="isOpen = false">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            <!-- <div>
+          <!-- <div>
             <img class="h-10 cursor-pointer" @click="router.push('/')" src="/logo.png" />
           </div> -->
 
-            <div class="flex flex-col mt-10 gap-4">
-              <button class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
-                @click="router.push('/dashboard')">Account</button>
-              <button class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded" @click="router.push('/tax')">Tax
-                Guide</button>
-              <button class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded">Export Data</button>
-              <button class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded" @click="router.push('/mywallet')">My
-                Wallet</button>
-              <button class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
-                @click="router.push('/reports')">Reports</button>
-              <button class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded" @click="router.push('/aboutus')">About
-                Us</button>
-              <button class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
-                @click="router.push('/Price')">Pricing</button>
-            </div>
+          <div class="flex flex-col mt-10 gap-4">
+            <button
+              class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
+              @click="navigate('/dashboard')"
+            >
+              Account
+            </button>
+            <button
+              class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
+              @click="navigate('/tax')"
+            >
+              Tax Guide
+            </button>
+            <button
+              class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
+            >
+              Export Data
+            </button>
+            <button
+              class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
+              @click="navigate('/mywallet')"
+            >
+              My Wallet
+            </button>
+            <button
+              class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
+              @click="navigate('/reports')"
+            >
+              Reports
+            </button>
+            <button
+              class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
+              @click="navigate('/aboutus')"
+            >
+              About Us
+            </button>
+            <button
+              class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
+              @click="navigate('/Price')"
+            >
+              Pricing
+            </button>
           </div>
         </div>
-      </transition>
-    </div>
+      </div>
+    </transition>
   </nav>
 </template>
 
 <script setup>
+import { useAuthStore } from "~/store/auth";
+
 const isOpen = ref(false);
-const router = useRouter()
+const router = useRouter();
+const auth = useAuthStore();
+
+const handleLogout = () => {
+  auth.logout();
+  router.push("/");
+};
+
+const navigate = (path) => {
+  router.push(path);
+  isOpen.value = false;
+};
 </script>
 
 <style scoped>

@@ -8,7 +8,6 @@ export const useAuthStore = defineStore("auth", () => {
   const addUser = (payload) => {
     user.value = payload.user;
     token.value = payload.token;
-    console.log("token",token.value)
   };
   
   const logout = () => {
@@ -17,7 +16,6 @@ export const useAuthStore = defineStore("auth", () => {
   };
 
   const setLoading = (val) => {
-    console.log(loading.value)
     loading.value = val;
   };
 
@@ -30,5 +28,9 @@ export const useAuthStore = defineStore("auth", () => {
     setLoading
   };
 },
-  { persist: true, storage: "localStorage" }
+  {
+    persist: {
+      storage: piniaPluginPersistedstate.localStorage(),
+    },
+  }
 );
