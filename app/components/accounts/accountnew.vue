@@ -26,12 +26,12 @@
             </div>
             <div v-else-if="total_pnl[0]?.totalPnl > 0">
               <h2 class="text-xl font-medium text-green-500 fontPoppins">
-                {{ (total_pnl[0]?.totalPnl).toFixed(2) }}
+                {{ (total_pnl[0]?.totalPnl)?.toFixed(2) }}
               </h2>
             </div>
             <div v-else>
               <h2 class="text-xl font-medium text-red-600 fontPoppins">
-                {{ (total_pnl[0]?.totalPnl).toFixed(2) }}
+                {{ (total_pnl[0]?.totalPnl)?.toFixed(2) }}
               </h2>
             </div>
             <p>Total Account Income</p>
@@ -127,7 +127,7 @@
       <p class="text-sm sm:text-base m-0 ml-3 sm:ml-5 opacity-90">Add a new account</p>
     </div>
     <!-- <ExchangesList v-if="exchange" @close="exchange = false" @select="openDetails" /> -->
-     <ExchangesList v-if="exchange" @close="exchange = false" @select="openDetails"/>
+     <Exchangeslist v-if="exchange" @close="exchange = false" @select="openDetails"/>
      <Addaccount v-if="showDetails" :account="selectedAccount" @close="showDetails = false"/>
   </div>
   <!-- <Footer /> -->

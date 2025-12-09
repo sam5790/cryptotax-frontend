@@ -1,5 +1,5 @@
 import * as XLSX from "xlsx";
-import { saveAs } from "file-saver";
+import fileSaver from "file-saver";
 
 export default defineNuxtPlugin(() => {
   const exportToExcel = (data, filename = "export") => {
