@@ -26,12 +26,12 @@
             </div>
             <div v-else-if="total_pnl[0]?.totalPnl > 0">
               <h2 class="text-xl font-medium text-green-500 fontPoppins">
-                {{ (total_pnl[0]?.totalPnl).toFixed(2) }}
+                {{ (total_pnl[0]?.totalPnl)?.toFixed(2) }}
               </h2>
             </div>
             <div v-else>
               <h2 class="text-xl font-medium text-red-600 fontPoppins">
-                {{ (total_pnl[0]?.totalPnl).toFixed(2) }}
+                {{ (total_pnl[0]?.totalPnl)?.toFixed(2) }}
               </h2>
             </div>
             <p>Total Account Income</p>
