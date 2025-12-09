@@ -157,10 +157,10 @@
 </template> -->
 
 <template>
-        <div class="p-10">
+        <!-- <div class="p-10"> -->
 
 
-  <div class="flex flex-col justify-center items-center">
+  <div class="flex flex-col justify-center items-center mt-8">
                         <h2 class="text-3xl xl:text-4xl font-semibold">
                                 Crypto Tax Guide for
                                 <span class="text-teal-500 underline-text">INDIA</span>
@@ -169,7 +169,7 @@
                         </div>
 
 
-        </div>
+        <!-- </div> -->
   <div class="p-10 flex gap-10">
     
  
@@ -259,7 +259,6 @@
 
           <ul class="list-disc pl-6 mt-2 text-sm md:text-lg">
             <li>Income tax laws stipulate the mandatory disclosure of crypto assets if an individual's taxable income surpasses ₹50 lakhs. A notable challenge emerges in determining whether digital assets are to be declared as Indian or foreign, leading to the prevailing practice of declaring assets from exchanges based in India.</li>
-         
           </ul>
         </section>
 
