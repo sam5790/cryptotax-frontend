@@ -48,7 +48,7 @@ const triggerUploaderUpload = () => {
 
     uploaderRef.value.uploadFile();
   } else {
-    toast.error({ message: "Uploader component not found or file not selected." });
+    toast.error({ message: "Uploader component not found or file not selected." ,position:'topCenter'});
   }
 };
 

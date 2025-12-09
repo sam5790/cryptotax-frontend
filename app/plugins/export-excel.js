@@ -13,7 +13,7 @@ export default defineNuxtPlugin(() => {
       type: "array",
     });
 
-    saveAs(new Blob([excelFile]), `${filename}.xlsx`);
+    fileSaver.saveAs(new Blob([excelFile]), `${filename}.xlsx`);
   };
 
   return {

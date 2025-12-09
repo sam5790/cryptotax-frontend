@@ -96,49 +96,6 @@ function prev() {
 }
 </script>
 
-<!-- <style scoped>
-.underline-text {
-    position: relative;
-}
-
-.underline-text::after {
-    content: "";
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 180px;
-    height: 35px;
-    background-image: url("underline-new-user.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-@media (max-width: 640px) {
-    .underline-text::after {
-        width: 150px;
-        height: 30px;
-        bottom: -12px;
-    }
-}
-
-@media (min-width: 768px) {
-    .underline-text::after {
-        width: 200px;
-        height: 40px;
-        bottom: -18px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .underline-text::after {
-        width: 220px;
-        height: 45px;
-        bottom: -20px;
-    }
-}
-</style> -->
 
 <style scoped>
 .underline-text {
