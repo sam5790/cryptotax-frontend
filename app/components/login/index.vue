@@ -27,12 +27,9 @@
 
       <div class="mb-4 relative">
         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <svg class="w-4 text-gray-400" fill="none" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z"/>
-          </svg>
+          <Icon name="mdi:key" class="w-4 h-6 text-gray-600" />
         </div>
-
+        
         <input
           id="password"
           :type="showPassword ? 'text' : 'password'"
