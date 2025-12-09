@@ -90,7 +90,7 @@
       </div>
 
       <div class="flex justify-center mt-10">
-        <button class="bg-teal-500 rounded-full text-white py-2 px-4 mb-6 w-32">
+        <button @click="register" class="bg-teal-500 rounded-full text-white py-2 px-4 mb-6 w-32">
           SIGN UP
         </button>
       </div>

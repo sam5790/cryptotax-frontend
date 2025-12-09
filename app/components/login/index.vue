@@ -6,7 +6,7 @@
         <span class="text-teal-500 underline-text">Welcome</span> Back
       </h2>
       <p class="text-center mb-10 text-gray-700 text-sm md:text-base">
-        Please enter your email & address
+        Please enter your details
       </p>
 
       <div class="mb-4 relative">
