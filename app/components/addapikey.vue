@@ -16,7 +16,7 @@
       </div>
 
       <div class="flex justify-center items-center my-4">
-        <button class="px-3 border border-teal-500 text-teal-500 py-2 mt-4 rounded-lg">
+        <button class="px-3 border border-teal-500 #4aabab py-2 mt-4 rounded-lg">
           Create A New Account
         </button>
       </div>

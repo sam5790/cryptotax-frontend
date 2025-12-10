@@ -3,9 +3,15 @@
       <div
         class="shadow-[0_0_25px_0] shadow-[#254BD34D] rounded-3xl p-6 md:p-16 w-full max-w-xl"
       >
-        <h2 class="text-[38px] md:text-4xl font-bold text-center mb-5">
-          <span class="text-teal-500 underline-text">Welcome</span> Back
-        </h2>
+       <h2 class="text-[38px] md:text-4xl font-bold text-center justify-center flex mb-5">
+        <div class="flex gap-3 flex-wrap">
+            <div class="text-[#4aabab]">
+              Welcome
+              <CurvedLine />
+            </div>
+            Back
+          </div>
+      </h2>
 
         <div>
           <p class="text-center mb-10 text-gray-700 text-sm md:text-[22px]">
@@ -115,7 +121,7 @@
 
           <div class="flex justify-center mt-6">
             <button
-              class="bg-teal-500 rounded-full text-white py-2 px-6 w-32"
+              class="bg-[#4AABAB] rounded-full text-white py-2 px-6 w-32"
               @click="login"
             >
               Log In

@@ -16,7 +16,6 @@ export default defineNuxtConfig({
     "pinia-plugin-persistedstate/nuxt",
     "@nuxt/fonts",
     "@nuxtjs/google-fonts",
-    "@nuxtjs/google-fonts",
     "@nuxt/icon",
     "nuxt-vuefire",
   ],
@@ -45,4 +44,5 @@ export default defineNuxtConfig({
     exposeConfig: true,
     viewer: true,
   },
+
 } as any);

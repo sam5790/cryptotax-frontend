@@ -41,7 +41,7 @@
 
     <div class="mx-auto w-full md:p-7 md:my-8">
       <div class="flex flex-col sm:flex-row justify-end gap-3 p-4 md:p-7 flex-wrap relative">
-        <button class="rounded-full text-sm py-2 px-3 sm:px-4 text-teal-500 font-medium shadow">
+        <button class="rounded-full text-sm py-2 px-3 sm:px-4 #4aabab font-medium shadow">
           ADD MISSING TRANSACTIONS
         </button>
 
@@ -58,10 +58,10 @@
           <div v-if="dropdownOpen"
             class="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg z-10 sm:right-0 sm:w-48 w-full">
             <button @click="exportTransactions"
-              class="w-full text-left px-4 py-2 text-sm text-teal-500 hover:bg-gray-100 whitespace-nowrap">
+              class="w-full text-left px-4 py-2 text-sm #4aabab hover:bg-gray-100 whitespace-nowrap">
               EXPORT TRANSACTIONS
             </button>
-            <button @click="exportPnl" class="w-full text-left px-4 py-2 text-sm text-teal-500 hover:bg-gray-100">
+            <button @click="exportPnl" class="w-full text-left px-4 py-2 text-sm #4aabab hover:bg-gray-100">
               EXPORT PNL
             </button>
           </div>

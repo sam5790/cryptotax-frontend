@@ -40,7 +40,7 @@
         <div class="text-right flex flex-col justify-center items-center">
           <p class="font-semibold py-2">CSV File</p>
           <img src="/downloadfile.png"/>
-          <button class="flex items-center gap-2 mt-2 py-2 px-3 border rounded-md border-teal-500 text-teal-500 text-xs">
+          <button class="flex items-center gap-2 mt-2 py-2 px-3 border rounded-md border-teal-500 #4aabab text-xs">
             <img :src="'/uploadfile.png'" class="h-3 md:h-6"/>
             Download CSV File
           </button>
@@ -92,7 +92,7 @@
         <div class="text-right flex flex-col justify-center items-center">
           <p class="font-semibold py-2">CSV File</p>
           <img src="/downloadfile.png"/>
-          <button class="flex items-center gap-2 mt-2 py-2 px-3 border rounded-md border-teal-500 text-teal-500 text-xs">
+          <button class="flex items-center gap-2 mt-2 py-2 px-3 border rounded-md border-teal-500 #4aabab text-xs">
             <img :src="'/uploadfile.png'" class="h-3 md:h-6"/>
             Download CSV File
           </button>
@@ -146,7 +146,7 @@
         <div class="text-right flex flex-col justify-center items-center">
           <p class="font-semibold py-2">CSV File</p>
           <img src="/downloadfile.png"/>
-          <button class="flex items-center gap-2 mt-2 py-2 px-3 border rounded-md border-teal-500 text-teal-500 text-xs">
+          <button class="flex items-center gap-2 mt-2 py-2 px-3 border rounded-md border-teal-500 #4aabab text-xs">
             <img :src="'/uploadfile.png'" class="h-3 md:h-6"/>
             Download CSV File
           </button>
@@ -201,7 +201,7 @@
         <div class="text-right flex flex-col justify-center items-center">
           <p class="font-semibold py-2">CSV File</p>
           <img src="/downloadfile.png"/>
-          <button class="flex items-center gap-2 mt-2 py-2 px-3 border rounded-md border-teal-500 text-teal-500 text-xs">
+          <button class="flex items-center gap-2 mt-2 py-2 px-3 border rounded-md border-teal-500 #4aabab text-xs">
             <img :src="'/uploadfile.png'" class="h-3 md:h-6"/>
             Download CSV File
           </button>

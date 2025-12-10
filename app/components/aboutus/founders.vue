@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col justify-center items-center bg-gray-50 pt-8 md:pt-12">
         <h2 class="text-center text-2xl sm:text-3xl md:text-4xl font-semibold mb-3 md:mb-7">
-            Our <span class="text-teal-500 underline-text">Founders</span>
+            Our <span class="#4aabab underline-text">Founders</span>
         </h2>
     </div>
 

@@ -1,7 +1,7 @@
 <template>
     <div class="p-4 sm:p-6 md:p-10 lg:p-12 xl:p-16 flex flex-col justify-center items-center bg-gray-50">
         <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold mb-3 sm:mb-4 text-center px-2">
-            <span class="text-teal-500 underline-text">One-Stop Solution</span> For Cryptocurrency Taxes
+            <span class="#4aabab underline-text">One-Stop Solution</span> For Cryptocurrency Taxes
         </h2>
         <div class="mt-4 sm:mt-6 md:mt-8 lg:mt-10 xl:mt-16 px-2 sm:px-4">
             <p class="text-center text-sm sm:text-base md:text-lg lg:text-xl max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-[1200px] mx-auto">

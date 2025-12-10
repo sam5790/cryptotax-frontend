@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="text-4xl text-center font-semibold p-10">
-      How does it <span class="text-teal-500 underline-text">work?</span>
+      How does it <span class="#4aabab underline-text">work?</span>
     </h2>
 
     <div class="relative mt-16 p-3">

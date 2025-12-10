@@ -1,7 +1,7 @@
 <template>
     <div class="p-10 bg-gray-50">
         <div class="flex justify-center items-center ">
-            <h2 class="text-5xl ">Crypto Tax Guide for <span class="text-teal-500 underline-text">INDIA</span></h2>
+            <h2 class="text-5xl ">Crypto Tax Guide for <span class="#4aabab underline-text">INDIA</span></h2>
         </div>
 
     </div>

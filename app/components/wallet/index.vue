@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center md:p-10">
     <h2 class="text-3xl md:text-4xl font-semibold text-center">
-      My <span class="text-teal-500 underline-text">Wallet</span>
+      My <span class="#4aabab underline-text">Wallet</span>
     </h2>
     <p class="text-md md:text-xl my-4 text-center">A brief summary of your crypto portfolio</p>
     <div class="container  p-4 w-full overflow-x-auto">

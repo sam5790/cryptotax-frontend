@@ -5,7 +5,7 @@
   <div class="flex flex-col justify-center items-center">
                         <h2 class="text-3xl xl:text-4xl font-semibold">
                                 Crypto Tax Guide for
-                                <span class="text-teal-500 underline-text">INDIA</span>
+                                <span class="#4aabab underline-text">INDIA</span>
                         </h2>
                         <p class="text-lg md:my-2 md:mb-16">Cryptotax tax guide</p>
                         </div>
