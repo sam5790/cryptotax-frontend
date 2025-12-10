@@ -1,5 +1,5 @@
 <template>
-  <div class="md:p-10">
+  <div>
     <div class="flex flex-col justify-center items-center">
       <div class="flex flex-col justify-center items-center shadow-md p-10 rounded-xl relative mt-4">
         <div class="absolute -top-10 left-1/2 -translate-x-1/2">
@@ -11,14 +11,11 @@
             <h2 class="text-xl font-medium fontPoppins">
               {{ total_pnl[0]?.totalTransaction }}
             </h2>
-            
+
             <p>Total Transactions</p>
             <div class="flex justify-center mt-2">
-              <!-- <svg class="w-5 h-5 text-gray-800 dark:text-white"  aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
-    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 14 3-3m-3 3 3 3m-3-3h16v-3m2-7-3 3m3-3-3-3m3 3H3v3"/>
-</svg> -->
-<icon name="mdi:arrow-expand-horizontal" class="w-6 h-6 text-gray-600" />
-</div>
+              <icon name="mdi:arrow-expand-horizontal" class="w-6 h-6 text-gray-600" />
+            </div>
           </div>
           <div class="text-center bg-green-200 rounded-2xl p-4 sm:p-2">
             <div v-if="total_pnl[0]?.totalPnl == 0">
@@ -40,10 +37,7 @@
             <h2 class="text-xl font-medium fontPoppins">01</h2>
             <p>Total Imported Files</p>
             <div class="flex justify-center mt-2">
-               <Icon name="mdi:files" class="w-6 h-6 text-gray-600" />
-              <!-- <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="teal-500" viewBox="0 0 16 20">
-    <path d="M16 14V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h12a1 1 0 0 0 0-2h-1v-2a2 2 0 0 0 2-2ZM4 2h2v12H4V2Zm8 16H3a1 1 0 0 1 0-2h9v2Z"/>
-</svg> -->
+              <Icon name="mdi:files" class="w-6 h-6 text-gray-600" />
             </div>
           </div>
         </div>
@@ -54,67 +48,56 @@
       </div>
     </div>
 
-    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 w-30 gap-4 md:mt-3 md:p-16 md:ml-10 max-sm:mb-3 ml-5 mb-4 p-1">
-      <div class=" bg-white shadow-sm rounded-lg p-4" v-for="item in total_pnl" :key="item._id" 
-      >
-        <div class="flex gap-4 items-center justify-between">
-          <!-- <div v-if="transactions[0].exchange==='CoinDCX'">
-            <img src="/icons/coindcx.png" class="w-8 h-8" />
-          </div>
-          <div v-else>
-            <img src="/icons/wazirx.png" class="w-8 h-8" />
-          </div> -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
+         gap-4 sm:gap-5 md:gap-6 
+         mt-4 md:mt-6 
+         px-3 sm:px-5 md:px-16 
+         ml-2 sm:ml-5 md:ml-10 
+         mb-6">
 
-          <div>
-            <img :src="`/icons/${item?.exchange}.png`" class="w-8 h-8" />
-          </div>
-
-          <div>
-            <h2 class="text-lg font-medium capitalize">
+      <div v-for="item in total_pnl" :key="item._id"
+        class="bg-white shadow-sm rounded-lg space-y-3 sm:space-y-4 min-w-full p-2 lg:bg-">
+        <div class="flex justify-between items-start">
+          <div class="flex items-center gap-2 sm:gap-3">
+            <img :src="`/icons/${item?.exchange}.png`" class="w-7 h-7 sm:w-8 sm:h-8" />
+            <h2 class="text-base sm:text-lg font-medium capitalize">
               {{ item?.exchange }}
             </h2>
           </div>
 
-          <div class="rounded-md bg-teal-500 text-white px-3 py-1 text-sm shadow-sm">
-            Data Synced
+          <div class="flex items-center">
+            <div class="rounded-xl bg-teal-500 text-white px-2 py-1 text-xs sm:text-sm shadow-sm lg:text-xs whitespace-nowrap opacity-35">
+             <p class="text-white">Data Synced</p>
+            </div>
+
+            <div class="relative">
+              <div class=" rounded-full flex items-center justify-center
+                   cursor-pointer hover:bg-gray-100" @click="toggleMenu(item._id)">
+                <Icon name="mdi:dots-vertical" class=" text-gray-600" />
+              </div>
+
+              <div v-if="open === item._id" class="absolute right-0 mt-2 w-36 sm:w-40 bg-white border border-gray-200 
+                   rounded-lg shadow-lg z-50">
+                <ul class="py-1 sm:py-2 text-sm text-gray-700">
+                  <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Edit Now</li>
+                  <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Delete Now</li>
+                </ul>
+              </div>
+            </div>
           </div>
-
-
- <div class="relative inline-block text-left">
-
-  <div
-    class="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-100"
-    @click="toggleMenu(item._id)"
-  >
-    <Icon name="mdi:dots-vertical" class="w-6 h-6 text-gray-600" />
-  </div>
-
-  <div
-    v-if="open === item._id"
-    class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50"
-  >
-    <ul class="py-2 text-sm text-gray-700">
-      <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Edit Now</li>
-      <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Delete Now</li>
-    </ul>
-  </div>
-
-</div>
-
-
-
-
         </div>
 
-        <div class="flex  mt-4 ml-16">
-          
+        <div class="flex items-center gap-2 ml-1 sm:ml-2">
           <button>
-    <icon name="mdi:arrow-expand-horizontal" class="w-6 h-6 text-gray-600" />
-</button>
-          <h2 class="text-lg font-medium fontPoppins -mt-1 ml-2">{{ item?.totalTransaction }}</h2>
+            <Icon name="mdi:arrow-expand-horizontal" class="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" />
+          </button>
+          <h2 class="text-base sm:text-lg font-medium fontPoppins">
+            {{ item?.totalTransaction }}
+          </h2>
         </div>
       </div>
     </div>
+
 
     <div @click="buttonclick"
       class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 bg-white border border-teal-500 rounded-xl flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 shadow-md z-10 opacity-80">
@@ -127,8 +110,8 @@
       <p class="text-sm sm:text-base m-0 ml-3 sm:ml-5 opacity-90">Add a new account</p>
     </div>
     <!-- <ExchangesList v-if="exchange" @close="exchange = false" @select="openDetails" /> -->
-     <Exchangeslist v-if="exchange" @close="exchange = false" @select="openDetails"/>
-     <Addaccount v-if="showDetails" :account="selectedAccount" @close="showDetails = false"/>
+    <Exchangeslist v-if="exchange" @close="exchange = false" @select="openDetails" />
+    <Addaccount v-if="showDetails" :account="selectedAccount" @close="showDetails = false" />
   </div>
   <!-- <Footer /> -->
 </template>
@@ -154,7 +137,7 @@ const toggleMenu = (id) => {
   open.value = open.value === id ? null : id;
 };
 
-console.log("totalpnl",total_pnl.value)
+console.log("totalpnl", total_pnl.value)
 const buttonclick = () => {
   exchange.value = true;
 };
@@ -167,9 +150,7 @@ function openDetails(item) {
 
 </script>
 <style scoped>
-
 .fontPoppins {
   font-family: "Poppins", sans-serif !important;
 }
-
 </style>
