@@ -5,7 +5,7 @@
         class="grid grid-cols-1 md:grid-cols-6 gap-8 p-12 text-center md:text-left"
       >
         <div class="w-full flex justify-center md:block">
-          <img src="/logo-white.png" class="h-32" />
+          <img src="/footerwhitelogo.png" class="h-32" />
         </div>
 
         <div
@@ -23,7 +23,7 @@
         <div
           class="flex flex-col text-white w-full items-center md:items-start"
         >
-          <b>Legal</b>
+          <b>Legal</b>    
           <p>Terms and Conditions</p>
           <p>Privacy Policy</p>
         </div>

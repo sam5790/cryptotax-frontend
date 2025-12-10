@@ -7,6 +7,7 @@
       <h2 class="text-[38px] md:text-4xl font-bold text-center mb-5">
         <span class="text-teal-500 underline-text">Welcome</span> Back
       </h2>
+<<<<<<< HEAD
       <div>
         <p class="text-center mb-16 text-gray-700 text-sm md:text-[22px]">
           Please enter your mobile number
@@ -48,6 +49,11 @@
               />
             </svg>
           </div>
+=======
+      <p class="text-center mb-10 text-gray-700 text-sm md:text-base">
+        Please enter your details
+      </p>
+>>>>>>> 20118253b655f49eb7c30355140e30f91a0ded11
 
           <input
             type="number"
@@ -65,6 +71,7 @@
             Log In
           </button>
 
+<<<<<<< HEAD
           <button
             v-else
             type="button"
@@ -101,6 +108,59 @@
       </div>
 
       <p class="text-center mt-6 text-[16px] text-gray-500">
+=======
+        <input type="text" v-model="email" class="rounded-md w-full pl-9 pr-3 py-2.5 border border-gray-500"
+          placeholder="Enter your email" />
+      </div>
+
+      <div class="mb-4 relative">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <Icon name="mdi:key" class="w-4 h-6 text-gray-600" />
+        </div>
+
+        <input id="password" :type="showPassword ? 'text' : 'password'" v-model="password"
+          placeholder="Enter your password" class="rounded-md w-full pl-9 pr-10 py-2.5 border border-gray-500" />
+
+        <button type="button" @click="showPassword = !showPassword"
+          class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500">
+          <svg v-if="!showPassword" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+
+          <svg v-else xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.27-2.943-9.543-7a10.05 10.05 0 011.66-3.04M6.5 6.5l11 11" />
+          </svg>
+        </button>
+      </div>
+
+      <p class="text-gray-500 text-sm mb-6 underline text-left">Forgot your password?</p>
+
+      <div class="flex justify-center mt-6">
+        <button class="bg-teal-500 rounded-full text-white py-2 px-6 w-32 flex justify-center" @click="login"
+          :disabled="isLoading">
+          <span v-if="!isLoading">Log In</span>
+          <div v-else class="loader"></div>
+        </button>
+      </div>
+
+      <div class="flex items-center justify-center gap-3 mt-5">
+        <img src="/divider.svg" class="divider">
+        <p class=" whitespace-nowrap">or continue with</p>
+        <img src="/divider.svg" class="divider">
+      </div>
+
+      <div class="mt-6 w-full flex justify-center">
+        <GoogleSignInButton class=" max-w-xs" @success="handleLoginSuccess" @error="handleLoginError" />
+      </div>
+
+      <p class="text-center mt-6 text-xs text-gray-500">
+>>>>>>> 20118253b655f49eb7c30355140e30f91a0ded11
         Don’t have an account?
         <button @click="router.push('/register')">
           <u class="font-semibold">Sign Up</u>
@@ -184,6 +244,7 @@
 <script setup>
 import { useAuthStore } from "~/store/auth";
 import {
+<<<<<<< HEAD
   getAuth,
   RecaptchaVerifier,
   signInWithPhoneNumber,
@@ -217,6 +278,93 @@ const login = async () => {
         console.log("Recaptcha expired");
       },
     });
+=======
+  GoogleSignInButton,
+} from "vue3-google-signin";
+
+const toast = useToast()
+
+
+const authData = useAuthStore()
+
+const { loading, user, token } = storeToRefs(authData)
+
+const email = ref("")
+const password = ref("")
+const showPassword = ref(false);
+const router = useRouter();
+
+const isLoading = ref(false)
+
+
+useHead({
+  script: [
+    {
+      src: "https://accounts.google.com/gsi/client",
+      async: true,
+      defer: true
+    }
+  ]
+});
+
+// const login = async () => {
+
+
+//   isLoading.value = true
+
+//   const payload = {
+//     email: email.value,
+//     password: password.value
+//   }
+
+//   const { data } = await userLogin(payload);
+//   console.log(data.data)
+//   if (data?.success) {
+//     authData.addUser({
+//       user: data.data.user.name,
+//       token: data.data.token,
+//     });
+
+//     isLoading.value = false
+//     router.push("/dashboard");
+//   }
+// }
+
+const login = async () => {
+  if (!email.value || !password.value) {
+    toast.error({ message: "Email and password are required", position: "topCenter"})
+    return
+  }
+
+  isLoading.value = true
+
+  try {
+    const payload = {
+      email: email.value,
+      password: password.value
+    }
+
+    const { data } = await userLogin(payload)
+
+    if (data?.success) {
+      toast.success({ message: "Login successful", position: "topCenter" })
+
+      authData.addUser({
+        user: data.data.user.name,
+        token: data.data.token,
+      })
+
+      router.push("/dashboard")
+    } else {
+      toast.error({ message: "Invalid login credentials", position: "topCenter" })
+    }
+
+  } catch (err) {
+    toast.error({ message: "Something went wrong. Try again.", position: "topCenter"})
+    console.error(err)
+  } finally {
+    isLoading.value = false
+>>>>>>> 20118253b655f49eb7c30355140e30f91a0ded11
   }
   const phoneNumber = `+91 ${mobile.value}`;
   signInWithPhoneNumber(auth, phoneNumber, recaptchaVerifier)
@@ -362,5 +510,18 @@ input[type="number"].no-arrows {
   .divider {
     width: 60px;
   }
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 </style>

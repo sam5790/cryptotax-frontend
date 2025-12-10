@@ -1,5 +1,5 @@
 import * as XLSX from "xlsx";
-import { saveAs } from "file-saver";
+import fileSaver from "file-saver";
 
 export default defineNuxtPlugin(() => {
   const exportToExcel = (data, filename = "export") => {
@@ -13,7 +13,7 @@ export default defineNuxtPlugin(() => {
       type: "array",
     });
 
-    saveAs(new Blob([excelFile]), `${filename}.xlsx`);
+    fileSaver.saveAs(new Blob([excelFile]), `${filename}.xlsx`);
   };
 
   return {

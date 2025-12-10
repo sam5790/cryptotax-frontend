@@ -4,84 +4,98 @@
             Our <span class="text-teal-500 underline-text">Founders</span>
         </h2>
     </div>
-    <div class="bg-gray-50 p-4 sm:p-6 md:p-8 lg:p-10">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 max-w-6xl mx-auto">
-            <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                <img src="/jeff.png" class="w-full h-auto object-cover">
-                <div class="p-4 sm:p-5 md:p-6 flex flex-col justify-center items-center">
-                    <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold text-center">Jeff Neumeister</h2>
-                    <p class="text-teal-600 font-medium mt-1 text-sm sm:text-base">Partner</p>
-                    <p class="text-gray-600 text-xs sm:text-sm md:text-base">MA, MAcc, MBA, MS2</p>
-                    <img src="/lnkdn.png" class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 mt-3">
+
+    <div class="bg-gray-50 p-4">
+        <div class="hidden lg:grid grid-cols-3 gap-10 place-items-center">
+            <div class="max-w-md overflow-hidden">
+                <img src="/jeff.png" class="w-full object-cover" />
+                <div class="p-4 text-center">
+                    <h2 class="text-2xl font-semibold">Jeff Neumeister</h2>
+                    <p class="text-teal-600">Partner</p>
+                    <p class="text-gray-600">MA, MAcc, MBA, MS2</p>
                 </div>
             </div>
-            
-            <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                <img src="/abhinav.png" class="w-full h-auto object-cover">
-                <div class="p-4 sm:p-5 md:p-6 flex flex-col justify-center items-center">
-                    <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold text-center">Abhinav Soomaney</h2>
-                    <p class="text-teal-600 font-medium mt-1 text-sm sm:text-base">Managing Partner</p>
-                    <p class="text-gray-600 text-xs sm:text-sm md:text-base">CFI, MBA, MCom, BMS</p>
-                    <img src="/lnkdn.png" class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 mt-3">
+
+            <div class="max-w-md overflow-hidden">
+                <img src="/abhinav.png" class="w-full object-cover" />
+                <div class="p-4 text-center">
+                    <h2 class="text-2xl font-semibold">Abhinav Soomaney</h2>
+                    <p class="text-teal-600">Managing Partner</p>
+                    <p class="text-gray-600">CFI, MBA, MCom, BMS</p>
                 </div>
             </div>
-            
-            <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                <img src="/ashish.png" class="w-full h-auto object-cover">
-                <div class="p-4 sm:p-5 md:p-6 flex flex-col justify-center items-center">
-                    <h2 class="text-xl sm:text-2xl md:text-3xl font-semibold text-center">Ashish Soomaney</h2>
-                    <p class="text-teal-600 font-medium mt-1 text-sm sm:text-base">Partner</p>
-                    <p class="text-gray-600 text-xs sm:text-sm md:text-base">MBA, MPA</p>
-                    <img src="/lnkdn.png" class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 mt-3">
+
+            <div class="max-w-md overflow-hidden">
+                <img src="/ashish.png" class="w-full object-cover" />
+                <div class="p-4 text-center">
+                    <h2 class="text-2xl font-semibold">Ashish Soomaney</h2>
+                    <p class="text-teal-600">Partner</p>
+                    <p class="text-gray-600">MBA, MPA</p>
                 </div>
             </div>
+        </div>
+
+        <div class="relative lg:hidden overflow-hidden">
+            <div ref="track" class="flex transition-transform duration-300"
+                :style="{ transform: `translateX(-${index * 100}%)` }">
+                <div class="min-w-full flex justify-center">
+                    <div class="max-w-md">
+                        <img src="/jeff.png" class="w-full object-cover" />
+                        <div class="p-4 text-center">
+                            <h2 class="text-xl font-semibold">Jeff Neumeister</h2>
+                            <p class="text-teal-600">Partner</p>
+                            <p class="text-gray-600">MA, MAcc, MBA, MS2</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="min-w-full flex justify-center">
+                    <div class="max-w-md">
+                        <img src="/abhinav.png" class="w-full object-cover" />
+                        <div class="p-4 text-center">
+                            <h2 class="text-xl font-semibold">Abhinav Soomaney</h2>
+                            <p class="text-teal-600">Managing Partner</p>
+                            <p class="text-gray-600">CFI, MBA, MCom, BMS</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="min-w-full flex justify-center">
+                    <div class="max-w-md">
+                        <img src="/ashish.png" class="w-full object-cover" />
+                        <div class="p-4 text-center">
+                            <h2 class="text-xl font-semibold">Ashish Soomaney</h2>
+                            <p class="text-teal-600">Partner</p>
+                            <p class="text-gray-600">MBA, MPA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button @click="prev" class="absolute top-1/2 left-2 -translate-y-1/2 bg-white p-2 rounded-full shadow justify-center flex opacity-80">
+                <icon name="mdi:arrow-left" class="w-6 h-6 text-gray-600" />
+            </button>
+            <button @click="next" class="absolute top-1/2 right-2 -translate-y-1/2 bg-white p-2 rounded-full shadow justify-center flex opacity-80">
+                <icon name="mdi:arrow-right" class="w-6 h-6 text-gray-600" />
+            </button>
         </div>
     </div>
 </template>
 
-<!-- <style scoped>
-.underline-text {
-    position: relative;
+<script setup>
+const track = ref(null);
+const index = ref(0);
+const slidesCount = 3;
+
+function next() {
+  index.value = (index.value + 1) % slidesCount;
 }
 
-.underline-text::after {
-    content: "";
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 180px;
-    height: 35px;
-    background-image: url("underline-new-user.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+function prev() {
+  index.value = (index.value - 1 + slidesCount) % slidesCount;
 }
+</script>
 
-@media (max-width: 640px) {
-    .underline-text::after {
-        width: 150px;
-        height: 30px;
-        bottom: -12px;
-    }
-}
-
-@media (min-width: 768px) {
-    .underline-text::after {
-        width: 200px;
-        height: 40px;
-        bottom: -18px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .underline-text::after {
-        width: 220px;
-        height: 45px;
-        bottom: -20px;
-    }
-}
-</style> -->
 
 <style scoped>
 .underline-text {
@@ -136,5 +150,4 @@
     }
 
 }
-
 </style>

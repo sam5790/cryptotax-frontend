@@ -7,35 +7,7 @@
                 for your
                 Crypto currency taxes.</p>
         </div>
-        <!-- <div class="grid grid-cols-2  text-xl font-semibold">
-            <div class=" flex justify-center p-5">
-                <img src="/reason1.png">
-                <p class=" ">Experience with crypto audits</p>
-            </div>
-            <div class=" flex justify-center p-5">
-                <img src="/reason2.png">
-                <p class="text-xl">Transfer and Tracking cost basis</p>
-
-            </div>
-
-            <div class=" flex justify-center p-5">
-                <img src="/reason3.png">
-                <p class="text-xl">Timely documentation & record keeping of all trades</p>
-            </div>
-            <div class=" flex justify-center p-5">
-                <img src="/reason4.png">
-                <p class="text-xl">Tax audit/income tax notice!</p>
-            </div>
-            <div class=" flex justify-center p-5">
-                <img src="/reason5.png">
-                <p class="text-xl">Expertise with Crypto Tax Laws</p>
-            </div>
-            <div class=" flex justify-center p-5">
-                <img src="/reason6.png">
-                <p class="text-xl">Audit Support</p>
-            </div>
-
-        </div> -->
+      
 <div class="flex justify-center">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xl font-semibold">
   <div class="flex items-start p-5 space-x-4">
