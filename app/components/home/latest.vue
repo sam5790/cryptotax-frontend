@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-50 p-10">
+  <div class=" p-10">
     <h2 class="text-3xl md:text-4xl font-semibold text-center">Latest <span class="text-teal-500 underline-text">News</span></h2>
     <p class="text-center mt-3 text-md md:text-xl text-gray-500 mb-6">Read our latest news and articles
       published online.</p>

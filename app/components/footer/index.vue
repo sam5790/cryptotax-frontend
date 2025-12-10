@@ -12,12 +12,12 @@
           class="flex flex-col text-white w-full items-center md:items-start"
         >
           <b>Quick Links</b>
-          <p @click="$router.push('/aboutus')">About Us</p>
+          <p @click="$router.push('/aboutus')" class="cursor-pointer">About Us</p>
           <p>Contact Us</p>
           <p>Careers</p>
           <p>Solutions</p>
-          <p @click="$router.push('/faq')">Faq</p>
-          <p @click="$router.push('/exchanges')">Exchange</p>
+          <p @click="$router.push('/faq')" class="cursor-pointer">Faq</p>
+          <p @click="$router.push('/exchanges')" class="cursor-pointer">Exchange</p>
         </div>
 
         <div

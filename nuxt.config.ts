@@ -18,8 +18,7 @@ export default defineNuxtConfig({
    'nuxt-google-auth',
    'pinia-plugin-persistedstate/nuxt',
    '@nuxt/fonts',
-   'nuxt-vue3-google-signin',
-   '@nuxtjs/google-fonts',
+  //  'nuxt-vue3-google-signin',
    '@nuxtjs/google-fonts',
    '@nuxt/icon',
    
@@ -47,4 +46,4 @@ export default defineNuxtConfig({
         promptOneTap: true,           // show One Tap prompt
         enableServerVerify: true      // enable server-side token verification endpoint
     }
-})
+})                            

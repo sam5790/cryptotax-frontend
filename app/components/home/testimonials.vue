@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-50 p-4">
+  <div class="bg-[linear-gradient(100deg,rgb(240,240,252)_11.73%,rgba(240,240,252,0)_104.43%)] p-4">
     <div class="flex justify-center">
       <h2 class="text-3xl text-teal-500 md:text-4xl text-center font-semibold underline-text">
         Testimonials
@@ -11,7 +11,7 @@
     </p>
 
     
-    <div class="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 p-6 justify-items-center place-items-stretch">
+    <div class="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-3  xl:gap-0 p-6 justify-items-center place-items-stretch">
 
       <div v-for="(t, i) in testimonials" :key="i" class="border rounded-lg shadow-xl bg-white md:max-w-md ">
         <div class="flex items-center gap-4 p-4">
@@ -51,7 +51,7 @@
               <p class="text-gray-600 text-md">{{ t.comment }}</p>
             </div>
           </div>
-        </div>
+        </div>  
       </div>
 
      

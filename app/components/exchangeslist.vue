@@ -122,7 +122,7 @@ const list = ref([
     type: "Chain",
   },
   {
-    icon: "/icons/xrp.png",
+    icon: "/icons/solana.png",
     title: "Ripple",
     type: "Chain",
   },

@@ -24,7 +24,7 @@
     LIFO
   </label>
   <input type="radio" name="method" id="fifo" class="hidden peer/fifo">
-  <label for="fifo"
+  <label for="fifo"   
     class="px-4 py-1 rounded-full
            bg-gray-300 text-black
            peer-checked/fifo:bg-teal-600 peer-checked/fifo:text-white">
@@ -56,7 +56,7 @@
 
         <div
           class="bg-white shadow-md rounded-lg flex justify-center items-center p-4 col-span-1 lg:col-span-5 lg:min-h-[205px]">
-          <img :src="'/line-chart.png'" class="w-full max-w-[350px]" key="line-chart">
+          <img src="/line-chart.png" class="w-full max-w-[350px]" >
         </div>
 
         <div
@@ -72,7 +72,7 @@
     :alt="exchange" 
     class="h-8 h-8 w-8 rounded-full border-2 border-white -ml-3 first:ml-0"
   />
-<icon name="mdi:plus" class="w-4 h-4 mt-1"/>{{ totalDistinctExchanges }}
+<!-- <icon name="mdi:plus" class="w-4 h-4 mt-1"/>{{ totalDistinctExchanges }} -->
 </div>
 
           <button @click="router.push('/mywallet')"
@@ -98,11 +98,11 @@
       <div class="  w-full hidden sm:hidden md:block overflow-x-auto">
         <div class="flex justify-between md:px-6 md:py-3 bg-none">
          <button class="flex justify-center gap-2 shadow-xl rounded-lg px-3 py-2 border border-gray-50 font-semibold">
-          <Icon name="mdi:files" class="w-6 h-6 text-teal-600" />
+          <icon name="mdi:files" class="w-6 h-6 text-teal-600" />
           Export Report</button>
          <button class="flex gap-2 shadow-xl raounded-lg px-3 border border-gray-50 font-semibold">
           Choose Account
-        <Icon name="mdi:chevron-down" class=" -mt-1 w-8 h-8 text-teal-600" />
+        <icon name="mdi:chevron-down" class=" -mt-1 w-8 h-8 text-teal-600" />
         </button>
         </div>
         <table class="w-full text-left">
@@ -128,11 +128,11 @@
               <td class="py-4 px-4">{{ item.date }}</td>
               <td class="py-4 px-4">
                 <p v-if="item.type == 'buy' ||item.type == 'deposited' " class="text-green-500 flex items-center gap-1 fontPoppins">
-                <Icon name="mdi:menu-up" class="w-8 h-8 text-teal-600" />
+                <icon name="mdi:menu-up" class="w-8 h-8 text-teal-600" />
                   {{ item.quantity }}
                 </p>
                 <p v-else class="text-red-500 flex items-center gap-1 fontPoppins">
-                   <Icon name="mdi:menu-down" class="w-8 h-8 text-red-600" />
+                   <icon name="mdi:menu-down" class="w-8 h-8 text-red-600" />
                   {{ item.quantity }}
                 </p>
               </td>
@@ -200,7 +200,7 @@
       </div>
     </div>
   </div>
-  <!-- <Footer /> -->
+
 </template>
 <script setup>
 import { mainStore } from '~/store/mainstore';

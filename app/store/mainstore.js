@@ -13,7 +13,7 @@ export const mainStore = defineStore("main", () => {
   // });
 
   // const TDS_TOTAL = computed(() => {
-  //   return transactions.value.reduce(
+  //   return transactions.value.reduce(    
   //     (total, rec) => total + parseFloat(rec.tds || 0),
   //     0
   //   );
@@ -59,5 +59,5 @@ export const mainStore = defineStore("main", () => {
     addTotal
   };
 },
-  { persist: true, storage: "localStorage" }
+  
 );
