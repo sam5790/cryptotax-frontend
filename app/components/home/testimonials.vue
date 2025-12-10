@@ -57,16 +57,16 @@
      
       <button
         @click="prev"
-        class="absolute top-1/2 left-2 -translate-y-1/2 bg-white p-2 rounded-full shadow opacity-80"
+        class="absolute top-1/2 left-2 -translate-y-1/2 bg-white p-2 rounded-full shadow opacity-80 flex justify-center"
       >
-        <icon name="mdi:arrow-left" class="w-6 h-6 text-gray-600" />
+        <icon name="mdi:arrow-left" class="w-5 h-5 text-gray-600" />
       </button>
 
       <button
         @click="next"
-        class="absolute top-1/2 right-2 -translate-y-1/2 bg-white p-2 rounded-full shadow opacity-80"
+        class="absolute top-1/2 right-2 -translate-y-1/2 bg-white p-2 rounded-full shadow opacity-80 flex justify-center"
       >
-        <icon name="mdi:arrow-right" class="w-6 h-6 text-gray-600" />
+        <icon name="mdi:arrow-right" class="w-5 h-5 text-gray-600" />
       </button>
     </div>
 
