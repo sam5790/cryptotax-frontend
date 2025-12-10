@@ -47,7 +47,7 @@
           </ul>
 
           <button
-            class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+            class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
             Get Started
           </button>
         </div>
@@ -85,7 +85,7 @@
             </ul>
 
             <button
-              class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+              class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
               Get Started
             </button>
           </div>
@@ -116,7 +116,7 @@
           </ul>
 
           <button
-            class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+            class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
             Get Started
           </button>
         </div>
@@ -146,7 +146,7 @@
           </ul>
 
           <button
-            class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+            class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
             Get Started
           </button>
         </div>
@@ -182,7 +182,7 @@
             </ul>
 
             <button
-              class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+              class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
               Get Started
             </button>
           </div>
@@ -224,7 +224,7 @@
               </ul>
 
               <button
-                class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+                class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
                 Get Started
               </button>
             </div>
@@ -258,7 +258,7 @@
             </ul>
 
             <button
-              class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+              class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
               Get Started
             </button>
           </div>
@@ -291,7 +291,7 @@
             </ul>
 
             <button
-              class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+              class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
               Get Started
             </button>
           </div>
@@ -369,7 +369,7 @@
 
             <div class="flex justify-center items-center p-4">
               <button
-                class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
+                class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
                 Book Now
               </button>
             </div>
@@ -399,7 +399,7 @@
 
             <div class="flex justify-center items-center p-4">
               <button
-                class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
+                class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
                 Book Now
               </button>
             </div>
@@ -429,7 +429,7 @@
 
             <div class="flex justify-center items-center p-4">
               <button
-                class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
+                class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
                 Book Now
               </button>
             </div>
@@ -465,7 +465,7 @@
 
                 <div class="flex justify-center items-center p-4">
                   <button
-                    class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
+                    class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
                     Book Now
                   </button>
                 </div>
@@ -497,7 +497,7 @@
 
                 <div class="flex justify-center items-center p-4">
                   <button
-                    class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
+                    class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
                     Book Now
                   </button>
                 </div>
@@ -529,7 +529,7 @@
 
                 <div class="flex justify-center items-center p-4">
                   <button
-                    class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
+                    class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
                     Book Now
                   </button>
                 </div>
