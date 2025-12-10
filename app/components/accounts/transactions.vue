@@ -22,7 +22,7 @@
           </svg>
         </div>
         <p class="text-xl font-medium">Total Transactions</p>
-        <p class="text-2xl font-medium">{{ total_pnl[0].totalTransaction }}</p>
+        <p class="text-2xl font-medium">{{ total_pnl[0]?.totalTransaction }}</p>
       </div>
 
       <div class="shadow-md p-6 text-center rounded-2xl relative w-full sm:w-64 h-28 mt-2 sm:mt-0">
