@@ -14,7 +14,8 @@
 
             <p>Total Transactions</p>
             <div class="flex justify-center mt-2">
-              <icon name="mdi:arrow-expand-horizontal" class="w-6 h-6 text-gray-600" />
+              <!-- <icon name="mdi:arrow-expand-horizontal" class="w-6 h-6 text-gray-600" /> -->
+               <img src="/Vector.png" class="md:h-full" />
             </div>
           </div>
           <div class="text-center bg-green-200 rounded-2xl p-4 sm:p-2">
@@ -89,7 +90,7 @@
 
         <div class="flex items-center gap-2 ml-1 sm:ml-2">
           <button>
-            <Icon name="mdi:arrow-expand-horizontal" class="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" />
+            <img src="/Vector.png" class="md:h-full" />
           </button>
           <h2 class="text-base sm:text-lg font-medium fontPoppins">
             {{ item?.totalTransaction }}
