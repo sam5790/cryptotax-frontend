@@ -118,7 +118,7 @@
             </button>
           </div>
 
-          <p class="text-gray-500 text-sm mb-6 underline text-left">
+          <p class="text-gray-500 text-sm mb-6 underline text-left" @click="$router.push('/forget-password')">
             Forgot your password?
           </p>
 
