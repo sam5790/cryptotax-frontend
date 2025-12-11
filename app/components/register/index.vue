@@ -3,8 +3,16 @@
     <div
       class="shadow-[0_0_25px_0] shadow-[#254BD34D] rounded-3xl p-6 md:p-16 w-full max-w-2xl"
     >
-      <h2 class="text-3xl md:text-4xl font-semibold text-center mb-5">
-        New <span class="text-teal-500 underline-text">user!</span>
+      <h2
+        class="text-[38px] md:text-4xl font-bold text-center justify-center flex mb-5"
+      >
+        <div class="flex gap-3 flex-wrap">
+          New
+          <div class="text-[#4aabab]">
+            user!
+            <CurvedLine />
+          </div>
+        </div>
       </h2>
 
       <p class="text-center mb-10 text-gray-700 text-sm md:text-[22px]">
@@ -38,7 +46,7 @@
           <input
             type="text"
             v-model="phoneNumber"
-            class="rounded-md w-full ps-4 pe-3 py-2.5 border border-[#adadad]"
+            class="rounded-md w-full ps-4 pe-3 py-2.5 border border-[#adadad] font-[Poppins]"
             placeholder="Mobile Number"
             minlength="10"
             required
@@ -149,9 +157,9 @@
 
         <div class="flex mt-4 text-xs">
           <input
-            v-model="termsAndPrivacy"
+              v-model="termsAndPrivacy"
             type="checkbox"
-            class="w-4 h-4 border rounded-xs mt-1 accent-teal-500"
+            class="w-4 h-4 border rounded-xs mt-1 accent-[#4AABAB]"
             required
           />
           <p class="mx-4 mt-1 text-[14px]">
@@ -160,23 +168,23 @@
           </p>
         </div>
 
-        <div class="flex justify-center mt-10">
-          <button
-            v-if="!loading"
-            class="bg-teal-500 rounded-full text-white py-2 px-8"
-            @click="register"
-          >
-            SIGN UP
-          </button>
-          <button
-            v-else
-            type="button"
-            class="bg-teal-500 hover:bg-teal-600 text-white font-medium py-2 px-8 rounded-full flex items-center gap-2 disabled:opacity-60"
-            disabled
-          >
-            <span
-              class="inline-block h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"
-            ></span>
+      <div class="flex justify-center mt-10">
+        <button
+          v-if="!loading"
+          class="bg-[#4AABAB] rounded-full text-white py-2 px-8"
+          @click="register"
+        >
+          Sign Up
+        </button>
+        <button
+          v-else
+          type="button"
+          class="bg-[#4AABAB] hover:bg-teal-600 text-white font-medium py-2 px-8 rounded-full flex items-center gap-2 disabled:opacity-60"
+          disabled
+        >
+          <span
+            class="inline-block h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"
+          ></span>
 
             Signing up...
           </button>

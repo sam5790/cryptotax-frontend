@@ -1,161 +1,3 @@
-<!-- <template>
-        <div class="p-10">
-                <div class="flex flex-col justify-center items-center">
-                        <h2 class="text-3xl xl:text-4xl font-semibold">
-                                Crypto Tax Guide for
-                                <span class="text-teal-500 underline-text">INDIA</span>
-                        </h2>
-                        <p class="text-lg md:my-2 md:mb-16">Cryptotax tax guide</p>
-                        <div class="flex flex-justify-center flex-col">
-                                <h2 class="text-2xl md:text-3xl text-teal-500">
-                                        Understanding the Crypto Tax Landscape in India?
-                                </h2>
-                                <ul class="my-5 list-disc pl-6">
-                                        <li class="whitespace-normal">
-                                                Cryptocurrency management in India remains complex due to unclear tax
-                                                guidelines.
-                                        </li>
-                                        <li class="whitespace-normal">
-                                                The government has outlined tax structures, but implementation has faced
-                                                challenges.
-                                        </li>
-                                        <li class="whitespace-normal">
-                                                This guide aims to clarify Indian cryptocurrency tax concerns, going
-                                                beyond the 30% tax slab and 1% TDS.
-                                        </li>
-                                </ul>
-
-                        </div>
-
-                        <div class="flex flex-justify-center flex-col">
-                                <h2 class="text-2xl md:text-3xl text-teal-500">
-                                        Union Budget 2023: Key Updates on Crypto Tax.
-                                </h2>
-
-                                <ul class="my-5 list-disc pl-6">
-                                        <li class="whitespace-normal">
-                                                Cryptocurrency management in India remains complex due to unclear
-                                                tax guidelines.
-                                        </li>
-                                        <li class="whitespace-normal">
-                                                The government has outlined tax structures, but implementation has
-                                                faced challenges.
-                                        </li>
-                                        <li class="whitespace-normal">
-                                                This guide aims to clarify Indian cryptocurrency tax concerns, going
-                                                beyond the 30% tax slab and 1% TDS.
-                                        </li>
-                                </ul>
-                        </div>
-
-                        <div class="flex flex-justify-center flex-col">
-                                <h2 class="text-2xl md:text-3xl text-teal-500">
-                                        Taxable Events in Crypto.
-                                </h2>
-
-                                <ul class="my-5 list-disc pl-6">
-                                        <li class="whitespace-normal">
-                                                Cryptocurrency management in India remains complex due to unclear
-                                                tax guidelines.
-                                        </li>
-                                        <li class="whitespace-normal">
-                                                The government has outlined tax structures, but implementation has
-                                                faced challenges.
-                                        </li>
-                                        <li class="whitespace-normal">
-                                                This guide aims to clarify Indian cryptocurrency tax concerns, going
-                                                beyond the 30% tax slab and 1% TDS.
-                                        </li>
-                                </ul>
-                        </div>
-
-                        <div class="flex flex-justify-center flex-col">
-                                <h2 class="text-2xl md:text-3xl text-teal-500">
-                                        Virtual Digital Assets (VDAs).
-                                </h2>
-
-                                <ul class="my-5 list-disc pl-6">
-                                        <li class="whitespace-normal">
-                                                Cryptocurrency management in India remains complex due to unclear
-                                                tax guidelines.
-                                        </li>
-                                        <li class="whitespace-normal">
-                                                The government has outlined tax structures, but implementation has
-                                                faced challenges.
-                                        </li>
-                                        <li class="whitespace-normal">
-                                                This guide aims to clarify Indian cryptocurrency tax concerns, going
-                                                beyond the 30% tax slab and 1% TDS.
-                                        </li>
-                                </ul>
-                        </div>
-
-                        <div class="flex flex-justify-center flex-col">
-                                <h2 class="text-2xl md:text-3xl text-teal-500">
-                                        Why Crypto is Taxed in India.
-                                </h2>
-
-                                <ul class="my-5 list-disc pl-6">
-                                        <li class="whitespace-normal">
-                                                Cryptocurrency management in India remains complex due to unclear
-                                                tax guidelines.
-                                        </li>
-                                        <li class="whitespace-normal">
-                                                The government has outlined tax structures, but implementation has
-                                                faced challenges.
-                                        </li>
-                                        <li class="whitespace-normal">
-                                                This guide aims to clarify Indian cryptocurrency tax concerns, going
-                                                beyond the 30% tax slab and 1% TDS.
-                                        </li>
-                                </ul>
-                        </div>
-
-                        <div class="flex flex-justify-center flex-col">
-                                <h2 class="text-2xl md:text-3xl text-teal-500">
-                                        Taxable Events in Crypto.
-                                </h2>
-
-                                <ul class="my-5 list-disc pl-6">
-                                        <li class="whitespace-normal">
-                                                Cryptocurrency management in India remains complex due to unclear
-                                                tax guidelines.
-                                        </li>
-                                        <li class="whitespace-normal">
-                                                The government has outlined tax structures, but implementation has
-                                                faced challenges.
-                                        </li>
-                                        <li class="whitespace-normal">
-                                                This guide aims to clarify Indian cryptocurrency tax concerns, going
-                                                beyond the 30% tax slab and 1% TDS.
-                                        </li>
-                                </ul>
-                        </div>
-
-                        <div class="flex flex-justify-center flex-col">
-                                <h2 class="text-2xl md:text-3xl text-teal-500">
-                                        Understanding the Crypto Tax Landscape in India?
-                                </h2>
-
-                                <ul class="my-5 list-disc pl-6">
-                                        <li class="whitespace-normal">
-                                                Cryptocurrency management in India remains complex due to unclear
-                                                tax guidelines.
-                                        </li>
-                                        <li class="whitespace-normal">
-                                                The government has outlined tax structures, but implementation has
-                                                faced challenges.
-                                        </li>
-                                        <li class="whitespace-normal">
-                                                This guide aims to clarify Indian cryptocurrency tax concerns, going
-                                                beyond the 30% tax slab and 1% TDS.
-                                        </li>
-                                </ul>
-                        </div>
-                </div>
-        </div>
-</template> -->
-
 <template>
         <div class="p-10">
 
@@ -163,7 +5,7 @@
   <div class="flex flex-col justify-center items-center">
                         <h2 class="text-3xl xl:text-4xl font-semibold">
                                 Crypto Tax Guide for
-                                <span class="text-teal-500 underline-text">INDIA</span>
+                                <span class="#4aabab underline-text">INDIA</span>
                         </h2>
                         <p class="text-lg md:my-2 md:mb-16">Cryptotax tax guide</p>
                         </div>
@@ -171,12 +13,11 @@
 
         </div>
   <div class="p-10 flex gap-10">
-    
- 
-    <div class="w-64 border rounded-xl p-4 bg-white shadow-sm">
-      <h3 class="font-semibold text-lg mb-4">Table of Contents</h3>
+
+    <div class="w-64 border rounded-xl  bg-white shadow-sm">
+      <h3 class="font-semibold text-lg flex justify-center py-2">Table of Contents</h3>
 <div class="border border-gray-500 mb-3"></div>
-      <ul class="space-y-4">
+      <ul class="space-y-4 p-2">
         <li 
           v-for="(item, index) in toc" 
           :key="index"

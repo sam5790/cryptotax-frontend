@@ -16,7 +16,6 @@ export const getPnlDetails = async () => {
         "Content-Type": "application/json",
       },
     });
-    console.log("data.data",data.data)
     if (data?.success) {
       store.setTotalPnl(data.data)
       return { data: data, error: null };
@@ -44,7 +43,6 @@ export const getTransactions = async (page = 1) => {
         "Content-Type": "application/json",
       },
     });
-    console.log("data",data)
     if (data?.success) {
       const transactions=data.data
       const { currentPage,totalPages,totalCount,pageSize }=data.meta

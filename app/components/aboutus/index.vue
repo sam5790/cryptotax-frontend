@@ -1,6 +1,6 @@
 <template>
-<AboutUsOnestopsolution/>
-<AboutUsHistory/>
-<AboutUsFounders/>
-<AboutUsMission/>
+<AboutusOnestopsolution/>
+<AboutusHistory/>
+<AboutusFounders/>
+<AboutusMission/>
 </template>

@@ -4,8 +4,14 @@
       v-if="!showOTPCard"
       class="shadow-[0_0_25px_0] shadow-[#254BD34D] rounded-3xl p-6 md:p-16 w-full max-w-xl"
     >
-      <h2 class="text-[38px] md:text-4xl font-bold text-center mb-5">
-        <span class="text-teal-500 underline-text">Welcome</span> Back
+      <h2 class="text-[38px] md:text-4xl font-bold text-center justify-center flex mb-5">
+        <div class="flex gap-3 flex-wrap">
+            <div class="text-[#4aabab]">
+              Welcome
+              <CurvedLine />
+            </div>
+            Back
+          </div>
       </h2>
       <div>
         <p class="text-center mb-16 text-gray-700 text-sm md:text-[22px]">
@@ -53,7 +59,7 @@
           <input
             type="number"
             v-model="mobile"
-            class="rounded-lg w-full pl-9 pr-3 py-2.5 border border-[#adadad]"
+            class="rounded-lg w-full pl-9 pr-3 py-2.5 border border-[#adadad] font-[Poppins]"
             placeholder="Enter your mobile number"
             minlength="10"
             required
@@ -62,7 +68,7 @@
         <div class="flex justify-center mt-6">
           <button
             v-if="!loading"
-            class="bg-teal-500 rounded-full text-white py-2 px-8 font-medium"
+            class="bg-[#4AABAB] rounded-full text-white py-2 px-8 font-medium"
             @click="login"
           >
             Log In
@@ -71,7 +77,7 @@
           <button
             v-else
             type="button"
-            class="bg-teal-500 hover:bg-teal-600 text-white font-medium py-2 px-8 rounded-full flex items-center gap-2 disabled:opacity-60"
+            class="bg-[#4AABAB] hover:bg-teal-600 text-white font-medium py-2 px-8 rounded-full flex items-center gap-2 disabled:opacity-60"
             disabled
           >
             <span
@@ -116,7 +122,7 @@
       class="shadow-[0_0_25px_0] shadow-[#254BD34D] rounded-3xl p-6 md:p-16 w-full max-w-xl"
     >
       <h2 class="text-[38px] md:text-4xl font-bold text-center mb-5">
-        <span class="text-teal-500 underline-text">Welcome</span> Back
+        <span class="#4aabab underline-text">Welcome</span> Back
       </h2>
       <div>
         <p class="text-center mb-16 text-gray-700 text-sm md:text-[22px]">
@@ -134,7 +140,7 @@
         <div class="flex justify-center mt-6">
           <button
             v-if="!loading"
-            class="bg-teal-500 rounded-full text-white py-2 px-8"
+            class="bg-[#4AABAB] rounded-full text-white py-2 px-8"
             @click="verifyOTP"
           >
             Verify OTP
@@ -142,7 +148,7 @@
           <button
             v-else
             type="button"
-            class="bg-teal-500 hover:bg-teal-600 text-white font-medium py-2 px-8 rounded-full flex items-center gap-2 disabled:opacity-60"
+            class="bg-[#4AABAB] hover:bg-teal-600 text-white font-medium py-2 px-8 rounded-full flex items-center gap-2 disabled:opacity-60"
             disabled
           >
             <span
@@ -370,5 +376,18 @@ input[type="number"].no-arrows {
   .divider {
     width: 60px;
   }
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 </style>

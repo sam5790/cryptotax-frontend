@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col justify-center items-center bg-gray-50 p-3">
         <h2 class="text-center text-3xl md:text-4xl font-semibold mb-3">Our <span
-                class="text-teal-500 underline-text">Mission</span></h2>
+                class="#4aabab underline-text">Mission</span></h2>
         <h2 class=" md:my-8 text-center text-teal-600 text-xl md:text-2xl font-semibold ">CryptoTax International PVT.
             LTD.</h2>
         <p class="text-center text-md md:text-lg lg:text-xl p-3 max-w-[1500px]">CryptoTax International Pvt. Ltd. is a

@@ -4,12 +4,12 @@
       <div
         class="grid grid-cols-1 md:grid-cols-6 gap-8 p-12 text-center md:text-left"
       >
-        <div class="w-full flex justify-center md:block">
-          <img src="/logo-white.png" class="h-32" />
+        <div class="w-full flex justify-start md:block">
+          <img src="/footerwhitelogo.png" class="h-32" />
         </div>
 
         <div
-          class="flex flex-col text-white w-full items-center md:items-start"
+          class="flex flex-col text-white w-full items-start"
         >
           <b>Quick Links</b>
           <p @click="$router.push('/aboutus')">About Us</p>
@@ -21,15 +21,15 @@
         </div>
 
         <div
-          class="flex flex-col text-white w-full items-center md:items-start"
+          class="flex flex-col text-white w-full items-start"
         >
-          <b>Legal</b>
+          <b>Legal</b>    
           <p>Terms and Conditions</p>
           <p>Privacy Policy</p>
         </div>
 
         <div
-          class="flex flex-col text-white md:col-span-2 w-full items-center md:items-start"
+          class="flex flex-col text-white md:col-span-2 w-full items-start"
         >
           <b>Subscribe to Our News Letter</b>
           <p class="mb-2">Subscribe to our news letter to stay updated!</p>
@@ -44,7 +44,7 @@
             />
 
           <button
-            class="bg-teal-500 px-6 py-3 text-white rounded-md w-full lg:w-auto"
+            class="bg-[#4AABAB] px-8 py-3 text-white rounded-md w-full lg:w-auto"
           >
             SUBSCRIBE
           </button>

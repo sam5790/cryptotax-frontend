@@ -22,7 +22,6 @@ export const mainStore = defineStore(
 
     function setTransactions(value) {
       transactions.value = value;
-      console.log("transactions", transactions.value);
     }
 
     function setCoinBalance(value) {
@@ -34,12 +33,10 @@ export const mainStore = defineStore(
     }
 
     function setTotalPnl(value) {
-      console.log("totalpnl", total_pnl.value);
       total_pnl.value = value;
     }
 
     function addTotal(value) {
-      console.log("total", total.value);
       total.value = value;
     }
     return {

@@ -1,20 +1,29 @@
 <template>
-  <div class="bg-gray-50 flex flex-col items-center ">
-
-    <div class="bg-white flex rounded-full shadow-md p-2 gap-2 relative tabs md:mt-10 max-sm:mb-10">
-
-      <button class=" text-center rounded-full font-medium tab-btn text-base max-sm:text-xs" :class="{ active: tab === 'tax' }"
-        @click="tab = 'tax'">
+  <div class="bg-gray-50 flex flex-col items-center">
+    <div
+      class="bg-white flex rounded-full border shadow-[0_0_25px_0] shadow-[#254BD34D] p-2 gap-2 relative tabs md:max-w-xl max-w-xs sm:max-w-md md:mt-10 mt-5"
+    >
+      <button
+        class="text-center rounded-full font-medium tab-btn text-base max-sm:text-xs"
+        :class="{ active: tab === 'tax' }"
+        @click="tab = 'tax'"
+      >
         Tax
       </button>
 
-      <button class="  text-center rounded-full font-medium tab-btn text-base max-sm:text-xs" :class="{ active: tab === 'transactions' }"
-        @click="tab = 'transactions'">
+      <button
+        class="text-center rounded-full font-medium tab-btn text-base max-sm:text-xs"
+        :class="{ active: tab === 'transactions' }"
+        @click="tab = 'transactions'"
+      >
         Transactions
       </button>
 
-      <button class="  text-center rounded-full font-medium tab-btn text-base max-sm:text-xs" :class="{ active: tab === 'accounts' }"
-        @click="tab = 'accounts'">
+      <button
+        class="text-center rounded-full font-medium tab-btn text-base max-sm:text-xs"
+        :class="{ active: tab === 'accounts' }"
+        @click="tab = 'accounts'"
+      >
         Accounts
       </button>
       <span class="shape"></span>
@@ -23,27 +32,24 @@
     <div class="mt-10 w-screen">
       <AccountsTax v-if="tab === 'tax'" />
       <AccountsTransactions v-if="tab === 'transactions'" />
-       <AccountsAccountnew  v-if="tab === 'accounts'"/>
+      <AccountsAccountnew v-if="tab === 'accounts'" />
     </div>
   </div>
 </template>
 
 <script setup>
-import { useAuthStore } from '~/store/auth';
-const auth = useAuthStore()
-const { user } = storeToRefs(auth)
-const router = useRouter()
+import { useAuthStore } from "~/store/auth";
+const auth = useAuthStore();
+const { user } = storeToRefs(auth);
+const router = useRouter();
 onMounted(() => {
   if (!auth.token) {
     router.push("/login");
-    console.log("user existed or not", user.value)
+    console.log("user existed or not", user.value);
   }
-
-
 });
 
-const tab = ref("tax")
-
+const tab = ref("tax");
 </script>
 
 <style scoped>
@@ -51,7 +57,7 @@ const tab = ref("tax")
   position: relative;
   display: flex;
   width: 100%;
-  max-width:420px;
+
   justify-content: space-between;
 }
 
@@ -59,7 +65,7 @@ const tab = ref("tax")
   position: absolute;
   top: 8px;
   height: 30px;
-  background: #027c6e;
+  background: #4aabab;
   border-radius: 999px;
   z-index: 1;
   transition: all 0.3s ease;
@@ -90,7 +96,6 @@ const tab = ref("tax")
   transition: color 0.3s ease;
   text-align: center;
 }
-
 
 .tab-btn.active {
   color: white;

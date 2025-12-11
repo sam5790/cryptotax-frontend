@@ -49,7 +49,7 @@
         </tbody>
       </table>
 
-        <div class="flex justify-center gap-3 mt-6">
+  <div class="flex justify-center gap-3 mt-6">
   <button
     @click="loadTransactions(pagination.currentPage - 1)"
     :disabled="pagination.currentPage === 1"
@@ -113,7 +113,6 @@
   </div>
 </template>
 
-
 <script setup>
 import { mainStore } from '~/store/mainstore';
 import Transactions from '../accounts/transactions.vue';
@@ -132,7 +131,6 @@ onMounted(() => {
     router.push("/login");
     console.log("user existed or not", user.value)
   }
-
 });
 
 const pagination = ref({

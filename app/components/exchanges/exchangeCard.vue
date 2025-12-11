@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h2 class=" text-center text-2xl md:text-3xl font-semibold py-5">Exchanges: How to  <span class="text-teal-500 underline-text whitespace-nowrap">Export API or CSV?</span></h2>
+    <h2 class=" text-center text-2xl md:text-3xl font-semibold py-5">Exchanges: How to  <span class="#4aabab underline-text whitespace-nowrap">Export API or CSV?</span></h2>
 
     <div class="p-8 md:flex justify-center items-center gap-6 ">
 
@@ -19,7 +19,7 @@
              Lorem ipsum dolor sit amet consectetur adipiscing elit dolor posuere vel venenatis eu sit massa volutpat.
           </p>
             <div class="p-3 flex justify-center items-center">
-            <button class="text-teal-500 border border-teal-500 rounded-full px-3">Learn More</button>
+            <button class="#4aabab border border-teal-500 rounded-full px-3">Learn More</button>
           </div>
         </div>
 
@@ -39,7 +39,7 @@
              Lorem ipsum dolor sit amet consectetur adipiscing elit dolor posuere vel venenatis eu sit massa volutpat. 
           </p>
           <div class="p-3 flex justify-center items-center">
-            <button class="text-teal-500 border border-teal-500 rounded-full px-3">Learn More</button>
+            <button class="#4aabab border border-teal-500 rounded-full px-3">Learn More</button>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@
              Lorem ipsum dolor sit amet consectetur adipiscing elit dolor posuere vel venenatis eu sit massa volutpat.
           </p>
             <div class="p-3 flex justify-center items-center">
-            <button class="text-teal-500 border border-teal-500 rounded-full px-3">Learn More</button>
+            <button class="#4aabab border border-teal-500 rounded-full px-3">Learn More</button>
           </div>
         </div>
       </div>
@@ -78,7 +78,7 @@
             Lorem ipsum dolor sit amet consectetur adipiscing elit dolor posuere vel venenatis eu sit massa volutpat.
           </p>
             <div class="p-3 flex justify-center items-center">
-            <button class="text-teal-500 border border-teal-500 rounded-full px-3">Learn More</button>
+            <button class="#4aabab border border-teal-500 rounded-full px-3">Learn More</button>
           </div>
         </div>
       </div>
@@ -99,7 +99,7 @@
              Lorem ipsum dolor sit amet consectetur adipiscing elit dolor posuere vel venenatis eu sit massa volutpat.
           </p>
             <div class="p-3 flex justify-center items-center">
-            <button class="text-teal-500 border border-teal-500 rounded-full px-3">Learn More</button>
+            <button class="#4aabab border border-teal-500 rounded-full px-3">Learn More</button>
           </div>
         </div>
 
