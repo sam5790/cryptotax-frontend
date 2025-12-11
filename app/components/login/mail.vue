@@ -18,6 +18,7 @@
             Please enter your email & password
           </p>
 
+          <form id="loginForm">
           <div class="my-4 relative">
             <div
               class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
@@ -37,10 +38,11 @@
             </div>
 
             <input
-              type="text"
+              type="email"
               v-model="email"
               class="rounded-md w-full pl-10 pr-3 py-2.5 border border-[#adadad]"
               placeholder="Enter your email"
+              required
             />
           </div>
 
@@ -68,6 +70,7 @@
               v-model="password"
               placeholder="Password"
               class="rounded-md w-full px-10 py-2.5 border border-[#adadad]"
+              required
             />
 
             <button
@@ -121,12 +124,14 @@
 
           <div class="flex justify-center mt-6">
             <button
+            type="button"
               class="bg-[#4AABAB] rounded-full text-white py-2 px-6 w-32"
               @click="login"
             >
               Log In
             </button>
           </div>
+</form>
         </div>
 
         <div class="flex items-center justify-center gap-2 my-5">
@@ -175,6 +180,12 @@ const showPassword = ref(false);
 const router = useRouter();
 
 const login = async () => {
+const form = document.getElementById("loginForm");
+
+if (!form.reportValidity()) {
+    return;
+  }
+
   const payload = {
     email: email.value,
     password: password.value,

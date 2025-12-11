@@ -17,6 +17,7 @@
         <p class="text-center mb-16 text-gray-700 text-sm md:text-[22px]">
           Please enter your mobile number
         </p>
+        <form id="loginPhone">
         <div class="my-4 relative">
           <div
             class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
@@ -60,6 +61,8 @@
             v-model="mobile"
             class="rounded-lg w-full pl-9 pr-3 py-2.5 border border-[#adadad] font-[Poppins]"
             placeholder="Enter your mobile number"
+            minlength="10"
+            required
           />
         </div>
         <div class="flex justify-center mt-6">
@@ -84,6 +87,7 @@
             Logging in...
           </button>
         </div>
+</form>
       </div>
 
       <div class="flex items-center justify-center gap-5 mt-5">
@@ -212,6 +216,10 @@ const timer = ref(null);
 let recaptchaVerifier = null;
 
 const login = async () => {
+const form=document.getElementById("loginPhone")
+if(!form.reportValidity()){
+  return
+}
   loading.value = true;
   if (!recaptchaVerifier) {
     recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
