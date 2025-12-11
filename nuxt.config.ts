@@ -44,5 +44,4 @@ export default defineNuxtConfig({
     exposeConfig: true,
     viewer: true,
   },
-
-} as any);
+});

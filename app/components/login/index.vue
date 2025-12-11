@@ -271,7 +271,7 @@ const verifyOTP = () => {
           user: data?.value?.data?.user?.name || data?.value?.data?.user?.phone,
           token: data?.value?.data?.token,
         });
-        router.push("/dashboard");
+        router.push("/account");
         loading.value = false;
       } else {
         loading.value = false;

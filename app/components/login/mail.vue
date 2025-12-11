@@ -188,7 +188,7 @@ const login = async () => {
       token: data.data.token,
     });
 
-    router.push("/dashboard");
+    router.push("/account");
   }
 };
 

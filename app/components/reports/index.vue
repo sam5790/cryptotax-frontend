@@ -116,7 +116,7 @@
 <script setup>
 import { mainStore } from '~/store/mainstore';
 import Transactions from '../accounts/transactions.vue';
-// import Index from '../aboutUs/index.vue';
+// import Index from '../about-us/index.vue';
 import { useAuthStore } from '~/store/auth';
 const auth = useAuthStore()
 const { user } = storeToRefs(auth)

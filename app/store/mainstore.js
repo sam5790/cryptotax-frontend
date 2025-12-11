@@ -8,18 +8,7 @@ export const mainStore = defineStore(
     const pnl = ref([]);
     const total_pnl = ref([]);
     const total = ref(0);
-
-    // const PNL_TOTAL = computed(() => {
-    //   return pnl.value.reduce((total, rec) => total + rec.pnl, 0);
-    // });
-
-    // const TDS_TOTAL = computed(() => {
-    //   return transactions.value.reduce(
-    //     (total, rec) => total + parseFloat(rec.tds || 0),
-    //     0
-    //   );
-    // });//need to change from the front-end and fetch it from the backend
-
+    const transactionsPagination = ref({});
     function setTransactions(value) {
       transactions.value = value;
     }
@@ -39,21 +28,22 @@ export const mainStore = defineStore(
     function addTotal(value) {
       total.value = value;
     }
+    function addTransactionsPagination(value) {
+      transactionsPagination.value = value;
+    }
     return {
       transactions,
       coin_balance,
       pnl,
       total_pnl,
       total,
-
-      // PNL_TOTAL,
-      // TDS_TOTAL,
-
+      transactionsPagination,
       setTransactions,
       setCoinBalance,
       setPnl,
       setTotalPnl,
       addTotal,
+      addTransactionsPagination,
     };
   },
   {

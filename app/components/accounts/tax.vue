@@ -89,7 +89,7 @@
           <div
             class="bg-white shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-xl flex justify-center items-center p-4 col-span-1 lg:col-span-5 lg:min-h-[205px]"
           >
-            <img :src="'/line-chart.png'" class="w-full" />
+            <img src="/line-chart.png" class="w-full" />
           </div>
 
           <div
@@ -98,32 +98,29 @@
             <div
               class="border border-[#4AABAB] rounded-full flex justify-center items-center"
             >
-              <img src="/avatar.png" class="size-14" />
+              <img src="/new-avatar.png" class="w-14 h-14" alt="avatar" />
             </div>
-            <p class="font-medium mt-2 capitalize">
-              {{ total_pnl[0]?.user?.name }}
+            <p class="font-medium mt-2 capitalize font-[Poppins]">
+              {{ total_pnl[0]?.user?.name || total_pnl[0]?.user?.phonenumber }}
             </p>
 
             <div class="flex mt-2 items-center">
               <img
-                v-for="exchange in distinctExchanges?.slice(0, 3)"
-                :key="exchange"
-                :src="`/icons/${exchange}.png`"
-                :alt="exchange"
+                v-for="exchange in total_pnl?.slice(0, 3)"
+                :key="exchange?._id"
+                :src="`/icons/${exchange?.exchange}.png`"
+                :alt="exchange?.exchange"
                 class="h-8 w-8 rounded-full border-2 border-white -ml-3 first:ml-0"
               />
-              <div
-                v-if="distinctExchanges?.length - 3 > 0"
-                class="flex items-center"
-              >
+              <div v-if="total_pnl?.length - 3 > 0" class="flex items-center">
                 <icon name="mdi:plus" class="w-4 h-4 mt-1" />{{
-                  distinctExchanges?.length - 3
+                  total_pnl?.length - 3
                 }}
               </div>
             </div>
 
             <button
-              @click="router.push('/mywallet')"
+              @click="router.push('/my-wallet')"
               class="mt-4 border border-[#4AABAB] text-[#4AABAB] px-4 py-1 rounded-full"
             >
               My Wallet
@@ -157,18 +154,52 @@
 
         <div class="w-full hidden sm:hidden md:block overflow-x-auto">
           <div class="flex justify-between md:px-6 md:py-3 bg-none">
-            <button
-              class="flex justify-center gap-2 shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-3 py-2 border border-gray-50 font-semibold"
+            <DownloadExcel
+              class="btn btn-primary"
+              :data="transactions"
+              :fields="excelFields"
+              name="exported_data.xls"
             >
-              <Icon name="mdi:export-variant" class="w-6 h-6 text-[#4AABAB]" />
-              Export Report
-            </button>
-            <button
-              class="flex justify-center gap-2 shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-3 py-2 border border-gray-50 font-semibold"
-            >
-              Choose Account
-              <Icon name="mdi:chevron-down" class="size-6 text-[#4AABAB]" />
-            </button>
+              <button
+                class="flex justify-center gap-2 shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-3 py-2 border border-gray-50 font-semibold"
+              >
+                <Icon
+                  name="mdi:export-variant"
+                  class="w-6 h-6 text-[#4AABAB]"
+                />
+                Export Report
+              </button>
+            </DownloadExcel>
+
+            <!-- <div class="relative inline-block text-left">
+              <button
+                @click="openChooseAccount = !openChooseAccount"
+                class="flex justify-center gap-2 shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-3 py-2 border border-gray-50 font-semibold"
+              >
+                Choose Account
+                <Icon name="mdi:chevron-down" class="size-6 text-[#4AABAB]" />
+              </button>
+
+              <div
+                v-if="openChooseAccount"
+                class="absolute right-0 w-44  bg-white border border-gray-200 rounded-lg shadow-lg z-50"
+              >
+                <ul
+                  class="py-2 text-sm text-gray-700"
+                  v-for="exchange in total_pnl"
+                  :key="exchange._id"
+                >
+                  <li class="px-6 hover:bg-gray-100 cursor-pointer p-2">
+                    {{ exchange.exchange }}
+                  </li>
+                </ul>
+              </div>
+            </div> -->
+            <select class="flex justify-center  shadow-[0_0_10px_0] shadow-[#254BD34D] bg-white rounded-lg px-4 py-2 font-semibold text-[#4AABAB]">
+              <option value="" hidden>Choose Account</option>
+              <option value="">sdsadd</option>
+            </select>
+            
           </div>
           <table class="w-full text-left">
             <thead class="bg-[#f1f1f1]">
@@ -189,7 +220,9 @@
                 class="border-b"
               >
                 <td class="py-4 px-4">
-                  {{ index + (pagination.currentPage - 1) * 50 + 1 }}
+                  {{
+                    index + (transactionsPagination.currentPage - 1) * 50 + 1
+                  }}
                 </td>
                 <td class="py-4 px-4 flex items-center gap-1">
                   <img :src="`/icons/${item.exchange}.png`" class="w-8 h-8" />
@@ -227,20 +260,24 @@
           </table>
           <div class="flex justify-center gap-3 mt-6">
             <button
-              @click="loadTransactions(pagination.currentPage - 1)"
-              :disabled="pagination.currentPage === 1"
+              @click="changePage(transactionsPagination.currentPage - 1)"
+              :disabled="transactionsPagination.currentPage === 1"
               class="px-4 py-2 rounded bg-gray-200 disabled:opacity-40"
             >
               Previous
             </button>
 
             <span class="px-4 py-2">
-              Page {{ pagination.currentPage }} of {{ pagination.totalPages }}
+              Page {{ transactionsPagination.currentPage }} of
+              {{ transactionsPagination.totalPages }}
             </span>
 
             <button
-              @click="loadTransactions(pagination.currentPage + 1)"
-              :disabled="pagination.currentPage === pagination.totalPages"
+              @click="changePage(transactionsPagination.currentPage + 1)"
+              :disabled="
+                transactionsPagination.currentPage ===
+                transactionsPagination.totalPages
+              "
               class="px-4 py-2 rounded bg-gray-200 disabled:opacity-40"
             >
               Next
@@ -308,28 +345,26 @@ await getPnlDetails();
 await getTransactions();
 const auth = useAuthStore();
 const store = mainStore();
-const { transactions, pnl, total_pnl } = storeToRefs(store);
+const { transactions, pnl, total_pnl, transactionsPagination } =
+  storeToRefs(store);
 const { user } = storeToRefs(auth);
+const changePage = async (page) => {
+  await getTransactions(page);
+};
+const openChooseAccount = ref(false);
 const router = useRouter();
-
+const excelFields = ref({
+  Exchange: "exchange",
+  Coin: "coin",
+  Timestamp: "date",
+  Quantity: "quantity",
+  Amount: "total",
+  Type: "type",
+});
 const pagination = ref({
   currentPage: 1,
   totalPages: 1,
 });
-const loadTransactions = async (page = 1) => {
-  const res = await getTransactions(page);
-
-  if (res?.data) {
-    pagination.value = res.pagination;
-  }
-};
-await loadTransactions(1);
-
-const distinctExchanges = computed(() => {
-  const exchanges = total_pnl.value.map((item) => item.exchange);
-  return [...new Set(exchanges)];
-});
-const totalDistinctExchanges = computed(() => distinctExchanges.value.length);
 </script>
 <style scoped>
 .fontPoppins {
