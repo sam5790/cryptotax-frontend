@@ -4,13 +4,15 @@
 
   <div class="flex flex-col justify-center items-center">
                         <h2 class="text-3xl xl:text-4xl font-semibold">
+                          <div class="flex gap-3 flex-wrap justify-center">
                                 Crypto Tax Guide for
-                                <span class="#4aabab underline-text">INDIA</span>
+                                <div class="text-[#4aabab]">INDIA
+                                  <CurvedLine/>
+                                </div>
+                                </div>
                         </h2>
                         <p class="text-lg md:my-2 md:mb-16">Cryptotax tax guide</p>
                         </div>
-
-
         </div>
   <div class="p-10 flex gap-10">
 

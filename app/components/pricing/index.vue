@@ -3,7 +3,11 @@
     <div class="mb-8 md:mb-12">
       <p class="text-center text-base md:text-xl font-medium p-2">PRICING</p>
       <p class="text-center text-2xl md:text-4xl font-semibold p-2">
-        Begin with <span class="#4aabab underline-text">NO charges</span>
+        <div class="flex gap-3 flex-wrap justify-center">
+        Begin with <div class="text-[#4aabab]">NO charges
+          <curved-line/>
+        </div>
+        </div>
       </p>
       <p class="text-center text-base md:text-xl text-gray-500 p-2">Get started today</p>
     </div>
@@ -14,7 +18,7 @@
         <input type="email" placeholder="Enter your email address to start your free trial"
           class="flex-1 w-full   rounded-full text-gray-600 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-teal-500 p-2" />
         <button
-          class="sm:mt-0 sm:ml-4 bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white px-6 py-2 rounded-full font-semibold text-sm sm:text-base whitespace-nowrap">
+          class="sm:mt-0 sm:ml-4 bg-[#4AABAB] hover:bg-teal-700 transition-colors text-white px-6 py-2 rounded-full font-semibold text-sm sm:text-base whitespace-nowrap">
           Redeem Now
         </button>
       </div>
@@ -47,19 +51,19 @@
           </ul>
 
           <button
-            class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+            class="bg-[#4AABAB] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
             Get Started
           </button>
         </div>
 
         <div class="relative  md:-translate-y-4 lg:-translate-y-8">
           <div
-            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#95d0d0] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
+            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
             Recommended
           </div>
 
           <div
-            class="border border-teal-500 rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col h-full">
+            class="border border-[#4AABAB] rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col h-full">
             <h2 class="text-lg md:text-xl font-semibold">Medium Plan</h2>
             <p class="text-gray-500 text-sm md:text-base mb-4">Recommended by experts</p>
 
@@ -85,7 +89,7 @@
             </ul>
 
             <button
-              class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+              class="bg-[#4AABAB] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
               Get Started
             </button>
           </div>
@@ -116,7 +120,7 @@
           </ul>
 
           <button
-            class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+            class="bg-[#4AABAB] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
             Get Started
           </button>
         </div>
@@ -146,7 +150,7 @@
           </ul>
 
           <button
-            class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+            class="bg-[#4AABAB] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
             Get Started
           </button>
         </div>
@@ -157,7 +161,7 @@
       <div ref="track" class="flex transition-all duration-300" :style="{ transform: `translateX(-${index * 100}%)` }">
         <!-- Slide 1 -->
         <div class="min-w-full p-5">
-          <div class="rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col border border-teal-500">
+          <div class="rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col border border-[#4AABAB]">
             <h2 class="text-lg md:text-xl font-semibold">Basic Plan</h2>
             <p class="text-gray-500 text-sm md:text-base mb-4">For individuals</p>
 
@@ -182,7 +186,7 @@
             </ul>
 
             <button
-              class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+              class="bg-[#4AABAB] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
               Get Started
             </button>
           </div>
@@ -192,12 +196,12 @@
         <div class="min-w-full p-5">
           <div class="relative md:-translate-y-0 lg:-translate-y-8">
             <div
-              class=" absolute -top-3 md:-top-1 left-1/2 -translate-x-1/2 bg-[#95d0d0] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
+              class=" absolute -top-3 md:-top-1 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
               Recommended
             </div>
 
             <div
-              class="border border-teal-500 rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col h-full">
+              class="border border-[#4AABAB] rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col h-full">
               <h2 class="text-lg md:text-xl font-semibold">Medium Plan</h2>
               <p class="text-gray-500 text-sm md:text-base mb-4">Recommended by experts</p>
 
@@ -224,7 +228,7 @@
               </ul>
 
               <button
-                class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+                class="bg-[#4AABAB] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
                 Get Started
               </button>
             </div>
@@ -233,7 +237,7 @@
 
         <!-- Slide 3 -->
         <div class="min-w-full p-5">
-          <div class="rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col border border-teal-500">
+          <div class="rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col border border-[#4AABAB]">
             <h2 class="text-lg md:text-xl font-semibold">Advanced Plan</h2>
             <p class="text-gray-500 text-sm md:text-base mb-4">For startups</p>
 
@@ -258,7 +262,7 @@
             </ul>
 
             <button
-              class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+              class="bg-[#4AABAB] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
               Get Started
             </button>
           </div>
@@ -266,7 +270,7 @@
 
         <!-- Slide 4 -->
         <div class="min-w-full p-5">
-          <div class="rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col border border-teal-500">
+          <div class="rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col border border-[#4AABAB]">
             <h2 class="text-lg md:text-xl font-semibold">Premium Plan</h2>
             <p class="text-gray-500 text-sm md:text-base mb-4">For large businesses</p>
 
@@ -291,7 +295,7 @@
             </ul>
 
             <button
-              class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+              class="bg-[#4AABAB] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
               Get Started
             </button>
           </div>
@@ -319,7 +323,7 @@
         </p>
         <div class="p-3 flex justify-center mt-8 md:mt-14">
           <button
-            class="text-white bg-[#95d0d0] hover:bg-teal-600 transition-colors rounded-full px-6 py-3 md:px-4 md:py-2 text-base md:text-xl flex items-center justify-center whitespace-nowrap">
+            class="text-white bg-[#4AABAB] hover:bg-teal-600 transition-colors rounded-full px-6 py-3 md:px-4 md:py-2 text-base md:text-xl flex items-center justify-center whitespace-nowrap">
             <img src="/about/vector.svg" class="mr-2 w-4 h-4 md:w-5 md:h-5" alt="phone icon" />
             Call to an expert now
           </button>
@@ -348,12 +352,12 @@
         class="mx-auto max-w-7xl mb-10 px-4 md:px-8 hidden lg:grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-16">
         <div class="relative">
           <div
-            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#95d0d0] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
+            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
             Pro Plan 2023
           </div>
 
           <div class="border border-teal-500 rounded-2xl shadow-lg md:shadow-2xl flex flex-col h-full">
-            <div class="bg-[#95d0d0] mt-8 p-4">
+            <div class="bg-[#95D0D0] mt-8 p-4">
               <div class="flex items-end justify-center gap-1">
                 <p class="text-2xl md:text-3xl font-semibold">₹9,999</p>
                 <p class="text-xs md:text-sm font-semibold mb-1">/30 Min Consult</p>
@@ -369,7 +373,7 @@
 
             <div class="flex justify-center items-center p-4">
               <button
-                class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
+                class="bg-[#4AABAB] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
                 Book Now
               </button>
             </div>
@@ -378,12 +382,12 @@
 
         <div class="relative">
           <div
-            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#95d0d0] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
+            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
             Pro Plan 2023
           </div>
 
           <div class="border border-teal-500 rounded-2xl shadow-lg md:shadow-2xl flex flex-col h-full">
-            <div class="bg-[#95d0d0] mt-8 p-4">
+            <div class="bg-[#95D0D0] mt-8 p-4">
               <div class="flex items-end justify-center gap-1">
                 <p class="text-2xl md:text-3xl font-semibold">₹9,999</p>
                 <p class="text-xs md:text-sm font-semibold mb-1">/30 Min Consult</p>
@@ -399,7 +403,7 @@
 
             <div class="flex justify-center items-center p-4">
               <button
-                class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
+                class="bg-[#4AABAB] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
                 Book Now
               </button>
             </div>
@@ -408,12 +412,12 @@
 
         <div class="relative">
           <div
-            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#95d0d0] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
+            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
             Pro Plan 2023
           </div>
 
           <div class="border border-teal-500 rounded-2xl shadow-lg md:shadow-2xl flex flex-col h-full">
-            <div class="bg-[#95d0d0] mt-8 p-4">
+            <div class="bg-[#95D0D0] mt-8 p-4">
               <div class="flex items-end justify-center gap-1">
                 <p class="text-2xl md:text-3xl font-semibold">₹9,999</p>
                 <p class="text-xs md:text-sm font-semibold mb-1">/30 Min Consult</p>
@@ -429,7 +433,7 @@
 
             <div class="flex justify-center items-center p-4">
               <button
-                class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
+                class="bg-[#4AABAB] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
                 Book Now
               </button>
             </div>
@@ -444,12 +448,12 @@
           <div class="min-w-full p-5">
             <div class="relative">
               <div
-                class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#95d0d0] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
+                class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
                 Pro Plan 2023
               </div>
 
               <div class="border border-teal-500 rounded-2xl flex flex-col h-full">
-                <div class="bg-[#95d0d0] mt-8 p-4">
+                <div class="bg-[#95D0D0] mt-8 p-4">
                   <div class="flex items-end justify-center gap-1">
                     <p class="text-2xl md:text-3xl font-semibold">₹9,999</p>
                     <p class="text-xs md:text-sm font-semibold mb-1">/30 Min Consult</p>
@@ -465,7 +469,7 @@
 
                 <div class="flex justify-center items-center p-4">
                   <button
-                    class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
+                    class="bg-[#4AABAB] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
                     Book Now
                   </button>
                 </div>
@@ -476,12 +480,12 @@
           <div class="min-w-full p-5">
             <div class="relative">
               <div
-                class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#95d0d0] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
+                class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
                 Pro Plan 2023
               </div>
 
               <div class="border border-teal-500 rounded-2xl flex flex-col h-full">
-                <div class="bg-[#95d0d0] mt-8 p-4">
+                <div class="bg-[#95D0D0] mt-8 p-4">
                   <div class="flex items-end justify-center gap-1">
                     <p class="text-2xl md:text-3xl font-semibold">₹9,999</p>
                     <p class="text-xs md:text-sm font-semibold mb-1">/30 Min Consult</p>
@@ -497,7 +501,7 @@
 
                 <div class="flex justify-center items-center p-4">
                   <button
-                    class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
+                    class="bg-[#4AABAB] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
                     Book Now
                   </button>
                 </div>
@@ -508,12 +512,12 @@
           <div class="min-w-full p-5">
             <div class="relative">
               <div
-                class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#95d0d0] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
+                class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
                 Pro Plan 2023
               </div>
 
               <div class="border border-teal-500 rounded-2xl flex flex-col h-full">
-                <div class="bg-[#95d0d0] mt-8 p-4">
+                <div class="bg-[#95D0D0] mt-8 p-4">
                   <div class="flex items-end justify-center gap-1">
                     <p class="text-2xl md:text-3xl font-semibold">₹9,999</p>
                     <p class="text-xs md:text-sm font-semibold mb-1">/30 Min Consult</p>
@@ -529,7 +533,7 @@
 
                 <div class="flex justify-center items-center p-4">
                   <button
-                    class="bg-[#95d0d0] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
+                    class="bg-[#4AABAB] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
                     Book Now
                   </button>
                 </div>
@@ -552,6 +556,7 @@
   </div>
 </template>
 <script setup>
+
 const index = ref(0);
 const slidesCount = 4;
 
