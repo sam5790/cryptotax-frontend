@@ -186,8 +186,6 @@ const deleteAccount = async (id) => {
 
     if (!res?.success) throw new Error()
 
-    store.total_pnl = store.total_pnl.filter(i => i._id !== id)
-
     toast.success({ message: "Account deleted", position: 'topCenter' })
     confirm.value = false;
 
