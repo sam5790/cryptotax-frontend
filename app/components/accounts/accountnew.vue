@@ -63,15 +63,21 @@
           </div>
         </div>
       </div>
-      <div class="md:min-w-[700px] md:mt-10 flex max-sm:mt-5 mb-4 mt-5">
-        <input
-          type="text"
-          placeholder="Search your account"
-          class="relative w-full rounded-full border border-gray-300 px-12 py-3 shadow-sm"
-        />
-      </div>
+     
+      <div class="relative md:min-w-[700px] md:mt-10 flex max-sm:mt-5 mb-4 mt-5">
+  <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
+    <svg width="20" height="20" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20.6217 21.5628L16.2802 17.0122M16.2802 9.04878C16.2802 11.1608 15.4797 13.1863 14.0549 14.6798C12.6301 16.1732 10.6976 17.0122 8.68257 17.0122C6.66756 17.0122 4.73508 16.1732 3.31025 14.6798C1.88542 13.1863 1.08496 11.1608 1.08496 9.04878C1.08496 6.93674 1.88542 4.9112 3.31025 3.41777C4.73508 1.92433 6.66756 1.08533 8.68257 1.08533C10.6976 1.08533 12.6301 1.92433 14.0549 3.41777C15.4797 4.9112 16.2802 6.93674 16.2802 9.04878Z"
+            stroke="#5C5C5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </span>
+  <input
+    type="text"
+    placeholder="Search your account"
+    class="w-full rounded-full border border-gray-300 pl-12 pr-4 py-3 shadow-sm"
+    />
+     </div>
     </div>
-
     <div
       class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 w-30 gap-4 md:mt-3 md:p-16 md:ml-10 max-sm:mb-3 ml-5 mb-4 p-1"
     >
