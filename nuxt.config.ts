@@ -1,32 +1,38 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
+  compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
 
-   runtimeConfig: {
+  runtimeConfig: {
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE,
     },
   },
-  css :[
-    '~/assets/style.css'
-  ],
+  css: ["~/assets/style.css"],
   modules: [
-   '@nuxtjs/tailwindcss',
-   '@pinia/nuxt',
-   'nuxt-toast',
-   'nuxt-google-auth',
-   'pinia-plugin-persistedstate/nuxt',
-   '@nuxt/fonts',
-  //  'nuxt-vue3-google-signin',
-   '@nuxtjs/google-fonts',
-   '@nuxt/icon',
-   
+    "@nuxtjs/tailwindcss",
+    "@pinia/nuxt",
+    "nuxt-toast",
+    "pinia-plugin-persistedstate/nuxt",
+    "@nuxt/fonts",
+    "@nuxtjs/google-fonts",
+    "@nuxt/icon",
+    "nuxt-vuefire",
   ],
- googleSignIn: {
-    clientId: process.env.NUXT_PUBLIC_GOOGLE_CLIENT_ID,
+
+  vuefire: {
+    config: {
+      apiKey: process.env.NUXT_FIREBASE_API_KEY,
+      authDomain: process.env.NUXT_FIREBASE_AUTH_DOMAIN,
+      projectId: process.env.NUXT_FIREBASE_PROJECT_ID,
+      storageBucket: process.env.NUXT_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.NUXT_FIREBASE_MSG_ID,
+      appId: process.env.NUXT_FIREBASE_APP_ID,
+      measurementId: process.env.NUXT_FIREBASE_MEASUREMENT_ID,
+    },
+    auth: { enabled: true },
   },
-    googleFonts: {
+  googleFonts: {
     families: {
       Poppins: [100, 200, 300, 400, 500, 600, 700, 800, 900],
       Raleway: [100, 200, 300, 400, 500, 600, 700, 800, 900],
@@ -34,16 +40,9 @@ export default defineNuxtConfig({
     display: "swap",
     preload: true,
   },
-   tailwindcss: {
+  tailwindcss: {
     exposeConfig: true,
     viewer: true,
-    
   },
 
-    googleAuth: {
-        clientId: process.env.NUXT_PUBLIC_GOOGLE_CLIENT_ID,
-        autoLoadScript: true,         // load Google script automatically
-        promptOneTap: true,           // show One Tap prompt
-        enableServerVerify: true      // enable server-side token verification endpoint
-    }
-})                            
+} as any);

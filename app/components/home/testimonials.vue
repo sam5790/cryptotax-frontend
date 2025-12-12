@@ -1,8 +1,9 @@
 <template>
-  <div class="bg-[linear-gradient(100deg,rgb(240,240,252)_11.73%,rgba(240,240,252,0)_104.43%)] p-4">
+  <div class="bg-[#f0f0fc] p-4">
     <div class="flex justify-center">
-      <h2 class="text-3xl text-teal-500 md:text-4xl text-center font-semibold underline-text">
+      <h2 class="text-3xl text-[#4AABAB] md:text-4xl text-center font-semibold">
         Testimonials
+        <CurvedLine />
       </h2>
     </div>
 
@@ -10,10 +11,12 @@
       What our satisfied clients have to say about us.
     </p>
 
-    
-    <div class="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-3  xl:gap-0 p-6 justify-items-center place-items-stretch">
-
-      <div v-for="(t, i) in testimonials" :key="i" class="border rounded-lg shadow-xl bg-white md:max-w-md ">
+    <div class="hidden md:flex gap-10 justify-center">
+      <div
+        v-for="(t, i) in testimonials"
+        :key="i"
+        class="border rounded-lg shadow-[0_0_25px_0] shadow-[#254BD34D] border-[#254BD34D] bg-white md:max-w-sm"
+      >
         <div class="flex items-center gap-4 p-4">
           <img :src="t.image" class="w-16 h-16 rounded-full" />
           <div class="flex flex-col">
@@ -21,14 +24,26 @@
             <p class="text-gray-600 text-lg">{{ t.title }}</p>
           </div>
         </div>
-        <div class="px-4 pb-4">
-          <p class="text-gray-600 text-md">{{ t.comment }}</p>
+        <div class="px-4 pb-4 flex">
+          <div >
+            <svg
+              width="18"
+              height="19"
+              viewBox="0 0 18 19"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.83906 2.28882e-05L4.23906 9.20002H6.63906V18.32H-0.000937283V9.20002L2.39906 2.28882e-05H5.83906ZM16.8791 2.28882e-05L15.2791 9.20002H17.6791V18.32H11.0391V9.20002L13.4391 2.28882e-05H16.8791Z"
+                fill="#4AABAB"
+              />
+            </svg>
+          </div>
+          <p class="text-gray-600 text-md text-center">{{ t.comment }}</p>
         </div>
       </div>
-    
     </div>
 
-    
     <div class="relative md:hidden overflow-hidden">
       <div
         class="flex transition-transform duration-300"
@@ -39,7 +54,7 @@
           :key="i"
           class="min-w-full flex justify-center"
         >
-          <div class="border rounded-lg shadow-xl bg-white max-w-md m-4">
+          <div class="border border-[#254BD34D] rounded-lg shadow-[0_0_25px_0] shadow-[#254BD34D] bg-white max-w-sm">
             <div class="flex items-center gap-4 p-4">
               <img :src="t.image" class="w-16 h-16 rounded-full" />
               <div class="flex flex-col">
@@ -47,31 +62,44 @@
                 <p class="text-gray-600 text-lg">{{ t.title }}</p>
               </div>
             </div>
-            <div class="px-4 pb-4">
-              <p class="text-gray-600 text-md">{{ t.comment }}</p>
-            </div>
+            <div class="px-4 pb-4 flex">
+          <div >
+            <svg
+              width="18"
+              height="19"
+              viewBox="0 0 18 19"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.83906 2.28882e-05L4.23906 9.20002H6.63906V18.32H-0.000937283V9.20002L2.39906 2.28882e-05H5.83906ZM16.8791 2.28882e-05L15.2791 9.20002H17.6791V18.32H11.0391V9.20002L13.4391 2.28882e-05H16.8791Z"
+                fill="#4AABAB"
+              />
+            </svg>
+          </div>
+          <p class="text-gray-600 text-md text-center">{{ t.comment }}</p>
+        </div>
           </div>
         </div>  
       </div>
 
-     
       <button
         @click="prev"
-        class="absolute top-1/2 left-2 -translate-y-1/2 bg-white p-2 rounded-full shadow opacity-80 flex justify-center"
+        class="absolute top-1/2 left-0 -translate-y-1/2 bg-white border border-[#4AABAB] p-2 rounded-full shadow opacity-80 flex"
       >
-        <icon name="mdi:arrow-left" class="w-5 h-5 text-gray-600" />
+        <icon name="mdi:arrow-left" class="w-6 h-6 text-[#4AABAB]" />
       </button>
 
       <button
         @click="next"
-        class="absolute top-1/2 right-2 -translate-y-1/2 bg-white p-2 rounded-full shadow opacity-80 flex justify-center"
+        class="absolute top-1/2 right-0 -translate-y-1/2 bg-white border border-[#4AABAB] p-2 rounded-full shadow opacity-80 flex"
       >
-        <icon name="mdi:arrow-right" class="w-5 h-5 text-gray-600" />
+        <icon name="mdi:arrow-right" class="w-6 h-6 text-[#4AABAB]" />
       </button>
     </div>
 
     <div class="p-6 flex justify-center">
-      <button class="py-2 px-4 border border-teal-500 text-teal-500 rounded-full">
+      <button class="py-2 px-8 border border-teal-500 text-[#4AABAB] rounded-full">
         View More
       </button>
     </div>
@@ -116,32 +144,3 @@ function prev() {
   index.value = (index.value - 1 + slidesCount) % slidesCount;
 }
 </script>
-
-<style scoped>
-
-.underline-text {
-  position: relative;
-  color: #4aabab;
-}
-
-.underline-text::after {
-  content: "";
-  position: absolute;
-  bottom: -15px;
-  left: -20px;
-  width: 250px;
-  height: 30px;
-  background-image: url("welcome.png");
-  background-size: cover;
-}
-
-@media (max-width: 640px) {
-  .underline-text::after {
-    left: -20px;
-    width: 200px;
-    height: 20px;
-    bottom: -10px
-  }
-}
-
-</style>

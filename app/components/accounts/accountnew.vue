@@ -1,16 +1,25 @@
 <template>
   <div>
     <div class="flex flex-col justify-center items-center">
-      <div class="flex flex-col justify-center items-center shadow-md p-10 rounded-xl relative mt-4">
+      <div
+        class="flex flex-col justify-center items-center shadow-md p-10 rounded-xl relative mt-4"
+      >
         <div class="absolute -top-10 left-1/2 -translate-x-1/2">
-          <img :src="'/avatar.png'" class="w-20 h-20 rounded-full ring-4 ring-white shadow-md" key="avatar" />
+          <img
+            :src="'/avatar.png'"
+            class="w-20 h-20 rounded-full ring-4 ring-white shadow-md"
+            key="avatar"
+          />
         </div>
         <h2 class="text-center text-xl font-medium">Total Exchanges</h2>
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 sm:gap-10 mt-6 w-full">
+        <div
+          class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 sm:gap-10 mt-6 w-full"
+        >
           <div class="text-center sm:p-2">
             <h2 class="text-xl font-medium fontPoppins">
               {{ total_pnl[0]?.totalTransaction }}
             </h2>
+
 
             <p>Total Transactions</p>
             <div class="flex justify-center mt-2">
@@ -24,12 +33,12 @@
             </div>
             <div v-else-if="total_pnl[0]?.totalPnl > 0">
               <h2 class="text-xl font-medium text-green-500 fontPoppins">
-                {{ (total_pnl[0]?.totalPnl)?.toFixed(2) }}
+                {{ total_pnl[0]?.totalPnl?.toFixed(2) }}
               </h2>
             </div>
             <div v-else>
               <h2 class="text-xl font-medium text-red-600 fontPoppins">
-                {{ (total_pnl[0]?.totalPnl)?.toFixed(2) }}
+                {{ total_pnl[0]?.totalPnl?.toFixed(2) }}
               </h2>
             </div>
             <p>Total Account Income</p>
@@ -44,8 +53,11 @@
         </div>
       </div>
       <div class="md:min-w-[700px] md:mt-10 flex max-sm:mt-5 mb-4 mt-5">
-        <input type="text" placeholder="Search your account"
-          class="relative w-full rounded-full border border-gray-300 px-12 py-3 shadow-sm" />
+        <input
+          type="text"
+          placeholder="Search your account"
+          class="relative w-full rounded-full border border-gray-300 px-12 py-3 shadow-sm"
+        />
       </div>
     </div>
 
@@ -108,7 +120,9 @@
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
         </svg>
       </div>
-      <p class="text-sm sm:text-base m-0 ml-3 sm:ml-5 opacity-90">Add a new account</p>
+      <p class="text-sm sm:text-base m-0 ml-3 sm:ml-5 opacity-90">
+        Add a new account
+      </p>
     </div>
     <!-- <ExchangesList v-if="exchange" @close="exchange = false" @select="openDetails" /> -->
     <Exchangeslist v-if="exchange" @close="exchange = false" @select="openDetails" />
@@ -120,10 +134,10 @@
 <script setup>
 // import Exchangeslist from '../exchangesList.vue'
 // import AddAccount from '~/components/addaccount.vue'
-import { mainStore } from '~/store/mainstore'
+import { mainStore } from "~/store/mainstore";
 
 const store = mainStore();
-await getPnlDetails()
+await getPnlDetails();
 const { total_pnl } = storeToRefs(store);
 
 const router = useRouter();
@@ -132,7 +146,6 @@ const showDetails = ref(false);
 const selectedAccount = ref(null);
 
 const open = ref(null);
-
 
 const toggleMenu = (id) => {
   open.value = open.value === id ? null : id;
@@ -148,7 +161,6 @@ function openDetails(item) {
   showDetails.value = true;
   exchange.value = false;
 }
-
 </script>
 <style scoped>
 .fontPoppins {

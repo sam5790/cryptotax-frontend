@@ -10,7 +10,6 @@ export const userLogin = async (payload) => {
       method: "POST",
       body: payload,
     });
-    console.log("data", data)
     if (data?.success) {
       auth.addUser({ user: data?.customer, token: data?.token });
       return { data: data, error: null };
@@ -27,7 +26,6 @@ export const userLogin = async (payload) => {
 
 
 export const createUser = async (payload) => {
-  console.log("hello")
   const BASE_URL = useRuntimeConfig().public.apiBase;
   const auth = useAuthStore();
   auth.setLoading(true);
@@ -37,9 +35,7 @@ export const createUser = async (payload) => {
       method: "POST",
       body: payload,
     });
-    console.log("data", data.data)
     if (data?.success) {
-      console.log("datainside", data)
       return { data: data, error: null };
     } else {
       throw new Error("API response unsuccessful");
@@ -52,6 +48,49 @@ export const createUser = async (payload) => {
   }
 };
 
+
+export const forgetPassword = async (payload) => {
+  const BASE_URL = useRuntimeConfig().public.apiBase;
+  try {
+    const data = await $fetch("/forgot-password", {
+      baseURL: BASE_URL,
+      method: "POST",
+      body: payload,
+    });
+    if (data?.success) {
+     return { data: data, error: null };
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+    
+  }
+};
+
+
+export const forgetResetPassword = async (payload) => {
+  const BASE_URL = useRuntimeConfig().public.apiBase;
+  try {
+    const data = await $fetch("/reset-password", {
+      baseURL: BASE_URL,
+      method: "POST",
+      body: payload,
+    });
+    if (data?.success) {
+      return { data: data, error: null };
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+    
+  }
+};
 
 
 

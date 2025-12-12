@@ -2,7 +2,7 @@
   <div class=" bg-white mx-auto p-4 md:p-7 my-5 md:my-8 w-full rounded-lg">
     <div class="flex flex-col items-center mb-10">
       <h1 class="text-2xl sm:text-3xl font-bold">
-        Tax <span class="relative text-teal-500 underline-text">Harvesting</span>
+        Tax <span class="relative #4aabab underline-text">Harvesting</span>
       </h1>
       <p class="text-gray-500 mt-3 text-center">Check how your portfolio fare today</p>
     </div>
@@ -49,7 +49,7 @@
             <td class="py-4 px-4">{{ index + 1 }}</td>
 
             <td class="py-4 px-4">
-              <input type="checkbox" class="h-5 w-5 text-teal-500" />
+              <input type="checkbox" class="h-5 w-5 #4aabab" />
             </td>
 
             <td class="py-4 px-4 flex items-center">
@@ -68,7 +68,7 @@
             </td>
 
             <td class="py-4 px-4">
-              <button class="border border-teal-500 text-teal-500 px-3 py-1 rounded-2xl">
+              <button class="border border-teal-500 #4aabab px-3 py-1 rounded-2xl">
                 Sell
               </button>
             </td>
