@@ -334,7 +334,7 @@
     <div class="mx-auto max-w-7xl mb-10 px-4 md:px-8">
       <h2 class="text-2xl md:text-3xl font-semibold text-center p-6 md:p-10">Professional Crypto Tax Pricing</h2>
 
-      <div class="flex flex-col justify-center p-4 md:p-8 bg-gray-50 rounded-xl mb-8 md:mb-12">
+      <div class="flex flex-col justify-center p-4 md:p-8 rounded-xl mb-8 md:mb-12">
         <ul class="list-disc pl-5 space-y-3">
           <li class="text-sm md:text-base">
             Cryptotax regulations vary globally, making it crucial to understand your country's rules.

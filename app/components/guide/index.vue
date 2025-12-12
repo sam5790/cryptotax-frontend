@@ -1,9 +1,13 @@
 <template>
-  <div class="p-10 relative">
+  <div class="mt-3 relative">
     <div class="flex flex-col justify-center items-center">
       <h2 class="text-3xl xl:text-4xl font-semibold">
-        Crypto Tax Guide for
-        <span class="text-[#4aabab] underline-text">INDIA</span>
+       <div class="flex flex-wrap gap-2 text-center justify-center">
+                                Crypto Tax Guide for
+                                <div class="text-[#4aabab] text-center">INDIA
+                                  <CurvedLine/>
+                                </div>
+                                </div>
       </h2>
       <p class="text-lg md:my-2 md:mb-16">Cryptotax tax guide</p>
     </div>
