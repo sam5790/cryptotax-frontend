@@ -2,52 +2,63 @@
   <div>
     <div class="flex flex-col justify-center items-center">
       <div
-        class="flex flex-col justify-center items-center shadow-md p-10 rounded-xl relative mt-4"
+        class="flex flex-col justify-center items-center shadow-[0_0_10px_0] shadow-[#254BD34D] p-10 rounded-xl relative mt-4"
       >
-        <div class="absolute -top-10 left-1/2 -translate-x-1/2">
+        <div class="absolute -top-[60px] left-1/2 -translate-x-1/2 ">
           <img
-            :src="'/avatar.png'"
-            class="w-20 h-20 rounded-full ring-4 ring-white shadow-md"
-            key="avatar"
+            :src="'/new-avatar.png'"
+            class="w-28 h-28 rounded-full bg-white shadow-[0_0_10px_0] shadow-[#254BD34D]"
           />
         </div>
-        <h2 class="text-center text-xl font-medium">Total Exchanges</h2>
+        <h2 class="text-center text-xl font-medium pt-5">Total Exchanges</h2>
         <div
-          class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 sm:gap-10 mt-6 w-full"
+          class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 sm:gap-10  w-full"
         >
           <div class="text-center sm:p-2">
-            <h2 class="text-xl font-medium fontPoppins">
-              {{ total_pnl[0]?.totalTransaction }}
-            </h2>
-
+            <div class="text-4xl font-medium font-[Poppins]">
+              {{ totalTransactions?.TransactionSum }}
+            </div>
 
             <p>Total Transactions</p>
             <div class="flex justify-center mt-2">
-              <!-- <icon name="mdi:arrow-expand-horizontal" class="w-6 h-6 text-gray-600" /> -->
-               <img src="/Vector.png" class="md:h-full" />
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 28 28"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0.541016 7.45807H24.0634M18.8362 0.924072L25.3702 7.45807L18.8362 13.9921M26.677 20.5261H3.15462M8.38182 13.9921L1.84782 20.5261L8.38182 27.0601"
+                  stroke="#4AABAB"
+                  stroke-width="2.6136"
+                />
+              </svg>
             </div>
           </div>
-          <div class="text-center bg-green-200 rounded-2xl p-4 sm:p-2">
-            <div v-if="total_pnl[0]?.totalPnl == 0">
-              <h2 class="text-xl font-medium text-green-400 fontPoppins">0</h2>
+          <div class="text-center bg-[#37D35921] rounded-2xl px-6 py-3">
+            <div
+              class="text-3xl font-medium font-[Poppins]"
+              :class="
+                totalTransactions?.PnlSum > 0
+                  ? 'text-[#31B431]'
+                  : totalTransactions?.PnlSum < 0
+                  ? 'text-red-500'
+                  : ''
+              "
+            >
+              {{ totalTransactions?.PnlSum?.toFixed(2) }}
             </div>
-            <div v-else-if="total_pnl[0]?.totalPnl > 0">
-              <h2 class="text-xl font-medium text-green-500 fontPoppins">
-                {{ total_pnl[0]?.totalPnl?.toFixed(2) }}
-              </h2>
-            </div>
-            <div v-else>
-              <h2 class="text-xl font-medium text-red-600 fontPoppins">
-                {{ total_pnl[0]?.totalPnl?.toFixed(2) }}
-              </h2>
-            </div>
+
             <p>Total Account Income</p>
           </div>
           <div class="text-center sm:p-2">
-            <h2 class="text-xl font-medium fontPoppins">01</h2>
+            <div class="text-4xl font-medium font-[Poppins]">
+              {{ totalTransactions?.TotalSummary }}
+            </div>
             <p>Total Imported Files</p>
             <div class="flex justify-center mt-2">
-              <Icon name="mdi:files" class="w-6 h-6 text-gray-600" />
+              <Icon name="mdi:files" class="w-6 h-6 text-[#4AABAB]" />
             </div>
           </div>
         </div>
@@ -61,26 +72,64 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4
-         gap-4 sm:gap-5 md:gap-6 
-         mt-4 md:mt-6 
-         px-3 sm:px-5 md:px-16 
-         ml-2 sm:ml-5 md:ml-10 
-         mb-6">
+    <div
+      class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 w-30 gap-4 md:mt-3 md:p-16 md:ml-10 max-sm:mb-3 ml-5 mb-4 p-1"
+    >
+      <div
+        class="bg-white shadow-sm rounded-lg p-4"
+        v-for="item in total_pnl"
+        :key="item._id"
+      >
+        <div class="flex gap-4 items-center justify-between">
+          <!-- <div v-if="transactions[0].exchange==='CoinDCX'">
+            <img src="/icons/coindcx.png" class="w-8 h-8" />
+          </div>
+          <div v-else>
+            <img src="/icons/wazirx.png" class="w-8 h-8" />
+          </div> -->
 
-      <div v-for="item in total_pnl" :key="item._id"
-        class="bg-white shadow-sm rounded-lg space-y-3 sm:space-y-4 min-w-full p-2 lg:bg-">
-        <div class="flex justify-between items-start">
-          <div class="flex items-center gap-2 sm:gap-3">
-            <img :src="`/icons/${item?.exchange}.png`" class="w-7 h-7 sm:w-8 sm:h-8" />
-            <h2 class="text-base sm:text-lg font-medium capitalize">
-              {{ item?.exchange }}
-            </h2>
+          <div>
+            <img :src="`/icons/${item?.exchange}.png`" class="w-8 h-8" />
           </div>
 
-          <div class="flex items-center">
-            <div class="rounded-xl bg-teal-500 text-white px-2 py-1 text-xs sm:text-sm shadow-sm lg:text-xs whitespace-nowrap opacity-35">
-             <p class="text-white">Data Synced</p>
+          <div>
+            <div class="text-lg font-medium capitalize">
+              {{ item?.exchange }}
+            </div>
+            <div class="flex ">
+          <button>
+             <svg
+                width="24"
+                height="24"
+                viewBox="0 0 28 28"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0.541016 7.45807H24.0634M18.8362 0.924072L25.3702 7.45807L18.8362 13.9921M26.677 20.5261H3.15462M8.38182 13.9921L1.84782 20.5261L8.38182 27.0601"
+                  stroke="#4AABAB"
+                  stroke-width="2.6136"
+                />
+              </svg>
+          </button>
+          <div class="text-lg font-medium fontPoppins -mt-1 ml-2">
+            {{ item?.totalTransaction }}
+          </div>
+        </div>
+          </div>
+
+          <div
+            class="rounded-md bg-teal-500 text-white px-3 py-1 text-sm shadow-sm"
+          >
+            Data Synced
+          </div>
+
+          <div class="relative inline-block text-left">
+            <div
+              class="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-100"
+              @click="toggleMenu(item._id)"
+            >
+              <Icon name="mdi:dots-vertical" class="w-6 h-6 text-gray-600" />
             </div>
 
             <div class="relative">
@@ -100,14 +149,7 @@
           </div>
         </div>
 
-        <div class="flex items-center gap-2 ml-1 sm:ml-2">
-          <button>
-            <img src="/Vector.png" class="md:h-full" />
-          </button>
-          <h2 class="text-base sm:text-lg font-medium fontPoppins">
-            {{ item?.totalTransaction }}
-          </h2>
-        </div>
+        
       </div>
     </div>
 
@@ -132,13 +174,13 @@
 </template>
 
 <script setup>
-// import Exchangeslist from '../exchangesList.vue'
-// import AddAccount from '~/components/addaccount.vue'
 import { mainStore } from "~/store/mainstore";
 
 const store = mainStore();
-await getPnlDetails();
-const { total_pnl } = storeToRefs(store);
+onMounted(async () => {
+  await getAccounts();
+});
+const { total_pnl, totalTransactions } = storeToRefs(store);
 
 const router = useRouter();
 const exchange = ref(false);
@@ -151,7 +193,6 @@ const toggleMenu = (id) => {
   open.value = open.value === id ? null : id;
 };
 
-console.log("totalpnl", total_pnl.value)
 const buttonclick = () => {
   exchange.value = true;
 };
@@ -162,8 +203,3 @@ function openDetails(item) {
   exchange.value = false;
 }
 </script>
-<style scoped>
-.fontPoppins {
-  font-family: "Poppins", sans-serif !important;
-}
-</style>

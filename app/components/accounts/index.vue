@@ -28,8 +28,7 @@
       </button>
       <span class="shape"></span>
     </div>
-
-    <div class="mt-10 w-screen">
+    <div class="mt-10 w-full">
       <AccountsTax v-if="tab === 'tax'" />
       <AccountsTransactions v-if="tab === 'transactions'" />
       <AccountsAccountnew v-if="tab === 'accounts'" />
@@ -38,17 +37,6 @@
 </template>
 
 <script setup>
-import { useAuthStore } from "~/store/auth";
-const auth = useAuthStore();
-const { user } = storeToRefs(auth);
-const router = useRouter();
-onMounted(() => {
-  if (!auth.token) {
-    router.push("/login");
-    console.log("user existed or not", user.value);
-  }
-});
-
 const tab = ref("tax");
 </script>
 
@@ -57,7 +45,6 @@ const tab = ref("tax");
   position: relative;
   display: flex;
   width: 100%;
-
   justify-content: space-between;
 }
 

@@ -22,7 +22,7 @@
         <div class="flex md:justify-start justify-center">
           <button
             class="mt-8 px-8 py-2 bg-[#4aabab] rounded-3xl text-white font-semibold"
-            @click="$router.push('/dashboard')"
+            @click="$router.push('/account')"
           >
             Get Started
           </button>

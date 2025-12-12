@@ -12,7 +12,7 @@
       <div class="hidden md:flex gap-4 lg:gap-12 items-center">
         <button
           class="whitespace-nowrap cursor-pointer"
-          @click="router.push('/dashboard')"
+          @click="router.push('/account')"
         >
           Account
         </button>
@@ -25,7 +25,7 @@
         <button class="whitespace-nowrap cursor-pointer">Export Data</button>
         <button
           class="whitespace-nowrap cursor-pointer"
-          @click="router.push('/mywallet')"
+          @click="router.push('/my-wallet')"
         >
           My Wallet
         </button>
@@ -37,7 +37,7 @@
         </button>
         <button
           class="whitespace-nowrap cursor-pointer"
-          @click="router.push('/aboutus')"
+          @click="router.push('/about-us')"
         >
           About Us
         </button>
@@ -98,7 +98,7 @@
               </div>
               <button
                 class="py-1 px-3 bg-[#4AABAB] rounded-3xl text-white font-semibold text-xs"
-                @click="router.push('/mywallet')"
+                @click="router.push('/my-wallet')"
               >
                 View Wallet
               </button>
@@ -152,7 +152,7 @@
             </button>
             <button
               class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
-              @click="navigate('/dashboard')"
+              @click="navigate('/account')"
             >
               Account
             </button>
@@ -169,7 +169,7 @@
             </button>
             <button
               class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
-              @click="navigate('/mywallet')"
+              @click="navigate('/my-wallet')"
             >
               My Wallet
             </button>
@@ -181,7 +181,7 @@
             </button>
             <button
               class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
-              @click="navigate('/aboutus')"
+              @click="navigate('/about-us')"
             >
               About Us
             </button>

@@ -197,7 +197,7 @@ if (!form.reportValidity()) {
       token: data.data.token,
     });
 
-    router.push("/dashboard");
+    router.push("/account");
   }
 };
 

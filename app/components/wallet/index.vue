@@ -7,10 +7,12 @@
       </div>
       </div>
     </h2>
-    <p class="text-md md:text-xl my-4 text-center">A brief summary of your crypto portfolio</p>
-    <div class="container  p-4 w-full overflow-x-auto">
+    <p class="text-md md:text-xl my-4 text-center">
+      A brief summary of your crypto portfolio
+    </p>
+    <div class="container p-4 w-full overflow-x-auto">
       <table class="min-w-[600px] md:min-w-full text-center">
-        <thead class=" text-gray-400">
+        <thead class="text-gray-400">
           <tr>
             <th class="py-2 px-4 border-b font-semibold">#</th>
             <th class="py-2 px-4 border-b font-semibold">Exchange</th>
@@ -19,11 +21,20 @@
           </tr>
         </thead>
         <tbody v-if="store.coin_balance.length">
-          <tr v-for="(item, index) in store.coin_balance" :key="index" class="border-b">
+          <tr
+            v-for="(item, index) in store.coin_balance"
+            :key="index"
+            class="border-b"
+          >
             <td class="py-4 px-4">{{ index + 1 }}</td>
             <td class="py-4 px-4">
               <div class="flex justify-center items-center gap-2">
-                <img :src="`/icons/${item.exchange}.png`" width="32" height="32" class="rounded-full" />
+                <img
+                  :src="`/icons/${item.exchange}.png`"
+                  width="32"
+                  height="32"
+                  class="rounded-full"
+                />
                 {{ item.exchange }}
               </div>
             </td>
@@ -43,26 +54,7 @@
   </div>
 </template>
 <script setup>
-
-import { mainStore } from '~/store/mainstore';
-const store = mainStore()
-import { useAuthStore } from '~/store/auth';
-const auth = useAuthStore()
-const { user } = storeToRefs(auth)
-const router = useRouter()
-onMounted(() => {
-  if (!auth.token) {
-    router.push("/login");
-    console.log("user existed or not", user.value)
-  }
-
-
-});
-
-
-console.log("coin balance:", store.coin_balance)
-
-
-
+import { mainStore } from "~/store/mainstore";
+const store = mainStore();
 </script>
 

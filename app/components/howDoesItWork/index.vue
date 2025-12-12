@@ -68,7 +68,7 @@
         <div class="flex justify-start items-center mt-16 p-1">
           <div class="bg-white shadow-lg rounded-2xl w-full max-w-[300px] md:max-w-[500px] lg:max-w-[600px]">
             <video controls class="w-full">
-              <source src="/dashboard.mp4" type="video/mp4" />
+              <source src="/account.mp4" type="video/mp4" />
             </video>
           </div>
         </div>

@@ -36,7 +36,7 @@ const loginWithGoogle = () => {
             user: data?.value?.data?.user?.name,
             token: data?.value?.data?.token,
           });
-          router.push("/dashboard");
+          router.push("/account");
         } else {
           console.error(error?.value);
         }

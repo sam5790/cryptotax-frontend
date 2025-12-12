@@ -12,7 +12,7 @@
           class="flex flex-col text-white w-full items-start"
         >
           <b>Quick Links</b>
-          <p @click="$router.push('/aboutus')" class="cursor-pointer">About Us</p>
+          <p @click="$router.push('/about-us')">About Us</p>
           <p>Contact Us</p>
           <p>Careers</p>
           <p>Solutions</p>
