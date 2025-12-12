@@ -138,19 +138,18 @@
               <Icon name="mdi:dots-vertical" class="w-6 h-6 text-gray-600" />
             </div>
 
-            <div class="relative">
-              <div class=" rounded-full flex items-center justify-center
-                   cursor-pointer hover:bg-gray-100" @click="toggleMenu(item._id)">
-                <Icon name="mdi:dots-vertical" class=" text-gray-600" />
-              </div>
-
-              <div v-if="open === item._id" class="absolute right-0 mt-2 w-36 sm:w-40 bg-white border border-gray-200 
-                   rounded-lg shadow-lg z-50">
-                <ul class="py-1 sm:py-2 text-sm text-gray-700">
-                  <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Edit Now</li>
-                  <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Delete Now</li>
-                </ul>
-              </div>
+            <div
+              v-if="open === item._id"
+              class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50"
+            >
+              <ul class="py-2 text-sm text-gray-700">
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                  Edit Now
+                </li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                  Delete Now
+                </li>
+              </ul>
             </div>
           </div>
         </div>
