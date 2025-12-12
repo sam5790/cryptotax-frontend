@@ -96,6 +96,7 @@
               class="rounded-md w-full pl-10 pr-3 py-2.5 border border-[#adadad]"
               placeholder="Enter your email"
               required
+              disabled
             />
           </div>
 
