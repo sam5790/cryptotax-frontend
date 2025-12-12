@@ -100,8 +100,30 @@
                   class="w-16 h-16 rounded-full ring-2 ring-[#4AABAB] shadow-md"
                   key="avatar"
                 />
-                <div class="capitalize text-lg font-semibold font-[Poppins]">
+                <div
+                  class="capitalize my-1 text-lg font-semibold font-[Poppins]"
+                >
                   {{ user }}
+                </div>
+                <div class="flex mb-2 items-center">
+                  <img
+                    v-for="exchange in transactionsPagination?.exchanges?.slice(
+                      0,
+                      3
+                    )"
+                    :key="exchange"
+                    :src="`/icons/${exchange}.png`"
+                    :alt="exchange"
+                    class="h-8 w-8 rounded-full border-2 border-white -ml-3 first:ml-0"
+                  />
+                  <div
+                    v-if="transactionsPagination?.exchanges?.length - 3 > 0"
+                    class="flex items-center"
+                  >
+                    <icon name="mdi:plus" class="w-4 h-4" />{{
+                      total_pnl?.length - 3
+                    }}
+                  </div>
                 </div>
                 <button
                   class="py-1 px-3 bg-[#4AABAB] rounded-3xl text-white font-semibold text-xs"
@@ -176,13 +198,15 @@
               </button>
               <button
                 class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
-               @click="auth?.token ? navigate('/my-wallet') : navigate('/login')"
+                @click="
+                  auth?.token ? navigate('/my-wallet') : navigate('/login')
+                "
               >
                 My Wallet
               </button>
               <button
                 class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
-               @click="auth?.token ? navigate('/reports') : navigate('/login')"
+                @click="auth?.token ? navigate('/reports') : navigate('/login')"
               >
                 Reports
               </button>
@@ -224,7 +248,9 @@
 
 <script setup>
 import { useAuthStore } from "~/store/auth";
-
+import { mainStore } from "~/store/mainstore";
+const store = mainStore();
+const { transactionsPagination } = storeToRefs(store);
 const isOpen = ref(false);
 const router = useRouter();
 const auth = useAuthStore();

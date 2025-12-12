@@ -28,8 +28,7 @@
       </button>
       <span class="shape"></span>
     </div>
-
-    <div class="mt-10 w-screen">
+    <div class="mt-10 w-full">
       <AccountsTax v-if="tab === 'tax'" />
       <AccountsTransactions v-if="tab === 'transactions'" />
       <AccountsAccountnew v-if="tab === 'accounts'" />

@@ -1,7 +1,7 @@
 import { mainStore } from "~/store/mainstore";
 import { useAuthStore } from "~/store/auth";
 
-export const getPnlDetails = async () => {
+export const getAccounts= async () => {
   const store = mainStore();
   const BASE_URL = useRuntimeConfig().public.apiBase;
   const auth = useAuthStore();
@@ -17,6 +17,7 @@ export const getPnlDetails = async () => {
     });
     if (data?.success) {
       store.setTotalPnl(data.data);
+      store.addTotalTransactions(data.meta);
       return { data: data, error: null };
     } else {
       throw new Error("API response unsuccessful");
@@ -27,20 +28,51 @@ export const getPnlDetails = async () => {
   } finally {
   }
 };
-
-export const getTransactions = async (page = 1) => {
+export const getPnlDetails = async (payload) => {
   const store = mainStore();
   const BASE_URL = useRuntimeConfig().public.apiBase;
   const auth = useAuthStore();
   const { token } = auth;
   try {
-    const data = await $fetch(`/transactions?page=${page}`, {
+    const data = await $fetch(`/pnl/details`, {
       baseURL: BASE_URL,
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
+      query: payload,
+    });
+    if (data?.success) {
+      store.setPnl(data?.data)
+      store.addTransactionsPagination(data.meta);
+      return { data: data, error: null };
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    store.setPnl([])
+      store.addTransactionsPagination({});
+    return { data: null, error };
+  } finally {
+  }
+};
+
+export const getTransactions = async (payload) => {
+  const store = mainStore();
+  const BASE_URL = useRuntimeConfig().public.apiBase;
+  const auth = useAuthStore();
+  const { token } = auth;
+  try {
+    const data = await $fetch(`/transactions`, {
+      baseURL: BASE_URL,
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      query: payload,
     });
     if (data?.success) {
       const transactions = data.data;
