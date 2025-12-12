@@ -122,3 +122,19 @@
     </div>
   </div>
 </template>
+<script setup>
+
+const router = useRouter()
+
+const index = ref(0)
+const slidesCount = 4
+
+function next() {
+  index.value = (index.value + 1) % slidesCount
+}
+
+function prev() {
+  index.value = (index.value - 1 + slidesCount) % slidesCount
+}
+
+</script>

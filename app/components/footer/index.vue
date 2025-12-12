@@ -16,8 +16,8 @@
           <p>Contact Us</p>
           <p>Careers</p>
           <p>Solutions</p>
-          <p @click="$router.push('/faq')">Faq</p>
-          <p @click="$router.push('/exchanges')">Exchange</p>
+          <p @click="$router.push('/faq')" class="cursor-pointer">Faq</p>
+          <p @click="$router.push('/exchanges')" class="cursor-pointer">Exchange</p>
         </div>
 
         <div

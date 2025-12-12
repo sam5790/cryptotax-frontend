@@ -4,20 +4,20 @@
       How does it <span class="#4aabab underline-text">work?</span>
     </h2>
 
-    <div class="relative mt-16 p-3">
+    <div class="relative mt-16 md:p-3">
 
       <div class="absolute left-1/2 -translate-x-1/2 w-[4px] bg-[#D5D5FE]
                top-[70px]
                bottom-[72px]
                sm:top-[90px]
                sm:bottom-[90px]
-               md:top-32
+               md:top-[150px]
                md:bottom-0
                z-10">
       </div>
 
-      <div class="relative grid grid-cols-[1fr_4px_1fr] gap-4 md:gap-10">
-        <div class="flex justify-end items-center mt-16">
+      <div class="relative grid md:grid-cols-[1fr_4px_1fr] gap-4 md:gap-10 grid-cols-[1fr_0px_1fr]">
+        <div class="flex justify-end items-center mt-16 p-1">
           <div class="bg-white shadow-lg rounded-2xl w-full max-w-[300px] md:max-w-[500px] lg:max-w-[600px]">
             <video controls class="w-full">
               <source src="/login-screen.mp4" type="video/mp4" />
@@ -65,7 +65,7 @@
           </div>
         </div>
 
-        <div class="flex justify-start items-center mt-16">
+        <div class="flex justify-start items-center mt-16 p-1">
           <div class="bg-white shadow-lg rounded-2xl w-full max-w-[300px] md:max-w-[500px] lg:max-w-[600px]">
             <video controls class="w-full">
               <source src="/account.mp4" type="video/mp4" />
@@ -73,7 +73,7 @@
           </div>
         </div>
 
-        <div class="flex justify-end items-center mt-16">
+        <div class="flex justify-end items-center mt-16 p-1">
           <div class="bg-white shadow-lg rounded-2xl w-full max-w-[300px] md:max-w-[500px] lg:max-w-[600px]">
             <video controls class="w-full">
               <source src="/tax-harvesting.mp4" type="video/mp4" />
@@ -121,7 +121,7 @@
           </div>
         </div>
 
-        <div class="flex justify-start items-center mt-16">
+        <div class="flex justify-start items-center mt-16 p-1">
           <div class="bg-white shadow-lg rounded-2xl w-full max-w-[300px] md:max-w-[500px] lg:max-w-[600px]">
             <video controls class="w-full">
               <source src="/wallets.mp4" type="video/mp4" />

@@ -80,7 +80,7 @@
           <p class="text-gray-600 text-md text-center">{{ t.comment }}</p>
         </div>
           </div>
-        </div>
+        </div>  
       </div>
 
       <button

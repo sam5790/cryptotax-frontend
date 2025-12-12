@@ -1,7 +1,11 @@
 <template>
   <div class="flex flex-col items-center md:p-10">
     <h2 class="text-3xl md:text-4xl font-semibold text-center">
-      My <span class="#4aabab underline-text">Wallet</span>
+      <div class="flex gap-3 flex-wrap">
+      My <div class="text-[#4aabab]">Wallet
+        <CurvedLine/>
+      </div>
+      </div>
     </h2>
     <p class="text-md md:text-xl my-4 text-center">
       A brief summary of your crypto portfolio
@@ -54,36 +58,3 @@ import { mainStore } from "~/store/mainstore";
 const store = mainStore();
 </script>
 
-<style scoped>
-.underline-text {
-  position: relative;
-}
-
-.underline-text::after {
-  content: "";
-  position: absolute;
-  bottom: -20px;
-  left: -20px;
-  width: 160px;
-  height: 40px;
-  background-image: url("underline-new-user.png");
-  background-size: cover;
-}
-
-@media (max-width: 640px) {
-  .underline-text {
-    position: relative;
-  }
-
-  .underline-text::after {
-    content: "";
-    position: absolute;
-    bottom: -20px;
-    left: -20px;
-    width: 120px;
-    height: 40px;
-    background-image: url("underline-new-user.png");
-    background-size: cover;
-  }
-}
-</style>

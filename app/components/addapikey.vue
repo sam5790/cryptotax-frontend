@@ -16,7 +16,7 @@
       </div>
 
       <div class="flex justify-center items-center my-4">
-        <button class="px-3 border border-teal-500 #4aabab py-2 mt-4 rounded-lg">
+        <button  class="mt-5 px-5 py-3 border border-teal-600 text-teal-600 rounded-lg">
           Create A New Account
         </button>
       </div>
@@ -35,5 +35,4 @@ const props = defineProps({
   account: Object
 });
 
-console.log("account", props.account)
 </script>

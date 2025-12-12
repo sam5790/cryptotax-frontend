@@ -56,36 +56,36 @@
           </button>
         </div>
 
-        <div class="items-center gap-2 hidden md:flex">
-          <button
-            v-if="!auth?.token"
-            class="px-6 py-2 bg-teal-500 rounded-3xl text-white font-semibold text-sm"
-            @click="router.push('/login')"
-          >
-            Log in
-          </button>
-          <button
-            v-else
-            class="px-6 py-2 bg-teal-500 rounded-3xl text-white font-semibold text-sm"
-            @click="handleLogout"
-          >
-            Logout
-          </button>
-        </div>
-        <button @click="isOpen = true" class="md:hidden p-2">
-          <svg
-            class="w-7 h-7 text-[#4AABAB]"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
+      <div class="items-center gap-2 hidden md:flex">
+        <button
+          v-if="!auth?.token"
+          class="px-6 py-2 bg-[#4aabab] rounded-3xl text-white font-semibold text-sm"
+          @click="router.push('/login')"
+        >
+          Log in
+        </button>
+        <button
+          v-else
+          class="px-6 py-2 bg-[#4aabab] rounded-3xl text-white font-semibold text-sm"
+          @click="handleLogout"
+        >
+          Logout
         </button>
       </div>
+      <button @click="isOpen = true" class="md:hidden p-2">
+        <svg
+          class="w-7 h-7 text-[#4AABAB]"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
 
       <!-- in mobile -->
 

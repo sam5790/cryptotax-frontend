@@ -73,15 +73,15 @@
               required
             />
 
-            <button
+         <button
               type="button"
               @click="showPassword = !showPassword"
-              class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500"
+              class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500"
             >
               <svg
-                v-if="!showPassword"
+                v-if="showPassword"
                 xmlns="http://www.w3.org/2000/svg"
-                class="w-5 h-5"
+                class="w-6 h-8"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -102,23 +102,21 @@
 
               <svg
                 v-else
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-5 h-5"
+                width="21"
+                height="20"
+                viewBox="0 0 21 20"
                 fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.27-2.943-9.543-7a10.05 10.05 0 011.66-3.04M6.5 6.5l11 11"
+                  d="M6.073 9.901L2.212 6.04C0.692 7.697 0.116 9.357 0.106 9.391L0 9.707L0.105 10.023C0.127 10.09 2.421 16.707 10.054 16.707C10.983 16.707 11.829 16.605 12.606 16.434L9.86 13.688C8.87128 13.6395 7.93595 13.225 7.23598 12.525C6.53601 11.825 6.12147 10.8897 6.073 9.901ZM10.054 2.707C8.199 2.707 6.679 3.111 5.412 3.705L1.707 0L0.293 1.414L18.293 19.414L19.707 18L16.409 14.702C19.047 12.749 19.988 10.065 20.002 10.023L20.107 9.707L20.002 9.391C19.98 9.324 17.687 2.707 10.054 2.707ZM11.96 10.253C12.147 9.576 11.988 8.814 11.468 8.293C10.948 7.772 10.185 7.614 9.508 7.801L8 6.293C8.61796 5.91298 9.32855 5.71026 10.054 5.707C12.26 5.707 14.054 7.501 14.054 9.707C14.051 10.4323 13.8479 11.1427 13.467 11.76L11.96 10.253Z"
+                  fill="#909090"
                 />
               </svg>
             </button>
           </div>
 
-          <p class="text-gray-500 text-sm mb-6 underline text-left">
+          <p class="text-gray-500 text-sm mb-6 underline text-left" @click="$router.push('/forget-password')">
             Forgot your password?
           </p>
 
