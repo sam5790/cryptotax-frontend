@@ -317,7 +317,7 @@
     </div>
 
     <div class="p-4 md:p-10">
-      <div class="rounded-xl shadow-lg md:shadow-2xl p-6 md:p-10 mx-auto max-w-4xl">
+      <div class="rounded-xl shadow-lg md:shadow-2xl p-6 md:p-10 mx-auto max-w-7xl">
         <p class="text-xl md:text-2xl lg:text-3xl font-semibold text-center">
           Need help from an expert? Contact us to learn more
         </p>
