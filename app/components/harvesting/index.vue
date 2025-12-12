@@ -2,7 +2,11 @@
   <div class=" bg-white mx-auto p-4 md:p-7 my-5 md:my-8 w-full rounded-lg">
     <div class="flex flex-col items-center mb-10">
       <h1 class="text-2xl sm:text-3xl font-bold">
-        Tax <span class="relative #4aabab underline-text">Harvesting</span>
+        <div class="flex flex-wrap gap-3">
+        Tax <div class="relative text-[#4aabab]">Harvesting
+          <CurvedLine/>
+        </div>
+        </div>
       </h1>
       <p class="text-gray-500 mt-3 text-center">Check how your portfolio fare today</p>
     </div>
