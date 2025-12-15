@@ -4,7 +4,7 @@
       <div
         class="flex flex-col justify-center items-center shadow-[0_0_10px_0] shadow-[#254BD34D] p-10 rounded-xl relative mt-10 md:mt-4">
         <div class="absolute -top-[60px] left-1/2 -translate-x-1/2">
-          <img :src="'/new-avatar.png'"
+          <img src="/new-avatar.png"
             class="w-28 h-28 rounded-full bg-white shadow-[0_0_10px_0] shadow-[#254BD34D]" />
         </div>
         <h2 class="text-center text-xl font-medium pt-5">Total Exchanges</h2>
