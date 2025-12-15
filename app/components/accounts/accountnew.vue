@@ -53,9 +53,9 @@
     </div>
 
     <div
-      class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 md:mt-3 md:p-16 max-sm:mb-3 mb-4 p-3 xl:max-w-7xl mx-auto">
+      class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 md:mt-3 md:p-16 max-sm:mb-3 mb-4 p-3 xl:max-w-7xl mx-auto ">
       <div v-for="item in total_pnl" :key="item._id"
-        class="bg-white shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg p-5">
+        class="bg-white shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg p-5 ">
         <div class="flex justify-between items-start gap-4">
           <div class="space-y-2">
             <div class="flex items-start gap-2">
@@ -64,6 +64,7 @@
               <div class="text-lg font-medium capitalize px-2">
                 {{ item?.exchange }}
                 <div class="flex justify-start mt-3">
+
                   <Icon name="mdi:swap-horizontal" class="w-6 h-6"></Icon>
 
                   <div class="text-lg font-medium font-[Poppins] ml-2 -mt-1">
@@ -86,12 +87,8 @@
             <div v-if="open === item._id"
               class="absolute right-0 top-full mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
               <ul class="py-2 text-sm text-gray-700">
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                  Edit Now
-                </li>
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" @click="askDelete(item._id)">
-                  Delete Now
-                </li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">Edit Now</li>
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" @click="confirmDelete(item._id)">Delete Now</li>
               </ul>
             </div>
           </div>
@@ -100,8 +97,8 @@
     </div>
 
     <div @click="buttonclick"
-      class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 bg-white border border-teal-500 rounded-xl flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 shadow-md z-10 cursor-pointer opacity-60 hover:opacity-100">
-      <div class="w-10 h-10 sm:w-12 sm:h-12 bg-teal-500 rounded-full flex items-center justify-center ">
+      class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 bg-white border border-teal-500 rounded-xl flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 shadow-md z-10 opacity-80 cursor-pointer">
+      <div class="w-10 h-10 sm:w-12 sm:h-12 bg-teal-500 rounded-full flex items-center justify-center opacity-90">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white"
           class="w-6 h-6 sm:w-8 sm:h-8">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
@@ -111,7 +108,24 @@
         Add a new account
       </p>
     </div>
-    <!-- <ExchangesList v-if="exchange" @close="exchange = false" @select="openDetails" /> -->
+
+    <div v-if="confirm" class="fixed inset-0 bg-black/40 flex items-center justify-center p-4">
+      <div class="bg-white rounded-xl shadow-lg p-6 w-full max-w-xs text-center">
+        <p class="text-lg font-medium mb-6">Confirm delete?</p>
+
+        <div class="flex justify-center gap-3">
+          <button @click="confirm = false" class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-100">
+            Cancel
+          </button>
+
+          <button @click="deleteAccount(idToDelete)"
+            class="px-4 py-2 rounded-md bg-red-600 text-white hover:bg-red-700">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
     <Exchangeslist v-if="exchange" @close="exchange = false" @select="openDetails" />
     <Addaccount v-if="showDetails" :account="selectedAccount" @close="showDetails = false" />
     <div v-if="confirm" class="fixed inset-0 bg-black/40 flex items-center justify-center p-4">
@@ -137,13 +151,15 @@
 <script setup>
 import { mainStore } from "~/store/mainstore";
 import { useAuthStore } from "~/store/auth";
+const toast = useToast();
 
 const toast = useToast();
 const store = mainStore();
-onMounted(async () => {
-  await getAccounts();
-});
-const { total_pnl, totalTransactions, showDetails } = storeToRefs(store);
+
+const { total_pnl, totalTransactions } = storeToRefs(store);
+
+const confirm = ref(false)
+const idToDelete = ref(null)
 
 const router = useRouter();
 const exchange = ref(false);
@@ -164,9 +180,16 @@ const toggleMenu = (id) => {
   open.value = open.value === id ? null : id;
 };
 
+//TODO refactor function name
 const buttonclick = () => {
   exchange.value = true;
 };
+
+const confirmDelete = (id) => {
+  idToDelete.value = id
+  confirm.value = true
+  open.value = null
+}
 
 function openDetails(item) {
   selectedAccount.value = item;
@@ -176,30 +199,27 @@ function openDetails(item) {
 
 const deleteAccount = async (id) => {
   try {
-    const store = mainStore();
-    const BASE_URL = useRuntimeConfig().public.apiBase;
-    const { token } = useAuthStore();
-
+    const store = mainStore()
+    const BASE_URL = useRuntimeConfig().public.apiBase
+    const { token } = useAuthStore()
     const res = await $fetch(`/delete/${id}`, {
       baseURL: BASE_URL,
       method: "DELETE",
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    if (res?.success) {
-      await getAccounts();
-      toast.success({
-        message: "Account deleted successfully",
-        position: "topCenter",
-      });
-    }
-    if (!res?.success) throw new Error();
+      headers: { Authorization: `Bearer ${token}` }
+    })
+
+    if (!res?.success) throw new Error()
+
+    toast.success({ message: "Account deleted", position: 'topCenter' })
+    confirm.value = false;
+
   } catch (e) {
-    console.error(e);
-    toast.error({
-      message: "Something went wrong",
-      position: "topCenter",
-    });
+    console.error(e)
+    toast.error({ message: "Delete failed", position: 'topCenter' })
   }
-  confirm.value = false
-};
+}
+
+onMounted(async () => {
+  await getAccounts();
+});
 </script>

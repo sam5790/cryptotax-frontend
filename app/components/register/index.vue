@@ -234,8 +234,7 @@ const register = async () => {
 
   loading.value = true;
   const payload = {
-    name: firstName.value,
-    last_name: lastName.value,
+    name: firstName.value + " " + lastName.value,
     email: email.value,
     phonenumber: phoneNumber.value,
     password: password.value,
