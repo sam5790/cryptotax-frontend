@@ -1,7 +1,11 @@
 <template>
   <div>
     <h2 class="text-4xl text-center font-semibold p-10">
-      How does it <span class="#4aabab underline-text">work?</span>
+      <div class="flex flex-wrap gap-3 justify-center">
+      How does it <div class="text-[#4aabab]">work?
+        <CurvedLine/>
+      </div>
+      </div>
     </h2>
 
     <div class="relative mt-16 md:p-3">

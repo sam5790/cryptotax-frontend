@@ -2,13 +2,13 @@
   <div>
     <div class="mb-8 md:mb-12">
       <p class="text-center text-base md:text-xl font-medium p-2">PRICING</p>
-      <p class="text-center text-2xl md:text-4xl font-semibold p-2">
+      <div class="text-center text-2xl md:text-4xl font-semibold p-2">
         <div class="flex gap-3 flex-wrap justify-center">
         Begin with <div class="text-[#4aabab]">NO charges
           <curved-line/>
         </div>
         </div>
-      </p>
+      </div>
       <p class="text-center text-base md:text-xl text-gray-500 p-2">Get started today</p>
     </div>
 
