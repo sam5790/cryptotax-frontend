@@ -2,18 +2,13 @@
   <div class="md:p-10">
     <div class="flex flex-col justify-center items-center">
       <div
-        class="flex flex-col justify-center items-center shadow-[0_0_10px_0] shadow-[#254BD34D] p-10 rounded-xl relative mt-10 md:mt-4"
-      >
+        class="flex flex-col justify-center items-center shadow-[0_0_10px_0] shadow-[#254BD34D] p-10 rounded-xl relative mt-10 md:mt-4">
         <div class="absolute -top-[60px] left-1/2 -translate-x-1/2">
-          <img
-            :src="'/new-avatar.png'"
-            class="w-28 h-28 rounded-full bg-white shadow-[0_0_10px_0] shadow-[#254BD34D]"
-          />
+          <img :src="'/new-avatar.png'"
+            class="w-28 h-28 rounded-full bg-white shadow-[0_0_10px_0] shadow-[#254BD34D]" />
         </div>
         <h2 class="text-center text-xl font-medium pt-5">Total Exchanges</h2>
-        <div
-          class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 sm:gap-10 w-full"
-        >
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 sm:gap-10 w-full">
           <div class="text-center sm:p-2">
             <div class="text-4xl font-medium font-[Poppins]">
               {{ totalTransactions?.TransactionSum }}
@@ -21,32 +16,20 @@
 
             <p>Total Transactions</p>
             <div class="flex justify-center mt-2">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 28 28"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M0.541016 7.45807H24.0634M18.8362 0.924072L25.3702 7.45807L18.8362 13.9921M26.677 20.5261H3.15462M8.38182 13.9921L1.84782 20.5261L8.38182 27.0601"
-                  stroke="#4AABAB"
-                  stroke-width="2.6136"
-                />
+                  stroke="#4AABAB" stroke-width="2.6136" />
               </svg>
             </div>
           </div>
           <div class="text-center bg-[#37D35921] rounded-2xl px-6 py-3">
-            <div
-              class="text-3xl font-medium font-[Poppins]"
-              :class="
-                totalTransactions?.PnlSum > 0
-                  ? 'text-[#31B431]'
-                  : totalTransactions?.PnlSum < 0
-                  ? 'text-red-500'
-                  : ''
-              "
-            >
+            <div class="text-3xl font-medium font-[Poppins]" :class="totalTransactions?.PnlSum > 0
+              ? 'text-[#31B431]'
+              : totalTransactions?.PnlSum < 0
+                ? 'text-red-500'
+                : ''
+              ">
               {{ totalTransactions?.PnlSum?.toFixed(2) }}
             </div>
 
@@ -64,22 +47,15 @@
         </div>
       </div>
       <div class="md:min-w-[700px] md:mt-10 flex max-sm:mt-5 mb-4 mt-5">
-        <input
-          type="text"
-          placeholder="Search your account"
-          class="relative w-full rounded-full border border-gray-300 px-12 py-3 shadow-sm"
-        />
+        <input type="text" placeholder="Search your account"
+          class="relative w-full rounded-full border border-gray-300 px-12 py-3 shadow-sm" />
       </div>
     </div>
 
     <div
-      class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 md:mt-3 md:p-16 max-sm:mb-3 mb-4 p-3 xl:max-w-7xl mx-auto"
-    >
-      <div
-        v-for="item in total_pnl"
-        :key="item._id"
-        class="bg-white shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg p-5"
-      >
+      class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 md:mt-3 md:p-16 max-sm:mb-3 mb-4 p-3 xl:max-w-7xl mx-auto">
+      <div v-for="item in total_pnl" :key="item._id"
+        class="bg-white shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg p-5">
         <div class="flex justify-between items-start gap-4">
           <div class="space-y-2">
             <div class="flex items-start gap-2">
@@ -102,25 +78,18 @@
               Data Synced
             </div>
 
-            <div
-              class="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-100"
-              @click="toggleMenu(item._id)"
-            >
+            <div class="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-100"
+              @click="toggleMenu(item._id)">
               <Icon name="mdi:dots-vertical" class="w-6 h-6 text-gray-600" />
             </div>
 
-            <div
-              v-if="open === item._id"
-              class="absolute right-0 top-full mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50"
-            >
+            <div v-if="open === item._id"
+              class="absolute right-0 top-full mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
               <ul class="py-2 text-sm text-gray-700">
                 <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
                   Edit Now
                 </li>
-                <li
-                  class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                  @click="deleteAccount(item._id)"
-                >
+                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer" @click="askDelete(item._id)">
                   Delete Now
                 </li>
               </ul>
@@ -130,26 +99,12 @@
       </div>
     </div>
 
-    <div
-      @click="buttonclick"
-      class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 bg-white border border-teal-500 rounded-xl flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 shadow-md z-10 cursor-pointer opacity-60 hover:opacity-100"
-    >
-      <div
-        class="w-10 h-10 sm:w-12 sm:h-12 bg-teal-500 rounded-full flex items-center justify-center "
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="white"
-          class="w-6 h-6 sm:w-8 sm:h-8"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 4v16m8-8H4"
-          />
+    <div @click="buttonclick"
+      class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 bg-white border border-teal-500 rounded-xl flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 shadow-md z-10 cursor-pointer opacity-60 hover:opacity-100">
+      <div class="w-10 h-10 sm:w-12 sm:h-12 bg-teal-500 rounded-full flex items-center justify-center ">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white"
+          class="w-6 h-6 sm:w-8 sm:h-8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
         </svg>
       </div>
       <p class="text-sm sm:text-base m-0 ml-3 sm:ml-5 ">
@@ -157,24 +112,33 @@
       </p>
     </div>
     <!-- <ExchangesList v-if="exchange" @close="exchange = false" @select="openDetails" /> -->
-    <Exchangeslist
-      v-if="exchange"
-      @close="exchange = false"
-      @select="openDetails"
-    />
-    <Addaccount
-      v-if="showDetails"
-      :account="selectedAccount"
-      @close="showDetails = false"
-    />
+    <Exchangeslist v-if="exchange" @close="exchange = false" @select="openDetails" />
+    <Addaccount v-if="showDetails" :account="selectedAccount" @close="showDetails = false" />
+    <div v-if="confirm" class="fixed inset-0 bg-black/40 flex items-center justify-center p-4">
+      <div class="bg-white rounded-xl shadow-lg p-6 w-full max-w-xs text-center">
+        <p class="text-lg font-medium mb-6">Confirm delete?</p>
+
+        <div class="flex justify-center gap-3">
+          <button @click="confirm = false" class="px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-100">
+            Cancel
+          </button>
+
+          <button @click="deleteAccount(idToDelete)"
+            class="px-4 py-2 rounded-md bg-red-600 text-white hover:bg-red-700">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
   </div>
-  <!-- <Footer /> -->
 </template>
 
 <script setup>
 import { mainStore } from "~/store/mainstore";
 import { useAuthStore } from "~/store/auth";
 
+const toast = useToast();
 const store = mainStore();
 onMounted(async () => {
   await getAccounts();
@@ -187,6 +151,14 @@ const exchange = ref(false);
 const selectedAccount = ref(null);
 
 const open = ref(null);
+const confirm = ref(false)
+const idToDelete = ref(null)
+
+const askDelete = (id) => {
+  idToDelete.value = id
+  confirm.value = true
+  open.value = null
+}
 
 const toggleMenu = (id) => {
   open.value = open.value === id ? null : id;
@@ -215,12 +187,19 @@ const deleteAccount = async (id) => {
     });
     if (res?.success) {
       await getAccounts();
+      toast.success({
+        message: "Account deleted successfully",
+        position: "topCenter",
+      });
     }
     if (!res?.success) throw new Error();
-
-    store.total_pnl = store.total_pnl.filter((i) => i._id !== id);
   } catch (e) {
     console.error(e);
+    toast.error({
+      message: "Something went wrong",
+      position: "topCenter",
+    });
   }
+  confirm.value = false
 };
 </script>
