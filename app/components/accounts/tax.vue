@@ -99,7 +99,7 @@
           >
             <img src="/new-avatar.png" class="w-14 h-14" alt="avatar" />
           </div>
-          <p class="font-medium mt-2 capitalize font-[Poppins]">
+          <p class="text-xs xl:text-lg font-medium mt-2 capitalize font-[Poppins]">
            {{ user }}
           </p>
           <div class="flex mt-2 items-center">
@@ -122,7 +122,7 @@
 
           <button
             @click="router.push('/my-wallet')"
-            class="mt-4 border border-[#4AABAB] text-[#4AABAB] px-4 py-1 rounded-full"
+            class="mt-4 border border-[#4AABAB] text-[#4AABAB] px-4 py-1 rounded-full text-xs xl:text-lg"
           >
             My Wallet
           </button>
