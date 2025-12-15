@@ -45,15 +45,17 @@ export const getPnlDetails = async (payload) => {
     });
     if (data?.success) {
       store.setPnl(data?.data);
-      store.addTransactionsPagination(data.meta);
+      store.addTaxPagination(data.meta);
       return { data: data, error: null };
     } else {
+      store.setPnl([]);
+      store.addTaxPagination({});
       throw new Error("API response unsuccessful");
     }
   } catch (error) {
     console.error("Fetch error:", error);
     store.setPnl([]);
-    store.addTransactionsPagination({});
+    store.addTaxPagination({});
     return { data: null, error };
   } finally {
   }
@@ -99,7 +101,7 @@ export const fileUpload = async (payload) => {
   const auth = useAuthStore();
   const { token } = auth;
   try {
-    const data = await $fetch(`${payload.exchange}`, {
+    const data = await $fetch(`/${payload.exchange}`, {
       baseURL: BASE_URL,
       method: "POST",
       body: payload.formData,
@@ -116,6 +118,37 @@ export const fileUpload = async (payload) => {
       throw new Error("API response unsuccessful");
     }
   } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+  }
+};
+export const getWallet = async (payload) => {
+  const store = mainStore();
+  const BASE_URL = useRuntimeConfig().public.apiBase;
+  const auth = useAuthStore();
+  const { token } = auth;
+  try {
+    const data = await $fetch(`/wallet/details`, {
+      baseURL: BASE_URL,
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      query: payload,
+    });
+    if (data?.success) {
+      store.addWallet(data);
+      return {
+        data: data,
+        error: null,
+      };
+    } else {
+      store.addWallet([]);
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    store.addWallet([]);
     console.error("Fetch error:", error);
     return { data: null, error };
   } finally {

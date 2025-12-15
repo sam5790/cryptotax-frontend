@@ -11,7 +11,7 @@
       What our satisfied clients have to say about us.
     </p>
 
-    <div class="hidden md:flex gap-10 justify-center">
+    <div class="hidden lg:flex gap-10 justify-center">
       <div
         v-for="(t, i) in testimonials"
         :key="i"
@@ -44,7 +44,7 @@
       </div>
     </div>
 
-    <div class="relative md:hidden overflow-hidden">
+    <div class="relative lg:hidden overflow-hidden">
       <div
         class="flex transition-transform duration-300"
         :style="{ transform: `translateX(-${index * 100}%)` }"
@@ -54,7 +54,7 @@
           :key="i"
           class="min-w-full flex justify-center"
         >
-          <div class="border border-[#254BD34D] rounded-lg shadow-[0_0_25px_0] shadow-[#254BD34D] bg-white max-w-sm">
+          <div class="border border-[#254BD34D] rounded-lg md:shadow-[0_0_25px_0] md:shadow-[#254BD34D] bg-white max-w-sm">
             <div class="flex items-center gap-4 p-4">
               <img :src="t.image" class="w-16 h-16 rounded-full" />
               <div class="flex flex-col">

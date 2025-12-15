@@ -184,14 +184,14 @@ const password = ref("");
 const showPassword = ref(false);
 const router = useRouter();
 const loader = ref(false);
+const toast = useToast();
 
 
 const login = async () => {
   const form = document.getElementById("loginForm");
 
-  if (!form.reportValidity()) {
-    return;
-  }
+  if (!form.reportValidity()) return;
+
   loader.value = true;
 
   const payload = {
@@ -199,17 +199,24 @@ const login = async () => {
     password: password.value,
   };
 
-  const { data } = await userLogin(payload);
-  if (data?.success) {
+  try {
+    const { data } = await userLogin(payload);
+
+    if (!data?.success) throw new Error("Login failed");
+
     authData.addUser({
       user: data.data.user.name,
       token: data.data.token,
     });
-
-    loader.value = false;
     router.push("/account");
+    toast.success({ message: "Logged in successfully", position: 'topCenter', timeout:2000 })
+  } catch (err) {
+    console.error(err);
+    toast.error({ message: "Invalid email or password", position: 'topCenter', timeout:2000})
   }
+  loader.value = false;
 };
+
 
 const emailRules = [
   (v) => !!v || "Email is required",
