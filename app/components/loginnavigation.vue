@@ -5,7 +5,7 @@
         <img
           class="h-10 md:h-20 cursor-pointer"
           @click="router.push('/')"
-          src="/logo.png"
+          src="/logo-main.png"
         />
       </div>
 
@@ -124,7 +124,7 @@
             <img
               class="h-14 cursor-pointer"
               @click="router.push('/')"
-              src="/logo.png"
+              src="/logo-main.png"
             />
             <button @click="isOpen = false">
               <svg

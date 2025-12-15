@@ -10,7 +10,7 @@
           </div>
         </div>
       </h2>
-      <p class="text-lg md:my-2 md:mb-16">Cryptotax tax guide</p>
+      <p class="text-lg md:my-2">Cryptotax tax guide</p>
     </div>
   </div>
 
@@ -317,37 +317,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.underline-text {
-  position: relative;
-}
-
-.underline-text::after {
-  content: "";
-  position: absolute;
-  bottom: -15px;
-  left: -25px;
-  width: 160px;
-  height: 40px;
-  background-image: url("underline-new-user.png");
-  background-size: cover;
-}
-
-@media (max-width: 1024px) {
-  .underline-text {
-    position: relative;
-  }
-
-  .underline-text::after {
-    content: "";
-    position: absolute;
-    bottom: -20px;
-    left: -20px;
-    width: 120px;
-    height: 40px;
-    background-image: url("underline-new-user.png");
-    background-size: cover;
-  }
-}
 
 .slide-enter-active,
 .slide-leave-active {

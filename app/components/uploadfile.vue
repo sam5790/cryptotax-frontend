@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div>
     <input
       v-model="name"
       type="text"
@@ -14,7 +14,7 @@
         v-if="fileName.length"
         class="flex items-center justify-center gap-2 mt-2 text-green-600"
       >
-        {{ fileName?.join(",") }}
+        {{ fileName?.join(", ") }}
       </p>
       <div class="w-full max-w-md mx-auto">
         <div
@@ -53,16 +53,6 @@
           <div v-if="isUploading" class="text-gray-700 font-semibold mb-2">
             Uploading... Please wait.
           </div>
-
-          <div
-            v-if="uploadProgress > 0 && uploadProgress < 100"
-            class="w-full h-2 bg-gray-200 rounded mb-2"
-          >
-            <div
-              class="h-2 bg-blue-500"
-              :style="{ width: uploadProgress + '%' }"
-            ></div>
-          </div>
         </div>
       </div>
       <button
@@ -72,6 +62,7 @@
         Create A New Account
       </button>
     </div>
+   
   </div>
 </template>
 

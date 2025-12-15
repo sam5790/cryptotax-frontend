@@ -36,15 +36,20 @@
       </div>
 
       <addapikey :account="account" v-if="type == 'API'" />
-      
-       <!-- <add-api-key :account="account" v-if="type == 'API'"/> -->
+
+      <!-- <add-api-key :account="account" v-if="type == 'API'"/> -->
       <Uploadfile :account="account" v-if="type == 'CSV'" />
+      <div class="flex justify-end">
+        <div class="flex items-center rounded-xl max-w-fit">
+          <img :src="props?.account?.icon" class="w-8 h-8 mr-2" />
+          <div class="font-medium">{{ props?.account?.title }}</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-
 const type = ref("API");
 const props = defineProps({
   account: Object,

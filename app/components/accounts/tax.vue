@@ -153,6 +153,7 @@
 
       <div class="w-full hidden sm:hidden md:block overflow-x-auto">
         <div class="flex justify-between md:px-6 md:py-3 bg-none">
+          <ClientOnly>
           <DownloadExcel
             class="btn btn-primary"
             :data="transactions"
@@ -165,7 +166,7 @@
               <Icon name="mdi:export-variant" class="w-6 h-6 text-[#4AABAB]" />
               Export Report
             </button>
-          </DownloadExcel>
+          </DownloadExcel></ClientOnly>
           <div class="relative inline-block text-left">
             <button
               @click="openChooseAccount = !openChooseAccount"

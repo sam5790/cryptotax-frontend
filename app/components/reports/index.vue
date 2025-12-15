@@ -1,7 +1,7 @@
 <template>
   <div class=" flex flex-col justify-center items-center bg-gray-50 h-auto">
     <h2 class="text-2xl md:text-4xl font-semibold my-5">Transactions</h2>
-    <div class="w-full overflow-x-auto shadow-2xl md:p-8 bg-white rounded-lg p-4">
+    <div class="w-full overflow-x-auto md:p-8 bg-white rounded-lg p-4">
       <table class="w-full min-w-[700px] text-left">
         <thead>
           <tr class="text-sm md:text-base">
@@ -73,7 +73,7 @@
 
     </div>
     <h2 class="text-2xl md:text-4xl font-semibold my-8">Analysis</h2>
-    <div class="w-full overflow-x-auto shadow-2xl md:p-8 bg-white rounded-lg mb-10 p-4">
+    <div class="w-full overflow-x-auto md:p-8 bg-white rounded-lg mb-10 p-4">
       <table class="w-full min-w-[800px] text-left">
         <thead>
           <tr class="text-sm md:text-base">
@@ -115,41 +115,22 @@
 
 <script setup>
 import { mainStore } from '~/store/mainstore';
-import Transactions from '../accounts/transactions.vue';
-// import Index from '../about-us/index.vue';
 import { useAuthStore } from '~/store/auth';
 const auth = useAuthStore()
 const { user } = storeToRefs(auth)
 const router = useRouter()
-
-await getTransactions()
+onMounted(async () => {
+  await getPnlDetails({ page: 1, limit: 50 });
+  await getTransactions({ page: 1, limit: 50 });
+});
 const store = mainStore()
 const { transactions, pnl } = storeToRefs(store)
 
-onMounted(() => {
-  if (!auth.token) {
-    router.push("/login");
-    console.log("user existed or not", user.value)
-  }
-});
 
 const pagination = ref({
   currentPage: 1,
   totalPages: 1
 });
-const loadTransactions = async (page = 1) => {
-  const res = await getTransactions(page);
 
-  if (res?.data) {
-    pagination.value = res.pagination;  
-  }
-};
-await loadTransactions(1);
-
-
-const computedPNL = computed(() => {
-  if (!Array.isArray(pnl.value)) return [];
-  return pnl.value.filter(record => record.pnl !== null);
-});
 
 </script>
