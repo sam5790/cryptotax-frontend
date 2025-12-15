@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50" @click="$emit('close')">
+  <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-5" @click="$emit('close')">
     <div class="bg-white p-6 md:p-10 rounded-2xl shadow-2xl max-h-full overflow-y-auto w-[95%] max-w-7xl relative"
       @click.stop>
       <button @click="$emit('close')" class="absolute top-0 right-0 p-4 rounded-full hover:bg-gray-200 transition">
@@ -127,7 +127,7 @@ const list = ref([
     type: "Chain",
   },
   {
-    icon: "/icons/solana.png",
+    icon: "/icons/xrp.png",
     title: "Ripple",
     type: "Chain",
   },

@@ -1,8 +1,8 @@
 <template>
 
-  <div class="fixed inset-0 bg-black/50 grid place-items-center z-50" @click="$emit('close')">
+  <div class="fixed inset-0 bg-black/50 grid place-items-center z-50 p-5" @click="$emit('close')">
 
-    <div class="bg-white md:p-10 rounded-2xl shadow-xl max-h-full overflow-y-auto p-5" @click.stop>
+    <div class="bg-white md:p-10 rounded-2xl shadow-xl max-h-full overflow-y-auto p-8" @click.stop>
 
       <h1 class="text-xl md:text-2xl font-medium text-center mb-6">
         {{ title }}
@@ -23,14 +23,13 @@
       <addapikey :account="account" v-if="type == 'API'" />
       
        <!-- <add-api-key :account="account" v-if="type == 'API'"/> -->
-      <uploadfile :account="account" v-if="type == 'CSV'" />
+      <Uploadfile :account="account" v-if="type == 'CSV'" />
     </div>
   </div>
 </template>
 
 <script setup>
 // import Addapikey from './addApiKey.vue';
-
 
 const type = ref("API")
 
