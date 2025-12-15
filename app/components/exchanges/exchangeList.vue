@@ -111,7 +111,7 @@
         
       
         <div class="flex gap-4">
-          <img src="/Bitfyer.png" class="w-12 h-12" />
+          <img src="/bitfyer.png" class="w-12 h-12" />
 
           <div>
             <h3 class="text-md md:text-xl font-semibold">Bitflyer</h3>

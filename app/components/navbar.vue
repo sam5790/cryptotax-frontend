@@ -96,9 +96,9 @@
             <div class="relative" v-if="auth.token">
               <div class="flex flex-col items-center justify-center">
                 <img
-                  :src="'/avatar.png'"
+                  src="/avatar.png"
                   class="w-16 h-16 rounded-full ring-2 ring-[#4AABAB] shadow-md"
-                  key="avatar"
+                  
                 />
                 <div
                   class="capitalize my-1 text-lg font-semibold font-[Poppins]"

@@ -2,8 +2,8 @@
   <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-5" @click="$emit('close')">
     <div class="bg-white p-6 md:p-10 rounded-2xl shadow-2xl max-h-full overflow-y-auto w-[95%] max-w-7xl relative"
       @click.stop>
-      <button @click="$emit('close')" class="absolute top-0 right-0 p-2 rounded-full hover:bg-gray-200 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" viewBox="0 0 24 24" fill="none"
+      <button @click="$emit('close')" class="absolute top-0 right-0 p-4 rounded-full hover:bg-gray-200 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 md:w-8 md:h-8 text-white bg-[#4aabab] rounded-full" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18" />
           <line x1="6" y1="6" x2="18" y2="18" />
@@ -15,11 +15,11 @@
       </h2>
       <div class="flex justify-center mt-6 md:mt-10">
         <div class="bg-white rounded-full p-1 flex gap-1 border">
-          <button @click="tab = 'auto'" :class="tab === 'auto' && 'bg-[#4aabab]'"
+          <button @click="tab = 'auto'" :class="tab === 'auto' && 'bg-[#4aabab] text-white'"
             class="px-4 py-1 text-sm font-medium rounded-full">
             Automatic Sync
           </button>
-          <button @click="tab = 'custom'" :class="tab === 'custom' && 'bg-[#4aabab]'"
+          <button @click="tab = 'custom'" :class="tab === 'custom' && 'bg-[#4aabab] text-white'"
             class="px-4 py-1 text-sm font-medium rounded-full">
             Custom
           </button>
@@ -42,14 +42,19 @@
 
       <div class="border rounded-2xl mt-6 p-5 w-full">
         <div class="flex flex-col lg:flex-row gap-6">
-          <div class="w-full lg:w-auto lg:mr-4">
-            <ul>
-              <li class="text-md font-medium py-1">All</li>
-              <li class="text-md font-medium py-1">Chains</li>
-              <li class="text-md font-medium py-1">Exchanges</li>
-              <li class="text-md font-medium py-1">Custodians</li>
-              <li class="text-md font-medium py-1">Wallets</li>
-            </ul>
+          <div class="flex flex-col">
+            <button
+      v-for="item in buttonFilters"
+      :key="item"
+      @click="selected = item"
+      class="w-full flex justify-start"
+      :class="[
+        'text-md font-medium py-1 px-3 rounded-full',
+        selected === item ? 'bg-[#4aabab] text-white' : 'bg-transparent text-black'
+      ]"
+    >
+      {{ item }}
+    </button>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 w-full">
             <div class="border flex items-center p-4 cursor-pointer" v-for="item in filteredList" :key="item.title"
@@ -148,6 +153,9 @@ const list = ref([
   },
 ]);
 
+const selected = ref('All')
+const buttonFilters = ['All', 'Chains', 'Exchanges', 'Custodians', 'Wallets']
+
 const emit = defineEmits(["close", "select"]);
 
 function openIntegration(item) {
@@ -164,4 +172,5 @@ const filteredList = computed(() => {
   }
   return list.value;
 });
+
 </script>

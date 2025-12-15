@@ -18,7 +18,7 @@
     <div class="flex flex-col md:flex-row items-center justify-center">
       <div class="md:w-[550px] p-3">
         <div
-          class="border bg-white p-2 rounded-xl shadow-[0_0_25px_0] shadow-[#254BD34D] border-[#254BD34D] flex items-start md:h-50"
+          class="border bg-white p-2 rounded-xl shadow-[0_0_25px_0] shadow-[#254BD34D] border-[#254BD34D] md:flex items-start md:h-50"
         >
           <img src="/blog006.png" class="md:h-full" />
           <div class="px-3 py-1">
@@ -36,7 +36,7 @@
 
       <div class="md:w-[550px] p-3">
         <div
-          class="border bg-white p-2 rounded-xl shadow-[0_0_25px_0] shadow-[#254BD34D] border-[#254BD34D] flex items-start md:h-50"
+          class="border bg-white p-2 rounded-xl shadow-[0_0_25px_0] shadow-[#254BD34D] border-[#254BD34D] md:flex items-start md:h-50"
         >
           <img src="/blog002.png" class="md:h-full" />
           <div class="px-3 py-1">
@@ -55,7 +55,7 @@
     <div class="flex flex-col md:flex-row items-center justify-center">
       <div class="md:w-[550px] p-3">
         <div
-          class="border bg-white p-2 rounded-xl shadow-[0_0_25px_0] shadow-[#254BD34D] border-[#254BD34D] flex items-start md:h-50"
+          class="border bg-white p-2 rounded-xl shadow-[0_0_25px_0] shadow-[#254BD34D] border-[#254BD34D] md:flex items-start md:h-50"
         >
           <img src="/blog003.png" class="md:h-full" />
           <div class="px-3 py-1">
@@ -73,7 +73,7 @@
 
       <div class="md:w-[550px] p-3">
         <div
-          class="border bg-white p-2 rounded-xl shadow-[0_0_25px_0] shadow-[#254BD34D] border-[#254BD34D] flex items-start md:h-50"
+          class="border bg-white p-2 rounded-xl shadow-[0_0_25px_0] shadow-[#254BD34D] border-[#254BD34D] md:flex items-start md:h-50"
         >
           <img src="/blog004.png" class="h-full" />
           <div class="px-3 py-1">
@@ -92,7 +92,7 @@
     <div class="flex flex-col md:flex-row items-center justify-center">
       <div class="md:w-[550px] p-3">
         <div
-          class="border bg-white p-2 rounded-xl shadow-[0_0_25px_0] shadow-[#254BD34D] border-[#254BD34D] flex items-start md:h-50"
+          class="border bg-white p-2 rounded-xl shadow-[0_0_25px_0] shadow-[#254BD34D] border-[#254BD34D] md:flex items-start md:h-50"
         >
           <img src="/blog005.png" class="md:h-full" />
           <div class="px-3 py-1">
@@ -110,7 +110,7 @@
 
       <div class="md:w-[550px] p-3">
         <div
-          class="border bg-white p-2 rounded-xl shadow-[0_0_25px_0] shadow-[#254BD34D] border-[#254BD34D] flex items-start md:h-50"
+          class="border bg-white p-2 rounded-xl shadow-[0_0_25px_0] shadow-[#254BD34D] border-[#254BD34D] md:flex items-start md:h-50"
         >
           <img src="/blog006.png" class="h-full" />
           <div class="px-3 py-1">
