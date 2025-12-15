@@ -153,13 +153,9 @@ import { mainStore } from "~/store/mainstore";
 import { useAuthStore } from "~/store/auth";
 const toast = useToast();
 
-const toast = useToast();
 const store = mainStore();
 
-const { total_pnl, totalTransactions } = storeToRefs(store);
-
-const confirm = ref(false)
-const idToDelete = ref(null)
+const { total_pnl, totalTransactions,showDetails } = storeToRefs(store);
 
 const router = useRouter();
 const exchange = ref(false);
@@ -217,6 +213,7 @@ const deleteAccount = async (id) => {
     console.error(e)
     toast.error({ message: "Delete failed", position: 'topCenter' })
   }
+  await getAccounts();
 }
 
 onMounted(async () => {

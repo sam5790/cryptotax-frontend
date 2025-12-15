@@ -23,7 +23,7 @@
       <addapikey :account="account" v-if="type == 'API'" />
       
        <!-- <add-api-key :account="account" v-if="type == 'API'"/> -->
-      <uploadfile :account="account" v-if="type == 'CSV'" />
+      <Uploadfile :account="account" v-if="type == 'CSV'" />
     </div>
   </div>
 </template>
