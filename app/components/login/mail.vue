@@ -118,20 +118,22 @@
             </button>
           </div>
 
-          <p
-            class="text-gray-500 text-sm mb-6 underline text-left"
-            @click="$router.push('/forget-password')"
-          >
+          <p class="text-gray-500 text-sm mb-6 underline text-left cursor-pointer" @click="$router.push('/forget-password')">
             Forgot your password?
           </p>
 
           <div class="flex justify-center mt-6">
-            <button
-              type="button"
-              class="bg-[#4AABAB] rounded-full text-white py-2 px-6 w-32"
-              @click="login"
-            >
+            <button v-if="!loader" class="bg-[#4AABAB] rounded-full text-white py-2 px-8 font-medium" @click="login">
               Log In
+            </button>
+
+            <button v-else type="button"
+              class="bg-[#4AABAB] hover:bg-teal-600 text-white font-medium py-2 px-8 rounded-full flex items-center gap-2 disabled:opacity-60"
+              disabled>
+              <span
+                class="inline-block h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+
+              Logging in...
             </button>
           </div>
         </form>
@@ -181,6 +183,8 @@ const email = ref("");
 const password = ref("");
 const showPassword = ref(false);
 const router = useRouter();
+const loader = ref(false);
+
 
 const login = async () => {
   const form = document.getElementById("loginForm");
@@ -188,6 +192,7 @@ const login = async () => {
   if (!form.reportValidity()) {
     return;
   }
+  loader.value = true;
 
   const payload = {
     email: email.value,
@@ -201,6 +206,7 @@ const login = async () => {
       token: data.data.token,
     });
 
+    loader.value = false;
     router.push("/account");
   }
 };

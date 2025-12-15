@@ -35,8 +35,9 @@
         </button>
       </div>
 
-      <Addaccount :account="account" v-if="type == 'API'" />
-
+      <addapikey :account="account" v-if="type == 'API'" />
+      
+       <!-- <add-api-key :account="account" v-if="type == 'API'"/> -->
       <Uploadfile :account="account" v-if="type == 'CSV'" />
     </div>
   </div>
