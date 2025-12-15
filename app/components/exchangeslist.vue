@@ -2,7 +2,7 @@
   <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-5" @click="$emit('close')">
     <div class="bg-white p-6 md:p-10 rounded-2xl shadow-2xl max-h-full overflow-y-auto w-[95%] max-w-7xl relative"
       @click.stop>
-      <button @click="$emit('close')" class="absolute top-0 right-0 p-2 rounded-full hover:bg-gray-200 transition">
+      <button @click="$emit('close')" class="absolute top-2 right-2 p-2 rounded-full hover:bg-gray-200 transition">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18" />

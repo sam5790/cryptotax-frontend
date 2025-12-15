@@ -20,13 +20,13 @@
       </p>
       <form id="registerForm">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-16">
-            <input
-              type="text"
-              v-model="firstName"
-              class="rounded-md w-full ps-4 pe-3 py-2.5 border border-[#adadad]"
-              placeholder="First Name"
-              required
-            />
+          <input
+            type="text"
+            v-model="firstName"
+            class="rounded-md w-full ps-4 pe-3 py-2.5 border border-[#adadad]"
+            placeholder="First Name"
+            required
+          />
           <input
             type="text"
             v-model="lastName"
@@ -157,7 +157,7 @@
 
         <div class="flex mt-4 text-xs">
           <input
-              v-model="termsAndPrivacy"
+            v-model="termsAndPrivacy"
             type="checkbox"
             class="w-4 h-4 border rounded-xs mt-1 accent-[#4AABAB]"
             required
@@ -168,23 +168,23 @@
           </p>
         </div>
 
-      <div class="flex justify-center mt-10">
-        <button
-          v-if="!loading"
-          class="bg-[#4AABAB] rounded-full text-white py-2 px-8"
-          @click="register"
-        >
-          Sign Up
-        </button>
-        <button
-          v-else
-          type="button"
-          class="bg-[#4AABAB] hover:bg-teal-600 text-white font-medium py-2 px-8 rounded-full flex items-center gap-2 disabled:opacity-60"
-          disabled
-        >
-          <span
-            class="inline-block h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"
-          ></span>
+        <div class="flex justify-center mt-10">
+          <button
+            v-if="!loading"
+            class="bg-[#4AABAB] rounded-full text-white py-2 px-8"
+            @click="register"
+          >
+            Sign Up
+          </button>
+          <button
+            v-else
+            type="button"
+            class="bg-[#4AABAB] hover:bg-teal-600 text-white font-medium py-2 px-8 rounded-full flex items-center gap-2 disabled:opacity-60"
+            disabled
+          >
+            <span
+              class="inline-block h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"
+            ></span>
 
             Signing up...
           </button>

@@ -1,7 +1,7 @@
 import { mainStore } from "~/store/mainstore";
 import { useAuthStore } from "~/store/auth";
 
-export const getAccounts= async () => {
+export const getAccounts = async () => {
   const store = mainStore();
   const BASE_URL = useRuntimeConfig().public.apiBase;
   const auth = useAuthStore();
@@ -44,7 +44,7 @@ export const getPnlDetails = async (payload) => {
       query: payload,
     });
     if (data?.success) {
-      store.setPnl(data?.data)
+      store.setPnl(data?.data);
       store.addTransactionsPagination(data.meta);
       return { data: data, error: null };
     } else {
@@ -52,8 +52,8 @@ export const getPnlDetails = async (payload) => {
     }
   } catch (error) {
     console.error("Fetch error:", error);
-    store.setPnl([])
-      store.addTransactionsPagination({});
+    store.setPnl([]);
+    store.addTransactionsPagination({});
     return { data: null, error };
   } finally {
   }
@@ -83,6 +83,33 @@ export const getTransactions = async (payload) => {
       return {
         data: transactions,
         pagination: { currentPage, totalPages, totalCount, pageSize },
+        error: null,
+      };
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+  }
+};
+export const fileUpload = async (payload) => {
+  const BASE_URL = useRuntimeConfig().public.apiBase;
+  const auth = useAuthStore();
+  const { token } = auth;
+  try {
+    const data = await $fetch(`${payload.exchange}`, {
+      baseURL: BASE_URL,
+      method: "POST",
+      body: payload.formData,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (data?.success) {
+      return {
+        data: data,
         error: null,
       };
     } else {

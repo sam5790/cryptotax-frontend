@@ -135,7 +135,7 @@
       class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 bg-white border border-teal-500 rounded-xl flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 shadow-md z-10 cursor-pointer opacity-60 hover:opacity-100"
     >
       <div
-        class="w-10 h-10 sm:w-12 sm:h-12 bg-teal-500 rounded-full flex items-center justify-center "
+        class="w-10 h-10 sm:w-12 sm:h-12 bg-teal-500 rounded-full flex items-center justify-center"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -152,11 +152,8 @@
           />
         </svg>
       </div>
-      <p class="text-sm sm:text-base m-0 ml-3 sm:ml-5 ">
-        Add a new account
-      </p>
+      <p class="text-sm sm:text-base m-0 ml-3 sm:ml-5">Add a new account</p>
     </div>
-    <!-- <ExchangesList v-if="exchange" @close="exchange = false" @select="openDetails" /> -->
     <Exchangeslist
       v-if="exchange"
       @close="exchange = false"
@@ -217,8 +214,6 @@ const deleteAccount = async (id) => {
       await getAccounts();
     }
     if (!res?.success) throw new Error();
-
-    store.total_pnl = store.total_pnl.filter((i) => i._id !== id);
   } catch (e) {
     console.error(e);
   }
