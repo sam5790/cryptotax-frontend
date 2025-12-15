@@ -244,6 +244,7 @@ const register = async () => {
   if (data?.success) {
     router.push("/login");
     loading.value = false;
+    toast.success({ message: "Account created successfully", position: 'topCenter', timeout:2000 })
   } else {
     toast.error({
       message: error?.data?.error,
