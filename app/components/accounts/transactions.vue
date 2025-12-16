@@ -1,5 +1,5 @@
 <template>
-  <div class="p-10">
+  <div class="p-4 md:p-16 bg-gray-50">
     <div
       class="flex flex-col sm:flex-row justify-center items-center gap-6 p-5 flex-wrap"
     >
@@ -197,10 +197,15 @@
                 day="2-digit"
             /></span>
           </div>
-          <div class="flex items-center mb-2 gap-2">
+           <div class="flex justify-between items-center my-2">
+           <div class="flex items-center gap-2">
             <img :src="`/icons/${item.exchange}.png`" class="w-6 h-6" />
             <span class="font-medium">{{ item.exchange }}</span>
           </div>
+          <div class="capitalize rounded-xl px-3 font-medium text-sm text-white" :class="item.type === 'sell'?'bg-red-500':'bg-green-500'">
+            {{ item.type }}
+          </div>
+         </div>
           <div class="flex justify-between mb-1">
             <span class="font-medium">Coin:</span>
             <span>{{ item.coin }}</span>

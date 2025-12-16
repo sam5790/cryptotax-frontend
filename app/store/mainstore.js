@@ -10,7 +10,9 @@ export const mainStore = defineStore(
     const total = ref(0);
     const totalTransactions = ref({})
     const transactionsPagination = ref({});
+    const taxPagination = ref({});
     const showDetails = ref(false)
+    const wallet = ref([])
     function setTransactions(value) {
       transactions.value = value;
     }
@@ -33,11 +35,17 @@ export const mainStore = defineStore(
     function addTransactionsPagination(value) {
       transactionsPagination.value = value;
     }
+    function addTaxPagination(value) {
+      taxPagination.value = value;
+    }
     function addTotalTransactions(value) {
       totalTransactions.value = value;
     }
     function updateShowDetails(value) {
       showDetails.value = value;
+    }
+    function addWallet(value) {
+      wallet.value = value;
     }
     return {
       transactions,
@@ -48,6 +56,8 @@ export const mainStore = defineStore(
       transactionsPagination,
       totalTransactions,
       showDetails,
+      taxPagination,
+      wallet,
       setTransactions,
       setCoinBalance,
       setPnl,
@@ -55,7 +65,9 @@ export const mainStore = defineStore(
       addTotal,
       addTransactionsPagination,
       addTotalTransactions,
-      updateShowDetails
+      updateShowDetails,
+      addTaxPagination,
+      addWallet
     };
   },
   {

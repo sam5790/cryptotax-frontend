@@ -1,24 +1,26 @@
 <template>
-    <div class="flex items-center justify-center px-4 py-10 md:p-20">
-      <div
-        class="shadow-[0_0_25px_0] shadow-[#254BD34D] rounded-3xl p-6 md:p-16 w-full max-w-xl"
+  <div class="flex items-center justify-center px-4 py-10 md:p-20">
+    <div
+      class="shadow-[0_0_25px_0] shadow-[#254BD34D] rounded-3xl p-6 md:p-16 w-full max-w-xl"
+    >
+      <h2
+        class="text-[38px] md:text-4xl font-bold text-center justify-center flex mb-5"
       >
-       <h2 class="text-[38px] md:text-4xl font-bold text-center justify-center flex mb-5">
         <div class="flex gap-3 flex-wrap">
-            <div class="text-[#4aabab]">
-              Welcome
-              <CurvedLine />
-            </div>
-            Back
+          <div class="text-[#4aabab]">
+            Welcome
+            <CurvedLine />
           </div>
+          Back
+        </div>
       </h2>
 
-        <div>
-          <p class="text-center mb-10 text-gray-700 text-sm md:text-[22px]">
-            Please enter your email & password
-          </p>
+      <div>
+        <p class="text-center mb-10 text-gray-700 text-sm md:text-[22px]">
+          Please enter your email & password
+        </p>
 
-          <form id="loginForm">
+        <form id="loginForm">
           <div class="my-4 relative">
             <div
               class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
@@ -73,7 +75,7 @@
               required
             />
 
-         <button
+            <button
               type="button"
               @click="showPassword = !showPassword"
               class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500"
@@ -134,41 +136,41 @@
               Logging in...
             </button>
           </div>
-</form>
-        </div>
-
-        <div class="flex items-center justify-center gap-2 my-5">
-          <span class="line-with-dots"></span>
-          <p class="whitespace-nowrap">or continue with</p>
-          <span class="line-with-dots"></span>
-        </div>
-
-        <div class="flex justify-center items-center my-3">
-          <button class="rounded-md border p-2 flex" @click="loginWithGoogle">
-            <img src="/google.svg" class="h-6 mr-2" />
-            <span>Sign In With Google</span>
-          </button>
-        </div>
-
-        <div class="flex justify-center my-3">
-          <button
-            class="rounded-md border p-2 flex"
-            @click="$router.push('/login')"
-          >
-            <img src="/phone.svg" class="h-6 mr-2" />
-
-            <span>Sign In With Mobile</span>
-          </button>
-        </div>
-
-        <p class="text-center mt-6 text-[16px] text-gray-500">
-          Don’t have an account?
-          <button @click="router.push('/register')">
-            <u class="font-semibold">Sign Up</u>
-          </button>
-        </p>
+        </form>
       </div>
+
+      <div class="flex items-center justify-center gap-2 my-5">
+        <span class="line-with-dots"></span>
+        <p class="whitespace-nowrap">or continue with</p>
+        <span class="line-with-dots"></span>
+      </div>
+
+      <div class="flex justify-center items-center my-3">
+        <button class="rounded-md border p-2 flex" @click="loginWithGoogle">
+          <img src="/google.svg" class="h-6 mr-2" />
+          <span>Sign In With Google</span>
+        </button>
+      </div>
+
+      <div class="flex justify-center my-3">
+        <button
+          class="rounded-md border p-2 flex"
+          @click="$router.push('/login')"
+        >
+          <img src="/phone.svg" class="h-6 mr-2" />
+
+          <span>Sign In With Mobile</span>
+        </button>
+      </div>
+
+      <p class="text-center mt-6 text-[16px] text-gray-500">
+        Don’t have an account?
+        <button @click="router.push('/register')">
+          <u class="font-semibold">Sign Up</u>
+        </button>
+      </p>
     </div>
+  </div>
 </template>
 
 <script setup>

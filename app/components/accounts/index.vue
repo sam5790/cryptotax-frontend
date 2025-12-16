@@ -31,7 +31,7 @@
     <div class="mt-10 w-full">
       <AccountsTax v-if="tab === 'tax'" />
       <AccountsTransactions v-if="tab === 'transactions'" />
-      <AccountsAccountnew v-if="tab === 'accounts'" />
+      <AccountsNew v-if="tab === 'accounts'" />
     </div>
   </div>
 </template>
