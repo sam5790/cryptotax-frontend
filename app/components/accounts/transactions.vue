@@ -292,9 +292,7 @@ onMounted(async () => {
 });
 const { transactions, pnl, total_pnl, transactionsPagination } =
   storeToRefs(store);
-
-
-
+  
 const excelFields = ref({
   Exchange: "exchange",
   Coin: "coin",
