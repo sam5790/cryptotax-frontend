@@ -154,3 +154,30 @@ export const getWallet = async (payload) => {
   } finally {
   }
 };
+export const getTransactionsForExport = async (payload) => {
+
+  const BASE_URL = useRuntimeConfig().public.apiBase;
+  const auth = useAuthStore();
+  const { token } = auth;
+  try {
+    const data = await $fetch(`/transactions`, {
+      baseURL: BASE_URL,
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      query: payload,
+    });
+    if (data?.success) {
+      const transactions = data.data;
+       return transactions;
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+  }
+};

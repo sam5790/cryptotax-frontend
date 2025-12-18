@@ -161,9 +161,9 @@
             <ClientOnly>
               <DownloadExcel
                 class="btn btn-primary"
-                :data="transactions"
+                :data="allTransactions"
                 :fields="excelFields"
-                name="exported_data.xls"
+                name="transaction.xls"
               >
                 <button
                   class="flex justify-center gap-2 shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-3 py-2 border border-gray-50 font-semibold"
@@ -325,7 +325,7 @@
                 class="btn btn-primary"
                 :data="pnl"
                 :fields="excelFields"
-                name="exported_data.xls"
+                name="pnl.xls"
               >
                 <button
                   class="flex justify-center gap-2 shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-3 py-2 border border-gray-50 font-semibold"
@@ -481,13 +481,18 @@
 <script setup>
 import { mainStore } from "~/store/mainstore";
 import { useAuthStore } from "~/store/auth";
+const allTransactions=ref([])
 onMounted(async () => {
   await getPnlDetails({ page: 1, limit: 50 });
+  const res = await getTransactionsForExport({
+  });
+  allTransactions.value = res;
 });
 const auth = useAuthStore();
 const store = mainStore();
 const { transactions, pnl, total_pnl, taxPagination } = storeToRefs(store);
 const { user } = storeToRefs(auth);
+
 const changePage = async (page) => {
   if (selectedAccount.value) {
     await getPnlDetails({

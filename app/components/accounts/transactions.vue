@@ -79,9 +79,9 @@
 
         <DownloadExcel
           class="btn btn-primary"
-          :data="transactions"
+          :data="allTransactions"
           :fields="excelFields"
-          name="exported_data.xls"
+          name="transaction.xls"
         >
           <button
             class="flex justify-center gap-2 rounded-full px-3 py-2 border bg-[#4AABAB] text-white font-semibold"
@@ -284,11 +284,15 @@
 const { $exportExcel } = useNuxtApp();
 import { mainStore } from "~/store/mainstore";
 const store = mainStore();
+const allTransactions=ref([])
 onMounted(async () => {
   await getTransactions({ page: 1, limit: 50 });
+  const res = await getTransactionsForExport({});
+  allTransactions.value = res;
 });
 const { transactions, pnl, total_pnl, transactionsPagination } =
   storeToRefs(store);
+  
 const excelFields = ref({
   Exchange: "exchange",
   Coin: "coin",
@@ -297,7 +301,9 @@ const excelFields = ref({
   Amount: "total",
   Type: "type",
 });
+
 const changePage = async (page) => {
   await getTransactions({ page: page, limit: 50 });
 };
+
 </script>

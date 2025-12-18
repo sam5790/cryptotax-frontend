@@ -50,7 +50,7 @@
           </button>
           <button
             class="whitespace-nowrap cursor-pointer"
-            @click="router.push('/Price')"
+            @click="router.push('/price')"
           >
             Pricing
           </button>
