@@ -62,7 +62,6 @@
         Create A New Account
       </button>
     </div>
-   
   </div>
 </template>
 
@@ -101,7 +100,14 @@ const uploadFile = async () => {
   Array.from(files.value).forEach((file) =>
     formData.append("excelFiles", file)
   );
-  const exchange = props.account.title === "Coin DCX" ? "coindcx" : "wasirx";
+  const exchange =
+    props.account.title === "Coin DCX"
+      ? "coindcx"
+      : props.account.title === "Murdex"
+      ? "mudrex"
+      : props.account.title === "Coinswitch"
+      ? "coinswitch"
+      : "wasirx";
   const { data, error } = await fileUpload({ formData, exchange });
   if (data?.success) {
     await getAccounts();

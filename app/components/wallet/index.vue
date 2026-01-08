@@ -81,7 +81,7 @@
           </div>
         </div>
       </div>
-      <div class="flex justify-center gap-3 mt-6" v-if="wallet?.data?.length">
+      <div class="flex justify-center gap-3 my-6" v-if="wallet?.data?.length">
         <button
           @click="changePage(wallet?.meta?.currentPage - 1)"
           :disabled="wallet?.meta?.currentPage === 1"

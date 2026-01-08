@@ -2,7 +2,7 @@
   <div class="md:p-10">
     <div class="flex flex-col justify-center items-center">
       <div
-        class="flex flex-col justify-center items-center shadow-[0_0_10px_0] shadow-[#254BD34D] p-10 rounded-xl relative mt-10 md:mt-4"
+        class="flex relative flex-col justify-center items-center shadow-[0_0_10px_0] shadow-[#254BD34D] sm:p-10 px-5 py-10 rounded-xl relative mt-10 md:mt-4 mx-2 md:mx-0"
       >
         <div class="absolute -top-[60px] left-1/2 -translate-x-1/2">
           <img
@@ -10,20 +10,17 @@
             class="w-28 h-28 rounded-full bg-white shadow-[0_0_10px_0] shadow-[#254BD34D]"
           />
         </div>
-        <h2 class="text-center text-xl font-medium pt-5">Total Exchanges</h2>
-        <div
-          class="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-6 sm:gap-10 w-full"
-        >
+        <h2 class="text-center text-xl font-medium pt-5 pb-2">Total Exchanges</h2>
+        <div class="flex items-center justify-center gap-4 sm:gap-10 w-full">
           <div class="text-center sm:p-2">
-            <div class="text-4xl font-medium font-[Poppins]">
+            <div class="sm:text-4xl text-lg font-medium font-[Poppins]">
               {{ totalTransactions?.TransactionSum }}
             </div>
 
-            <p>Total Transactions</p>
+            <p class="text-xs sm:text-base">Total Transactions</p>
             <div class="flex justify-center mt-2">
               <svg
-                width="24"
-                height="24"
+                class="sm:w-6 sm:h-6 w-4 h-4"
                 viewBox="0 0 28 28"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -36,9 +33,9 @@
               </svg>
             </div>
           </div>
-          <div class="text-center bg-[#37D35921] rounded-2xl px-6 py-3">
+          <div class="text-center bg-[#37D35921] rounded-2xl sm:px-6 px-2 py-3">
             <div
-              class="text-3xl font-medium font-[Poppins]"
+              class="sm:text-3xl text-lg font-medium font-[Poppins]"
               :class="
                 totalTransactions?.PnlSum > 0
                   ? 'text-[#31B431]'
@@ -50,20 +47,23 @@
               {{ totalTransactions?.PnlSum?.toFixed(2) }}
             </div>
 
-            <p>Total Account Income</p>
+            <p class="text-xs sm:text-base">Total Account Income</p>
           </div>
           <div class="text-center sm:p-2">
-            <div class="text-4xl font-medium font-[Poppins]">
+            <div class="sm:text-4xl text-lg font-medium font-[Poppins]">
               {{ totalTransactions?.FileCount }}
             </div>
-            <p>Total Imported Files</p>
+            <p class="text-xs sm:text-[16px]">Total Imported Files</p>
             <div class="flex justify-center mt-2">
-              <Icon name="mdi:files" class="w-6 h-6 text-[#4AABAB]" />
+              <Icon
+                name="mdi:files"
+                class="sm:w-6 w-4 sm:h-6 h-4 text-[#4AABAB]"
+              />
             </div>
           </div>
         </div>
       </div>
-      <div class="md:min-w-[700px] md:mt-10 flex max-sm:mt-5 mb-4 mt-5">
+      <div class="md:min-w-[900px] min-w-[95%] mt-10">
         <input
           type="text"
           placeholder="Search your account"

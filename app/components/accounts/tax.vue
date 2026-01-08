@@ -245,8 +245,8 @@
                   <img :src="`/icons/${item.exchange}.png`" class="w-8 h-8" />
                   {{ item.exchange }}
                 </td>
-                <td class="py-4 px-4">{{ item.coin }}</td>
-                <td class="py-4 px-4 font-[Poppins]">
+                <td class="py-4 px-4 ">{{ item.coin }}</td>
+                <td class="py-4 px-4 font-[Poppins] whitespace-nowrap">
                   <NuxtTime
                     :datetime="item.buyDate"
                     month="short"
@@ -264,7 +264,7 @@
                   </p>
                 </td>
                 <td class="py-4 px-4 font-[Poppins]">{{ item.quantity }}</td>
-                <td class="py-4 px-4 capitalize font-[Poppins]">
+                <td class="py-4 px-4 capitalize font-[Poppins]  whitespace-nowrap">
                   <NuxtTime
                     :datetime="item.sellDate"
                     month="short"

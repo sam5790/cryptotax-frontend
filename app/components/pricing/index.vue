@@ -26,16 +26,16 @@
 
     <div class="p-4 md:p-10">
       <div class="hidden lg:grid grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
-        <div class="rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col">
+        <div class="rounded-2xl p-6 md:p-8 lg:p-10 flex flex-col  shadow-[0_0_10px_0] shadow-[#254BD34D]">
           <h2 class="text-lg md:text-xl font-semibold">Basic Plan</h2>
           <p class="text-gray-500 text-sm md:text-base mb-4">For individuals</p>
 
-          <div class="flex items-baseline">
-            <p class="text-2xl md:text-3xl font-semibold">FREE</p>
-            <p class="text-xs md:text-sm mb-6 mt-3 font-semibold ml-2">/100 Txs</p>
-          </div>
+         <div class="flex items-end gap-1 font-[poppins]">
+              <p class="text-2xl md:text-4xl font-bold">FREE</p>
+              <p class="text-xs md:text-base font-semibold mb-1">/ 100 Txs</p>
+            </div>
 
-          <ul class="space-y-3 mb-6 flex-grow">
+          <ul class="space-y-3 my-6 flex-grow">
             <li class="flex items-center gap-3 text-sm md:text-base">
               <img src="/about/filled-icons-check-circle-8.svg" class="w-4 md:w-5" alt="check"> All analytics features
             </li>
@@ -56,23 +56,23 @@
           </button>
         </div>
 
-        <div class="relative  md:-translate-y-4 lg:-translate-y-8">
+        <div class="relative  md:-translate-y-8 lg:-translate-y-12">
           <div
             class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
             Recommended
           </div>
 
           <div
-            class="border border-[#4AABAB] rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col h-full">
-            <h2 class="text-lg md:text-xl font-semibold">Medium Plan</h2>
-            <p class="text-gray-500 text-sm md:text-base mb-4">Recommended by experts</p>
+            class="ring-2 ring-[#4AABAB] rounded-2xl  shadow-[0_0_10px_0] shadow-[#254BD34D] py-6 md:py-8 lg:py-10 flex flex-col h-full">
+            <h2 class="text-lg md:text-xl font-semibold px-6 md:px-8 lg:px-10">Medium Plan</h2>
+            <p class="text-gray-500 text-sm md:text-base mb-4 px-6 md:px-8 lg:px-10">Recommended by experts</p>
 
-            <div class="flex items-end gap-1">
-              <p class="text-2xl md:text-3xl font-semibold">FREE</p>
-              <p class="text-xs md:text-sm font-semibold mb-1 ml-2">/100 Txs</p>
+            <div class="flex items-end gap-1 font-[poppins] bg-[#4AABAB] px-6 md:px-8 lg:px-10 py-3">
+              <p class="text-2xl md:text-4xl font-bold">&#8377;999</p>
+              <p class="text-xs md:text-base font-semibold mb-1">/ 500 Txs</p>
             </div>
 
-            <ul class="space-y-3 mb-6 mt-4 flex-grow">
+            <ul class="space-y-3 mb-6 mt-4 flex-grow px-6 md:px-8 lg:px-10">
               <li class="flex items-center gap-3 text-sm md:text-base">
                 <img src="/about/filled-icons-check-circle-12.svg" class="w-4 md:w-5" alt="check"> All analytics
                 features
@@ -89,20 +89,20 @@
             </ul>
 
             <button
-              class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+              class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base mx-6 md:mx-8 lg:mx-10">
               Get Started
             </button>
           </div>
         </div>
 
-        <div class="rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col">
+        <div class="rounded-2xl  shadow-[0_0_10px_0] shadow-[#254BD34D] p-6 md:p-8 lg:p-10 flex flex-col">
           <h2 class="text-lg md:text-xl font-semibold">Advanced Plan</h2>
           <p class="text-gray-500 text-sm md:text-base mb-4">For startups</p>
 
-          <div class="flex items-baseline">
-            <p class="text-2xl md:text-3xl font-semibold">FREE</p>
-            <p class="text-xs md:text-sm mb-6 mt-3 font-semibold ml-2">/100 Txs</p>
-          </div>
+          <div class="flex items-end gap-1 font-[poppins] mb-5">
+              <p class="text-2xl md:text-4xl font-bold">&#8377;1599</p>
+              <p class="text-xs md:text-base font-semibold mb-1">/ 2000 Txs</p>
+            </div>
 
           <ul class="space-y-3 mb-6 flex-grow">
             <li class="flex items-center gap-3 text-sm md:text-base">
@@ -125,14 +125,15 @@
           </button>
         </div>
 
-        <div class="rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col">
+        <div class="rounded-2xl  shadow-[0_0_10px_0] shadow-[#254BD34D] p-6 md:p-8 lg:p-10 flex flex-col">
           <h2 class="text-lg md:text-xl font-semibold">Premium Plan</h2>
           <p class="text-gray-500 text-sm md:text-base mb-4">For large businesses</p>
 
-          <div class="flex items-baseline">
-            <p class="text-2xl md:text-3xl font-semibold">FREE</p>
-            <p class="text-xs md:text-sm mb-6 mt-3 font-semibold ml-2">/100 Txs</p>
-          </div>
+           <div class="flex items-end gap-1 font-[poppins] mb-5">
+              <p class="text-2xl md:text-4xl font-bold">&#8377;2999</p>
+              <p class="text-xs md:text-base font-semibold mb-1">/ 5000 Txs</p>
+            </div>
+
 
           <ul class="space-y-3 mb-6 flex-grow">
             <li class="flex items-center gap-3 text-sm md:text-base">
@@ -161,144 +162,144 @@
       <div ref="track" class="flex transition-all duration-300" :style="{ transform: `translateX(-${index * 100}%)` }">
         <!-- Slide 1 -->
         <div class="min-w-full p-5">
-          <div class="rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col border border-[#4AABAB]">
-            <h2 class="text-lg md:text-xl font-semibold">Basic Plan</h2>
-            <p class="text-gray-500 text-sm md:text-base mb-4">For individuals</p>
+         <div class="rounded-2xl p-6 md:p-8 lg:p-10 flex flex-col  shadow-[0_0_10px_0] shadow-[#254BD34D]">
+          <h2 class="text-lg md:text-xl font-semibold">Basic Plan</h2>
+          <p class="text-gray-500 text-sm md:text-base mb-4">For individuals</p>
 
-            <div class="flex items-baseline">
-              <p class="text-2xl md:text-3xl font-semibold">FREE</p>
-              <p class="text-xs md:text-sm mb-6 mt-3 font-semibold ml-2">/100 Txs</p>
+         <div class="flex items-end gap-1 font-[poppins]">
+              <p class="text-2xl md:text-4xl font-bold">FREE</p>
+              <p class="text-xs md:text-base font-semibold mb-1">/ 100 Txs</p>
             </div>
 
-            <ul class="space-y-3 mb-6 flex-grow">
-              <li class="flex items-center gap-3 text-sm md:text-base">
-                <img src="/about/filled-icons-check-circle-8.svg" class="w-4 md:w-5" alt="check"> All analytics features
-              </li>
-              <li class="flex items-center gap-3 text-sm md:text-base">
-                <img src="/about/filled-icons-check-circle-7.svg" class="w-4 md:w-5" alt="check"> Up to 250,000 visits
-              </li>
-              <li class="flex items-center gap-3 text-sm md:text-base">
-                <img src="/about/filled-icons-check-circle-6.svg" class="w-4 md:w-5" alt="check"> Normal support
-              </li>
-              <li class="flex items-center gap-3 text-sm md:text-base">
-                <img src="/about/filled-icons-check-circle-5.svg" class="w-4 md:w-5" alt="check"> Up to 3 team members
-              </li>
-            </ul>
+          <ul class="space-y-3 my-6 flex-grow">
+            <li class="flex items-center gap-3 text-sm md:text-base">
+              <img src="/about/filled-icons-check-circle-8.svg" class="w-4 md:w-5" alt="check"> All analytics features
+            </li>
+            <li class="flex items-center gap-3 text-sm md:text-base">
+              <img src="/about/filled-icons-check-circle-7.svg" class="w-4 md:w-5" alt="check"> Up to 250,000 visits
+            </li>
+            <li class="flex items-center gap-3 text-sm md:text-base">
+              <img src="/about/filled-icons-check-circle-6.svg" class="w-4 md:w-5" alt="check"> Normal support
+            </li>
+            <li class="flex items-center gap-3 text-sm md:text-base">
+              <img src="/about/filled-icons-check-circle-5.svg" class="w-4 md:w-5" alt="check"> Up to 3 team members
+            </li>
+          </ul>
 
-            <button
-              class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
-              Get Started
-            </button>
-          </div>
+          <button
+            class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+            Get Started
+          </button>
+        </div>
         </div>
 
         <!-- Slide 2 -->
         <div class="min-w-full p-5">
-          <div class="relative md:-translate-y-0 lg:-translate-y-8">
-            <div
-              class=" absolute -top-3 md:-top-1 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
-              Recommended
-            </div>
-
-            <div
-              class="border border-[#4AABAB] rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col h-full">
-              <h2 class="text-lg md:text-xl font-semibold">Medium Plan</h2>
-              <p class="text-gray-500 text-sm md:text-base mb-4">Recommended by experts</p>
-
-              <div class="flex items-end gap-1">
-                <p class="text-2xl md:text-3xl font-semibold">FREE</p>
-                <p class="text-xs md:text-sm font-semibold mb-1 ml-2">/100 Txs</p>
-              </div>
-
-              <ul class="space-y-3 mb-6 mt-4 flex-grow">
-                <li class="flex items-center gap-3 text-sm md:text-base">
-                  <img src="/about/filled-icons-check-circle-12.svg" class="w-4 md:w-5" alt="check"> All analytics
-                  features
-                </li>
-                <li class="flex items-center gap-3 text-sm md:text-base">
-                  <img src="/about/filled-icons-check-circle-11.svg" class="w-4 md:w-5" alt="check"> Up to 250,000
-                  visits
-                </li>
-                <li class="flex items-center gap-3 text-sm md:text-base">
-                  <img src="/about/filled-icons-check-circle-10.svg" class="w-4 md:w-5" alt="check"> Normal support
-                </li>
-                <li class="flex items-center gap-3 text-sm md:text-base">
-                  <img src="/about/filled-icons-check-circle-9.svg" class="w-4 md:w-5" alt="check"> Up to 3 team members
-                </li>
-              </ul>
-
-              <button
-                class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
-                Get Started
-              </button>
-            </div>
+          <div class="relative">
+          <div
+            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
+            Recommended
           </div>
+
+          <div
+            class="ring-2 ring-[#4AABAB] rounded-2xl  shadow-[0_0_10px_0] shadow-[#254BD34D] py-6 md:py-8 lg:py-10 flex flex-col h-full">
+            <h2 class="text-lg md:text-xl font-semibold px-6 md:px-8 lg:px-10">Medium Plan</h2>
+            <p class="text-gray-500 text-sm md:text-base mb-4 px-6 md:px-8 lg:px-10">Recommended by experts</p>
+
+            <div class="flex items-end gap-1 font-[poppins] bg-[#4AABAB] px-6 md:px-8 lg:px-10 py-3">
+              <p class="text-2xl md:text-4xl font-bold">&#8377;999</p>
+              <p class="text-xs md:text-base font-semibold mb-1">/ 500 Txs</p>
+            </div>
+
+            <ul class="space-y-3 mb-6 mt-4 flex-grow px-6 md:px-8 lg:px-10">
+              <li class="flex items-center gap-3 text-sm md:text-base">
+                <img src="/about/filled-icons-check-circle-12.svg" class="w-4 md:w-5" alt="check"> All analytics
+                features
+              </li>
+              <li class="flex items-center gap-3 text-sm md:text-base">
+                <img src="/about/filled-icons-check-circle-11.svg" class="w-4 md:w-5" alt="check"> Up to 250,000 visits
+              </li>
+              <li class="flex items-center gap-3 text-sm md:text-base">
+                <img src="/about/filled-icons-check-circle-10.svg" class="w-4 md:w-5" alt="check"> Normal support
+              </li>
+              <li class="flex items-center gap-3 text-sm md:text-base">
+                <img src="/about/filled-icons-check-circle-9.svg" class="w-4 md:w-5" alt="check"> Up to 3 team members
+              </li>
+            </ul>
+
+            <button
+              class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base mx-6 md:mx-8 lg:mx-10">
+              Get Started
+            </button>
+          </div>
+        </div>
         </div>
 
         <!-- Slide 3 -->
         <div class="min-w-full p-5">
-          <div class="rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col border border-[#4AABAB]">
-            <h2 class="text-lg md:text-xl font-semibold">Advanced Plan</h2>
-            <p class="text-gray-500 text-sm md:text-base mb-4">For startups</p>
+          <div class="rounded-2xl  shadow-[0_0_10px_0] shadow-[#254BD34D] p-6 md:p-8 lg:p-10 flex flex-col">
+          <h2 class="text-lg md:text-xl font-semibold">Advanced Plan</h2>
+          <p class="text-gray-500 text-sm md:text-base mb-4">For startups</p>
 
-            <div class="flex items-baseline">
-              <p class="text-2xl md:text-3xl font-semibold">FREE</p>
-              <p class="text-xs md:text-sm mb-6 mt-3 font-semibold ml-2">/100 Txs</p>
+          <div class="flex items-end gap-1 font-[poppins] mb-5">
+              <p class="text-2xl md:text-4xl font-bold">&#8377;1599</p>
+              <p class="text-xs md:text-base font-semibold mb-1">/ 2000 Txs</p>
             </div>
 
-            <ul class="space-y-3 mb-6 flex-grow">
-              <li class="flex items-center gap-3 text-sm md:text-base">
-                <img src="/about/filled-icons-check-circle-8.svg" class="w-4 md:w-5" alt="check"> All analytics features
-              </li>
-              <li class="flex items-center gap-3 text-sm md:text-base">
-                <img src="/about/filled-icons-check-circle-7.svg" class="w-4 md:w-5" alt="check"> Up to 250,000 visits
-              </li>
-              <li class="flex items-center gap-3 text-sm md:text-base">
-                <img src="/about/filled-icons-check-circle-6.svg" class="w-4 md:w-5" alt="check"> Normal support
-              </li>
-              <li class="flex items-center gap-3 text-sm md:text-base">
-                <img src="/about/filled-icons-check-circle-5.svg" class="w-4 md:w-5" alt="check"> Up to 3 team members
-              </li>
-            </ul>
+          <ul class="space-y-3 mb-6 flex-grow">
+            <li class="flex items-center gap-3 text-sm md:text-base">
+              <img src="/about/filled-icons-check-circle-8.svg" class="w-4 md:w-5" alt="check"> All analytics features
+            </li>
+            <li class="flex items-center gap-3 text-sm md:text-base">
+              <img src="/about/filled-icons-check-circle-7.svg" class="w-4 md:w-5" alt="check"> Up to 250,000 visits
+            </li>
+            <li class="flex items-center gap-3 text-sm md:text-base">
+              <img src="/about/filled-icons-check-circle-6.svg" class="w-4 md:w-5" alt="check"> Normal support
+            </li>
+            <li class="flex items-center gap-3 text-sm md:text-base">
+              <img src="/about/filled-icons-check-circle-5.svg" class="w-4 md:w-5" alt="check"> Up to 3 team members
+            </li>
+          </ul>
 
-            <button
-              class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
-              Get Started
-            </button>
-          </div>
+          <button
+            class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+            Get Started
+          </button>
+        </div>
         </div>
 
         <!-- Slide 4 -->
         <div class="min-w-full p-5">
-          <div class="rounded-2xl shadow-lg md:shadow-2xl p-6 md:p-8 lg:p-10 flex flex-col border border-[#4AABAB]">
-            <h2 class="text-lg md:text-xl font-semibold">Premium Plan</h2>
-            <p class="text-gray-500 text-sm md:text-base mb-4">For large businesses</p>
+           <div class="rounded-2xl  shadow-[0_0_10px_0] shadow-[#254BD34D] p-6 md:p-8 lg:p-10 flex flex-col">
+          <h2 class="text-lg md:text-xl font-semibold">Premium Plan</h2>
+          <p class="text-gray-500 text-sm md:text-base mb-4">For large businesses</p>
 
-            <div class="flex items-baseline">
-              <p class="text-2xl md:text-3xl font-semibold">FREE</p>
-              <p class="text-xs md:text-sm mb-6 mt-3 font-semibold ml-2">/100 Txs</p>
+           <div class="flex items-end gap-1 font-[poppins] mb-5">
+              <p class="text-2xl md:text-4xl font-bold">&#8377;2999</p>
+              <p class="text-xs md:text-base font-semibold mb-1">/ 5000 Txs</p>
             </div>
 
-            <ul class="space-y-3 mb-6 flex-grow">
-              <li class="flex items-center gap-3 text-sm md:text-base">
-                <img src="/about/filled-icons-check-circle-8.svg" class="w-4 md:w-5" alt="check"> All analytics features
-              </li>
-              <li class="flex items-center gap-3 text-sm md:text-base">
-                <img src="/about/filled-icons-check-circle-7.svg" class="w-4 md:w-5" alt="check"> Up to 250,000 visits
-              </li>
-              <li class="flex items-center gap-3 text-sm md:text-base">
-                <img src="/about/filled-icons-check-circle-6.svg" class="w-4 md:w-5" alt="check"> Normal support
-              </li>
-              <li class="flex items-center gap-3 text-sm md:text-base">
-                <img src="/about/filled-icons-check-circle-5.svg" class="w-4 md:w-5" alt="check"> Up to 3 team members
-              </li>
-            </ul>
 
-            <button
-              class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
-              Get Started
-            </button>
-          </div>
+          <ul class="space-y-3 mb-6 flex-grow">
+            <li class="flex items-center gap-3 text-sm md:text-base">
+              <img src="/about/filled-icons-check-circle-8.svg" class="w-4 md:w-5" alt="check"> All analytics features
+            </li>
+            <li class="flex items-center gap-3 text-sm md:text-base">
+              <img src="/about/filled-icons-check-circle-7.svg" class="w-4 md:w-5" alt="check"> Up to 250,000 visits
+            </li>
+            <li class="flex items-center gap-3 text-sm md:text-base">
+              <img src="/about/filled-icons-check-circle-6.svg" class="w-4 md:w-5" alt="check"> Normal support
+            </li>
+            <li class="flex items-center gap-3 text-sm md:text-base">
+              <img src="/about/filled-icons-check-circle-5.svg" class="w-4 md:w-5" alt="check"> Up to 3 team members
+            </li>
+          </ul>
+
+          <button
+            class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 md:py-2 rounded-full text-sm md:text-base">
+            Get Started
+          </button>
+        </div>
         </div>
       </div>
 
@@ -317,7 +318,7 @@
     </div>
 
     <div class="p-4 md:p-10">
-      <div class="rounded-xl shadow-lg md:shadow-2xl p-6 md:p-10 mx-auto max-w-7xl">
+      <div class="rounded-xl shadow-[0_0_10px_0] shadow-[#254BD34D] p-6 md:p-10 mx-auto max-w-7xl">
         <p class="text-xl md:text-2xl lg:text-3xl font-semibold text-center">
           Need help from an expert? Contact us to learn more
         </p>
@@ -356,10 +357,10 @@
             Pro Plan 2023
           </div>
 
-          <div class="border border-teal-500 rounded-2xl shadow-lg md:shadow-2xl flex flex-col h-full">
-            <div class="bg-[#95D0D0] mt-8 p-4">
+          <div class="border border-[#4AABAB] rounded-2xl  flex flex-col h-full">
+            <div class="bg-[#95D0D0] mt-12 p-4">
               <div class="flex items-end justify-center gap-1">
-                <p class="text-2xl md:text-3xl font-semibold">₹9,999</p>
+                <p class="text-2xl md:text-3xl font-semibold font-[poppins]">₹9,999</p>
                 <p class="text-xs md:text-sm font-semibold mb-1">/30 Min Consult</p>
               </div>
             </div>
@@ -373,7 +374,7 @@
 
             <div class="flex justify-center items-center p-4">
               <button
-                class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
+                class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base  max-w-xs">
                 Book Now
               </button>
             </div>
@@ -383,14 +384,14 @@
         <div class="relative">
           <div
             class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
-            Pro Plan 2023
+            Premium Plan 2023
           </div>
 
-          <div class="border border-teal-500 rounded-2xl shadow-lg md:shadow-2xl flex flex-col h-full">
-            <div class="bg-[#95D0D0] mt-8 p-4">
+          <div class="border border-[#4AABAB] rounded-2xl  flex flex-col h-full">
+            <div class="bg-[#95D0D0] mt-12 p-4">
               <div class="flex items-end justify-center gap-1">
-                <p class="text-2xl md:text-3xl font-semibold">₹9,999</p>
-                <p class="text-xs md:text-sm font-semibold mb-1">/30 Min Consult</p>
+                <p class="text-2xl md:text-3xl font-semibold font-[poppins]">₹12,999</p>
+                <p class="text-xs md:text-sm font-semibold mb-1">/40 Min Consult</p>
               </div>
             </div>
 
@@ -403,7 +404,7 @@
 
             <div class="flex justify-center items-center p-4">
               <button
-                class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
+                class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base  max-w-xs">
                 Book Now
               </button>
             </div>
@@ -413,14 +414,14 @@
         <div class="relative">
           <div
             class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
-            Pro Plan 2023
+            Extra Plan 2023
           </div>
 
-          <div class="border border-teal-500 rounded-2xl shadow-lg md:shadow-2xl flex flex-col h-full">
-            <div class="bg-[#95D0D0] mt-8 p-4">
+       <div class="border border-[#4AABAB] rounded-2xl  flex flex-col h-full">
+            <div class="bg-[#95D0D0] mt-12 p-4">
               <div class="flex items-end justify-center gap-1">
-                <p class="text-2xl md:text-3xl font-semibold">₹9,999</p>
-                <p class="text-xs md:text-sm font-semibold mb-1">/30 Min Consult</p>
+                <p class="text-2xl md:text-3xl font-semibold font-[poppins]">₹22,999</p>
+                <p class="text-xs md:text-sm font-semibold mb-1">/60 Min Consult</p>
               </div>
             </div>
 
@@ -433,7 +434,7 @@
 
             <div class="flex justify-center items-center p-4">
               <button
-                class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
+                class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base  max-w-xs">
                 Book Now
               </button>
             </div>
@@ -447,98 +448,98 @@
 
           <div class="min-w-full p-5">
             <div class="relative">
-              <div
-                class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
-                Pro Plan 2023
-              </div>
+          <div
+            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
+            Pro Plan 2023
+          </div>
 
-              <div class="border border-teal-500 rounded-2xl flex flex-col h-full">
-                <div class="bg-[#95D0D0] mt-8 p-4">
-                  <div class="flex items-end justify-center gap-1">
-                    <p class="text-2xl md:text-3xl font-semibold">₹9,999</p>
-                    <p class="text-xs md:text-sm font-semibold mb-1">/30 Min Consult</p>
-                  </div>
-                </div>
-
-                <div class="p-4 md:p-6 flex-grow">
-                  <p class="text-sm md:text-base">
-                    A tax expert can help you optimize your crypto tax strategy and minimize liabilities. Complex crypto
-                    investments often require specialized guidance for accurate tax reporting.
-                  </p>
-                </div>
-
-                <div class="flex justify-center items-center p-4">
-                  <button
-                    class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
-                    Book Now
-                  </button>
-                </div>
+          <div class="border border-[#4AABAB] rounded-2xl  flex flex-col h-full">
+            <div class="bg-[#95D0D0] mt-12 p-4">
+              <div class="flex items-end justify-center gap-1">
+                <p class="text-2xl md:text-3xl font-semibold font-[poppins]">₹9,999</p>
+                <p class="text-xs md:text-sm font-semibold mb-1">/30 Min Consult</p>
               </div>
             </div>
+
+            <div class="p-4 md:p-6 flex-grow">
+              <p class="text-sm md:text-base">
+                A tax expert can help you optimize your crypto tax strategy and minimize liabilities. Complex crypto
+                investments often require specialized guidance for accurate tax reporting.
+              </p>
+            </div>
+
+            <div class="flex justify-center items-center p-4">
+              <button
+                class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base  max-w-xs">
+                Book Now
+              </button>
+            </div>
+          </div>
+        </div>
           </div>
 
           <div class="min-w-full p-5">
-            <div class="relative">
-              <div
-                class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
-                Pro Plan 2023
-              </div>
+           <div class="relative">
+          <div
+            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
+            Premium Plan 2023
+          </div>
 
-              <div class="border border-teal-500 rounded-2xl flex flex-col h-full">
-                <div class="bg-[#95D0D0] mt-8 p-4">
-                  <div class="flex items-end justify-center gap-1">
-                    <p class="text-2xl md:text-3xl font-semibold">₹9,999</p>
-                    <p class="text-xs md:text-sm font-semibold mb-1">/30 Min Consult</p>
-                  </div>
-                </div>
-
-                <div class="p-4 md:p-6 flex-grow">
-                  <p class="text-sm md:text-base">
-                    A tax expert can help you optimize your crypto tax strategy and minimize liabilities. Complex crypto
-                    investments often require specialized guidance for accurate tax reporting.
-                  </p>
-                </div>
-
-                <div class="flex justify-center items-center p-4">
-                  <button
-                    class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
-                    Book Now
-                  </button>
-                </div>
+          <div class="border border-[#4AABAB] rounded-2xl  flex flex-col h-full">
+            <div class="bg-[#95D0D0] mt-12 p-4">
+              <div class="flex items-end justify-center gap-1">
+                <p class="text-2xl md:text-3xl font-semibold font-[poppins]">₹12,999</p>
+                <p class="text-xs md:text-sm font-semibold mb-1">/40 Min Consult</p>
               </div>
             </div>
+
+            <div class="p-4 md:p-6 flex-grow">
+              <p class="text-sm md:text-base">
+                A tax expert can help you optimize your crypto tax strategy and minimize liabilities. Complex crypto
+                investments often require specialized guidance for accurate tax reporting.
+              </p>
+            </div>
+
+            <div class="flex justify-center items-center p-4">
+              <button
+                class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base  max-w-xs">
+                Book Now
+              </button>
+            </div>
+          </div>
+        </div>
           </div>
 
           <div class="min-w-full p-5">
-            <div class="relative">
-              <div
-                class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
-                Pro Plan 2023
-              </div>
+           <div class="relative">
+          <div
+            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#4AABAB] text-white px-3 py-1 rounded-full text-xs md:text-sm font-semibold shadow whitespace-nowrap z-10">
+            Extra Plan 2023
+          </div>
 
-              <div class="border border-teal-500 rounded-2xl flex flex-col h-full">
-                <div class="bg-[#95D0D0] mt-8 p-4">
-                  <div class="flex items-end justify-center gap-1">
-                    <p class="text-2xl md:text-3xl font-semibold">₹9,999</p>
-                    <p class="text-xs md:text-sm font-semibold mb-1">/30 Min Consult</p>
-                  </div>
-                </div>
-
-                <div class="p-4 md:p-6 flex-grow">
-                  <p class="text-sm md:text-base">
-                    A tax expert can help you optimize your crypto tax strategy and minimize liabilities. Complex crypto
-                    investments often require specialized guidance for accurate tax reporting.
-                  </p>
-                </div>
-
-                <div class="flex justify-center items-center p-4">
-                  <button
-                    class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base w-full max-w-xs">
-                    Book Now
-                  </button>
-                </div>
+       <div class="border border-[#4AABAB] rounded-2xl  flex flex-col h-full">
+            <div class="bg-[#95D0D0] mt-12 p-4">
+              <div class="flex items-end justify-center gap-1">
+                <p class="text-2xl md:text-3xl font-semibold font-[poppins]">₹22,999</p>
+                <p class="text-xs md:text-sm font-semibold mb-1">/60 Min Consult</p>
               </div>
             </div>
+
+            <div class="p-4 md:p-6 flex-grow">
+              <p class="text-sm md:text-base">
+                A tax expert can help you optimize your crypto tax strategy and minimize liabilities. Complex crypto
+                investments often require specialized guidance for accurate tax reporting.
+              </p>
+            </div>
+
+            <div class="flex justify-center items-center p-4">
+              <button
+                class="bg-[#4aabab] hover:bg-teal-700 transition-colors text-white py-3 px-6 md:py-2 md:px-8 rounded-full text-sm md:text-base  max-w-xs">
+                Book Now
+              </button>
+            </div>
+          </div>
+        </div>
           </div>
         </div>
 
@@ -557,7 +558,7 @@
 </template>
 <script setup>
 
-const index = ref(0);
+const index = ref(1);
 const slidesCount = 4;
 
 function next() {

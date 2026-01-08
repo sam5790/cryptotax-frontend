@@ -12,80 +12,119 @@
 
         <div class="hidden md:flex gap-4 lg:gap-12 items-center">
           <button
-            class="whitespace-nowrap cursor-pointer"
+            class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="
               auth?.token ? router.push('/account') : router.push('/login')
+            "
+            :class="
+              $route.path.startsWith('/account')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
             "
           >
             Account
           </button>
           <button
-            class="whitespace-nowrap cursor-pointer"
+            class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="router.push('/tax')"
+            :class="
+              $route.path.startsWith('/tax')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
+            "
           >
             Tax Guide
           </button>
-          <button class="whitespace-nowrap cursor-pointer">Export Data</button>
           <button
-            class="whitespace-nowrap cursor-pointer"
+            class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
+            :class="
+              $route.path.startsWith('/export-data')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
+            "
+          >
+            Export Data
+          </button>
+          <button
+            class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="
               auth?.token ? router.push('/my-wallet') : router.push('/login')
+            "
+            :class="
+              $route.path.startsWith('/my-wallet')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
             "
           >
             My Wallet
           </button>
           <button
-            class="whitespace-nowrap cursor-pointer"
+            class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="
               auth?.token ? router.push('/reports') : router.push('/login')
+            "
+            :class="
+              $route.path.startsWith('/reports')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
             "
           >
             Reports
           </button>
           <button
-            class="whitespace-nowrap cursor-pointer"
+            class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="router.push('/about-us')"
+            :class="
+              $route.path.startsWith('/about-us')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
+            "
           >
             About Us
           </button>
           <button
-            class="whitespace-nowrap cursor-pointer"
+            class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="router.push('/price')"
+            :class="
+              $route.path.startsWith('/price')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
+            "
           >
             Pricing
           </button>
         </div>
 
-      <div class="items-center gap-2 hidden md:flex">
-        <button
-          v-if="!auth?.token"
-          class="px-6 py-2 bg-[#4aabab] rounded-3xl text-white font-semibold text-sm"
-          @click="router.push('/login')"
-        >
-          Log in
-        </button>
-        <button
-          v-else
-          class="px-6 py-2 bg-[#4aabab] rounded-3xl text-white font-semibold text-sm"
-          @click="handleLogout"
-        >
-          Logout
+        <div class="items-center gap-2 hidden md:flex">
+          <button
+            v-if="!auth?.token"
+            class="px-6 py-2 bg-[#4aabab] rounded-3xl text-white font-semibold text-sm"
+            @click="router.push('/login')"
+          >
+            Log in
+          </button>
+          <button
+            v-else
+            class="px-6 py-2 bg-[#4aabab] rounded-3xl text-white font-semibold text-sm"
+            @click="handleLogout"
+          >
+            Logout
+          </button>
+        </div>
+        <button @click="isOpen = true" class="md:hidden p-2">
+          <svg
+            class="w-7 h-7 text-[#4AABAB]"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
         </button>
       </div>
-      <button @click="isOpen = true" class="md:hidden p-2">
-        <svg
-          class="w-7 h-7 text-[#4AABAB]"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </div>
 
       <!-- in mobile -->
 
@@ -98,7 +137,6 @@
                 <img
                   src="/avatar.png"
                   class="w-16 h-16 rounded-full ring-2 ring-[#4AABAB] shadow-md"
-                  
                 />
                 <div
                   class="capitalize my-1 text-lg font-semibold font-[Poppins]"
@@ -174,25 +212,45 @@
             </div>
             <div class="flex flex-col mt-5 gap-4">
               <button
-                class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
+                class="text-left p-2 text-gray-700 rounded-md"
                 @click="navigate('/')"
+                :class="
+                  $route.path === '/'
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
+                "
               >
                 Home
               </button>
               <button
-                class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
+                class="text-left p-2 text-gray-700 rounded"
                 @click="auth?.token ? navigate('/account') : navigate('/login')"
+                :class="
+                  $route.path.startsWith('/account')
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
+                "
               >
                 Account
               </button>
               <button
                 class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
                 @click="navigate('/tax')"
+                :class="
+                  $route.path.startsWith('/tax')
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
+                "
               >
                 Tax Guide
               </button>
               <button
                 class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
+                :class="
+                  $route.path.startsWith('/export-data')
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
+                "
               >
                 Export Data
               </button>
@@ -201,24 +259,44 @@
                 @click="
                   auth?.token ? navigate('/my-wallet') : navigate('/login')
                 "
+                :class="
+                  $route.path.startsWith('/my-wallet')
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
+                "
               >
                 My Wallet
               </button>
               <button
                 class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
                 @click="auth?.token ? navigate('/reports') : navigate('/login')"
+                 :class="
+                  $route.path.startsWith('/reports')
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
+                "
               >
                 Reports
               </button>
               <button
                 class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
                 @click="navigate('/about-us')"
+                :class="
+                  $route.path.startsWith('/about-us')
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
+                "
               >
                 About Us
               </button>
               <button
                 class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
-                @click="navigate('/Price')"
+                @click="navigate('/price')"
+                :class="
+                  $route.path.startsWith('/price')
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
+                "
               >
                 Pricing
               </button>
