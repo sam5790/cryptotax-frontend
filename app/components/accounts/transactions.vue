@@ -115,7 +115,7 @@
               </td>
               <td class="p-4 flex items-center gap-2">
                 <img
-                  :src="`/icons/${item.exchange}.png`"
+                  :src="`/icons/${item.exchange?.toLowerCase()}.png`"
                   class="w-6 h-6 sm:w-8 sm:h-8"
                 />
                 {{ item.exchange }}
@@ -199,7 +199,7 @@
           </div>
            <div class="flex justify-between items-center my-2">
            <div class="flex items-center gap-2">
-            <img :src="`/icons/${item.exchange}.png`" class="w-6 h-6" />
+            <img :src="`/icons/${item.exchange?.toLowerCase()}.png`" class="w-6 h-6" />
             <span class="font-medium">{{ item.exchange }}</span>
           </div>
           <div class="capitalize rounded-xl px-3 font-medium text-sm text-white" :class="item.type === 'sell'?'bg-red-500':'bg-green-500'">

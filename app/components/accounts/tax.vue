@@ -109,7 +109,7 @@
               <img
                 v-for="exchange in taxPagination?.exchanges?.slice(0, 3)"
                 :key="exchange"
-                :src="`/icons/${exchange}.png`"
+                :src="`/icons/${exchange?.toLowerCase()}.png`"
                 :alt="exchange"
                 class="h-8 w-8 rounded-full border-2 border-white -ml-3 first:ml-0"
               />
@@ -184,7 +184,7 @@
                 <div class="flex items-center gap-3">
                   <img
                     v-if="selectedAccount"
-                    :src="`/icons/${selectedAccount}.png`"
+                    :src="`/icons/${selectedAccount.toLowerCase()}.png`"
                     :alt="selectedAccount"
                     class="h-8 w-8 rounded-full"
                   />
@@ -211,7 +211,7 @@
                     "
                   >
                     <img
-                      :src="`/icons/${exchange}.png`"
+                      :src="`/icons/${exchange?.toLowerCase()}.png`"
                       :alt="exchange"
                       class="h-8 w-8 rounded-full border-2 border-white -ml-3 first:ml-0"
                     />
@@ -242,7 +242,7 @@
                   {{ index + (taxPagination?.currentPage - 1) * 50 + 1 }}
                 </td>
                 <td class="py-4 px-4 flex items-center gap-1">
-                  <img :src="`/icons/${item.exchange}.png`" class="w-8 h-8" />
+                  <img :src="`/icons/${item.exchange?.toLowerCase()}.png`" class="w-8 h-8" />
                   {{ item.exchange }}
                 </td>
                 <td class="py-4 px-4 ">{{ item.coin }}</td>
@@ -346,9 +346,9 @@
                 <div class="flex items-center gap-3">
                   <img
                     v-if="selectedAccount"
-                    :src="`/icons/${selectedAccount}.png`"
+                    :src="`/icons/${selectedAccount?.toLowerCase()}.png`"
                     :alt="selectedAccount"
-                    class="h-8 w-8 rounded-full"
+                    class="h-8 w-8 rounded-full capitalise"
                   />
                   {{ selectedAccount || "Choose Account" }}
                 </div>
@@ -373,7 +373,7 @@
                     "
                   >
                     <img
-                      :src="`/icons/${exchange}.png`"
+                      :src="`/icons/${exchange?.toLowerCase()}.png`"
                       :alt="exchange"
                       class="h-8 w-8 rounded-full border-2 border-white -ml-3 first:ml-0"
                     />
@@ -400,7 +400,7 @@
               >
             </div>
             <div class="flex items-center mb-3 gap-2">
-              <img :src="`/icons/${item.exchange}.png`" class="w-7 h-7" />
+              <img :src="`/icons/${item.exchange?.toLowerCase()}.png`" class="w-7 h-7" />
               <span class="font-medium">{{ item.exchange }}</span>
             </div>
             <div class="flex justify-between my-1">

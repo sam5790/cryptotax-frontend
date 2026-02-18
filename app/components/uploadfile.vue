@@ -91,6 +91,7 @@ const handleFileChange = (e) => {
   files.value = Array.from(e.target.files || []);
   fileName.value = files.value.map((f) => f.name);
 };
+console.log( props.account.title )
 const uploadFile = async () => {
   if (!files.value.length) return;
 
@@ -107,6 +108,8 @@ const uploadFile = async () => {
       ? "mudrex"
       : props.account.title === "Coinswitch"
       ? "coinswitch"
+      : props.account.title === "Bitbns"
+      ? "bitbns"
       : "wasirx";
   const { data, error } = await fileUpload({ formData, exchange });
   if (data?.success) {

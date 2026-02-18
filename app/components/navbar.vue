@@ -147,10 +147,10 @@
                   <img
                     v-for="exchange in transactionsPagination?.exchanges?.slice(
                       0,
-                      3
+                      3,
                     )"
                     :key="exchange"
-                    :src="`/icons/${exchange}.png`"
+                    :src="`/icons/${exchange?.toLowerCase()}.png`"
                     :alt="exchange"
                     class="h-8 w-8 rounded-full border-2 border-white -ml-3 first:ml-0"
                   />
@@ -270,7 +270,7 @@
               <button
                 class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
                 @click="auth?.token ? navigate('/reports') : navigate('/login')"
-                 :class="
+                :class="
                   $route.path.startsWith('/reports')
                     ? 'bg-[#4aabab] font-medium text-white'
                     : ''
@@ -332,7 +332,8 @@ const { transactionsPagination } = storeToRefs(store);
 const isOpen = ref(false);
 const router = useRouter();
 const auth = useAuthStore();
-const { user } = storeToRefs(auth);
+const { user, token } = storeToRefs(auth);
+const BASE_URL = useRuntimeConfig().public.apiBase;
 const handleLogout = () => {
   auth.logout();
   router.push("/");
@@ -342,6 +343,15 @@ const navigate = (path) => {
   router.push(path);
   isOpen.value = false;
 };
+onMounted(async () => {
+  if (!token.value) return;
+  const { data, error } = await tokenVerification();
+
+  if (!data?.success) {
+    auth.logout();
+    router.push("/login");
+  }
+});
 </script>
 
 <style scoped>

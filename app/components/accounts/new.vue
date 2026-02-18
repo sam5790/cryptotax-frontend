@@ -83,7 +83,7 @@
         <div class="flex justify-between items-start gap-4">
           <div class="space-y-2">
             <div class="flex items-start gap-2">
-              <img :src="`/icons/${item?.exchange}.png`" class="w-8 h-8" />
+              <img :src="`/icons/${item?.exchange?.toLowerCase()}.png`" class="w-8 h-8" />
 
               <div class="text-lg font-medium capitalize px-2">
                 {{ item?.exchange }}
