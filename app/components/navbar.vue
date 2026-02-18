@@ -21,6 +21,11 @@
                 ? 'text-[#4aabab] font-medium underline'
                 : ''
             "
+            :class="
+              $route.path.startsWith('/account')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
+            "
           >
             Account
           </button>
@@ -55,6 +60,11 @@
                 ? 'text-[#4aabab] font-medium underline'
                 : ''
             "
+            :class="
+              $route.path.startsWith('/my-wallet')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
+            "
           >
             My Wallet
           </button>
@@ -62,6 +72,11 @@
             class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="
               auth?.accessToken ? router.push('/reports') : router.push('/login')
+            "
+            :class="
+              $route.path.startsWith('/reports')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
             "
             :class="
               $route.path.startsWith('/reports')
@@ -95,36 +110,36 @@
           </button>
         </div>
 
-      <div class="items-center gap-2 hidden md:flex">
-        <button
-          v-if="!auth?.token"
-          class="px-6 py-2 bg-[#4aabab] rounded-3xl text-white font-semibold text-sm"
-          @click="router.push('/login')"
-        >
-          Log in
-        </button>
-        <button
-          v-else
-          class="px-6 py-2 bg-[#4aabab] rounded-3xl text-white font-semibold text-sm"
-          @click="handleLogout"
-        >
-          Logout
+        <div class="items-center gap-2 hidden md:flex">
+          <button
+            v-if="!auth?.token"
+            class="px-6 py-2 bg-[#4aabab] rounded-3xl text-white font-semibold text-sm"
+            @click="router.push('/login')"
+          >
+            Log in
+          </button>
+          <button
+            v-else
+            class="px-6 py-2 bg-[#4aabab] rounded-3xl text-white font-semibold text-sm"
+            @click="handleLogout"
+          >
+            Logout
+          </button>
+        </div>
+        <button @click="isOpen = true" class="md:hidden p-2">
+          <svg
+            class="w-7 h-7 text-[#4AABAB]"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
         </button>
       </div>
-      <button @click="isOpen = true" class="md:hidden p-2">
-        <svg
-          class="w-7 h-7 text-[#4AABAB]"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </div>
 
       <!-- in mobile -->
 
@@ -223,8 +238,13 @@
                 Home
               </button>
               <button
-                class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
+                class="text-left p-2 text-gray-700 rounded"
                 @click="auth?.token ? navigate('/account') : navigate('/login')"
+                :class="
+                  $route.path.startsWith('/account')
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
+                "
               >
                 Account
               </button>
@@ -259,12 +279,22 @@
                     ? 'bg-[#4aabab] font-medium text-white'
                     : ''
                 "
+                :class="
+                  $route.path.startsWith('/my-wallet')
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
+                "
               >
                 My Wallet
               </button>
               <button
                 class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
                 @click="auth?.token ? navigate('/reports') : navigate('/login')"
+                :class="
+                  $route.path.startsWith('/reports')
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
+                "
               >
                 Reports
               </button>

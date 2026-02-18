@@ -72,6 +72,7 @@ const handleFileChange = async (e) => {
 };
 console.log( props.account.title )
 
+console.log( props.account.title )
 const uploadFile = async () => {
   console.log("urls",fileUrls.value)
   if (!fileUrls.value.length) return;
