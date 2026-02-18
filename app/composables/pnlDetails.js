@@ -5,13 +5,13 @@ export const getAccounts = async () => {
   const store = mainStore();
   const BASE_URL = useRuntimeConfig().public.apiBase;
   const auth = useAuthStore();
-  const { token } = auth;
+  const { accessToken } = auth;
   try {
-    const data = await $fetch(`/pnldetails`, {
+    const {data} = await useApi(`users/pnldetails`, {
       baseURL: BASE_URL,
       method: "GET",
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
       },
     });
@@ -32,18 +32,19 @@ export const getPnlDetails = async (payload) => {
   const store = mainStore();
   const BASE_URL = useRuntimeConfig().public.apiBase;
   const auth = useAuthStore();
-  const { token } = auth;
+  const { accessToken } = auth;
   try {
-    const data = await $fetch(`/pnl/details`, {
+    const {data} = await useApi(`users/pnl/details`, {
       baseURL: BASE_URL,
       method: "GET",
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
       },
       query: payload,
     });
     if (data?.success) {
+      console.log("pnl details data",data.meta)
       store.setPnl(data?.data);
       store.addTaxPagination(data.meta);
       return { data: data, error: null };
@@ -65,18 +66,19 @@ export const getTransactions = async (payload) => {
   const store = mainStore();
   const BASE_URL = useRuntimeConfig().public.apiBase;
   const auth = useAuthStore();
-  const { token } = auth;
+  const { accessToken } = auth;
   try {
-    const data = await $fetch(`/transactions`, {
+    const {data} = await useApi(`users/transaction`, {
       baseURL: BASE_URL,
       method: "GET",
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${accessToken}`,
         "Content-Type": "application/json",
       },
       query: payload,
     });
     if (data?.success) {
+      console.log("data",data)
       const transactions = data.data;
       const { currentPage, totalPages, totalCount, pageSize } = data.meta;
       store.setTransactions(transactions);
@@ -96,17 +98,43 @@ export const getTransactions = async (payload) => {
   } finally {
   }
 };
+
+export const upload = async (payload) => {
+  const formData = new FormData()
+  payload.forEach(file => formData.append("files", file))
+
+  const BASE_URL = useRuntimeConfig().public.apiBase
+  const { accessToken } = useAuthStore()
+
+  try {
+    const { data } = await useApi(`/upload`, {
+      baseURL: BASE_URL,
+      method: "POST",
+      body: formData,
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+
+    return { data, error: null }
+  } catch (error) {
+    return { data: null, error }
+  }
+};
+
+
 export const fileUpload = async (payload) => {
+  console.log("in api files",payload)
   const BASE_URL = useRuntimeConfig().public.apiBase;
   const auth = useAuthStore();
-  const { token } = auth;
+  const { accessToken } = auth;
   try {
-    const data = await $fetch(`/${payload.exchange}`, {
+    const data = await useApi(`/${payload.exchange}`, {
       baseURL: BASE_URL,
       method: "POST",
       body: payload.formData,
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     });
     if (data?.success) {
@@ -127,13 +155,13 @@ export const getWallet = async (payload) => {
   const store = mainStore();
   const BASE_URL = useRuntimeConfig().public.apiBase;
   const auth = useAuthStore();
-  const { token } = auth;
+  const { accessToken } = auth;
   try {
-    const data = await $fetch(`/wallet/details`, {
+    const {data} = await useApi(`users/wallet/details`, {
       baseURL: BASE_URL,
       method: "GET",
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${accessToken}`,
       },
       query: payload,
     });
@@ -149,33 +177,6 @@ export const getWallet = async (payload) => {
     }
   } catch (error) {
     store.addWallet([]);
-    console.error("Fetch error:", error);
-    return { data: null, error };
-  } finally {
-  }
-};
-export const getTransactionsForExport = async (payload) => {
-
-  const BASE_URL = useRuntimeConfig().public.apiBase;
-  const auth = useAuthStore();
-  const { token } = auth;
-  try {
-    const data = await $fetch(`/transactions`, {
-      baseURL: BASE_URL,
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      query: payload,
-    });
-    if (data?.success) {
-      const transactions = data.data;
-       return transactions;
-    } else {
-      throw new Error("API response unsuccessful");
-    }
-  } catch (error) {
     console.error("Fetch error:", error);
     return { data: null, error };
   } finally {

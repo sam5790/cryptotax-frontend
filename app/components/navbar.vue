@@ -12,45 +12,84 @@
 
         <div class="hidden md:flex gap-4 lg:gap-12 items-center">
           <button
-            class="whitespace-nowrap cursor-pointer"
+            class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="
-              auth?.token ? router.push('/account') : router.push('/login')
+              auth?.accessToken ? router.push('/account') : router.push('/login')
+            "
+            :class="
+              $route.path.startsWith('/account')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
             "
           >
             Account
           </button>
           <button
-            class="whitespace-nowrap cursor-pointer"
+            class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="router.push('/tax')"
+            :class="
+              $route.path.startsWith('/tax')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
+            "
           >
             Tax Guide
           </button>
-          <button class="whitespace-nowrap cursor-pointer">Export Data</button>
           <button
-            class="whitespace-nowrap cursor-pointer"
+            class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
+            :class="
+              $route.path.startsWith('/export-data')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
+            "
+          >
+            Export Data
+          </button>
+          <button
+            class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="
-              auth?.token ? router.push('/my-wallet') : router.push('/login')
+              auth?.accessToken ? router.push('/my-wallet') : router.push('/login')
+            "
+            :class="
+              $route.path.startsWith('/my-wallet')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
             "
           >
             My Wallet
           </button>
           <button
-            class="whitespace-nowrap cursor-pointer"
+            class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="
-              auth?.token ? router.push('/reports') : router.push('/login')
+              auth?.accessToken ? router.push('/reports') : router.push('/login')
+            "
+            :class="
+              $route.path.startsWith('/reports')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
             "
           >
             Reports
           </button>
           <button
-            class="whitespace-nowrap cursor-pointer"
+            class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="router.push('/about-us')"
+            :class="
+              $route.path.startsWith('/about-us')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
+            "
           >
             About Us
           </button>
           <button
-            class="whitespace-nowrap cursor-pointer"
+            class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="router.push('/price')"
+            :class="
+              $route.path.startsWith('/price')
+                ? 'text-[#4aabab] font-medium underline'
+                : ''
+            "
           >
             Pricing
           </button>
@@ -93,12 +132,11 @@
         <div v-if="isOpen" class="fixed inset-0 z-50 flex">
           <div @click="isOpen = false"></div>
           <div class="bg-white w-64 h-full shadow-xl p-6">
-            <div class="relative" v-if="auth.token">
+            <div class="relative" v-if="auth.accessToken">
               <div class="flex flex-col items-center justify-center">
                 <img
                   src="/avatar.png"
                   class="w-16 h-16 rounded-full ring-2 ring-[#4AABAB] shadow-md"
-                  
                 />
                 <div
                   class="capitalize my-1 text-lg font-semibold font-[Poppins]"
@@ -109,10 +147,10 @@
                   <img
                     v-for="exchange in transactionsPagination?.exchanges?.slice(
                       0,
-                      3
+                      3,
                     )"
                     :key="exchange"
-                    :src="`/icons/${exchange}.png`"
+                    :src="`/icons/${exchange?.toLowerCase()}.png`"
                     :alt="exchange"
                     class="h-8 w-8 rounded-full border-2 border-white -ml-3 first:ml-0"
                   />
@@ -174,8 +212,13 @@
             </div>
             <div class="flex flex-col mt-5 gap-4">
               <button
-                class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
+                class="text-left p-2 text-gray-700 rounded-md"
                 @click="navigate('/')"
+                :class="
+                  $route.path === '/'
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
+                "
               >
                 Home
               </button>
@@ -188,18 +231,33 @@
               <button
                 class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
                 @click="navigate('/tax')"
+                :class="
+                  $route.path.startsWith('/tax')
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
+                "
               >
                 Tax Guide
               </button>
               <button
                 class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
+                :class="
+                  $route.path.startsWith('/export-data')
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
+                "
               >
                 Export Data
               </button>
               <button
                 class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
                 @click="
-                  auth?.token ? navigate('/my-wallet') : navigate('/login')
+                  auth?.accessToken ? navigate('/my-wallet') : navigate('/login')
+                "
+                :class="
+                  $route.path.startsWith('/my-wallet')
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
                 "
               >
                 My Wallet
@@ -213,18 +271,28 @@
               <button
                 class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
                 @click="navigate('/about-us')"
+                :class="
+                  $route.path.startsWith('/about-us')
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
+                "
               >
                 About Us
               </button>
               <button
                 class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
-                @click="navigate('/Price')"
+                @click="navigate('/price')"
+                :class="
+                  $route.path.startsWith('/price')
+                    ? 'bg-[#4aabab] font-medium text-white'
+                    : ''
+                "
               >
                 Pricing
               </button>
               <div>
                 <button
-                  v-if="!auth?.token"
+                  v-if="!auth?.accessToken"
                   class="text-left p-2 text-[#4AABAB] font-semibold hover:bg-gray-100 rounded"
                   @click="router.push('/login')"
                 >
@@ -254,7 +322,8 @@ const { transactionsPagination } = storeToRefs(store);
 const isOpen = ref(false);
 const router = useRouter();
 const auth = useAuthStore();
-const { user } = storeToRefs(auth);
+const { user, token } = storeToRefs(auth);
+const BASE_URL = useRuntimeConfig().public.apiBase;
 const handleLogout = () => {
   auth.logout();
   router.push("/");
@@ -264,6 +333,15 @@ const navigate = (path) => {
   router.push(path);
   isOpen.value = false;
 };
+onMounted(async () => {
+  if (!token.value) return;
+  const { data, error } = await tokenVerification();
+
+  if (!data?.success) {
+    auth.logout();
+    router.push("/login");
+  }
+});
 </script>
 
 <style scoped>

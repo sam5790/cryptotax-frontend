@@ -16,7 +16,7 @@
           <p>Contact Us</p>
           <p>Careers</p>
           <p>Solutions</p>
-          <p @click="$router.push('/faq')" class="cursor-pointer">Faq</p>
+          <p @click="$router.push('/how-does-it-work')" class="cursor-pointer">How does it work</p>
           <p @click="$router.push('/exchanges')" class="cursor-pointer">Exchange</p>
         </div>
 

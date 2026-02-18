@@ -5,13 +5,14 @@ export const userLogin = async (payload) => {
   const auth = useAuthStore();
   try {
     auth.setLoading(true);
-    const data = await $fetch("/login", {
+    const data = await $fetch("/auth/login", {
       baseURL: BASE_URL,
       method: "POST",
       body: payload,
     });
     if (data?.success) {
-      auth.addUser({ user: data?.customer, token: data?.token });
+      console.log("Login successful:", data.data.user);
+      auth.addUser({ user: data?.data?.user, accessToken: data?.data?.accessToken, refreshToken: data?.data?.refreshToken });
       return { data: data, error: null };
     } else {
       throw new Error("API response unsuccessful");
@@ -23,14 +24,13 @@ export const userLogin = async (payload) => {
     auth.setLoading(false);
   }
 };
-
 
 export const createUser = async (payload) => {
   const BASE_URL = useRuntimeConfig().public.apiBase;
   const auth = useAuthStore();
   auth.setLoading(true);
   try {
-    const data = await $fetch("register", {
+    const data = await $fetch("/users/register", {
       baseURL: BASE_URL,
       method: "POST",
       body: payload,
@@ -47,7 +47,6 @@ export const createUser = async (payload) => {
     auth.setLoading(false);
   }
 };
-
 
 export const forgetPassword = async (payload) => {
   const BASE_URL = useRuntimeConfig().public.apiBase;
@@ -58,7 +57,7 @@ export const forgetPassword = async (payload) => {
       body: payload,
     });
     if (data?.success) {
-     return { data: data, error: null };
+      return { data: data, error: null };
     } else {
       throw new Error("API response unsuccessful");
     }
@@ -66,10 +65,8 @@ export const forgetPassword = async (payload) => {
     console.error("Fetch error:", error);
     return { data: null, error };
   } finally {
-    
   }
 };
-
 
 export const forgetResetPassword = async (payload) => {
   const BASE_URL = useRuntimeConfig().public.apiBase;
@@ -88,9 +85,30 @@ export const forgetResetPassword = async (payload) => {
     console.error("Fetch error:", error);
     return { data: null, error };
   } finally {
-    
   }
 };
 
-
-
+export const tokenVerification = async () => {
+  const BASE_URL = useRuntimeConfig().public.apiBase;
+  const auth = useAuthStore();
+  const { token } = auth;
+  try {
+    const data = await $fetch("/verifytoken", {
+      baseURL: BASE_URL,
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+    if (data?.success) {
+      return { data: data, error: null };
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+  }
+};

@@ -202,12 +202,12 @@ const login = async () => {
   try {
     const { data } = await userLogin(payload);
 
-    if (!data?.success) throw new Error("Login failed");
+    if (!data) throw new Error("Login failed");
 
-    authData.addUser({
-      user: data.data.user.name,
-      token: data.data.token,
-    });
+    // authData.addUser({
+    //   user: data.data.user.name,
+    //   token: data.data.token,
+    // });
     router.push("/account");
     toast.success({ message: "Logged in successfully", position: 'topCenter', timeout:2000 })
   } catch (err) {

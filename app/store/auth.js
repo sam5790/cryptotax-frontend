@@ -2,17 +2,21 @@ import { defineStore } from "pinia";
 
 export const useAuthStore = defineStore("auth", () => {
   const user = ref(null);
-  const token = ref("");
+  const accessToken = ref("");
+  const refreshToken = ref("");
   const loading = ref(false);
 
   const addUser = (payload) => {
     user.value = payload.user;
-    token.value = payload.token;
+    accessToken.value = payload.accessToken;
+    refreshToken.value = payload.refreshToken;
+    console.log("in store accessToken",accessToken.value)
+    console.log("in store refreshToken",refreshToken.value)
   };
   
   const logout = () => {
     user.value = null;
-    token.value = "";
+    accessToken.value = "";
   };
 
   const setLoading = (val) => {
@@ -21,7 +25,8 @@ export const useAuthStore = defineStore("auth", () => {
 
   return {
     user,
-    token,
+    accessToken,
+    refreshToken,
     loading,
     addUser,
     logout,
