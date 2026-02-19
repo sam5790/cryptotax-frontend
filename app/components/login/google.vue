@@ -22,7 +22,6 @@ const loginWithGoogle = () => {
       const token = await auth.currentUser.getIdToken();
       const googleUser = result.user;
       if (!user.value) {
-        console.log("inside")
         const {data}  = await useFetch(
           BASE_URL + "/auth/firebase/validate",
           {
