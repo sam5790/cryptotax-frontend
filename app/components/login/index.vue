@@ -229,11 +229,9 @@ const verifyOTP = () => {
         }
       );
       if (data?.value?.success) {
-        
         authStore.addUser({ user: data?.value?.data.user,
            accessToken: data?.value?.data.accessToken,
             refreshToken: data?.value?.data.refreshToken });
-
         router.push("/account");
         loading.value = false;
       } else {

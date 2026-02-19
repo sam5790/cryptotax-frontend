@@ -22,7 +22,8 @@ const loginWithGoogle = () => {
       const token = await auth.currentUser.getIdToken();
       const googleUser = result.user;
       if (!user.value) {
-        const { data } = await useApi(
+        console.log("inside")
+        const {data}  = await useFetch(
           BASE_URL + "/auth/firebase/validate",
           {
             method: "POST",
@@ -32,12 +33,12 @@ const loginWithGoogle = () => {
             },
           }
         );
-        console.log("token", token);
-        if (data?.data) {
-          authStore.addUser({ user: data?.data?.user, accessToken: data?.data?.accessToken, refreshToken: data?.data?.refreshToken });
+        console.log("data", data.value);
+        if (data?.value?.success) {
+          authStore.addUser({ user: data?.value?.data.user, accessToken: data?.value?.data.accessToken, refreshToken: data?.value?.data.refreshToken });
           router.push("/account");
         } else {
-          console.error(data?.error);
+          console.error(data?.value?.error);
         }
       }
     })

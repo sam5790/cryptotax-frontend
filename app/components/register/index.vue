@@ -242,7 +242,7 @@ const register = async () => {
 
   const { data, error } = await createUser(payload);
   if (data?.success) {
-    router.push("/login");
+    router.push("/login/mail");
     loading.value = false;
     toast.success({ message: "Account created successfully", position: 'topCenter', timeout:2000 })
   } else {
