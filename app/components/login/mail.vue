@@ -146,10 +146,11 @@
       </div>
 
       <div class="flex justify-center items-center my-3">
-        <button class="rounded-md border p-2 flex" @click="loginWithGoogle">
+        <!-- <button class="rounded-md border p-2 flex" @click="loginWithGoogle">
           <img src="/google.svg" class="h-6 mr-2" />
           <span>Sign In With Google</span>
-        </button>
+        </button> -->
+        <LoginGoogle />
       </div>
 
       <div class="flex justify-center my-3">

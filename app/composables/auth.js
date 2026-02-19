@@ -87,28 +87,3 @@ export const forgetResetPassword = async (payload) => {
   } finally {
   }
 };
-
-export const tokenVerification = async () => {
-  const BASE_URL = useRuntimeConfig().public.apiBase;
-  const auth = useAuthStore();
-  const { token } = auth;
-  try {
-    const data = await $fetch("/verifytoken", {
-      baseURL: BASE_URL,
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    });
-    if (data?.success) {
-      return { data: data, error: null };
-    } else {
-      throw new Error("API response unsuccessful");
-    }
-  } catch (error) {
-    console.error("Fetch error:", error);
-    return { data: null, error };
-  } finally {
-  }
-};

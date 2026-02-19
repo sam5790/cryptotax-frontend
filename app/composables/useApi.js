@@ -1,13 +1,8 @@
 import { useAuthStore } from "~/store/auth";
 
-
-export const useApi = async (
-  endpoint,
-  options = {},
-) => {
+export const useApi = async (endpoint, options = {}) => {
   const config = useRuntimeConfig();
-  const { accessToken, addUser, refreshToken } = useAuthStore();
-
+  const { accessToken, updateTokens, refreshToken } = useAuthStore();
   const { onLoading, ...fetchOptions } = options;
   const toast = useToast();
 
@@ -54,9 +49,14 @@ export const useApi = async (
             },
           },
         );
+        console.log("updateToken-refresh token - api", updateToken);
 
-        addUser(updateToken);
-        const newAccessToken = updateToken?.accessToken;
+        updateTokens({
+          accessToken: updateToken.data.accessToken,
+          refreshToken: updateToken.data.refreshToken,
+        });
+
+        const newAccessToken = updateToken?.data.accessToken;
 
         if (newAccessToken) {
           params.headers.Authorization = `Bearer ${newAccessToken}`;

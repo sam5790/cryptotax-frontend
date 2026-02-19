@@ -14,12 +14,7 @@
           <button
             class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="
-              auth?.accessToken ? router.push('/account') : router.push('/login')
-            "
-            :class="
-              $route.path.startsWith('/account')
-                ? 'text-[#4aabab] font-medium underline'
-                : ''
+              auth?.user ? router.push('/account') : router.push('/login')
             "
             :class="
               $route.path.startsWith('/account')
@@ -53,12 +48,7 @@
           <button
             class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="
-              auth?.accessToken ? router.push('/my-wallet') : router.push('/login')
-            "
-            :class="
-              $route.path.startsWith('/my-wallet')
-                ? 'text-[#4aabab] font-medium underline'
-                : ''
+              auth?.user ? router.push('/my-wallet') : router.push('/login')
             "
             :class="
               $route.path.startsWith('/my-wallet')
@@ -71,12 +61,7 @@
           <button
             class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="
-              auth?.accessToken ? router.push('/reports') : router.push('/login')
-            "
-            :class="
-              $route.path.startsWith('/reports')
-                ? 'text-[#4aabab] font-medium underline'
-                : ''
+              auth?.user ? router.push('/reports') : router.push('/login')
             "
             :class="
               $route.path.startsWith('/reports')
@@ -90,7 +75,8 @@
             class="whitespace-nowrap cursor-pointer hover:text-[#4aabab]"
             @click="router.push('/about-us')"
             :class="
-              $route.path.startsWith('/about-us')
+              $route.path.startsWith('/about-us') 
+
                 ? 'text-[#4aabab] font-medium underline'
                 : ''
             "
@@ -112,7 +98,7 @@
 
         <div class="items-center gap-2 hidden md:flex">
           <button
-            v-if="!auth?.token"
+            v-if="!auth?.user"
             class="px-6 py-2 bg-[#4aabab] rounded-3xl text-white font-semibold text-sm"
             @click="router.push('/login')"
           >
@@ -147,7 +133,7 @@
         <div v-if="isOpen" class="fixed inset-0 z-50 flex">
           <div @click="isOpen = false"></div>
           <div class="bg-white w-64 h-full shadow-xl p-6">
-            <div class="relative" v-if="auth.accessToken">
+            <div class="relative" v-if="auth?.user">
               <div class="flex flex-col items-center justify-center">
                 <img
                   src="/avatar.png"
@@ -156,7 +142,7 @@
                 <div
                   class="capitalize my-1 text-lg font-semibold font-[Poppins]"
                 >
-                  {{ user }}
+                  {{ user?.name }}
                 </div>
                 <div class="flex mb-2 items-center">
                   <img
@@ -239,7 +225,7 @@
               </button>
               <button
                 class="text-left p-2 text-gray-700 rounded"
-                @click="auth?.token ? navigate('/account') : navigate('/login')"
+                @click="auth?.user ? navigate('/account') : navigate('/login')"
                 :class="
                   $route.path.startsWith('/account')
                     ? 'bg-[#4aabab] font-medium text-white'
@@ -272,12 +258,7 @@
               <button
                 class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
                 @click="
-                  auth?.accessToken ? navigate('/my-wallet') : navigate('/login')
-                "
-                :class="
-                  $route.path.startsWith('/my-wallet')
-                    ? 'bg-[#4aabab] font-medium text-white'
-                    : ''
+                  auth?.user ? navigate('/my-wallet') : navigate('/login')
                 "
                 :class="
                   $route.path.startsWith('/my-wallet')
@@ -289,7 +270,7 @@
               </button>
               <button
                 class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
-                @click="auth?.token ? navigate('/reports') : navigate('/login')"
+                @click="auth?.user ? navigate('/reports') : navigate('/login')"
                 :class="
                   $route.path.startsWith('/reports')
                     ? 'bg-[#4aabab] font-medium text-white'
@@ -322,7 +303,7 @@
               </button>
               <div>
                 <button
-                  v-if="!auth?.accessToken"
+                  v-if="!auth?.user"
                   class="text-left p-2 text-[#4AABAB] font-semibold hover:bg-gray-100 rounded"
                   @click="router.push('/login')"
                 >
@@ -352,7 +333,7 @@ const { transactionsPagination } = storeToRefs(store);
 const isOpen = ref(false);
 const router = useRouter();
 const auth = useAuthStore();
-const { user, token } = storeToRefs(auth);
+const { user } = storeToRefs(auth);
 const BASE_URL = useRuntimeConfig().public.apiBase;
 const handleLogout = () => {
   auth.logout();
@@ -363,15 +344,7 @@ const navigate = (path) => {
   router.push(path);
   isOpen.value = false;
 };
-onMounted(async () => {
-  if (!token.value) return;
-  const { data, error } = await tokenVerification();
 
-  if (!data?.success) {
-    auth.logout();
-    router.push("/login");
-  }
-});
 </script>
 
 <style scoped>

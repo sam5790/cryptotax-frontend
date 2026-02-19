@@ -1,37 +1,25 @@
 <template>
   <div class="flex items-center justify-center px-4 py-10 md:p-20">
-    <div
-      v-if="!showOTPCard"
-      class="shadow-[0_0_25px_0] shadow-[#254BD34D] rounded-3xl p-6 md:p-16 w-full max-w-xl"
-    >
+    <div v-if="!showOTPCard" class="shadow-[0_0_25px_0] shadow-[#254BD34D] rounded-3xl p-6 md:p-16 w-full max-w-xl">
       <h2 class="text-[38px] md:text-4xl font-bold text-center justify-center flex mb-5">
         <div class="flex gap-3 flex-wrap">
-            <div class="text-[#4aabab]">
-              Welcome
-              <CurvedLine />
-            </div>
-            Back
+          <div class="text-[#4aabab]">
+            Welcome
+            <CurvedLine />
           </div>
+          Back
+        </div>
       </h2>
       <div>
         <p class="text-center mb-16 text-gray-700 text-sm md:text-[22px]">
           Please enter your mobile number
         </p>
         <form id="loginPhone">
-        <div class="my-4 relative">
-          <div
-            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
-          >
-            <svg
-              class="w-4 text-gray-500"
-              width="16"
-              height="16"
-              viewBox="0 0 512 512"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M341.601,0H170.399c-29.292,0-53.121,23.828-53.121,53.121v405.756c0,29.292,23.83,53.123,53.121,53.123
+          <div class="my-4 relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg class="w-4 text-gray-500" width="16" height="16" viewBox="0 0 512 512" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M341.601,0H170.399c-29.292,0-53.121,23.828-53.121,53.121v405.756c0,29.292,23.83,53.123,53.121,53.123
     h171.202c29.292,0,53.121-23.83,53.121-53.119V53.121C394.722,23.828,370.893,0,341.601,0z M234.91,453.434
     c0-0.536,0.452-0.988,0.988-0.988H276.1c0.536,0,0.988,0.452,0.988,0.988v13.684c0,0.536-0.452,0.988-0.988,0.988h-40.202
     c-0.536,0-0.988-0.452-0.988-0.988V453.434z M277.088,429.684c0,0.536-0.452,0.988-0.988,0.988h-40.202
@@ -51,43 +39,29 @@
     c0,0.545-0.442,0.988-0.988,0.988h-40.202c-0.545,0-0.988-0.442-0.988-0.988v-13.68c0-0.536,0.452-0.988,0.988-0.988h40.202
     c0.536,0,0.988,0.452,0.988,0.988V392.25z M308.973,467.118v-13.684c0-0.536,0.452-0.988,0.988-0.988h40.202
     c0.536,0,0.988,0.452,0.988,0.988v13.684c0,0.536-0.452,0.988-0.988,0.988h-40.202
-    C309.425,468.106,308.973,467.654,308.973,467.118z"
-              />
-            </svg>
+    C309.425,468.106,308.973,467.654,308.973,467.118z" />
+              </svg>
+            </div>
+
+            <input type="number" v-model="mobile"
+              class="rounded-lg w-full pl-9 pr-3 py-2.5 border border-[#adadad] font-[Poppins]"
+              placeholder="Enter your mobile number" minlength="10" required />
           </div>
+          <div class="flex justify-center mt-6">
+            <button v-if="!loading" class="bg-[#4AABAB] rounded-full text-white py-2 px-8 font-medium" @click="login">
+              Log In
+            </button>
 
-          <input
-            type="number"
-            v-model="mobile"
-            class="rounded-lg w-full pl-9 pr-3 py-2.5 border border-[#adadad] font-[Poppins]"
-            placeholder="Enter your mobile number"
-            minlength="10"
-            required
-          />
-        </div>
-        <div class="flex justify-center mt-6">
-          <button
-            v-if="!loading"
-            class="bg-[#4AABAB] rounded-full text-white py-2 px-8 font-medium"
-            @click="login"
-          >
-            Log In
-          </button>
+            <button v-else type="button"
+              class="bg-[#4AABAB] hover:bg-teal-600 text-white font-medium py-2 px-8 rounded-full flex items-center gap-2 disabled:opacity-60"
+              disabled>
+              <span
+                class="inline-block h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
 
-          <button
-            v-else
-            type="button"
-            class="bg-[#4AABAB] hover:bg-teal-600 text-white font-medium py-2 px-8 rounded-full flex items-center gap-2 disabled:opacity-60"
-            disabled
-          >
-            <span
-              class="inline-block h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"
-            ></span>
-
-            Logging in...
-          </button>
-        </div>
-</form>
+              Logging in...
+            </button>
+          </div>
+        </form>
       </div>
 
       <div class="flex items-center justify-center gap-5 mt-5">
@@ -100,10 +74,7 @@
         <LoginGoogle />
       </div>
       <div class="flex justify-center items-center my-3">
-        <button
-          class="rounded-lg border px-3 py-2 flex"
-          @click="$router.push('/login/mail')"
-        >
+        <button class="rounded-lg border px-3 py-2 flex" @click="$router.push('/login/mail')">
           <img src="/email.svg" class="h-6 mr-2" />
 
           <span>Sign In With Email</span>
@@ -117,10 +88,7 @@
         </button>
       </p>
     </div>
-    <div
-      v-else
-      class="shadow-[0_0_25px_0] shadow-[#254BD34D] rounded-3xl p-6 md:p-16 w-full max-w-xl"
-    >
+    <div v-else class="shadow-[0_0_25px_0] shadow-[#254BD34D] rounded-3xl p-6 md:p-16 w-full max-w-xl">
       <h2 class="text-[38px] md:text-4xl font-bold text-center mb-5">
         <span class="#4aabab underline-text">Welcome</span> Back
       </h2>
@@ -130,30 +98,18 @@
         </p>
 
         <div class="my-4 flex gap-2 items-center justify-center">
-          <input
-            type="number"
-            v-model="otp"
-            placeholder="Enter 6 digit OTP"
-            class="rounded-lg w-full border p-2.5 border-[#adadad]"
-          />
+          <input type="number" v-model="otp" placeholder="Enter 6 digit OTP"
+            class="rounded-lg w-full border p-2.5 border-[#adadad]" />
         </div>
         <div class="flex justify-center mt-6">
-          <button
-            v-if="!loading"
-            class="bg-[#4AABAB] rounded-full text-white py-2 px-8"
-            @click="verifyOTP"
-          >
+          <button v-if="!loading" class="bg-[#4AABAB] rounded-full text-white py-2 px-8" @click="verifyOTP">
             Verify OTP
           </button>
-          <button
-            v-else
-            type="button"
+          <button v-else type="button"
             class="bg-[#4AABAB] hover:bg-teal-600 text-white font-medium py-2 px-8 rounded-full flex items-center gap-2 disabled:opacity-60"
-            disabled
-          >
+            disabled>
             <span
-              class="inline-block h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"
-            ></span>
+              class="inline-block h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
 
             Verifying...
           </button>
@@ -170,10 +126,7 @@
         <LoginGoogle />
       </div>
       <div class="flex justify-center items-center my-3">
-        <button
-          class="rounded-lg border px-3 py-2 flex"
-          @click="$router.push('/login/mail')"
-        >
+        <button class="rounded-lg border px-3 py-2 flex" @click="$router.push('/login/mail')">
           <img src="/email.svg" class="h-6 mr-2" />
 
           <span>Sign In With Email</span>
@@ -216,10 +169,10 @@ const timer = ref(null);
 let recaptchaVerifier = null;
 
 const login = async () => {
-const form=document.getElementById("loginPhone")
-if(!form.reportValidity()){
-  return
-}
+  const form = document.getElementById("loginPhone")
+  if (!form.reportValidity()) {
+    return
+  }
   loading.value = true;
   if (!recaptchaVerifier) {
     recaptchaVerifier = new RecaptchaVerifier(auth, "recaptcha-container", {
@@ -258,14 +211,15 @@ if(!form.reportValidity()){
 
 const verifyOTP = () => {
   loading.value = true;
+  const authStore = useAuthStore();
   const confirmOTP = otpConfirmation.value;
   const code = otp.value;
   confirmOTP.confirm(code).then(async (result) => {
     const token = await auth.currentUser.getIdToken();
 
     if (!user.value) {
-      const { data, status, error } = await useFetch(
-        BASE_URL + `/validate/+91${mobile.value}`,
+      const { data } = await useFetch(
+        BASE_URL + `/auth/firebase/validate`,
         {
           method: "POST",
           headers: {
@@ -274,16 +228,17 @@ const verifyOTP = () => {
           },
         }
       );
-      if (status.value === "success") {
-        authData.addUser({
-          user: data?.value?.data?.user?.name || data?.value?.data?.user?.phone,
-          token: data?.value?.data?.token,
-        });
+      if (data?.value?.success) {
+        
+        authStore.addUser({ user: data?.value?.data.user,
+           accessToken: data?.value?.data.accessToken,
+            refreshToken: data?.value?.data.refreshToken });
+
         router.push("/account");
         loading.value = false;
       } else {
         loading.value = false;
-        console.error(error?.value);
+        console.error(data?.value.error);
       }
     }
   });
@@ -295,6 +250,7 @@ const verifyOTP = () => {
   position: relative;
   display: inline-block;
 }
+
 .line-with-dots {
   width: 100px;
   height: 1px;
@@ -322,6 +278,7 @@ const verifyOTP = () => {
 .line-with-dots::after {
   right: -3px;
 }
+
 .underline-text::after {
   content: "";
   position: absolute;
@@ -334,11 +291,13 @@ const verifyOTP = () => {
   background-size: 100% 100%;
   pointer-events: none;
 }
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 input[type="number"] {
   -moz-appearance: textfield;
 }
@@ -346,6 +305,7 @@ input[type="number"] {
 input[type="number"].no-arrows {
   padding-left: 2.25rem;
 }
+
 @media (max-width: 768px) {
   .underline-text::after {
     bottom: -0.15em;
@@ -381,13 +341,15 @@ input[type="number"].no-arrows {
 .loader {
   width: 20px;
   height: 20px;
-  border: 3px solid rgba(255,255,255,0.3);
+  border: 3px solid rgba(255, 255, 255, 0.3);
   border-top-color: #fff;
   border-radius: 50%;
   animation: spin .6s linear infinite;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>

@@ -103,7 +103,7 @@
             <p
               class="text-xs xl:text-lg font-medium mt-2 capitalize font-[Poppins]"
             >
-              {{ user }}
+              {{ user?.name }}
             </p>
             <div class="flex mt-2 items-center">
               <img
@@ -243,9 +243,9 @@
                 </td>
                 <td class="py-4 px-4 flex items-center gap-1">
                   <img :src="`/icons/${item.exchange?.toLowerCase()}.png`" class="w-8 h-8" />
-                  {{ item.exchange }}
+                  {{ item?.exchange }}
                 </td>
-                <td class="py-4 px-4 ">{{ item.coin }}</td>
+                <td class="py-4 px-4 ">{{ item?.coin }}</td>
                 <td class="py-4 px-4 font-[Poppins] whitespace-nowrap">
                   <NuxtTime
                     :datetime="item.buyDate"
@@ -259,11 +259,11 @@
                     class="text-green-700 flex items-center gap-1 font-[Poppins]"
                   >
                     <Icon name="mdi:menu-up" class="w-8 h-8" />{{
-                      item.buyPrice
+                      item?.buyPrice
                     }}
                   </p>
                 </td>
-                <td class="py-4 px-4 font-[Poppins]">{{ item.quantity }}</td>
+                <td class="py-4 px-4 font-[Poppins]">{{ item?.quantity }}</td>
                 <td class="py-4 px-4 capitalize font-[Poppins]  whitespace-nowrap">
                   <NuxtTime
                     :datetime="item.sellDate"
@@ -277,7 +277,7 @@
                     class="text-red-500 flex items-center gap-1 font-[Poppins]"
                   >
                     <Icon name="mdi:menu-down" class="w-8 h-8" />{{
-                      item.sellPrice
+                      item?.sellPrice
                     }}
                   </p>
                 </td>
@@ -285,9 +285,9 @@
                   class="py-4 px-4 font-[Poppins]"
                   :class="item.pnl > 0 ? 'text-green-700' : 'text-red-500'"
                 >
-                  {{ item.pnl }}
+                  {{ item?.pnl }}
                 </td>
-                <td class="py-4 px-4 font-[Poppins]">{{ item.remaining }}</td>
+                <td class="py-4 px-4 font-[Poppins]">{{ item?.remaining }}</td>
               </tr>
             </tbody>
           </table>
@@ -396,16 +396,16 @@
                 class="text-gray-500 font-semibold text-sm font-[Poppins]"
                 :class="item.pnl > 0 ? 'text-green-700' : 'text-red-500'"
               >
-                {{ item.pnl }}</span
+                {{ item?.pnl }}</span
               >
             </div>
             <div class="flex items-center mb-3 gap-2">
               <img :src="`/icons/${item.exchange?.toLowerCase()}.png`" class="w-7 h-7" />
-              <span class="font-medium">{{ item.exchange }}</span>
+              <span class="font-medium">{{ item?.exchange }}</span>
             </div>
             <div class="flex justify-between my-1">
               <span class="font-medium">Coin</span>
-              <span>{{ item.coin }}</span>
+              <span>{{ item?.coin }}</span>
             </div>
             <div class="flex justify-between my-1 flex-wrap">
               <span class="font-medium">Buy</span>
@@ -441,12 +441,12 @@
             <div class="flex justify-between my-1 flex-wrap">
               <span class="font-medium">Quantity</span>
               <span class="font-[Poppins]">
-                {{ item.quantity }}
+                {{ item?.quantity }}
               </span>
             </div>
             <div class="flex justify-between mb-1 flex-wrap">
               <span class="font-medium">Balance</span>
-              <span class="font-[Poppins]">{{ item.remaining }}</span>
+              <span class="font-[Poppins]">{{ item?.remaining }}</span>
             </div>
           </div>
           <div class="flex justify-center gap-3 mt-6">
@@ -484,9 +484,9 @@ import { useAuthStore } from "~/store/auth";
 const allTransactions=ref([])
 onMounted(async () => {
   await getPnlDetails({ page: 1, limit: 50 });
-  const res = await getTransactionsForExport({
-  });
-  allTransactions.value = res;
+  // const res = await getTransactionsForExport({
+  // });
+  // allTransactions.value = res;
 });
 const auth = useAuthStore();
 const store = mainStore();

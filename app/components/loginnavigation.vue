@@ -12,8 +12,9 @@
       <div class="hidden md:flex gap-4 lg:gap-12 items-center">
         <button
           class="whitespace-nowrap cursor-pointer"
-          @click="router.push('/account')"
-        >
+          @click="
+              auth?.user ? router.push('/account') : router.push('/login')
+            ">
           Account
         </button>
         <button
@@ -25,14 +26,16 @@
         <button class="whitespace-nowrap cursor-pointer">Export Data</button>
         <button
           class="whitespace-nowrap cursor-pointer"
-          @click="router.push('/my-wallet')"
-        >
+          @click="
+              auth?.user ? router.push('/my-wallet') : router.push('/login')
+            ">
           My Wallet
         </button>
         <button
           class="whitespace-nowrap cursor-pointer"
-          @click="router.push('/reports')"
-        >
+          @click="
+              auth?.user ? router.push('/reports') : router.push('/login')
+            ">
           Reports
         </button>
         <button
@@ -86,7 +89,7 @@
       <div v-if="isOpen" class="fixed inset-0 z-50 flex">
         <div @click="isOpen = false"></div>
         <div class="bg-white w-64 h-full shadow-xl p-6">
-          <div class="relative" v-if="auth.token">
+          <div class="relative" v-if="auth?.user">
             <div class="flex flex-col items-center justify-center">
               <img
                 :src="'/avatar.png'"
@@ -152,7 +155,7 @@
             </button>
             <button
               class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
-              @click="navigate('/account')"
+              @click="auth?.user ? navigate('/account') : navigate('/login')"
             >
               Account
             </button>
@@ -169,14 +172,16 @@
             </button>
             <button
               class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
-              @click="navigate('/my-wallet')"
-            >
+              @click="
+                  auth?.user ? navigate('/my-wallet') : navigate('/login')
+                ">
               My Wallet
             </button>
             <button
               class="text-left p-2 text-gray-700 hover:bg-gray-100 rounded"
-              @click="navigate('/reports')"
-            >
+              @click="
+                  auth?.user ? navigate('/reports') : navigate('/login')
+                ">
               Reports
             </button>
             <button

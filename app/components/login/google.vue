@@ -16,13 +16,14 @@ const { loading, user, token } = storeToRefs(authData);
 const auth = getAuth();
 const router = useRouter();
 const loginWithGoogle = () => {
+  const authStore = useAuthStore();
   signInWithPopup(auth, provider)
     .then(async (result) => {
       const token = await auth.currentUser.getIdToken();
       const googleUser = result.user;
       if (!user.value) {
-        const { data, status, error } = await useFetch(
-          BASE_URL + "/googlevalidate",
+        const { data } = await useApi(
+          BASE_URL + "/auth/firebase/validate",
           {
             method: "POST",
             headers: {
@@ -31,14 +32,12 @@ const loginWithGoogle = () => {
             },
           }
         );
-        if (status.value === "success") {
-          authData.addUser({
-            user: data?.value?.data?.user?.name,
-            token: data?.value?.data?.token,
-          });
+        console.log("token", token);
+        if (data?.data) {
+          authStore.addUser({ user: data?.data?.user, accessToken: data?.data?.accessToken, refreshToken: data?.data?.refreshToken });
           router.push("/account");
         } else {
-          console.error(error?.value);
+          console.error(data?.error);
         }
       }
     })

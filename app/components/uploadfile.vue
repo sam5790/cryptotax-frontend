@@ -73,16 +73,14 @@ const handleFileChange = async (e) => {
 console.log( props.account.title )
 
 console.log( props.account.title )
+
+
 const uploadFile = async () => {
   console.log("urls",fileUrls.value)
   if (!fileUrls.value.length) return;
 
   isUploading.value = true;
 
-  const formData = new FormData();
-  Array.from(fileUrls.value).forEach((file) =>
-    formData.append("excelFiles", file)
-  );
   const exchange =
     props.account.title === "Coin DCX"
       ? "coindcx"
@@ -92,8 +90,8 @@ const uploadFile = async () => {
       ? "coinswitch"
       : props.account.title === "Bitbns"
       ? "bitbns"
-      : "wasirx";
-  const { data, error } = await fileUpload({ formData, exchange });
+      : "wazirx";
+  const { data, error } = await fileUpload({ fileUrls, exchange });
   if (data?.success) {
     await getAccounts();
     store.updateShowDetails(false);

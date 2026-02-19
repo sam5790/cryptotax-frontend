@@ -1,41 +1,54 @@
 import { defineStore } from "pinia";
 
-export const useAuthStore = defineStore("auth", () => {
-  const user = ref(null);
-  const accessToken = ref("");
-  const refreshToken = ref("");
-  const loading = ref(false);
+export const useAuthStore = defineStore(
+  "auth",
+  () => {
+    const user = ref(null);
+    const accessToken = ref("");
+    const refreshToken = ref("");
+    const loading = ref(false);
 
-  const addUser = (payload) => {
-    user.value = payload.user;
-    accessToken.value = payload.accessToken;
-    refreshToken.value = payload.refreshToken;
-    console.log("in store accessToken",accessToken.value)
-    console.log("in store refreshToken",refreshToken.value)
-  };
-  
-  const logout = () => {
-    user.value = null;
-    accessToken.value = "";
-  };
+    const addUser = (payload) => {
+      user.value = payload.user;
+      accessToken.value = payload.accessToken;
+      refreshToken.value = payload.refreshToken;
+      console.log("in store accessToken", accessToken.value);
+      console.log("in store refreshToken", refreshToken.value);
+    };
 
-  const setLoading = (val) => {
-    loading.value = val;
-  };
+    const updateTokens = ({
+      accessToken: newAccessToken,
+      refreshToken: newRefreshToken,
+    }) => {
+      accessToken.value = newAccessToken;
+      refreshToken.value = newRefreshToken;
+      console.log("in store refresh", accessToken.value);
+      console.log("in store refresh", refreshToken.value);
+    };
 
-  return {
-    user,
-    accessToken,
-    refreshToken,
-    loading,
-    addUser,
-    logout,
-    setLoading
-  };
-},
+    const logout = () => {
+      user.value = null;
+      accessToken.value = "";
+    };
+
+    const setLoading = (val) => {
+      loading.value = val;
+    };
+
+    return {
+      user,
+      accessToken,
+      refreshToken,
+      loading,
+      addUser,
+      logout,
+      setLoading,
+      updateTokens,
+    };
+  },
   {
     persist: {
       storage: piniaPluginPersistedstate.localStorage(),
     },
-  }
+  },
 );

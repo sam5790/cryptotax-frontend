@@ -2,7 +2,7 @@
   <div class="md:p-10">
     <div class="flex flex-col justify-center items-center">
       <div
-        class="flex relative flex-col justify-center items-center shadow-[0_0_10px_0] shadow-[#254BD34D] sm:p-10 px-5 py-10 rounded-xl relative mt-10 md:mt-4 mx-2 md:mx-0"
+        class="flex relative flex-col justify-center items-center shadow-[0_0_10px_0] shadow-[#254BD34D] sm:p-10 px-5 py-10 rounded-xl mt-10 md:mt-4 mx-2 md:mx-0"
       >
         <div class="absolute -top-[60px] left-1/2 -translate-x-1/2">
           <img
@@ -244,14 +244,12 @@ function openDetails(item) {
 const deleteAccount = async (id) => {
   try {
     const BASE_URL = useRuntimeConfig().public.apiBase;
-    const { token } = useAuthStore();
-    const res = await $fetch(`/delete/${id}`, {
+    const {data} = await useApi(`pnlsummary/${id}`, {
       baseURL: BASE_URL,
       method: "DELETE",
-      headers: { Authorization: `Bearer ${token}` },
     });
 
-    if (!res?.success) throw new Error();
+    if (!data?.success) throw new Error();
 
     toast.success({
       message: "Account deleted successfully",

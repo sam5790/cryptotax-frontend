@@ -118,9 +118,9 @@
                   :src="`/icons/${item.exchange?.toLowerCase()}.png`"
                   class="w-6 h-6 sm:w-8 sm:h-8"
                 />
-                {{ item.exchange }}
+                {{ item?.exchange }}
               </td>
-              <td class="p-4">{{ item.coin }}</td>
+              <td class="p-4">{{ item?.coin }}</td>
               <td class="p-4 font-[Poppins]">
                 <NuxtTime
                   :datetime="item.date"
@@ -135,18 +135,18 @@
                   class="text-green-500 flex items-center gap-1 font-[Poppins]"
                 >
                   <Icon name="mdi:menu-up" class="w-8 h-8 text-teal-600" />
-                  {{ item.quantity }}
+                  {{ item?.quantity }}
                 </p>
                 <p
                   v-else
                   class="text-red-500 flex items-center gap-1 font-[Poppins]"
                 >
                   <Icon name="mdi:menu-down" class="w-8 h-8 text-red-600" />
-                  {{ item.quantity }}
+                  {{ item?.quantity }}
                 </p>
               </td>
-              <td class="p-4 font-[Poppins]">{{ item.total }}</td>
-              <td class="p-4 font-[Poppins]">{{ item.tds }}</td>
+              <td class="p-4 font-[Poppins]">{{ item?.total }}</td>
+              <td class="p-4 font-[Poppins]">{{ item?.tds }}</td>
             </tr>
           </tbody>
         </table>
@@ -160,8 +160,8 @@
           </button>
 
           <span class="px-4 py-2 font-[Poppins]">
-            Page {{ transactionsPagination.currentPage }} of
-            {{ transactionsPagination.totalPages }}
+            Page {{ transactionsPagination?.currentPage }} of
+            {{ transactionsPagination?.totalPages }}
           </span>
 
           <button
@@ -200,15 +200,15 @@
            <div class="flex justify-between items-center my-2">
            <div class="flex items-center gap-2">
             <img :src="`/icons/${item.exchange?.toLowerCase()}.png`" class="w-6 h-6" />
-            <span class="font-medium">{{ item.exchange }}</span>
+            <span class="font-medium">{{ item?.exchange }}</span>
           </div>
           <div class="capitalize rounded-xl px-3 font-medium text-sm text-white" :class="item.type === 'sell'?'bg-red-500':'bg-green-500'">
-            {{ item.type }}
+            {{ item?.type }}
           </div>
          </div>
           <div class="flex justify-between mb-1">
             <span class="font-medium">Coin:</span>
-            <span>{{ item.coin }}</span>
+            <span>{{ item?.coin }}</span>
           </div>
           <div class="flex justify-between mb-1">
             <span class="font-medium">Quantity:</span>
@@ -218,16 +218,16 @@
                   ? 'text-green-500 font-[Poppins]'
                   : 'text-red-500 font-[Poppins]'
               "
-              >{{ item.quantity }}</span
+              >{{ item?.quantity }}</span
             >
           </div>
           <div class="flex justify-between mb-1">
             <span class="font-medium">Amount:</span>
-            <span class="font-[Poppins]">{{ item.total }}</span>
+            <span class="font-[Poppins]">{{ item?.total }}</span>
           </div>
           <div class="flex justify-between">
             <span class="font-medium">TDS:</span>
-            <span class="font-[Poppins]">{{ item.tds || 0 }}</span>
+            <span class="font-[Poppins]">{{ item?.tds || 0 }}</span>
           </div>
         </div>
         <div class="flex justify-center gap-3 mt-6">
@@ -240,8 +240,8 @@
           </button>
 
           <span class="px-4 py-2 font-[Poppins]">
-            Page {{ transactionsPagination.currentPage }} of
-            {{ transactionsPagination.totalPages }}
+            Page {{ transactionsPagination?.currentPage }} of
+            {{ transactionsPagination?.totalPages }}
           </span>
 
           <button
@@ -287,8 +287,8 @@ const store = mainStore();
 const allTransactions=ref([])
 onMounted(async () => {
   await getTransactions({ page: 1, limit: 50 });
-  const res = await getTransactionsForExport({});
-  allTransactions.value = res;
+  // const res = await getTransactionsForExport({});
+  // allTransactions.value = res;
 });
 const { transactions, pnl, total_pnl, transactionsPagination } =
   storeToRefs(store);

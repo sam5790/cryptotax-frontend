@@ -10,10 +10,6 @@ export const getAccounts = async () => {
     const {data} = await useApi(`users/pnldetails`, {
       baseURL: BASE_URL,
       method: "GET",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      },
     });
     if (data?.success) {
       store.setTotalPnl(data.data);
@@ -37,10 +33,6 @@ export const getPnlDetails = async (payload) => {
     const {data} = await useApi(`users/pnl/details`, {
       baseURL: BASE_URL,
       method: "GET",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      },
       query: payload,
     });
     if (data?.success) {
@@ -71,10 +63,6 @@ export const getTransactions = async (payload) => {
     const {data} = await useApi(`users/transaction`, {
       baseURL: BASE_URL,
       method: "GET",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      },
       query: payload,
     });
     if (data?.success) {
@@ -111,9 +99,6 @@ export const upload = async (payload) => {
       baseURL: BASE_URL,
       method: "POST",
       body: formData,
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
     })
 
     return { data, error: null }
@@ -124,18 +109,15 @@ export const upload = async (payload) => {
 
 
 export const fileUpload = async (payload) => {
-  console.log("in api files",payload)
+  console.log("in api files",payload.fileUrls.value)
   const BASE_URL = useRuntimeConfig().public.apiBase;
   const auth = useAuthStore();
   const { accessToken } = auth;
   try {
-    const data = await useApi(`/${payload.exchange}`, {
+    const {data} = await useApi(`/${payload.exchange}`, {
       baseURL: BASE_URL,
       method: "POST",
-      body: payload.formData,
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
+      body: { urls: payload.fileUrls.value},
     });
     if (data?.success) {
       return {
@@ -151,6 +133,7 @@ export const fileUpload = async (payload) => {
   } finally {
   }
 };
+
 export const getWallet = async (payload) => {
   const store = mainStore();
   const BASE_URL = useRuntimeConfig().public.apiBase;
@@ -160,9 +143,6 @@ export const getWallet = async (payload) => {
     const {data} = await useApi(`users/wallet/details`, {
       baseURL: BASE_URL,
       method: "GET",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
       query: payload,
     });
     if (data?.success) {
@@ -182,3 +162,4 @@ export const getWallet = async (payload) => {
   } finally {
   }
 };
+
