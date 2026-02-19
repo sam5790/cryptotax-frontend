@@ -90,7 +90,10 @@ const uploadFile = async () => {
       ? "coinswitch"
       : props.account.title === "Bitbns"
       ? "bitbns"
+      : props.account.title === "Zeb pay"
+      ? "zebpay"
       : "wazirx";
+
   const { data, error } = await fileUpload({ fileUrls, exchange });
   if (data?.success) {
     await getAccounts();
