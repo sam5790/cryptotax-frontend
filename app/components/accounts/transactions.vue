@@ -211,7 +211,6 @@ const excelFields = {
   Timestamp: "date",
   Quantity: "quantity",
   Amount: "total",
-  Type: "type",
   TDS: "tds"
 }
 
