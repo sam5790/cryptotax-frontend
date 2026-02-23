@@ -106,10 +106,10 @@
         <div class="w-full hidden sm:hidden md:block overflow-x-auto">
           <div class="flex justify-between md:px-6 md:py-3 bg-none">
             <ClientOnly>
-              <DownloadExcel class="btn btn-primary" :data="pnl" :fields="excelFields"
+              <DownloadExcel class="btn btn-primary" :data="allTransactions" :fields="excelFields"
                 name="transaction.xls">
                 <button
-                  class="flex justify-center gap-2 shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-3 py-2 border border-gray-50 font-semibold">
+                  class="flex justify-center gap-2 shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-3 py-2 border border-gray-50 font-semibold" @click="exportFiles">
                   <Icon name="mdi:export-variant" class="w-6 h-6 text-[#4AABAB]" />
                   Export Report
                 </button>
@@ -321,14 +321,26 @@ import { useAuthStore } from "~/store/auth";
 const allTransactions = ref([])
 onMounted(async () => {
   await getPnlDetails({ page: 1, limit: 50 });
-  // const res = await getTransactionsForExport({
-  // });
-  // allTransactions.value = res;
+  await loadAllTransactions();
 });
+
 const auth = useAuthStore();
 const store = mainStore();
 const { transactions, pnl, total_pnl, taxPagination } = storeToRefs(store);
 const { user } = storeToRefs(auth);
+
+const loadAllTransactions = async () => {
+  const BASE_URL = useRuntimeConfig().public.apiBase
+  try {
+    const res = await useApi("users/pnl/details", {
+      baseURL: BASE_URL,
+      method: "GET",
+    })
+    allTransactions.value = res?.data?.data || []
+  } catch {
+    allTransactions.value = []
+  }
+}
 
 const changePage = async (page) => {
   if (selectedAccount.value) {

@@ -109,7 +109,7 @@ export const upload = async (payload) => {
 
 
 export const fileUpload = async (payload) => {
-  console.log("in api files",payload.exchange)
+  console.log("in api files",payload.urls)
   const BASE_URL = useRuntimeConfig().public.apiBase;
   const auth = useAuthStore();
   const { accessToken } = auth;
@@ -117,7 +117,7 @@ export const fileUpload = async (payload) => {
     const {data} = await useApi(`/${payload.exchange}`, {
       baseURL: BASE_URL,
       method: "POST",
-      body: { urls: payload.fileUrls.value},
+      body: { urls: payload.urls},
     });
     if (data?.success) {
       return {

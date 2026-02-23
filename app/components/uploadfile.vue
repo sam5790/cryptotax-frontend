@@ -67,16 +67,15 @@ const handleFileChange = async (e) => {
     return
   }
 
-  console.log("in handleFileChange", data?.data)
   fileUrls.value = data?.data || []
 };
-console.log( props.account.title )
 
-console.log( props.account.title )
+console.log(props.account.title)
+
+console.log(props.account.title)
 
 
 const uploadFile = async () => {
-  console.log("urls",fileUrls.value)
   if (!fileUrls.value.length) return;
 
   isUploading.value = true;
@@ -85,16 +84,22 @@ const uploadFile = async () => {
     props.account.title === "Coin DCX"
       ? "coindcx"
       : props.account.title === "Murdex"
-      ? "mudrex"
-      : props.account.title === "Coinswitch"
-      ? "coinswitch"
-      : props.account.title === "Bitbns"
-      ? "bitbns"
-      : props.account.title === "Zeb pay"
-      ? "zebpay"
-      : "wazirx";
+        ? "mudrex"
+        : props.account.title === "Coinswitch"
+          ? "coinswitch"
+          : props.account.title === "Bitbns"
+            ? "bitbns"
+            : props.account.title === "Zeb pay"
+              ? "zebpay"
+              : "wazirx";
 
-  const { data, error } = await fileUpload({ fileUrls, exchange });
+
+  const urls = fileUrls.value.map((url, index) => ({
+    name: fileName.value[index] || "",
+    url: url
+  }))
+
+  const { data, error } = await fileUpload({ urls, exchange });
   if (data?.success) {
     await getAccounts();
     store.updateShowDetails(false);

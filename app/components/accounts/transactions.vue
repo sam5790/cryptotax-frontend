@@ -49,8 +49,9 @@
           + ADD MISSING TRANSACTIONS
         </button>
 
-        <DownloadExcel class="btn btn-primary" :data="transactions" :fields="excelFields" name="transaction.xls">
-          <button class="flex justify-center gap-2 rounded-full px-3 py-2 border bg-[#4AABAB] text-white font-semibold">
+        <DownloadExcel class="btn btn-primary" :data="allTransactions" :fields="excelFields" name="transaction.xls">
+          <button class="flex justify-center gap-2 rounded-full px-3 py-2 border bg-[#4AABAB] text-white font-semibold"
+            @click="exportFiles">
             <Icon name="mdi:export-variant" class="w-6 h-6" />
             Export Report
           </button>
@@ -145,8 +146,8 @@
           <div class="flex justify-between mb-1">
             <span class="font-medium">Quantity:</span>
             <span :class="item.type === 'buy'
-                ? 'text-green-500 font-[Poppins]'
-                : 'text-red-500 font-[Poppins]'
+              ? 'text-green-500 font-[Poppins]'
+              : 'text-red-500 font-[Poppins]'
               ">{{ item?.quantity }}</span>
           </div>
           <div class="flex justify-between mb-1">
@@ -199,9 +200,23 @@ const store = mainStore();
 const allTransactions = ref([])
 onMounted(async () => {
   await getTransactions({ page: 1, limit: 50 });
-  // const res = await getTransactionsForExport({});
-  // allTransactions.value = res;
+  await loadAllTransactions()
 });
+
+
+const loadAllTransactions = async () => {
+  const BASE_URL = useRuntimeConfig().public.apiBase
+  try {
+    const res = await useApi("users/transaction", {
+      baseURL: BASE_URL,
+      method: "GET",
+    })
+    allTransactions.value = res?.data?.data || []
+  } catch {
+    allTransactions.value = []
+  }
+}
+
 const { transactions, pnl, total_pnl, transactionsPagination } =
   storeToRefs(store);
 
