@@ -23,3 +23,5 @@ logs
 .env.*
 !.env.example
 
+# Credentials
+service-account.json
