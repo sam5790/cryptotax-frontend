@@ -10,7 +10,9 @@
             class="w-28 h-28 rounded-full bg-white shadow-[0_0_10px_0] shadow-[#254BD34D]"
           />
         </div>
-        <h2 class="text-center text-xl font-medium pt-5 pb-2">Total Exchanges</h2>
+        <h2 class="text-center text-xl font-medium pt-5 pb-2">
+          Total Exchanges
+        </h2>
         <div class="flex items-center justify-center gap-4 sm:gap-10 w-full">
           <div class="text-center sm:p-2">
             <div class="sm:text-4xl text-lg font-medium font-[Poppins]">
@@ -40,8 +42,8 @@
                 totalTransactions?.PnlSum > 0
                   ? 'text-[#31B431]'
                   : totalTransactions?.PnlSum < 0
-                  ? 'text-red-500'
-                  : ''
+                    ? 'text-red-500'
+                    : ''
               "
             >
               {{ totalTransactions?.PnlSum?.toFixed(2) }}
@@ -83,7 +85,10 @@
         <div class="flex justify-between items-start gap-4">
           <div class="space-y-2">
             <div class="flex items-start gap-2">
-              <img :src="`/icons/${item?.exchange?.toLowerCase()}.png`" class="w-8 h-8" />
+              <img
+                :src="`/icons/${item?.exchange?.toLowerCase()}.png`"
+                class="w-8 h-8"
+              />
 
               <div class="text-lg font-medium capitalize px-2">
                 {{ item?.exchange }}
@@ -110,20 +115,30 @@
             >
               <Icon name="mdi:dots-vertical" class="w-6 h-6 text-gray-600" />
             </div>
-
             <div
               v-if="open === item._id"
               class="absolute right-0 top-full mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50"
             >
               <ul class="py-2 text-sm text-gray-700">
-                <li class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                  Edit Now
+                <li
+                  @click="buttonclick"
+                  class="px-4 py-2 hover:bg-[#4aabab]/10 cursor-pointer flex items-center gap-1"
+                >
+                  <Icon name="mdi-plus" class="text-[#4aabab]" /> Add Files
                 </li>
                 <li
-                  class="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                  @click="confirmDelete(item._id)"
+                  v-if="item?.fileUploadCount > 0"
+                  class="px-4 py-2 hover:bg-[#4aabab]/10 cursor-pointer flex items-center gap-1"
+                  @click="confirmDelete(item)"
                 >
-                  Delete Now
+                  <Icon name="mdi-delete" class="text-red-600" /> Delete Files
+                </li>
+                <li
+                  v-else
+                  class="px-4 py-2 hover:bg-[#4aabab]/10 cursor-pointer flex items-center gap-1"
+                  @click="confirmDeleteAccount(item)"
+                >
+                  <Icon name="mdi-delete" class="text-red-600" /> Delete Account
                 </li>
               </ul>
             </div>
@@ -164,7 +179,35 @@
       <div
         class="bg-white rounded-xl shadow-lg p-4 w-full max-w-xs text-center"
       >
-        <p class="text-lg font-medium mb-6">Confirm delete?</p>
+        <p class="text-lg font-medium mb-3">Select the files</p>
+        <div
+          class="max-h-40 overflow-y-auto mb-4 text-left border border-gray-100 rounded-lg p-1"
+          v-if="totalFiles.length > 0"
+        >
+          <div
+            v-for="(file, index) in totalFiles"
+            :key="index"
+            class="flex items-center justify-between p-2 border-b border-gray-100 last:border-0 hover:bg-gray-50 rounded transition-colors"
+          >
+            <div class="flex items-center gap-2 overflow-hidden">
+              <Icon
+                name="mdi:file-excel"
+                class="text-3xl text-[#4aabab] shrink-0"
+              />
+              <span
+                class="text-sm text-gray-600 truncate"
+                :title="file.fileName || file.name"
+              >
+                {{ file.fileName || file.name || `File ${index + 1}` }}
+              </span>
+            </div>
+            <input
+              @change="handelCheckedFile($event, file)"
+              type="checkbox"
+              class="w-4 h-4 text-[#4aabab] border-gray-300 rounded accent-[#4aabab] cursor-pointer"
+            />
+          </div>
+        </div>
 
         <div class="flex justify-center gap-3">
           <button
@@ -175,8 +218,41 @@
           </button>
 
           <button
-            @click="deleteAccount(idToDelete)"
+            @click="deleteExchangeFiles(totalFiles?.[0]?.exchange)"
             class="px-4 py-2 rounded-md bg-red-600 text-white hover:bg-red-700"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      v-if="deleteAccountConfirm"
+      class="fixed inset-0 bg-black/40 flex items-center justify-center p-2"
+    >
+      <div
+        class="bg-white rounded-xl shadow-lg p-4 w-full max-w-md text-center"
+      >
+        <p class="text-lg font-medium mb-3">Delete Account</p>
+        <div class="mb-4">
+          Are you sure you want to delete
+          <span class="font-medium capitalize text-[#4AABAB]"
+            >"{{ selectedAccount?.exchange }}"</span
+          >
+          account?
+        </div>
+
+        <div class="flex justify-center gap-3">
+          <button
+            @click="deleteAccountConfirm = false"
+            class="px-4 py-1 rounded-md border border-gray-300 hover:bg-gray-100"
+          >
+            Cancel
+          </button>
+
+          <button
+            @click="deleteExchange(selectedAccount?._id)"
+            class="px-4 py-1 rounded-md bg-red-600 text-white hover:bg-red-700"
           >
             Delete
           </button>
@@ -199,27 +275,20 @@
 
 <script setup>
 import { mainStore } from "~/store/mainstore";
-import { useAuthStore } from "~/store/auth";
 const toast = useToast();
-
 const store = mainStore();
-
 const { total_pnl, totalTransactions, showDetails } = storeToRefs(store);
 
 const router = useRouter();
 const exchange = ref(false);
-
+const totalFiles = ref([]);
+const selectedFiles = ref([]);
 const selectedAccount = ref(null);
 
 const open = ref(null);
 const confirm = ref(false);
+const deleteAccountConfirm = ref(false);
 const idToDelete = ref(null);
-
-const askDelete = (id) => {
-  idToDelete.value = id;
-  confirm.value = true;
-  open.value = null;
-};
 
 const toggleMenu = (id) => {
   open.value = open.value === id ? null : id;
@@ -227,11 +296,22 @@ const toggleMenu = (id) => {
 
 const buttonclick = () => {
   exchange.value = true;
+  open.value = null;
 };
 
-const confirmDelete = (id) => {
-  idToDelete.value = id;
-  confirm.value = true;
+const confirmDelete = async (item) => {
+  const { data, error } = await getUploadedFiles(item?.exchange);
+  if (data?.success) {
+    selectedFiles.value = [];
+    totalFiles.value = data?.data?.data;
+    idToDelete.value = item?._id;
+    confirm.value = true;
+    open.value = null;
+  }
+};
+const confirmDeleteAccount = async (item) => {
+  selectedAccount.value = item;
+  deleteAccountConfirm.value = true;
   open.value = null;
 };
 
@@ -240,27 +320,33 @@ function openDetails(item) {
   exchange.value = false;
   store.updateShowDetails(true);
 }
-
-const deleteAccount = async (id) => {
-  try {
-    const BASE_URL = useRuntimeConfig().public.apiBase;
-    const {data} = await useApi(`pnlsummary/${id}`, {
-      baseURL: BASE_URL,
-      method: "DELETE",
-    });
-
-    if (!data?.success) throw new Error();
-
+const handelCheckedFile = (e, file) => {
+  if (e.target.checked) {
+    selectedFiles.value.push(file?._id);
+  } else {
+    selectedFiles.value = selectedFiles.value.filter((f) => f !== file?._id);
+  }
+};
+const deleteExchangeFiles = async (exchange) => {
+  const { data, error } = await deleteFiles(exchange, selectedFiles.value);
+  if (data?.success) {
+    await getAccounts();
+    confirm.value = false;
+  }
+};
+const deleteExchange = async (exchange) => {
+  const { data, error } = await deleteExchangeAccount(exchange);
+  if (data?.success) {
+    await getAccounts();
+    selectedAccount.value = null;
+    deleteAccountConfirm.value = false;
     toast.success({
+      title: "Success",
       message: "Account deleted successfully",
+      duration: 1000,
       position: "topCenter",
     });
-    confirm.value = false;
-  } catch (e) {
-    console.error(e);
-    toast.error({ message: "Account Deletion failed", position: "topCenter" });
   }
-  await getAccounts();
 };
 
 onMounted(async () => {

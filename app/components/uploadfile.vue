@@ -1,32 +1,64 @@
 <template>
   <div>
-    <input v-model="name" type="text" placeholder="Custom Name" class="w-full border border-gray-300 rounded-lg p-3" />
+    <input
+      v-model="name"
+      type="text"
+      placeholder="Custom Name"
+      class="w-full border border-gray-300 rounded-lg p-3"
+    />
 
     <div class="text-center mt-6">
       <p class="font-medium text-gray-700">Upload XLSX file</p>
 
-      <p v-if="fileName.length" class="flex items-center justify-center gap-2 mt-2 text-green-600">
+      <p
+        v-if="fileName.length"
+        class="flex items-center justify-center gap-2 mt-2 text-green-600"
+      >
         {{ fileName?.join(", ") }}
       </p>
       <div class="w-full max-w-md mx-auto">
-        <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center"
-          :class="dragOver ? 'border-blue-500 bg-blue-50' : ''" @dragover.prevent="dragOver = true"
-          @dragleave.prevent="dragOver = false" @drop.prevent="handleDrop" @click="$refs.fileInput.click()">
-          <svg class="mx-auto mb-2 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 12v8M8 16l4-4 4 4" />
+        <div
+          class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center"
+          :class="dragOver ? 'border-blue-500 bg-blue-50' : ''"
+          @dragover.prevent="dragOver = true"
+          @dragleave.prevent="dragOver = false"
+          @drop.prevent="handleDrop"
+          @click="$refs.fileInput.click()"
+        >
+          <svg
+            class="mx-auto mb-2 w-10 h-10 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 12v8M8 16l4-4 4 4"
+            />
           </svg>
           <p class="text-gray-500 mb-3">
             Drag and drop your excel file here, or click to upload
           </p>
-          <input type="file" ref="fileInput" accept=".xlsx,.csv" hidden multiple @change="handleFileChange" />
+          <input
+            type="file"
+            ref="fileInput"
+            accept=".xlsx,.csv"
+            hidden
+            multiple
+            @change="handleFileChange"
+          />
 
           <div v-if="isUploading" class="text-gray-700 font-semibold mb-2">
             Uploading... Please wait.
           </div>
         </div>
       </div>
-      <button @click="uploadFile" class="mt-5 px-5 py-3 border border-teal-600 text-teal-600 rounded-lg">
+      <button
+        @click="uploadFile"
+        class="mt-5 px-5 py-3 border border-teal-600 text-teal-600 rounded-lg"
+      >
         Create A New Account
       </button>
     </div>
@@ -57,23 +89,22 @@ const handleDrop = (e) => {
 };
 
 const handleFileChange = async (e) => {
-  files.value = Array.from(e.target.files || [])
-  fileName.value = files.value.map(f => f.name)
+  files.value = Array.from(e.target.files || []);
+  fileName.value = files.value.map((f) => f.name);
 
-  const { data, error } = await upload(files.value)
+  const { data, error } = await upload(files.value);
 
   if (error) {
-    console.error(error)
-    return
+    console.error(error);
+    return;
   }
 
-  fileUrls.value = data?.data || []
+  fileUrls.value = data?.data || [];
 };
 
-console.log(props.account.title)
+console.log(props.account.title);
 
-console.log(props.account.title)
-
+console.log(props.account.title);
 
 const uploadFile = async () => {
   if (!fileUrls.value.length) return;
@@ -93,11 +124,10 @@ const uploadFile = async () => {
               ? "zebpay"
               : "wazirx";
 
-
   const urls = fileUrls.value.map((url, index) => ({
     name: fileName.value[index] || "",
-    url: url
-  }))
+    url: url,
+  }));
 
   const { data, error } = await fileUpload({ urls, exchange });
   if (data?.success) {

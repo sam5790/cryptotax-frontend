@@ -7,7 +7,7 @@ export const getAccounts = async () => {
   const auth = useAuthStore();
   const { accessToken } = auth;
   try {
-    const {data} = await useApi(`users/pnldetails`, {
+    const { data } = await useApi(`users/pnldetails`, {
       baseURL: BASE_URL,
       method: "GET",
     });
@@ -30,13 +30,12 @@ export const getPnlDetails = async (payload) => {
   const auth = useAuthStore();
   const { accessToken } = auth;
   try {
-    const {data} = await useApi(`users/pnl/details`, {
+    const { data } = await useApi(`users/pnl/details`, {
       baseURL: BASE_URL,
       method: "GET",
       query: payload,
     });
     if (data?.success) {
-      console.log("pnl details data",data.meta)
       store.setPnl(data?.data);
       store.addTaxPagination(data.meta);
       return { data: data, error: null };
@@ -60,13 +59,13 @@ export const getTransactions = async (payload) => {
   const auth = useAuthStore();
   const { accessToken } = auth;
   try {
-    const {data} = await useApi(`users/transaction`, {
+    const { data } = await useApi(`users/transaction`, {
       baseURL: BASE_URL,
       method: "GET",
       query: payload,
     });
     if (data?.success) {
-      console.log("data",data)
+      console.log("data", data);
       const transactions = data.data;
       const { currentPage, totalPages, totalCount, pageSize } = data.meta;
       store.setTransactions(transactions);
@@ -88,36 +87,35 @@ export const getTransactions = async (payload) => {
 };
 
 export const upload = async (payload) => {
-  const formData = new FormData()
-  payload.forEach(file => formData.append("files", file))
+  const formData = new FormData();
+  payload.forEach((file) => formData.append("files", file));
 
-  const BASE_URL = useRuntimeConfig().public.apiBase
-  const { accessToken } = useAuthStore()
+  const BASE_URL = useRuntimeConfig().public.apiBase;
+  const { accessToken } = useAuthStore();
 
   try {
     const { data } = await useApi(`/upload`, {
       baseURL: BASE_URL,
       method: "POST",
       body: formData,
-    })
+    });
 
-    return { data, error: null }
+    return { data, error: null };
   } catch (error) {
-    return { data: null, error }
+    return { data: null, error };
   }
 };
 
-
 export const fileUpload = async (payload) => {
-  console.log("in api files",payload.urls)
+  console.log("in api files", payload.urls);
   const BASE_URL = useRuntimeConfig().public.apiBase;
   const auth = useAuthStore();
   const { accessToken } = auth;
   try {
-    const {data} = await useApi(`/${payload.exchange}`, {
+    const { data } = await useApi(`/${payload.exchange}`, {
       baseURL: BASE_URL,
       method: "POST",
-      body: { urls: payload.urls},
+      body: { urls: payload.urls },
     });
     if (data?.success) {
       return {
@@ -140,7 +138,7 @@ export const getWallet = async (payload) => {
   const auth = useAuthStore();
   const { accessToken } = auth;
   try {
-    const {data} = await useApi(`users/wallet/details`, {
+    const { data } = await useApi(`users/wallet/details`, {
       baseURL: BASE_URL,
       method: "GET",
       query: payload,
@@ -163,3 +161,122 @@ export const getWallet = async (payload) => {
   }
 };
 
+export const addMissingTransaction = async (payload) => {
+  try {
+    const { data } = await useApi(`/users/transaction`, {
+      method: "POST",
+      body: payload,
+    });
+    if (data?.success) {
+      return {
+        data: data,
+        error: null,
+      };
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+  }
+};
+export const editTransactions = async (id, payload) => {
+  try {
+    const { data } = await useApi(`users/update/${id}`, {
+      method: "PUT",
+      body: payload,
+    });
+    if (data?.success) {
+      return {
+        data: data,
+        error: null,
+      };
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+  }
+};
+export const getUploadedFiles = async (exchange) => {
+  try {
+    const { data } = await useApi(`/files`, {
+      method: "GET",
+      query: { exchange },
+    });
+    if (data?.success) {
+      return {
+        data: data,
+        error: null,
+      };
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+  }
+};
+export const deleteFiles = async (exchange, files) => {
+  try {
+    const { data } = await useApi(`/files`, {
+      method: "DELETE",
+      body: { exchange: exchange, fileIds: files },
+    });
+    if (data?.success) {
+      return {
+        data: data,
+        error: null,
+      };
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+  }
+};
+export const deleteExchangeAccount = async (id) => {
+  try {
+    const { data } = await useApi(`pnlsummary/${id}`, {
+      method: "DELETE",
+    });
+    if (data?.success) {
+      return {
+        data: data,
+        error: null,
+      };
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+  }
+};
+export const getSellRemaining = async (payload) => {
+  try {
+    const { data } = await useApi(`users/sell-remaining`, {
+      method: "GET",
+      query:payload
+    });
+    if (data?.success) {
+      return {
+        data: data,
+        error: null,
+      };
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+  }
+};

@@ -29,21 +29,27 @@
               :key="index"
               class="border-b"
             >
-              <td class="p-4">{{ index + 1 }}</td>
+              <td class="p-4">
+                {{
+                  wallet?.meta?.pageSize * (wallet?.meta?.currentPage - 1) +
+                  index +
+                  1
+                }}
+              </td>
               <td class="p-4">
                 <div class="flex justify-center items-center gap-2 capitalize">
                   <img
                     :src="`/icons/${item.exchange?.toLowerCase()}.png`"
                     width="32"
                     height="32"
-                    class="rounded-full "
+                    class="rounded-full"
                   />
                   {{ item.exchange }}
                 </div>
               </td>
               <td class="p-4">{{ item.coin }}</td>
               <td class="p-4 font-[Poppins]">
-                {{ item.coinsRemaining}}
+                {{ item.coinsRemaining }}
               </td>
             </tr>
           </tbody>
@@ -67,7 +73,10 @@
               >#{{ index + (wallet?.meta?.currentPage - 1) * 50 + 1 }}</span
             >
             <div class="flex items-center gap-2">
-              <img :src="`/icons/${item.exchange?.toLowerCase()}.png`" class="w-6 h-6" />
+              <img
+                :src="`/icons/${item.exchange?.toLowerCase()}.png`"
+                class="w-6 h-6"
+              />
               <span class="font-medium capitalize">{{ item.exchange }}</span>
             </div>
           </div>

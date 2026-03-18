@@ -1,5 +1,5 @@
 import { useAuthStore } from "~/store/auth";
-
+let refreshAvailable = null;
 export const useApi = async (endpoint, options = {}) => {
   const config = useRuntimeConfig();
   const { accessToken, updateTokens, refreshToken } = useAuthStore();
