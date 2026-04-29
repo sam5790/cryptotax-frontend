@@ -102,15 +102,11 @@ const handleFileChange = async (e) => {
   fileUrls.value = data?.data || [];
 };
 
-console.log(props.account.title);
-
-console.log(props.account.title);
-
 const uploadFile = async () => {
   if (!fileUrls.value.length) return;
 
   isUploading.value = true;
-
+  console.log(props.account.title);
   const exchange =
     props.account.title === "Coin DCX"
       ? "coindcx"
@@ -122,7 +118,9 @@ const uploadFile = async () => {
             ? "bitbns"
             : props.account.title === "Zeb pay"
               ? "zebpay"
-              : "wazirx";
+              : props.account.title === "Binance"
+                ? "binance"
+                : "wazirx";
 
   const urls = fileUrls.value.map((url, index) => ({
     name: fileName.value[index] || "",
