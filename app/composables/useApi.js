@@ -49,7 +49,6 @@ export const useApi = async (endpoint, options = {}) => {
             },
           },
         );
-        console.log("updateToken-refresh token - api", updateToken);
 
         updateTokens({
           accessToken: updateToken.data.accessToken,

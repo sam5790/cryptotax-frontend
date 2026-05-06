@@ -205,7 +205,7 @@
           </div>
 
           <input
-            type="number"
+            type="text"
             v-model="otp"
             class="rounded-md w-full pl-4 py-2.5 border border-[#adadad]"
             placeholder="Enter your otp"
@@ -300,11 +300,11 @@ const resetPassword = async () => {
   try {
     const { data, error } = await forgetResetPassword(payload);
     if (data.success) {
-      router.push("/login");
+      router.push("/login/mail");
     }
   } catch (err) {
     toast.error({
-      message: "Something went wrong. Please try again later.",
+      message: err.data.message,
       timeOut: 2000,
       position: "topCenter",
     });

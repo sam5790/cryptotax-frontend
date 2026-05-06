@@ -51,7 +51,7 @@ export const createUser = async (payload) => {
 export const forgetPassword = async (payload) => {
   const BASE_URL = useRuntimeConfig().public.apiBase;
   try {
-    const data = await $fetch("/forgot-password", {
+    const data = await $fetch("/auth/forgot-password", {
       baseURL: BASE_URL,
       method: "POST",
       body: payload,
@@ -71,7 +71,7 @@ export const forgetPassword = async (payload) => {
 export const forgetResetPassword = async (payload) => {
   const BASE_URL = useRuntimeConfig().public.apiBase;
   try {
-    const data = await $fetch("/reset-password", {
+    const data = await $fetch("/auth/reset-password", {
       baseURL: BASE_URL,
       method: "POST",
       body: payload,
