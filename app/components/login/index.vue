@@ -1,7 +1,12 @@
 <template>
   <div class="flex items-center justify-center px-4 py-10 md:p-20">
-    <div v-if="!showOTPCard" class="shadow-[0_0_25px_0] shadow-[#254BD34D] rounded-3xl p-6 md:p-16 w-full max-w-xl">
-      <h2 class="text-[38px] md:text-4xl font-bold text-center justify-center flex mb-5">
+    <div
+      v-if="!showOTPCard"
+      class="shadow-[0_0_25px_0] shadow-[#254BD34D] rounded-3xl p-6 md:p-16 w-full max-w-xl"
+    >
+      <h2
+        class="text-[38px] md:text-4xl font-bold text-center justify-center flex mb-5"
+      >
         <div class="flex gap-3 flex-wrap">
           <div class="text-[#4aabab]">
             Welcome
@@ -16,10 +21,19 @@
         </p>
         <form id="loginPhone">
           <div class="my-4 relative">
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <svg class="w-4 text-gray-500" width="16" height="16" viewBox="0 0 512 512" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M341.601,0H170.399c-29.292,0-53.121,23.828-53.121,53.121v405.756c0,29.292,23.83,53.123,53.121,53.123
+            <div
+              class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+            >
+              <svg
+                class="w-4 text-gray-500"
+                width="16"
+                height="16"
+                viewBox="0 0 512 512"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M341.601,0H170.399c-29.292,0-53.121,23.828-53.121,53.121v405.756c0,29.292,23.83,53.123,53.121,53.123
     h171.202c29.292,0,53.121-23.83,53.121-53.119V53.121C394.722,23.828,370.893,0,341.601,0z M234.91,453.434
     c0-0.536,0.452-0.988,0.988-0.988H276.1c0.536,0,0.988,0.452,0.988,0.988v13.684c0,0.536-0.452,0.988-0.988,0.988h-40.202
     c-0.536,0-0.988-0.452-0.988-0.988V453.434z M277.088,429.684c0,0.536-0.452,0.988-0.988,0.988h-40.202
@@ -39,24 +53,38 @@
     c0,0.545-0.442,0.988-0.988,0.988h-40.202c-0.545,0-0.988-0.442-0.988-0.988v-13.68c0-0.536,0.452-0.988,0.988-0.988h40.202
     c0.536,0,0.988,0.452,0.988,0.988V392.25z M308.973,467.118v-13.684c0-0.536,0.452-0.988,0.988-0.988h40.202
     c0.536,0,0.988,0.452,0.988,0.988v13.684c0,0.536-0.452,0.988-0.988,0.988h-40.202
-    C309.425,468.106,308.973,467.654,308.973,467.118z" />
+    C309.425,468.106,308.973,467.654,308.973,467.118z"
+                />
               </svg>
             </div>
 
-            <input type="number" v-model="mobile"
+            <input
+              type="number"
+              v-model="mobile"
               class="rounded-lg w-full pl-9 pr-3 py-2.5 border border-[#adadad] font-[Poppins]"
-              placeholder="Enter your mobile number" minlength="10" required />
+              placeholder="Enter your mobile number"
+              minlength="10"
+              required
+            />
           </div>
           <div class="flex justify-center mt-6">
-            <button v-if="!loading" class="bg-[#4AABAB] rounded-full text-white py-2 px-8 font-medium" @click="login">
+            <button
+              v-if="!loading"
+              class="bg-[#4AABAB] rounded-full text-white py-2 px-8 font-medium"
+              @click="login"
+            >
               Log In
             </button>
 
-            <button v-else type="button"
+            <button
+              v-else
+              type="button"
               class="bg-[#4AABAB] hover:bg-teal-600 text-white font-medium py-2 px-8 rounded-full flex items-center gap-2 disabled:opacity-60"
-              disabled>
+              disabled
+            >
               <span
-                class="inline-block h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                class="inline-block h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"
+              ></span>
 
               Logging in...
             </button>
@@ -74,7 +102,10 @@
         <LoginGoogle />
       </div>
       <div class="flex justify-center items-center my-3">
-        <button class="rounded-lg border px-3 py-2 flex" @click="$router.push('/login/mail')">
+        <button
+          class="rounded-lg border px-3 py-2 flex"
+          @click="$router.push('/login/mail')"
+        >
           <img src="/email.svg" class="h-6 mr-2" />
 
           <span>Sign In With Email</span>
@@ -88,7 +119,10 @@
         </button>
       </p>
     </div>
-    <div v-else class="shadow-[0_0_25px_0] shadow-[#254BD34D] rounded-3xl p-6 md:p-16 w-full max-w-xl">
+    <div
+      v-else
+      class="shadow-[0_0_25px_0] shadow-[#254BD34D] rounded-3xl p-6 md:p-16 w-full max-w-xl"
+    >
       <h2 class="text-[38px] md:text-4xl font-bold text-center mb-5">
         <span class="#4aabab underline-text">Welcome</span> Back
       </h2>
@@ -96,24 +130,49 @@
         <p class="text-center mb-16 text-gray-700 text-sm md:text-[22px]">
           Enter 6 digit OTP sent to <strong>{{ mobile }}</strong>
         </p>
+        <form @submit.prevent="verifyOTP">
+          <div class="flex gap-3 items-center justify-between">
+            <template v-for="(digit, index) in 6" :key="index">
+              <input
+                type="text"
+                inputmode="numeric"
+                maxlength="1"
+                v-model="otpDigits[index]"
+                :ref="
+                  (el) => {
+                    if (el) otpInputs[index] = el;
+                  }
+                "
+                @input="handleOtpInput($event, index)"
+                @keydown="handleOtpKeydown($event, index)"
+                @paste="handleOtpPaste"
+                class="min-w-8 min-h-14 md:w-14 text-center text-lg md:text-xl font-medium bg-gray-50 border border-gray-200 rounded-xl focus:border-none focus:ring-4 focus:ring-[#4AABAB]/70 outline-none transition-all caret-primary text-gray-800"
+                required
+              />
+            </template>
+          </div>
+          <div class="flex justify-center mt-6">
+            <button
+              v-if="!loading"
+              class="bg-[#4AABAB] rounded-full text-white py-2 px-8"
+              type="submit"
+            >
+              Verify OTP
+            </button>
+            <button
+              v-else
+              type="button"
+              class="bg-[#4AABAB] hover:bg-teal-600 text-white font-medium py-2 px-8 rounded-full flex items-center gap-2 disabled:opacity-60"
+              disabled
+            >
+              <span
+                class="inline-block h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"
+              ></span>
 
-        <div class="my-4 flex gap-2 items-center justify-center">
-          <input type="number" v-model="otp" placeholder="Enter 6 digit OTP"
-            class="rounded-lg w-full border p-2.5 border-[#adadad]" />
-        </div>
-        <div class="flex justify-center mt-6">
-          <button v-if="!loading" class="bg-[#4AABAB] rounded-full text-white py-2 px-8" @click="verifyOTP">
-            Verify OTP
-          </button>
-          <button v-else type="button"
-            class="bg-[#4AABAB] hover:bg-teal-600 text-white font-medium py-2 px-8 rounded-full flex items-center gap-2 disabled:opacity-60"
-            disabled>
-            <span
-              class="inline-block h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-
-            Verifying...
-          </button>
-        </div>
+              Verifying...
+            </button>
+          </div>
+        </form>
       </div>
 
       <div class="flex items-center justify-center gap-5 mt-5">
@@ -126,7 +185,10 @@
         <LoginGoogle />
       </div>
       <div class="flex justify-center items-center my-3">
-        <button class="rounded-lg border px-3 py-2 flex" @click="$router.push('/login/mail')">
+        <button
+          class="rounded-lg border px-3 py-2 flex"
+          @click="$router.push('/login/mail')"
+        >
           <img src="/email.svg" class="h-6 mr-2" />
 
           <span>Sign In With Email</span>
@@ -162,16 +224,17 @@ const otpConfirmation = ref(null);
 const showOTPCard = ref(false);
 const router = useRouter();
 const auth = getAuth();
-const otp = ref(null);
+const otp = ref("");
 const counter = ref(null);
 const otpLoading = ref(false);
 const timer = ref(null);
 let recaptchaVerifier = null;
-
+const otpDigits = ref(["", "", "", "", "", ""]);
+const otpInputs = ref([]);
 const login = async () => {
-  const form = document.getElementById("loginPhone")
+  const form = document.getElementById("loginPhone");
   if (!form.reportValidity()) {
-    return
+    return;
   }
   loading.value = true;
   if (!recaptchaVerifier) {
@@ -208,7 +271,44 @@ const login = async () => {
       loading.value = false;
     });
 };
+const handleOtpInput = (event, index) => {
+  const target = event.target;
+  const value = target.value;
+  if (!/^\d*$/.test(value)) {
+    otpDigits.value[index] = "";
+    return;
+  }
 
+  otpDigits.value[index] = value.substring(value.length - 1);
+
+  if (value && index < 5) {
+    otpInputs.value[index + 1]?.focus();
+  }
+
+  otp.value = otpDigits.value.join("");
+};
+const handleOtpKeydown = (event, index) => {
+  if (event.key === "Backspace" && !otpDigits.value[index] && index > 0) {
+    otpInputs.value[index - 1]?.focus();
+  }
+};
+
+const handleOtpPaste = (event) => {
+  event.preventDefault();
+  if (!event.clipboardData) return;
+  const pastedData = event.clipboardData.getData("text").slice(0, 6);
+  if (!/^\d+$/.test(pastedData)) return;
+
+  const digits = pastedData.split("");
+  digits.forEach((digit, i) => {
+    otpDigits.value[i] = digit;
+  });
+
+  otp.value = otpDigits.value.join("");
+  // Focus the next empty input or the last one
+  const nextIndex = Math.min(digits.length, 5);
+  otpInputs.value[nextIndex]?.focus();
+};
 const verifyOTP = () => {
   loading.value = true;
   const authStore = useAuthStore();
@@ -218,20 +318,19 @@ const verifyOTP = () => {
     const token = await auth.currentUser.getIdToken();
 
     if (!user.value) {
-      const { data } = await useFetch(
-        BASE_URL + `/auth/firebase/validate`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const { data } = await useFetch(BASE_URL + `/auth/firebase/validate`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
       if (data?.value?.success) {
-        authStore.addUser({ user: data?.value?.data.user,
-           accessToken: data?.value?.data.accessToken,
-            refreshToken: data?.value?.data.refreshToken });
+        authStore.addUser({
+          user: data?.value?.data.user,
+          accessToken: data?.value?.data.accessToken,
+          refreshToken: data?.value?.data.refreshToken,
+        });
         router.push("/account");
         loading.value = false;
       } else {
@@ -342,7 +441,7 @@ input[type="number"].no-arrows {
   border: 3px solid rgba(255, 255, 255, 0.3);
   border-top-color: #fff;
   border-radius: 50%;
-  animation: spin .6s linear infinite;
+  animation: spin 0.6s linear infinite;
 }
 
 @keyframes spin {

@@ -65,19 +65,53 @@
           </svg>
         </div>
         <p class="text-xl font-medium">Uncategorised Data</p>
-        <p class="text-2xl font-medium">0</p>
+        <p class="text-2xl font-medium">
+          {{ transactionsPagination?.invalidTransactions }}
+        </p>
       </div>
     </div>
 
     <div class="mx-auto w-full md:p-7 md:my-8" v-if="transactions?.length">
       <div class="flex items-center justify-between gap-3 p-4 md:p-7 flex-wrap">
-        <button
-          @click="handleAddMissingTransaction"
-          class="rounded-lg text-sm p-3 sm:px-4 hover:text-[#4AABAB] font-medium shadow-[0_0_10px_0] shadow-[#254BD34D]"
-        >
-          + ADD MISSING TRANSACTIONS
-        </button>
-
+        <div class="flex items-center gap-3 flex-wrap">
+          <button
+            @click="handleAddMissingTransaction"
+            class="rounded-lg text-sm p-3 sm:px-4 hover:text-[#4AABAB] font-medium shadow-[0_0_10px_0] shadow-[#254BD34D]"
+          >
+            + ADD MISSING TRANSACTIONS
+          </button>
+          <div class="relative inline-block text-left">
+            <button
+              @click.stop="openTransactionType = !openTransactionType"
+              class="flex items-center justify-between gap-2 w-32 shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-4 py-2 border border-gray-100 font-semibold text-gray-700 hover:bg-gray-50 transition"
+            >
+              <div class="flex items-center gap-3">
+                {{ selectedType || "Transaction Type" }}
+              </div>
+              <Icon
+                name="mdi:chevron-down"
+                class="size-5 text-[#4AABAB] transition-transform"
+                :class="{ 'rotate-180': openTransactionType }"
+              />
+            </button>
+            <div
+              v-if="openTransactionType"
+              class="absolute right-0 mt-1 w-32 bg-white rounded-lg border border-gray-200 shadow-lg z-50 animate-fadeIn"
+            >
+              <ul class="text-sm text-gray-700 max-h-60 overflow-y-auto">
+                <li
+                  v-for="type in ['All', 'Normal', 'Invalid']"
+                  :key="type"
+                  @click="filterTransactionType(type)"
+                  class="px-4 py-1 m-1 cursor-pointer rounded-md hover:bg-[#4AABAB]/10 flex items-center gap-3 transition"
+                  :class="type === selectedType ? 'bg-[#4AABAB]/40' : ''"
+                >
+                  {{ type }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <DownloadExcel
           class="btn btn-primary"
           :data="allTransactions"
@@ -390,6 +424,8 @@ const editTransaction = ref(false);
 const addTransaction = ref(false);
 const exchangeCoinData = ref(null);
 const { transactions, transactionsPagination } = storeToRefs(store);
+const openTransactionType = ref(false);
+const selectedType = ref("All");
 
 const loadAllTransactions = async () => {
   try {
@@ -454,8 +490,28 @@ const handleCloseModal = () => {
   editTransaction.value = false;
   addTransaction.value = false;
 };
+const filterTransactionType = async (type) => {
+  selectedType.value = type;
+  openTransactionType.value = false;
+
+  if (type === "All") {
+    await getTransactions({ page: 1, limit: 50 });
+  } else if (type === "Invalid") {
+    await getTransactions({ page: 1, limit: 50, invalid: true });
+  } else {
+    await getTransactions({ page: 1, limit: 50, invalid: false });
+  }
+};
 onMounted(async () => {
   await getTransactions({ page: 1, limit: 50 });
   await loadAllTransactions();
+  document.addEventListener("click", handleClickOutside);
+});
+const handleClickOutside = () => {
+  openTransactionType.value = false;
+};
+
+onUnmounted(() => {
+  document.removeEventListener("click", handleClickOutside);
 });
 </script>

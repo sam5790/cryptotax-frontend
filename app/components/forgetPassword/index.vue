@@ -16,10 +16,18 @@
       </h2>
 
       <div>
-        <p class="text-center mb-10 text-gray-700 text-sm md:text-[22px]">
+        <p
+          v-if="!otpSent"
+          class="text-center mb-10 text-gray-700 text-sm md:text-[22px]"
+        >
           Reset password
         </p>
-
+        <p
+          v-if="otpSent"
+          class="text-center mb-8 text-gray-700 text-sm md:text-lg"
+        >
+          Enter 6 digit OTP sent to <strong>{{ email }}</strong>
+        </p>
         <form v-if="!otpSent" id="verifyEmail">
           <div class="my-4 relative">
             <div
@@ -66,38 +74,31 @@
                 class="inline-block h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"
               ></span>
 
-              Verify...
+              Verifying...
             </button>
           </div>
         </form>
 
         <form v-if="otpSent" id="forgetPassword">
-          <div class="my-4 relative">
-            <div
-              class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 20 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M20 2C20 0.9 19.1 0 18 0H2C0.9 0 0 0.9 0 2V14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V2ZM18 2L10 7L2 2H18ZM18 14H2V4L10 9L18 4V14Z"
-                  fill="#929292"
-                />
-              </svg>
-            </div>
-
-            <input
-              type="email"
-              v-model="email"
-              class="rounded-md w-full pl-10 pr-3 py-2.5 border border-[#adadad]"
-              placeholder="Enter your email"
-              required
-              disabled
-            />
+          <div class="flex gap-3 items-center justify-between my-6">
+            <template v-for="(digit, index) in 6" :key="index">
+              <input
+                type="text"
+                inputmode="numeric"
+                maxlength="1"
+                v-model="otpDigits[index]"
+                :ref="
+                  (el) => {
+                    if (el) otpInputs[index] = el;
+                  }
+                "
+                @input="handleOtpInput($event, index)"
+                @keydown="handleOtpKeydown($event, index)"
+                @paste="handleOtpPaste"
+                class="min-w-8 min-h-14 md:w-14 text-center text-lg md:text-xl font-medium bg-gray-50 border border-gray-300 rounded-xl focus:border-none focus:ring-4 focus:ring-[#4AABAB]/70 outline-none transition-all caret-primary text-gray-800"
+                required
+              />
+            </template>
           </div>
 
           <div class="relative">
@@ -204,14 +205,6 @@
             </button>
           </div>
 
-          <input
-            type="text"
-            v-model="otp"
-            class="rounded-md w-full pl-4 py-2.5 border border-[#adadad]"
-            placeholder="Enter your otp"
-            required
-          />
-
           <div class="flex justify-center mt-10">
             <button
               v-if="!loading"
@@ -250,7 +243,8 @@ const otpSent = ref(false);
 const loading = ref(false);
 const toast = useToast();
 const router = useRouter();
-
+const otpDigits = ref(["", "", "", "", "", ""]);
+const otpInputs = ref([]);
 const emailVerify = async () => {
   const form = document.getElementById("verifyEmail");
   if (!form.reportValidity()) {
@@ -276,7 +270,44 @@ const emailVerify = async () => {
     });
   }
 };
+const handleOtpInput = (event, index) => {
+  const target = event.target;
+  const value = target.value;
+  if (!/^\d*$/.test(value)) {
+    otpDigits.value[index] = "";
+    return;
+  }
 
+  otpDigits.value[index] = value.substring(value.length - 1);
+
+  if (value && index < 5) {
+    otpInputs.value[index + 1]?.focus();
+  }
+
+  otp.value = otpDigits.value.join("");
+};
+const handleOtpKeydown = (event, index) => {
+  if (event.key === "Backspace" && !otpDigits.value[index] && index > 0) {
+    otpInputs.value[index - 1]?.focus();
+  }
+};
+
+const handleOtpPaste = (event) => {
+  event.preventDefault();
+  if (!event.clipboardData) return;
+  const pastedData = event.clipboardData.getData("text").slice(0, 6);
+  if (!/^\d+$/.test(pastedData)) return;
+
+  const digits = pastedData.split("");
+  digits.forEach((digit, i) => {
+    otpDigits.value[i] = digit;
+  });
+
+  otp.value = otpDigits.value.join("");
+  // Focus the next empty input or the last one
+  const nextIndex = Math.min(digits.length, 5);
+  otpInputs.value[nextIndex]?.focus();
+};
 const resetPassword = async () => {
   const form = document.getElementById("forgetPassword");
 
@@ -301,6 +332,12 @@ const resetPassword = async () => {
     const { data, error } = await forgetResetPassword(payload);
     if (data.success) {
       router.push("/login/mail");
+    } else {
+      toast.error({
+        message: error?.data?.message,
+        timeOut: 2000,
+        position: "topCenter",
+      });
     }
   } catch (err) {
     toast.error({

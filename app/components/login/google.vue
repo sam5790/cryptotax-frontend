@@ -1,7 +1,7 @@
 <template>
   <button class="rounded-lg border px-3 py-2 flex" @click="loginWithGoogle">
     <img src="/google.svg" class="h-6 mr-2" />
-    <span>Sign in with Google</span>
+    <span>Sign In With Google</span>
   </button>
 </template>
 

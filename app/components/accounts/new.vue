@@ -208,7 +208,9 @@
             />
           </div>
         </div>
-
+        <div v-if="deleteLoading" class="text-gray-700 font-semibold mb-2">
+          Deleting... Please wait.
+        </div>
         <div class="flex justify-center gap-3">
           <button
             @click="confirm = false"
@@ -218,6 +220,7 @@
           </button>
 
           <button
+            :disabled="deleteLoading"
             @click="deleteExchangeFiles(totalFiles?.[0]?.exchange)"
             class="px-4 py-2 rounded-md bg-red-600 text-white hover:bg-red-700"
           >
@@ -289,6 +292,7 @@ const open = ref(null);
 const confirm = ref(false);
 const deleteAccountConfirm = ref(false);
 const idToDelete = ref(null);
+const deleteLoading = ref(false);
 
 const toggleMenu = (id) => {
   open.value = open.value === id ? null : id;
@@ -328,11 +332,13 @@ const handelCheckedFile = (e, file) => {
   }
 };
 const deleteExchangeFiles = async (exchange) => {
+  deleteLoading.value = true;
   const { data, error } = await deleteFiles(exchange, selectedFiles.value);
   if (data?.success) {
     await getAccounts();
     confirm.value = false;
   }
+  deleteLoading.value = false;
 };
 const deleteExchange = async (exchange) => {
   const { data, error } = await deleteExchangeAccount(exchange);

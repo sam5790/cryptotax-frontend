@@ -55,7 +55,7 @@
           </div>
         </div>
       </div>
-      <button
+      <button :disabled="isUploading"
         @click="uploadFile"
         class="mt-5 px-5 py-3 border border-teal-600 text-teal-600 rounded-lg"
       >

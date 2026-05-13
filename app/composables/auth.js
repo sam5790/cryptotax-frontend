@@ -12,7 +12,11 @@ export const userLogin = async (payload) => {
     });
     if (data?.success) {
       console.log("Login successful:", data.data.user);
-      auth.addUser({ user: data?.data?.user, accessToken: data?.data?.accessToken, refreshToken: data?.data?.refreshToken });
+      auth.addUser({
+        user: data?.data?.user,
+        accessToken: data?.data?.accessToken,
+        refreshToken: data?.data?.refreshToken,
+      });
       return { data: data, error: null };
     } else {
       throw new Error("API response unsuccessful");
@@ -35,6 +39,7 @@ export const createUser = async (payload) => {
       method: "POST",
       body: payload,
     });
+    console.log(data);
     if (data?.success) {
       return { data: data, error: null };
     } else {
