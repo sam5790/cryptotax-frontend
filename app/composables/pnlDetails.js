@@ -107,12 +107,11 @@ export const upload = async (payload) => {
 };
 
 export const fileUpload = async (payload) => {
-  console.log("in api files", payload.urls);
   const BASE_URL = useRuntimeConfig().public.apiBase;
   const auth = useAuthStore();
   const { accessToken } = auth;
   try {
-    const { data } = await useApi(`/${payload.exchange}`, {
+    const { data, error } = await useApi(`/${payload.exchange}`, {
       baseURL: BASE_URL,
       method: "POST",
       body: { urls: payload.urls },
@@ -123,7 +122,7 @@ export const fileUpload = async (payload) => {
         error: null,
       };
     } else {
-      throw new Error("API response unsuccessful");
+      return { data: null, error };
     }
   } catch (error) {
     console.error("Fetch error:", error);
@@ -264,7 +263,7 @@ export const getSellRemaining = async (payload) => {
   try {
     const { data } = await useApi(`users/sell-remaining`, {
       method: "GET",
-      query:payload
+      query: payload,
     });
     if (data?.success) {
       return {

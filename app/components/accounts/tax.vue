@@ -55,12 +55,27 @@
             <div class="flex flex-wrap justify-between gap-4 py-5 mt-3">
               <div>
                 <p class="text-sm text-[#949494]">Income</p>
+                <Icon
+                  v-if="loading"
+                  name="mdi-loading"
+                  class="animate-spin mt-1 h-8 w-8"
+                />
+
                 <span
+                  v-else
                   class="text-green-700 text-2xl font-bold mt-2 font-[Poppins]"
                   >$0</span
                 >
               </div>
-              <div v-if="taxPagination?.pnlSum > 0">
+              <div v-if="loading">
+                <p class="text-sm text-[#949494]">Capital Gain / Loss</p>
+                <Icon
+                  v-if="loading"
+                  name="mdi-loading"
+                  class="animate-spin mt-1 h-8 w-8"
+                />
+              </div>
+              <div v-else-if="taxPagination?.pnlSum > 0">
                 <p class="text-sm text-[#949494]">Capital Gain</p>
                 <span
                   class="text-green-700 text-2xl font-bold font-[Poppins] flex gap-1"
@@ -82,7 +97,12 @@
               </div>
               <div>
                 <p class="text-sm text-[#949494]">TDS:</p>
-                <span class="text-2xl font-bold fontPoppins">0</span>
+                <Icon
+                  v-if="loading"
+                  name="mdi-loading"
+                  class="animate-spin mt-1 h-8 w-8"
+                />
+                <span v-else class="text-2xl font-bold fontPoppins">0</span>
               </div>
             </div>
           </div>
@@ -153,7 +173,7 @@
       </div>
       <div
         class="lg:p-8 flex flex-col justify-center items-center w-full"
-        v-if="pnl.length > 0"
+        v-if="loading || pnl.length > 0"
       >
         <h2 class="text-3xl md:text-4xl font-semibold my-10">
           PNL Transactions
@@ -188,9 +208,9 @@
                 <div class="flex items-center gap-3">
                   <img
                     v-if="selectedAccount"
-                    :src="`/icons/${selectedAccount.toLowerCase()}.png`"
+                    :src="`/icons/${selectedAccount?.toLowerCase()}.png`"
                     :alt="selectedAccount"
-                    class="h-8 w-8 rounded-full"
+                    class="h-8 w-8 rounded-full capitalise"
                   />
                   {{ selectedAccount || "Choose Account" }}
                 </div>
@@ -206,8 +226,19 @@
               >
                 <ul class="text-sm text-gray-700 max-h-60 overflow-y-auto">
                   <li
+                    class="px-4 py-2 m-1 cursor-pointer rounded-md hover:bg-[#4AABAB]/10 flex items-center gap-3 transition"
+                    :class="!selectedAccount ? 'bg-[#4AABAB]/40' : ''"
+                    @click="getExchangeData()"
+                  >
+                    <Icon
+                      name="mdi-swap-horizontal"
+                      class="w-6 h-6 text-[#4AABAB]"
+                    />
+                    All Exchanges
+                  </li>
+                  <li
                     v-for="exchange in taxPagination?.exchanges"
-                    :key="exchange"
+                    :key="exchange._id"
                     @click="getExchangeData(exchange)"
                     class="px-4 py-1 m-1 cursor-pointer rounded-md hover:bg-[#4AABAB]/10 flex items-center gap-3 transition"
                     :class="
@@ -297,7 +328,48 @@
                 <th class="py-2 px-4 border-b font-semibold">Balance</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody v-if="loading">
+              <tr
+                v-for="i in 5"
+                :key="`skel-pnl-${i}`"
+                class="border-b animate-pulse"
+              >
+                <td class="py-4 px-4">
+                  <div class="h-4 bg-gray-200 rounded w-8"></div>
+                </td>
+                <td class="py-4 px-4">
+                  <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
+                    <div class="h-4 bg-gray-200 rounded w-20"></div>
+                  </div>
+                </td>
+                <td class="py-4 px-4">
+                  <div class="h-4 bg-gray-200 rounded w-16"></div>
+                </td>
+                <td class="py-4 px-4">
+                  <div class="h-4 bg-gray-200 rounded w-24"></div>
+                </td>
+                <td class="py-4 px-4">
+                  <div class="h-4 bg-gray-200 rounded w-20"></div>
+                </td>
+                <td class="py-4 px-4">
+                  <div class="h-4 bg-gray-200 rounded w-16"></div>
+                </td>
+                <td class="py-4 px-4">
+                  <div class="h-4 bg-gray-200 rounded w-24"></div>
+                </td>
+                <td class="py-4 px-4">
+                  <div class="h-4 bg-gray-200 rounded w-20"></div>
+                </td>
+                <td class="py-4 px-4">
+                  <div class="h-4 bg-gray-200 rounded w-16"></div>
+                </td>
+                <td class="py-4 px-4">
+                  <div class="h-4 bg-gray-200 rounded w-16"></div>
+                </td>
+              </tr>
+            </tbody>
+            <tbody v-else>
               <tr v-for="(item, index) in pnl" :key="index" class="border-b">
                 <td class="py-4 px-4">
                   {{ index + (taxPagination?.currentPage - 1) * 50 + 1 }}
@@ -357,7 +429,7 @@
               </tr>
             </tbody>
           </table>
-          <div class="flex justify-center gap-3 mt-6">
+          <div class="flex justify-center gap-3 mt-6" v-if="!loading">
             <button
               @click="changePage(taxPagination?.currentPage - 1)"
               :disabled="taxPagination?.currentPage === 1"
@@ -460,6 +532,7 @@
                   </ul>
                 </div>
               </div>
+              {{ taxPagination?.exchanges }}
               <div class="relative inline-block text-left">
                 <button
                   @click.stop="openChooseAccount = !openChooseAccount"
@@ -517,76 +590,118 @@
               </div>
             </div>
           </div>
-          <div
-            v-for="(item, index) in pnl"
-            :key="index"
-            class="p-4 rounded-xl shadow-md bg-white border"
-          >
-            <div class="flex justify-between mb-2 flex-wrap">
-              <span class="font-semibold font-[Poppins]"
-                >#{{ index + (taxPagination?.currentPage - 1) * 50 + 1 }}</span
-              >
-              <span
-                class="text-gray-500 font-semibold text-sm font-[Poppins]"
-                :class="item.pnl > 0 ? 'text-green-700' : 'text-red-500'"
-              >
-                {{ item?.pnl }}</span
-              >
+          <template v-if="loading">
+            <div
+              v-for="i in 4"
+              :key="`mobile-skel-pnl-${i}`"
+              class="p-4 rounded-xl shadow-md bg-white border animate-pulse"
+            >
+              <div class="flex justify-between mb-2">
+                <div class="h-4 bg-gray-200 rounded w-10"></div>
+                <div class="h-4 bg-gray-200 rounded w-20"></div>
+              </div>
+              <div class="flex items-center mb-3 gap-2">
+                <div class="w-7 h-7 bg-gray-200 rounded-full"></div>
+                <div class="h-4 bg-gray-200 rounded w-24"></div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex justify-between">
+                  <div class="h-4 bg-gray-200 rounded w-12"></div>
+                  <div class="h-4 bg-gray-200 rounded w-16"></div>
+                </div>
+                <div class="flex justify-between">
+                  <div class="h-4 bg-gray-200 rounded w-10"></div>
+                  <div class="h-4 bg-gray-200 rounded w-32"></div>
+                </div>
+                <div class="flex justify-between">
+                  <div class="h-4 bg-gray-200 rounded w-12"></div>
+                  <div class="h-4 bg-gray-200 rounded w-32"></div>
+                </div>
+                <div class="flex justify-between">
+                  <div class="h-4 bg-gray-200 rounded w-16"></div>
+                  <div class="h-4 bg-gray-200 rounded w-16"></div>
+                </div>
+                <div class="flex justify-between">
+                  <div class="h-4 bg-gray-200 rounded w-16"></div>
+                  <div class="h-4 bg-gray-200 rounded w-20"></div>
+                </div>
+              </div>
             </div>
-            <div class="flex items-center mb-3 gap-2">
-              <img
-                :src="`/icons/${item.exchange?.toLowerCase()}.png`"
-                class="w-7 h-7"
-              />
-              <span class="font-medium">{{ item?.exchange }}</span>
+          </template>
+          <template v-else>
+            <div
+              v-for="(item, index) in pnl"
+              :key="index"
+              class="p-4 rounded-xl shadow-md bg-white border"
+            >
+              <div class="flex justify-between mb-2 flex-wrap">
+                <span class="font-semibold font-[Poppins]"
+                  >#{{
+                    index + (taxPagination?.currentPage - 1) * 50 + 1
+                  }}</span
+                >
+                <span
+                  class="text-gray-500 font-semibold text-sm font-[Poppins]"
+                  :class="item.pnl > 0 ? 'text-green-700' : 'text-red-500'"
+                >
+                  {{ item?.pnl }}</span
+                >
+              </div>
+              <div class="flex items-center mb-3 gap-2">
+                <img
+                  :src="`/icons/${item.exchange?.toLowerCase()}.png`"
+                  class="w-7 h-7"
+                />
+                <span class="font-medium">{{ item?.exchange }}</span>
+              </div>
+              <div class="flex justify-between my-1">
+                <span class="font-medium">Coin</span>
+                <span>{{ item?.coin }}</span>
+              </div>
+              <div class="flex justify-between my-1 flex-wrap">
+                <span class="font-medium">Buy</span>
+                <span
+                  class="text-green-700 flex items-center gap-1 font-[Poppins] flex-wrap"
+                >
+                  <Icon name="mdi:menu-up" class="w-8 h-8" />{{ item.buyPrice }}
+                  (
+                  <NuxtTime
+                    :datetime="item.buyDate"
+                    month="short"
+                    year="numeric"
+                    day="2-digit"
+                  />)
+                </span>
+              </div>
+              <div class="flex justify-between my-1 flex-wrap">
+                <span class="font-medium">Sell</span>
+                <span
+                  class="text-red-600 flex items-center gap-1 font-[Poppins] flex-wrap"
+                >
+                  <Icon name="mdi:menu-down" class="w-8 h-8" />{{
+                    item.sellPrice
+                  }}(
+                  <NuxtTime
+                    :datetime="item.sellDate"
+                    month="short"
+                    year="numeric"
+                    day="2-digit"
+                  />)
+                </span>
+              </div>
+              <div class="flex justify-between my-1 flex-wrap">
+                <span class="font-medium">Quantity</span>
+                <span class="font-[Poppins]">
+                  {{ item?.quantity }}
+                </span>
+              </div>
+              <div class="flex justify-between mb-1 flex-wrap">
+                <span class="font-medium">Balance</span>
+                <span class="font-[Poppins]">{{ item?.remaining }}</span>
+              </div>
             </div>
-            <div class="flex justify-between my-1">
-              <span class="font-medium">Coin</span>
-              <span>{{ item?.coin }}</span>
-            </div>
-            <div class="flex justify-between my-1 flex-wrap">
-              <span class="font-medium">Buy</span>
-              <span
-                class="text-green-700 flex items-center gap-1 font-[Poppins] flex-wrap"
-              >
-                <Icon name="mdi:menu-up" class="w-8 h-8" />{{ item.buyPrice }}
-                (
-                <NuxtTime
-                  :datetime="item.buyDate"
-                  month="short"
-                  year="numeric"
-                  day="2-digit"
-                />)
-              </span>
-            </div>
-            <div class="flex justify-between my-1 flex-wrap">
-              <span class="font-medium">Sell</span>
-              <span
-                class="text-red-600 flex items-center gap-1 font-[Poppins] flex-wrap"
-              >
-                <Icon name="mdi:menu-down" class="w-8 h-8" />{{
-                  item.sellPrice
-                }}(
-                <NuxtTime
-                  :datetime="item.sellDate"
-                  month="short"
-                  year="numeric"
-                  day="2-digit"
-                />)
-              </span>
-            </div>
-            <div class="flex justify-between my-1 flex-wrap">
-              <span class="font-medium">Quantity</span>
-              <span class="font-[Poppins]">
-                {{ item?.quantity }}
-              </span>
-            </div>
-            <div class="flex justify-between mb-1 flex-wrap">
-              <span class="font-medium">Balance</span>
-              <span class="font-[Poppins]">{{ item?.remaining }}</span>
-            </div>
-          </div>
-          <div class="flex justify-center gap-3 mt-6">
+          </template>
+          <div class="flex justify-center gap-3 mt-6" v-if="!loading">
             <button
               @click="changePage(taxPagination?.currentPage - 1)"
               :disabled="taxPagination?.currentPage === 1"
@@ -620,15 +735,16 @@ import { mainStore } from "~/store/mainstore";
 import { useAuthStore } from "~/store/auth";
 const allTransactions = ref([]);
 const openChooseAccount = ref(false);
-const selectedAccount = ref("");
 const router = useRouter();
 const selectedCoin = ref("");
 const auth = useAuthStore();
 const store = mainStore();
 const openCoinFilter = ref(false);
 const { transactions, pnl, total_pnl, taxPagination } = storeToRefs(store);
+const selectedAccount = ref("");
 const { user } = storeToRefs(auth);
 const searchCoin = ref("");
+const loading = ref(true);
 const excelFields = {
   Exchange: "exchange",
   Coin: "coin",
@@ -666,6 +782,7 @@ const coinList = computed(() => {
 });
 
 const changePage = async (page) => {
+  loading.value = true;
   if (selectedAccount.value) {
     await getPnlDetails({
       page: page,
@@ -676,11 +793,13 @@ const changePage = async (page) => {
   } else {
     await getPnlDetails({ page: page, limit: 50, coin: selectedCoin.value });
   }
+  loading.value = false;
 };
 
 const getExchangeData = async (exchange) => {
   selectedAccount.value = exchange;
   openChooseAccount.value = false;
+  loading.value = true;
   await getPnlDetails({
     exchange: exchange,
     limit: 50,
@@ -688,11 +807,13 @@ const getExchangeData = async (exchange) => {
     coin: selectedCoin.value,
   });
   await loadAllTransactions();
+  loading.value = false;
 };
 const getCoinData = async (coin) => {
   selectedCoin.value = coin;
   // searchCoin.value = coin;
   openCoinFilter.value = false;
+  loading.value = true;
   await getPnlDetails({
     coin: coin,
     exchange: selectedAccount.value,
@@ -700,6 +821,7 @@ const getCoinData = async (coin) => {
     page: 1,
   });
   await loadAllTransactions();
+  loading.value = false;
 };
 const handleClickOutside = () => {
   openChooseAccount.value = false;
@@ -707,8 +829,10 @@ const handleClickOutside = () => {
 };
 onMounted(async () => {
   document.addEventListener("click", handleClickOutside);
+  loading.value = true;
   await getPnlDetails({ page: 1, limit: 50 });
   await loadAllTransactions();
+  loading.value = false;
 });
 
 onUnmounted(() => {

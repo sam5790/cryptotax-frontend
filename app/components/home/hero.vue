@@ -1,7 +1,9 @@
 <template>
   <div class="bg-gray-50 md:p-10">
     <div class="grid md:grid-cols-2">
-      <div class="flex flex-col justify-center md:items-start items-center md:p-16 p-6">
+      <div
+        class="flex flex-col justify-center md:items-start items-center md:p-16 p-6"
+      >
         <h2 class="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold">
           One-Stop Solution For
           <div class="flex gap-3 flex-wrap">
@@ -22,7 +24,7 @@
         <div class="flex md:justify-start justify-center">
           <button
             class="mt-8 px-8 py-2 bg-[#4aabab] rounded-3xl text-white font-semibold"
-            @click="$router.push('/account')"
+            @click="user ? $router.push('/account') : $router.push('/login')"
           >
             Get Started
           </button>
@@ -35,3 +37,9 @@
   </div>
 </template>
 
+<script setup>
+import { useAuthStore } from "~/store/auth";
+
+const auth = useAuthStore();
+const { user } = storeToRefs(auth);
+</script>

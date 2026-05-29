@@ -2,10 +2,10 @@ import { useAuthStore } from "~/store/auth";
 let refreshAvailable = null;
 export const useApi = async (endpoint, options = {}) => {
   const config = useRuntimeConfig();
-  const { accessToken, updateTokens, refreshToken } = useAuthStore();
+  const { accessToken, updateTokens, refreshToken, logout } = useAuthStore();
   const { onLoading, ...fetchOptions } = options;
   const toast = useToast();
-
+  const router = useRouter();
   if (onLoading) {
     onLoading(true);
   }
@@ -68,7 +68,13 @@ export const useApi = async (endpoint, options = {}) => {
           return { data: response, error: null };
         }
       } catch (error) {
-        console.log(error);
+        if (
+          error?.data?.statusCode === 401 &&
+          error?.data?.message === "Unauthorized"
+        ) {
+          logout();
+          router.push("/login");
+        }
       }
     }
 

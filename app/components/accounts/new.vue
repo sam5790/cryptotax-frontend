@@ -15,7 +15,12 @@
         </h2>
         <div class="flex items-center justify-center gap-4 sm:gap-10 w-full">
           <div class="text-center sm:p-2">
-            <div class="sm:text-4xl text-lg font-medium font-[Poppins]">
+            <Icon
+              v-if="loading"
+              name="mdi-loading"
+              class="animate-spin mt-1 h-8 w-8"
+            />
+            <div v-else class="sm:text-4xl text-lg font-medium font-[Poppins]">
               {{ totalTransactions?.TransactionSum }}
             </div>
 
@@ -36,7 +41,13 @@
             </div>
           </div>
           <div class="text-center bg-[#37D35921] rounded-2xl sm:px-6 px-2 py-3">
+            <Icon
+              v-if="loading"
+              name="mdi-loading"
+              class="animate-spin mt-1 h-8 w-8"
+            />
             <div
+              v-else
               class="sm:text-3xl text-lg font-medium font-[Poppins]"
               :class="
                 totalTransactions?.PnlSum > 0
@@ -52,7 +63,12 @@
             <p class="text-xs sm:text-base">Total Account Income</p>
           </div>
           <div class="text-center sm:p-2">
-            <div class="sm:text-4xl text-lg font-medium font-[Poppins]">
+            <Icon
+              v-if="loading"
+              name="mdi-loading"
+              class="animate-spin mt-1 h-8 w-8"
+            />
+            <div v-else class="sm:text-4xl text-lg font-medium font-[Poppins]">
               {{ totalTransactions?.FileCount }}
             </div>
             <p class="text-xs sm:text-[16px]">Total Imported Files</p>
@@ -281,7 +297,8 @@ import { mainStore } from "~/store/mainstore";
 const toast = useToast();
 const store = mainStore();
 const { total_pnl, totalTransactions, showDetails } = storeToRefs(store);
-
+const { updateShowDetails } = store;
+const loading = ref(false);
 const router = useRouter();
 const exchange = ref(false);
 const totalFiles = ref([]);
@@ -304,6 +321,7 @@ const buttonclick = () => {
 };
 
 const confirmDelete = async (item) => {
+  loading.value = true;
   const { data, error } = await getUploadedFiles(item?.exchange);
   if (data?.success) {
     selectedFiles.value = [];
@@ -311,6 +329,9 @@ const confirmDelete = async (item) => {
     idToDelete.value = item?._id;
     confirm.value = true;
     open.value = null;
+    loading.value = false;
+  } else {
+    loading.value = false;
   }
 };
 const confirmDeleteAccount = async (item) => {
@@ -341,6 +362,7 @@ const deleteExchangeFiles = async (exchange) => {
   deleteLoading.value = false;
 };
 const deleteExchange = async (exchange) => {
+  loading.value = true;
   const { data, error } = await deleteExchangeAccount(exchange);
   if (data?.success) {
     await getAccounts();
@@ -352,10 +374,14 @@ const deleteExchange = async (exchange) => {
       duration: 1000,
       position: "topCenter",
     });
+    loading.value = false;
+  } else {
+    loading.value = false;
   }
 };
 
 onMounted(async () => {
   await getAccounts();
+  updateShowDetails(false);
 });
 </script>

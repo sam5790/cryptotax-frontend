@@ -14,7 +14,12 @@
         <p class="text-xl font-medium whitespace-nowrap">
           Missing Transactions
         </p>
-        <p class="text-2xl font-medium">0</p>
+        <Icon
+          v-if="loading"
+          name="mdi-loading"
+          class="animate-spin mt-1 h-8 w-8"
+        />
+        <p v-else class="text-2xl font-medium">0</p>
       </div>
 
       <div
@@ -38,7 +43,12 @@
           </svg>
         </div>
         <p class="text-xl font-medium">Total Transactions</p>
-        <p class="text-2xl font-medium font-[Poppins]">
+        <Icon
+          v-if="loading"
+          name="mdi-loading"
+          class="animate-spin mt-1 h-8 w-8"
+        />
+        <p v-else class="text-2xl font-medium font-[Poppins]">
           {{ transactionsPagination?.totalCount }}
         </p>
       </div>
@@ -65,13 +75,18 @@
           </svg>
         </div>
         <p class="text-xl font-medium">Uncategorised Data</p>
-        <p class="text-2xl font-medium">
+        <Icon
+          v-if="loading"
+          name="mdi-loading"
+          class="animate-spin mt-1 h-8 w-8"
+        />
+        <p v-else class="text-2xl font-medium">
           {{ transactionsPagination?.invalidTransactions }}
         </p>
       </div>
     </div>
 
-    <div class="mx-auto w-full md:p-7 md:my-8" v-if="transactions?.length">
+    <div class="mx-auto w-full md:p-7 md:my-8">
       <div class="flex items-center justify-between gap-3 p-4 md:p-7 flex-wrap">
         <div class="flex items-center gap-3 flex-wrap">
           <button
@@ -83,9 +98,9 @@
           <div class="relative inline-block text-left">
             <button
               @click.stop="openTransactionType = !openTransactionType"
-              class="flex items-center justify-between gap-2 w-32 shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-4 py-2 border border-gray-100 font-semibold text-gray-700 hover:bg-gray-50 transition"
+              class="flex items-center justify-between gap-2 w-[235px] shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-4 py-2 border border-gray-100 font-semibold hover:text-[#4AABAB] text-gray-700 hover:bg-gray-50 transition"
             >
-              <div class="flex items-center gap-3">
+              <div class="flex items-center gap-2">
                 {{ selectedType || "Transaction Type" }}
               </div>
               <Icon
@@ -96,11 +111,15 @@
             </button>
             <div
               v-if="openTransactionType"
-              class="absolute right-0 mt-1 w-32 bg-white rounded-lg border border-gray-200 shadow-lg z-50 animate-fadeIn"
+              class="absolute right-0 mt-1 w-full bg-white rounded-lg border border-gray-200 shadow-lg z-50 animate-fadeIn"
             >
               <ul class="text-sm text-gray-700 max-h-60 overflow-y-auto">
                 <li
-                  v-for="type in ['All', 'Normal', 'Invalid']"
+                  v-for="type in [
+                    'All',
+                    'Valid Transactions',
+                    'Invalid Transactions',
+                  ]"
                   :key="type"
                   @click="filterTransactionType(type)"
                   class="px-4 py-1 m-1 cursor-pointer rounded-md hover:bg-[#4AABAB]/10 flex items-center gap-3 transition"
@@ -127,7 +146,10 @@
           </button>
         </DownloadExcel>
       </div>
-      <div class="overflow-x-auto hidden md:block">
+      <div
+        class="overflow-x-auto hidden md:block"
+        v-if="loading || transactions?.length"
+      >
         <table class="w-full text-left">
           <thead class="bg-gray-100">
             <tr class="text-gray-500">
@@ -143,7 +165,45 @@
             </tr>
           </thead>
 
-          <tbody>
+          <tbody v-if="loading">
+            <tr
+              v-for="i in 5"
+              :key="`skel-${i}`"
+              class="border-b animate-pulse"
+            >
+              <td class="p-4">
+                <div class="h-4 bg-gray-200 rounded w-8"></div>
+              </td>
+              <td class="p-4">
+                <div class="flex items-center gap-2">
+                  <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
+                  <div class="h-4 bg-gray-200 rounded w-20"></div>
+                </div>
+              </td>
+              <td class="p-4">
+                <div class="h-4 bg-gray-200 rounded w-16"></div>
+              </td>
+              <td class="p-4">
+                <div class="h-4 bg-gray-200 rounded w-32"></div>
+              </td>
+              <td class="p-4">
+                <div class="h-4 bg-gray-200 rounded w-20"></div>
+              </td>
+              <td class="p-4">
+                <div class="h-4 bg-gray-200 rounded w-16"></div>
+              </td>
+              <td class="p-4">
+                <div class="h-4 bg-gray-200 rounded w-24"></div>
+              </td>
+              <td class="p-4">
+                <div class="h-4 bg-gray-200 rounded w-16"></div>
+              </td>
+              <td class="p-4">
+                <div class="h-4 bg-gray-200 rounded w-12"></div>
+              </td>
+            </tr>
+          </tbody>
+          <tbody v-else>
             <tr
               v-for="(item, index) in transactions"
               :key="index"
@@ -152,29 +212,44 @@
               <td class="p-4">
                 {{ index + (transactionsPagination.currentPage - 1) * 50 + 1 }}
               </td>
-              <td class="p-4 flex items-center gap-2">
-                <img
-                  :src="`/icons/${item.exchange?.toLowerCase()}.png`"
-                  class="w-6 h-6 sm:w-8 sm:h-8"
-                />
-                {{ item?.exchange }}
-
-                <div
-                  class="flex items-center justify-center relative group"
-                  v-if="item?.transactionType === 'INR Converted'"
-                >
-                  <Icon
-                    name="mdi-repeat-variant"
-                    class="text-2xl text-[#4AABAB]"
+              <td class="p-4">
+                <div class="flex items-center gap-2">
+                  <img
+                    :src="`/icons/${item.exchange?.toLowerCase()}.png`"
+                    class="w-6 h-6 sm:w-8 sm:h-8"
                   />
+                  {{ item?.exchange }}
                   <div
-                    class="group-hover:block hidden absolute bottom-full left-1/2 -translate-x-1/2 bg-white shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-2 py-2 text-xs text-[#4AABAB] font-medium whitespace-nowrap text-center"
+                    class="flex items-center justify-center relative group"
+                    v-if="item?.transactionType === 'INR Converted'"
                   >
-                    {{ item?.transactionType }}
+                    <Icon
+                      name="mdi-repeat-variant"
+                      class="text-2xl text-[#4AABAB]"
+                    />
+                    <div
+                      class="group-hover:block hidden absolute bottom-full left-1/2 -translate-x-1/2 bg-white shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-2 py-2 text-xs text-[#4AABAB] font-medium whitespace-nowrap text-center"
+                    >
+                      {{ item?.transactionType }}
+                    </div>
+                    <div
+                      class="absolute group-hover:block hidden -top-1 right-2 w-2 h-2 bg-white rotate-45"
+                    ></div>
                   </div>
+                </div>
+                <div
+                  v-if="item?.issues?.length"
+                  class="flex items-center gap-1 flex-wrap mt-1 bg-red-100 rounded-md py-1 px-2"
+                >
+                  <Icon name="mdi-information-outline" class="text-red-600" />
                   <div
-                    class="absolute group-hover:block hidden -top-1 right-2 w-2 h-2 bg-white rotate-45"
-                  ></div>
+                    v-for="(issue, index) in item?.issues"
+                    :key="index"
+                    class="font-semibold text-xs leading-tight text-red-600 rounded-md"
+                  >
+                    <span>{{ issue.message }}</span
+                    ><span v-if="item?.issues?.length > index + 1">,</span>
+                  </div>
                 </div>
               </td>
               <td class="p-4">{{ item?.coin }}</td>
@@ -210,177 +285,199 @@
               <td class="p-4 font-[Poppins] capitalize">{{ item?.type }}</td>
               <td class="p-4 font-[Poppins]">{{ item?.total }}</td>
               <td class="p-4 font-[Poppins]">{{ item?.tds }}</td>
-              <td class="p-4 flex items-center gap-3">
+              <td class="p-4">
                 <button
-                  class="hover:text-[#4AABAB]"
+                  class="hover:text-[#4AABAB] flex items-center justify-center"
                   @click="handleEditTransaction(item)"
                 >
                   <Icon name="mdi-pencil" class="text-lg" />
-                </button>
-                <button
-                  v-if="item?.remark"
-                  class="text-blue-500 relative group"
-                >
-                  <Icon name="mdi-information-outline" class="text-xl" />
-                  <div
-                    class="group-hover:block hidden absolute bottom-full left-1/2 -translate-x-1/2 bg-white shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-2 py-2 text-xs text-blue-400 font-medium whitespace-nowrap text-center"
-                  >
-                    {{ item?.remark }}
-                  </div>
-                  <div
-                    class="absolute group-hover:block hidden -top-1 right-1 w-2 h-2 bg-white rotate-45"
-                  ></div>
                 </button>
               </td>
             </tr>
           </tbody>
         </table>
-        <div class="flex justify-center gap-3 mt-6">
-          <button
-            @click="changePage(transactionsPagination.currentPage - 1)"
-            :disabled="transactionsPagination.currentPage === 1"
-            class="px-4 py-2 rounded bg-gray-200 disabled:opacity-40"
-          >
-            Previous
-          </button>
-
-          <span class="px-4 py-2 font-[Poppins]">
-            Page {{ transactionsPagination?.currentPage }} of
-            {{ transactionsPagination?.totalPages }}
-          </span>
-
-          <button
-            @click="changePage(transactionsPagination.currentPage + 1)"
-            :disabled="
-              transactionsPagination.currentPage ===
-              transactionsPagination.totalPages
-            "
-            class="px-4 py-2 rounded bg-gray-200 disabled:opacity-40"
-          >
-            Next
-          </button>
-        </div>
       </div>
 
-      <div class="md:hidden flex flex-col space-y-3 p-2">
-        <div
-          v-for="(item, index) in transactions"
-          :key="index"
-          class="border p-4 rounded-lg shadow-md bg-white"
-        >
-          <div class="flex justify-between items-center mb-2 flex-wrap">
-            <span class="font-semibold font-[Poppins]"
-              >#{{
-                index + (transactionsPagination.currentPage - 1) * 50 + 1
-              }}</span
-            >
-            <span class="text-gray-400 text-sm font-[Poppins]">
-              <NuxtTime
-                :datetime="item.date"
-                month="short"
-                year="numeric"
-                day="2-digit"
-              />
-            </span>
+      <div
+        class="md:hidden flex flex-col space-y-3 p-2"
+        v-if="loading || transactions?.length"
+      >
+        <template v-if="loading">
+          <div
+            v-for="i in 4"
+            :key="`mobile-skel-${i}`"
+            class="border p-4 rounded-lg shadow-md bg-white animate-pulse"
+          >
+            <div class="flex justify-between items-center mb-2">
+              <div class="h-4 bg-gray-200 rounded w-10"></div>
+              <div class="h-4 bg-gray-200 rounded w-24"></div>
+            </div>
+            <div class="flex justify-between items-center my-2">
+              <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-gray-200 rounded-full"></div>
+                <div class="h-4 bg-gray-200 rounded w-20"></div>
+              </div>
+              <div class="h-6 bg-gray-200 rounded-xl w-16"></div>
+            </div>
+            <div class="space-y-3 mt-4">
+              <div class="flex justify-between">
+                <div class="h-4 bg-gray-200 rounded w-12"></div>
+                <div class="h-4 bg-gray-200 rounded w-16"></div>
+              </div>
+              <div class="flex justify-between">
+                <div class="h-4 bg-gray-200 rounded w-16"></div>
+                <div class="h-4 bg-gray-200 rounded w-20"></div>
+              </div>
+              <div class="flex justify-between">
+                <div class="h-4 bg-gray-200 rounded w-16"></div>
+                <div class="h-4 bg-gray-200 rounded w-20"></div>
+              </div>
+              <div class="flex justify-between">
+                <div class="h-4 bg-gray-200 rounded w-10"></div>
+                <div class="h-4 bg-gray-200 rounded w-16"></div>
+              </div>
+            </div>
           </div>
-          <div class="flex justify-between items-center my-2">
-            <div class="flex items-center gap-2">
-              <img
-                :src="`/icons/${item.exchange?.toLowerCase()}.png`"
-                class="w-6 h-6"
-              />
-              <span class="font-medium">{{ item?.exchange }}</span>
+        </template>
+        <template v-else>
+          <div
+            v-for="(item, index) in transactions"
+            :key="index"
+            class="border p-4 rounded-lg shadow-md bg-white"
+          >
+            <div class="flex justify-between items-center mb-2 flex-wrap">
+              <span class="font-semibold font-[Poppins]"
+                >#{{
+                  index + (transactionsPagination.currentPage - 1) * 50 + 1
+                }}</span
+              >
+              <span class="text-gray-400 text-sm font-[Poppins]">
+                <NuxtTime
+                  :datetime="item.date"
+                  month="short"
+                  year="numeric"
+                  day="2-digit"
+                />
+              </span>
+            </div>
+            <div class="flex justify-between items-center my-2">
+              <div class="flex items-center gap-2">
+                <img
+                  :src="`/icons/${item.exchange?.toLowerCase()}.png`"
+                  class="w-6 h-6"
+                />
+                <span class="font-medium">{{ item?.exchange }}</span>
+              </div>
+              <div
+                class="capitalize rounded-xl px-3 font-medium text-sm text-white"
+                :class="item.type === 'sell' ? 'bg-red-500' : 'bg-green-500'"
+              >
+                {{ item?.type }}
+              </div>
+            </div>
+            <div class="flex justify-between mb-1">
+              <span class="font-medium">Coin:</span>
+              <span>{{ item?.coin }}</span>
+            </div>
+            <div class="flex justify-between mb-1">
+              <span class="font-medium">Quantity:</span>
+              <span
+                :class="
+                  item.type === 'buy'
+                    ? 'text-green-500 font-[Poppins]'
+                    : 'text-red-500 font-[Poppins]'
+                "
+                >{{ item?.quantity }}</span
+              >
+            </div>
+            <div class="flex justify-between mb-1">
+              <span class="font-medium">Amount:</span>
+              <span class="font-[Poppins]">{{ item?.total }}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="font-medium">TDS:</span>
+              <span class="font-[Poppins]">{{ item?.tds || 0 }}</span>
+            </div>
+            <div class="flex justify-between items-center my-1">
+              <div class="flex gap-1 items-center">
+                <Icon
+                  name="mdi-upload"
+                  class="text-2xl text-[#4AABAB]"
+                  v-if="item?.transactionType === 'Uploaded Transactions'"
+                />
+                <Icon
+                  name="mdi-repeat-variant"
+                  class="text-2xl text-[#4AABAB]"
+                  v-else-if="item?.transactionType === 'INR Converted'"
+                />
+                <Icon name="mdi-plus" class="text-2xl text-[#4AABAB]" v-else />
+                {{ item?.transactionType }}
+              </div>
+              <button
+                class="text-[#4AABAB] flex justify-between border border-[#4AABAB] items-center px-4 py-1 rounded-lg font-medium"
+                @click="handleEditTransaction(item)"
+              >
+                <Icon name="mdi-pencil" /> Edit
+              </button>
             </div>
             <div
-              class="capitalize rounded-xl px-3 font-medium text-sm text-white"
-              :class="item.type === 'sell' ? 'bg-red-500' : 'bg-green-500'"
+              v-if="item?.remark"
+              class="text-gray-500 font-medium flex items-center gap-1"
             >
-              {{ item?.type }}
+              <Icon
+                name="mdi-information"
+                class="text-lg text-blue-500"
+              />Description:<span class="ml-1">{{ item?.remark }}</span>
             </div>
           </div>
-          <div class="flex justify-between mb-1">
-            <span class="font-medium">Coin:</span>
-            <span>{{ item?.coin }}</span>
-          </div>
-          <div class="flex justify-between mb-1">
-            <span class="font-medium">Quantity:</span>
-            <span
-              :class="
-                item.type === 'buy'
-                  ? 'text-green-500 font-[Poppins]'
-                  : 'text-red-500 font-[Poppins]'
-              "
-              >{{ item?.quantity }}</span
-            >
-          </div>
-          <div class="flex justify-between mb-1">
-            <span class="font-medium">Amount:</span>
-            <span class="font-[Poppins]">{{ item?.total }}</span>
-          </div>
-          <div class="flex justify-between">
-            <span class="font-medium">TDS:</span>
-            <span class="font-[Poppins]">{{ item?.tds || 0 }}</span>
-          </div>
-          <div class="flex justify-between items-center my-1">
-            <div class="flex gap-1 items-center">
-              <Icon
-                name="mdi-upload"
-                class="text-2xl text-[#4AABAB]"
-                v-if="item?.transactionType === 'Uploaded Transactions'"
-              />
-              <Icon
-                name="mdi-repeat-variant"
-                class="text-2xl text-[#4AABAB]"
-                v-else-if="item?.transactionType === 'INR Converted'"
-              />
-              <Icon name="mdi-plus" class="text-2xl text-[#4AABAB]" v-else />
-              {{ item?.transactionType }}
-            </div>
-            <button
-              class="text-[#4AABAB] flex justify-between border border-[#4AABAB] items-center px-4 py-1 rounded-lg font-medium"
-              @click="handleEditTransaction(item)"
-            >
-              <Icon name="mdi-pencil" /> Edit
-            </button>
-          </div>
-          <div
-            v-if="item?.remark"
-            class="text-gray-500 font-medium flex items-center gap-1"
-          >
-            <Icon
-              name="mdi-information"
-              class="text-lg text-blue-500"
-            />Description:<span class="ml-1">{{ item?.remark }}</span>
-          </div>
-        </div>
-        <div class="flex justify-center gap-3 mt-6">
-          <button
-            @click="changePage(transactionsPagination.currentPage - 1)"
-            :disabled="transactionsPagination.currentPage === 1"
-            class="px-4 py-2 rounded bg-gray-200 disabled:opacity-40"
-          >
-            Previous
-          </button>
-
-          <span class="px-4 py-2 font-[Poppins]">
-            Page {{ transactionsPagination?.currentPage }} of
-            {{ transactionsPagination?.totalPages }}
-          </span>
-
-          <button
-            @click="changePage(transactionsPagination.currentPage + 1)"
-            :disabled="
-              transactionsPagination.currentPage ===
-              transactionsPagination.totalPages
-            "
-            class="px-4 py-2 rounded bg-gray-200 disabled:opacity-40"
-          >
-            Next
-          </button>
-        </div>
+        </template>
       </div>
     </div>
+    <div
+      class="flex justify-center gap-3 mt-6"
+      v-if="!loading && transactions?.length"
+    >
+      <button
+        @click="changePage(transactionsPagination.currentPage - 1)"
+        :disabled="transactionsPagination.currentPage === 1"
+        class="px-4 py-2 rounded bg-gray-200 disabled:opacity-40"
+      >
+        Previous
+      </button>
 
+      <span class="px-4 py-2 font-[Poppins]">
+        Page {{ transactionsPagination?.currentPage }} of
+        {{ transactionsPagination?.totalPages }}
+      </span>
+
+      <button
+        @click="changePage(transactionsPagination.currentPage + 1)"
+        :disabled="
+          transactionsPagination.currentPage ===
+          transactionsPagination.totalPages
+        "
+        class="px-4 py-2 rounded bg-gray-200 disabled:opacity-40"
+      >
+        Next
+      </button>
+    </div>
+    <div
+      v-if="!loading && transactions?.length === 0"
+      class="flex flex-col items-center justify-center p-4 text-center rounded-xl"
+    >
+      <div
+        class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mb-2"
+      >
+        <Icon name="mdi:magnify" class="w-10 h-10 text-[#4AABAB] opacity-60" />
+      </div>
+      <h3 class="text-xl font-semibold text-gray-700 font-[Poppins] mb-2">
+        No transactions found!
+      </h3>
+      <p class="text-gray-500 text-sm max-w-md">
+        There are no transactions available matching your criteria. Try
+        adjusting your filters or add missing transactions.
+      </p>
+    </div>
     <div
       class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 bg-white border border-teal-500 rounded-xl flex items-center px-4 sm:px-10 py-3 sm:py-5 shadow-md z-20 opacity-60 hover:opacity-100 cursor-pointer"
     >
@@ -426,6 +523,7 @@ const exchangeCoinData = ref(null);
 const { transactions, transactionsPagination } = storeToRefs(store);
 const openTransactionType = ref(false);
 const selectedType = ref("All");
+const loading = ref(true);
 
 const loadAllTransactions = async () => {
   try {
@@ -461,7 +559,9 @@ const excelFields = {
 };
 
 const changePage = async (page) => {
+  loading.value = true;
   await getTransactions({ page: page, limit: 50 });
+  loading.value = false;
 };
 const handleEditTransaction = (transaction) => {
   selectedTransaction.value = transaction;
@@ -493,18 +593,22 @@ const handleCloseModal = () => {
 const filterTransactionType = async (type) => {
   selectedType.value = type;
   openTransactionType.value = false;
+  loading.value = true;
 
   if (type === "All") {
     await getTransactions({ page: 1, limit: 50 });
-  } else if (type === "Invalid") {
+  } else if (type === "Invalid Transactions") {
     await getTransactions({ page: 1, limit: 50, invalid: true });
   } else {
     await getTransactions({ page: 1, limit: 50, invalid: false });
   }
+  loading.value = false;
 };
 onMounted(async () => {
+  loading.value = true;
   await getTransactions({ page: 1, limit: 50 });
   await loadAllTransactions();
+  loading.value = false;
   document.addEventListener("click", handleClickOutside);
 });
 const handleClickOutside = () => {

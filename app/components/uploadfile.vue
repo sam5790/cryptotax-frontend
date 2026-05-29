@@ -55,7 +55,8 @@
           </div>
         </div>
       </div>
-      <button :disabled="isUploading"
+      <button
+        :disabled="isUploading"
         @click="uploadFile"
         class="mt-5 px-5 py-3 border border-teal-600 text-teal-600 rounded-lg"
       >
@@ -81,14 +82,28 @@ const files = ref([]);
 const fileUrls = ref([]);
 const dragOver = ref(false);
 const isUploading = ref(false);
+const isFileUploading = ref(false);
 const toast = useToast();
-const handleDrop = (e) => {
+const handleDrop = async (e) => {
+  isFileUploading.value = true;
   dragOver.value = false;
   files.value = Array.from(e.dataTransfer.files || []);
   fileName.value = files.value.map((f) => f.name);
+  const { data, error } = await upload(files.value);
+
+  if (error) {
+    console.error(error);
+    isFileUploading.value = false;
+    return;
+  }
+
+  fileUrls.value = data?.data || [];
+  isFileUploading.value = false;
 };
 
 const handleFileChange = async (e) => {
+  isFileUploading.value = true;
+
   files.value = Array.from(e.target.files || []);
   fileName.value = files.value.map((f) => f.name);
 
@@ -96,10 +111,13 @@ const handleFileChange = async (e) => {
 
   if (error) {
     console.error(error);
+    isFileUploading.value = false;
+
     return;
   }
 
   fileUrls.value = data?.data || [];
+  isFileUploading.value = false;
 };
 
 const uploadFile = async () => {
@@ -128,15 +146,17 @@ const uploadFile = async () => {
   }));
 
   const { data, error } = await fileUpload({ urls, exchange });
+
   if (data?.success) {
     await getAccounts();
     store.updateShowDetails(false);
     isUploading.value = false;
   } else {
     toast.error({
-      message: error?.data?.message,
+      message: error,
       position: "topCenter",
     });
+    isUploading.value = false;
   }
 };
 </script>
