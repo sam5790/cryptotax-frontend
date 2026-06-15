@@ -247,7 +247,7 @@ const register = async () => {
     toast.success({ message: "Account created successfully", position: 'topCenter', timeout:2000 })
   } else {
     toast.error({
-      message: error?.data?.error,
+      message: error?.data?.message,
       timeout: 2000,
       position: "topCenter",
     });

@@ -30,7 +30,7 @@ export const getPnlDetails = async (payload) => {
   const auth = useAuthStore();
   const { accessToken } = auth;
   try {
-    const { data } = await useApi(`users/pnl/details`, {
+    const { data } = await useApi(`users/pnl/details?sortOrder=desc`, {
       baseURL: BASE_URL,
       method: "GET",
       query: payload,
@@ -59,13 +59,13 @@ export const getTransactions = async (payload) => {
   const auth = useAuthStore();
   const { accessToken } = auth;
   try {
-    const { data } = await useApi(`users/transaction`, {
+    const { data, error } = await useApi(`users/transaction`, {
       baseURL: BASE_URL,
       method: "GET",
       query: payload,
     });
+
     if (data?.success) {
-      console.log("data", data);
       const transactions = data.data;
       const { currentPage, totalPages, totalCount, pageSize } = data.meta;
       store.setTransactions(transactions);
@@ -77,7 +77,7 @@ export const getTransactions = async (payload) => {
         error: null,
       };
     } else {
-      throw new Error("API response unsuccessful");
+      return { data: null, error: error };
     }
   } catch (error) {
     console.error("Fetch error:", error);
@@ -264,6 +264,25 @@ export const getSellRemaining = async (payload) => {
     const { data } = await useApi(`users/sell-remaining`, {
       method: "GET",
       query: payload,
+    });
+    if (data?.success) {
+      return {
+        data: data,
+        error: null,
+      };
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+  }
+};
+export const recalculate = async (exchange) => {
+  try {
+    const { data } = await useApi(`/pnlsummary/recalculate/${exchange}`, {
+      method: "POST",
     });
     if (data?.success) {
       return {

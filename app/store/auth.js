@@ -27,7 +27,6 @@ export const useAuthStore = defineStore(
     };
 
     const logout = () => {
-      alert("sadsada")
       user.value = null;
       accessToken.value = "";
     
