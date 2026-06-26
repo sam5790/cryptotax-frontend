@@ -30,7 +30,7 @@
       <h2 class="text-xl md:text-2xl font-medium text-center mb-6">
         Add Missing Transaction
       </h2>
-      <div class="grid md:grid-cols-3 grid-cols-2 gap-4">
+      <div class="grid md:grid-cols-3 grid-cols-2 gap-4 mb-3">
         <div>
           <label class="text-gray-400 font-medium text-sm">Exchange</label>
           <div class="relative inline-block text-left mt-1">
@@ -156,7 +156,7 @@
         </div>
       </div>
 
-      <div class="grid md:grid-cols-3 grid-cols-2 gap-4">
+      <div class="grid md:grid-cols-3 grid-cols-2 gap-4 mb-3">
         <div>
           <label class="text-gray-400 font-medium text-sm">Unit Price</label>
           <input
@@ -234,7 +234,7 @@
           }}</span>
         </div>
       </div>
-      <div class="grid md:grid-cols-3 grid-cols-2 gap-4">
+      <div class="grid md:grid-cols-3 grid-cols-2 gap-4 mb-3">
         <div>
           <label class="text-gray-400 font-medium text-sm">Amount</label>
           <input
@@ -277,7 +277,7 @@
           class="border w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4aabab] p-3 mt-1"
         ></textarea>
       </div>
-      <div class="grid md:grid-cols-3 grid-cols-2 gap-4 mt-0">
+      <div class="grid md:grid-cols-3 grid-cols-2 gap-4 mt-3">
         <div
           v-for="(file, index) in availableFiles"
           :key="index"

@@ -36,7 +36,7 @@
               {{ totalTransactions?.PnlSum?.toFixed(2) }}
             </div>
 
-            <p class="text-xs sm:text-base">Total Account Income</p>
+            <p class="text-xs sm:text-base">Total PNL</p>
           </div>
           <div class="text-center sm:p-2">
             <Icon v-if="loading" name="mdi-loading" class="animate-spin mt-1 h-8 w-8" />
@@ -79,13 +79,13 @@
           </div>
           <div class="relative flex items-center gap-2">
             <div class="rounded-full opacity-85 bg-[#c2f3d5] px-3 py-1 md:text-sm text-xs">
-              {{ loading ? 'Syncing..' : 'Synced' }}
+              {{ loading && currentAccount === item?.exchange ? 'Syncing..' : 'Synced' }}
             </div>
             <Icon v-if="item?.fileUploadCount > 0" name="mdi:cached"
               class="w-6 h-6 text-[#4AABAB] cursor-pointer hover:scale-105 active:scale-95"
               @click="handleRecalculate(item?.exchange)"></Icon>
             <div class="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-100"
-              @click="toggleMenu(item._id)">
+              @click.stop="toggleMenu(item._id)">
               <Icon name="mdi:dots-vertical" class="w-6 h-6 text-gray-600" />
             </div>
             <div v-if="open === item._id"
@@ -199,7 +199,7 @@ const exchange = ref(false);
 const totalFiles = ref([]);
 const selectedFiles = ref([]);
 const selectedAccount = ref(null);
-
+const currentAccount = ref(null);
 const open = ref(null);
 const confirm = ref(false);
 const deleteAccountConfirm = ref(false);
@@ -216,6 +216,9 @@ const buttonclick = () => {
 };
 const handleRecalculate = async (item) => {
   loading.value = true;
+  currentAccount.value = item;
+  open.value = null
+
   const { data, error } = await recalculate(item);
   if (data?.success) {
     await getAccounts()
@@ -223,6 +226,8 @@ const handleRecalculate = async (item) => {
 
   } else {
     loading.value = false;
+
+
     toast.error({
       title: "Error",
       message: error?.data?.message || "Something went wrong",
@@ -293,9 +298,15 @@ const deleteExchange = async (exchange) => {
     loading.value = false;
   }
 };
-
+const handleClickOutside = () => {
+  open.value = null;
+};
 onMounted(async () => {
   await getAccounts();
   updateShowDetails(false);
+  document.addEventListener("click", handleClickOutside);
+});
+onUnmounted(() => {
+  document.removeEventListener("click", handleClickOutside);
 });
 </script>

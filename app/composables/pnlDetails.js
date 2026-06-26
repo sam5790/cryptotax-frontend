@@ -59,6 +59,7 @@ export const getTransactions = async (payload) => {
   const auth = useAuthStore();
   const { accessToken } = auth;
   try {
+    store.addLoading(true);
     const { data, error } = await useApi(`users/transaction`, {
       baseURL: BASE_URL,
       method: "GET",
@@ -83,6 +84,7 @@ export const getTransactions = async (payload) => {
     console.error("Fetch error:", error);
     return { data: null, error };
   } finally {
+    store.addLoading(false);
   }
 };
 
@@ -260,12 +262,15 @@ export const deleteExchangeAccount = async (id) => {
   }
 };
 export const getSellRemaining = async (payload) => {
+  const store = mainStore();
   try {
     const { data } = await useApi(`users/sell-remaining`, {
       method: "GET",
       query: payload,
     });
     if (data?.success) {
+      store.addSellRemaining(data?.data);
+      store.addSellRemainingPagination(data.meta);
       return {
         data: data,
         error: null,
@@ -296,5 +301,97 @@ export const recalculate = async (exchange) => {
     console.error("Fetch error:", error);
     return { data: null, error };
   } finally {
+  }
+};
+export const transactionsExportToExcel = async () => {
+  try {
+    const { data } = await useApi(`/users/transaction/export`, {
+      method: "GET",
+      responseType: "blob",
+    });
+    if (data) {
+      return {
+        data: data,
+        error: null,
+      };
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+  }
+};
+export const pnlExportToExcel = async () => {
+  try {
+    const { data } = await useApi(`/users/pnl/export`, {
+      method: "GET",
+      responseType: "blob",
+    });
+    if (data) {
+      return {
+        data: data,
+        error: null,
+      };
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+  }
+};
+export const getFutureTransactions = async (payload) => {
+  const store = mainStore();
+  try {
+    store.addLoading(true);
+    const { data } = await useApi(`/future-history`, {
+      method: "GET",
+      query: payload,
+    });
+
+    if (data?.success) {
+      store.addFutureTransactions(data?.data);
+      store.addFutureTransactionsPagination(data.meta);
+      return {
+        data: data,
+        error: null,
+      };
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+     store.addLoading(false);
+  }
+};
+export const getEarnTransactions = async (payload) => {
+  const store = mainStore();
+  try {
+    store.addLoading(true);
+    const { data } = await useApi(`/earnhistory`, {
+      method: "GET",
+      query: payload,
+    });
+
+    if (data?.success) {
+      store.addEarnTransactions(data?.data);
+      store.addEarnTransactionsPagination(data.meta);
+      return {
+        data: data,
+        error: null,
+      };
+    } else {
+      throw new Error("API response unsuccessful");
+    }
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { data: null, error };
+  } finally {
+     store.addLoading(false);
   }
 };

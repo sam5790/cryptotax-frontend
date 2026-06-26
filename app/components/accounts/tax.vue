@@ -34,20 +34,21 @@
                 <p class="text-sm text-[#949494]">Gain</p>
                 <Icon v-if="loading" name="mdi-loading" class="animate-spin mt-1 h-8 w-8" />
 
-                <span v-else class=" text-2xl font-bold mt-2 font-[Poppins] flex gap-1"
+                <span v-else class=" md:text-2xl text-lg font-bold mt-2 font-[Poppins] flex gap-1"
                   :class="taxPagination?.netGain !== 0 ? 'text-green-700' : ''">
-                  <Icon v-if="taxPagination?.netGain !== 0" name="mdi:menu-up" class="size-8" />{{ taxPagination?.netGain !== 0 ?
-                    parseFloat(taxPagination?.netGain).toFixed(2) : 0 }}
+                  <Icon v-if="taxPagination?.netGain !== 0" name="mdi:menu-up" class="md:size-8 size-6" />{{
+                    taxPagination?.netGain && taxPagination?.netGain !== 0 ?
+                      parseFloat(taxPagination?.netGain).toFixed(2) : 0 }}
                 </span>
               </div>
               <div>
                 <p class="text-sm text-[#949494]">Loss</p>
                 <Icon v-if="loading" name="mdi-loading" class="animate-spin mt-1 h-8 w-8" />
 
-                <span v-else class="text-2xl font-bold mt-2 font-[Poppins] flex gap-1"
+                <span v-else class="md:text-2xl text-lg font-bold mt-2 font-[Poppins] flex gap-1"
                   :class="taxPagination?.netLoss !== 0 ? 'text-red-600 ' : ''">
-                  <Icon name="mdi:menu-down" class="size-8" v-if="taxPagination?.netLoss !== 0" />{{
-                    taxPagination?.netLoss !== 0 ?
+                  <Icon name="mdi:menu-down" class="md:size-8 size-6" v-if="taxPagination?.netLoss !== 0" />{{
+                    taxPagination?.netLoss && taxPagination?.netLoss !== 0 ?
                       parseFloat(taxPagination?.netLoss).toFixed(2) : 0 }}
                 </span>
               </div>
@@ -56,9 +57,9 @@
                 <p class="text-sm text-[#949494]">Total PNL</p>
                 <Icon v-if="loading" name="mdi-loading" class="animate-spin mt-1 h-8 w-8" />
 
-                <span v-else class="text-2xl font-bold mt-2 font-[Poppins] flex gap-1"
+                <span v-else class="md:text-2xl text-lg font-bold mt-2 font-[Poppins] flex gap-1"
                   :class="taxPagination?.pnlSum > 0 ? 'text-green-700' : taxPagination?.pnlSum < 0 ? 'text-red-600' : ''">
-                  {{ taxPagination?.pnlSum > 0 ?
+                  {{ taxPagination?.pnlSum && taxPagination?.pnlSum !== 0 ?
                     parseFloat(taxPagination?.pnlSum).toFixed(2) : 0 }}
                 </span>
               </div>
@@ -116,15 +117,15 @@
         <div class="w-full hidden sm:hidden md:block overflow-x-auto min-h-96">
           <div class="flex justify-between md:px-6 md:py-3 bg-none">
             <ClientOnly>
-              <DownloadExcel class="btn btn-primary" :data="allTransactions" :fields="excelFields"
-                name="pnl-transactions.xls">
-                <button
-                  class="flex justify-center gap-2 shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-3 py-2 border border-gray-50 font-semibold"
-                  @click="exportFiles">
-                  <Icon name="mdi:export-variant" class="w-6 h-6 text-[#4AABAB]" />
-                  Export Report
-                </button>
-              </DownloadExcel>
+              <!-- <DownloadExcel class="btn btn-primary" :data="allTransactions" :fields="excelFields"
+                name="pnl-transactions.xls"> -->
+              <button
+                class="flex justify-center items-center gap-2 shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-3 py-2 border border-gray-50 font-semibold"
+                @click="exportPnl">
+                <Icon name="mdi:export-variant" class="w-6 h-6 text-[#4AABAB]" />
+                Export Report
+              </button>
+              <!-- </DownloadExcel> -->
             </ClientOnly>
             <div class="relative inline-block text-left">
               <button @click.stop="openChooseAccount = !openChooseAccount"
@@ -410,14 +411,14 @@
         <div class="w-full sm:w-full md:hidden space-y-4 px-2">
           <div class="flex justify-between gap-3 bg-none flex-wrap">
             <ClientOnly>
-              <DownloadExcel class="btn btn-primary" :data="allTransactions" :fields="excelFields"
-                name="pnl-transactions.xls">
-                <button
-                  class="flex justify-center gap-2 shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-3 py-3 border border-gray-50 font-semibold">
-                  <Icon name="mdi:export-variant" class="w-6 h-6 text-[#4AABAB]" />
-                  Export Report
-                </button>
-              </DownloadExcel>
+              <!-- <DownloadExcel class="btn btn-primary" :data="allTransactions" :fields="excelFields"
+                name="pnl-transactions.xls"> -->
+              <button @click="exportPnl"
+                class="flex justify-center gap-2 shadow-[0_0_10px_0] shadow-[#254BD34D] rounded-lg px-3 py-3 border border-gray-50 font-semibold">
+                <Icon name="mdi:export-variant" class="w-6 h-6 text-[#4AABAB]" />
+                Export Report
+              </button>
+              <!-- </DownloadExcel> -->
             </ClientOnly>
             <div class="hidden md:flex items-center gap-2 flex-wrap ">
               <div
@@ -505,24 +506,66 @@
               </div>
               <div class="p-6 space-y-6 overflow-y-auto" style="height: calc(100% - 130px);">
                 <div>
-                  <label for="exchange-filter" class="block text-sm font-medium text-gray-700 mb-1">Exchange</label>
-                  <select id="exchange-filter" v-model="selectedAccount"
-                    class="w-full border-gray-300 rounded-lg shadow-sm focus:border-[#4AABAB] focus:ring-[#4AABAB]">
-                    <option value="">All Exchanges</option>
-                    <option v-for="exchange in taxPagination?.exchanges" :key="exchange" :value="exchange">
-                      {{ exchange }}
-                    </option>
-                  </select>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Exchange</label>
+                  <div class="relative inline-block text-left mt-1 w-full">
+                    <button @click.stop="openSelectExchange = !openSelectExchange"
+                      class="w-full flex items-center justify-between gap-2 rounded-lg px-4 py-2 border border-gray-200 font-semibold text-gray-700 hover:bg-gray-50 transition focus:outline-none focus:ring-2 focus:ring-[#4aabab]">
+                      <div class="flex items-center gap-3 text-sm py-0.5" v-if="selectedAccount">
+                        <img :src="`/icons/${selectedAccount?.toLowerCase()}.png`" :alt="exchange"
+                          class="h-7 w-7 rounded-full border-2 border-white -ml-3 first:ml-0" /> {{ selectedAccount }}
+                      </div>
+                      <div class="flex items-center gap-3 text-sm py-0.5 text-gray-400 font-normal" v-else>
+                        Select Exchange
+                      </div>
+                      <Icon name="mdi:chevron-down" class="size-5 text-[#4AABAB] transition-transform"
+                        :class="{ 'rotate-180': openSelectExchange }" />
+                    </button>
+                    <div v-if="openSelectExchange"
+                      class="absolute right-0 top-12 bg-white rounded-lg w-full border border-gray-200 shadow-lg z-50 animate-fadeIn">
+                      <ul class="text-sm text-gray-700 max-h-60 overflow-y-auto">
+                        <li v-for="exchange in taxPagination?.exchanges" :key="exchange" @click="
+                          ((selectedAccount = exchange), (openSelectExchange = false))
+                          "
+                          class="px-4 py-2 m-1 cursor-pointer rounded-md hover:bg-[#4AABAB]/10 flex items-center gap-3 transition"
+                          :class="exchange === selectedAccount ? 'bg-[#4AABAB]/40' : ''
+                            ">
+                          <img :src="`/icons/${exchange?.toLowerCase()}.png`" :alt="exchange"
+                            class="h-7 w-7 rounded-full border-2 border-white -ml-3 first:ml-0" /> {{ exchange }}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
                 </div>
                 <div>
-                  <label for="coin-filter" class="block text-sm font-medium text-gray-700 mb-1">Coin</label>
-                  <select id="coin-filter" v-model="selectedCoin"
-                    class="w-full border-gray-300 rounded-lg shadow-sm focus:border-[#4AABAB] focus:ring-[#4AABAB]">
-                    <option value="">All Coins</option>
-                    <option v-for="coin in taxPagination?.coins" :key="coin" :value="coin">
-                      {{ coin }}
-                    </option>
-                  </select>
+                  <label class="block text-sm font-medium text-gray-700 mb-1">Coin</label>
+                  <div class="relative inline-block text-left mt-1 w-full">
+                    <button @click.stop="openSelectCoin = !openSelectCoin"
+                      class="w-full flex items-center justify-between gap-2 rounded-lg px-4 py-2 border border-gray-200 font-semibold text-gray-700 hover:bg-gray-50 transition focus:outline-none focus:ring-2 focus:ring-[#4aabab]">
+                      <div class="flex items-center gap-3 text-sm py-0.5" v-if="selectedCoin">
+                        {{ selectedCoin }}
+                      </div>
+                      <div class="flex items-center gap-3 text-sm py-0.5 text-gray-400 font-normal" v-else>
+                        Select Coin
+                      </div>
+                      <Icon name="mdi:chevron-down" class="size-5 text-[#4AABAB] transition-transform"
+                        :class="{ 'rotate-180': openSelectCoin }" />
+                    </button>
+                    <div v-if="openSelectCoin"
+                      class="absolute right-0 top-12 bg-white rounded-lg w-full border border-gray-200 shadow-lg z-50 animate-fadeIn">
+                      <ul class="text-sm text-gray-700 max-h-60 overflow-y-auto">
+                        <li v-for="coin in taxPagination?.coins" :key="coin" @click="
+                          ((selectedCoin = coin), (openSelectCoin = false))
+                          "
+                          class="px-4 py-2 m-1 cursor-pointer rounded-md hover:bg-[#4AABAB]/10 flex items-center gap-3 transition"
+                          :class="coin === selectedCoin ? 'bg-[#4AABAB]/40' : ''
+                            ">
+                          {{ coin }}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
                 </div>
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-1">Buy Date Range</label>
@@ -536,25 +579,64 @@
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                   <div>
-                    <label for="sort-by" class="block text-sm font-medium text-gray-700 mb-1">Sort By</label>
-                    <select id="sort-by" v-model="sortBy"
-                      class="w-full border-gray-300 rounded-lg shadow-sm focus:border-[#4AABAB] focus:ring-[#4AABAB]">
-                      <option value="">Default</option>
-                      <option value="buyPrice">Buy Price</option>
-                      <option value="quantity">Quantity</option>
-                      <option value="sellPrice">Sell Price</option>
-                      <option value="pnl">PNL</option>
-                      <option value="remaining">Balance</option>
-                    </select>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Sort By</label>
+                    <div class="relative inline-block text-left mt-1 w-full">
+                      <button @click.stop="openSelectSortBy = !openSelectSortBy"
+                        class="w-full flex items-center justify-between gap-2 rounded-lg px-4 py-2 border border-gray-200 font-semibold text-gray-700 hover:bg-gray-50 transition focus:outline-none focus:ring-2 focus:ring-[#4aabab]">
+                        <div class="flex items-center gap-3 text-sm py-0.5 capitalize" v-if="sortBy">
+                          {{ sortBy }}
+                        </div>
+                        <div class="flex items-center gap-3 text-sm py-0.5 text-gray-400 font-normal" v-else>
+                          Sort By
+                        </div>
+                        <Icon name="mdi:chevron-down" class="size-5 text-[#4AABAB] transition-transform"
+                          :class="{ 'rotate-180': openSelectSortBy }" />
+                      </button>
+                      <div v-if="openSelectSortBy"
+                        class="absolute right-0 top-12 bg-white rounded-lg w-full border border-gray-200 shadow-lg z-50 animate-fadeIn">
+                        <ul class="text-sm text-gray-700 max-h-60 overflow-y-auto">
+                          <li v-for="item in sortByList" :key="item.value" @click="
+                            ((sortBy = item.value), (openSelectSortBy = false))
+                            "
+                            class="px-4 py-2 m-1 cursor-pointer rounded-md hover:bg-[#4AABAB]/10 flex items-center gap-3 transition capitalize"
+                            :class="item.value === sortBy ? 'bg-[#4AABAB]/40' : ''
+                              ">
+                            {{ item.label }}
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
                   </div>
                   <div>
-                    <label for="sort-order" class="block text-sm font-medium text-gray-700 mb-1">Order</label>
-                    <select id="sort-order" v-model="sortOrder"
-                      class="w-full border-gray-300 rounded-lg shadow-sm focus:border-[#4AABAB] focus:ring-[#4AABAB]"
-                      :disabled="!sortBy">
-                      <option value="asc">Ascending</option>
-                      <option value="desc">Descending</option>
-                    </select>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Order</label>
+                    <div class="relative inline-block text-left mt-1 w-full">
+                      <button @click.stop="openSelectSortOrder = !openSelectSortOrder"
+                        class="w-full flex items-center justify-between gap-2 rounded-lg px-4 py-2 border border-gray-200 font-semibold text-gray-700 hover:bg-gray-50 transition focus:outline-none focus:ring-2 focus:ring-[#4aabab]">
+                        <div class="flex items-center gap-3 text-sm py-0.5 capitalize" v-if="sortOrder">
+                          {{ sortOrder }}
+                        </div>
+                        <div class="flex items-center gap-3 text-sm py-0.5 text-gray-400 font-normal" v-else>
+                          Sort Order
+                        </div>
+                        <Icon name="mdi:chevron-down" class="size-5 text-[#4AABAB] transition-transform"
+                          :class="{ 'rotate-180': openSelectSortOrder }" />
+                      </button>
+                      <div v-if="openSelectSortOrder"
+                        class="absolute right-0 top-12 bg-white rounded-lg w-full border border-gray-200 shadow-lg z-50 animate-fadeIn">
+                        <ul class="text-sm text-gray-700 max-h-60 overflow-y-auto">
+                          <li v-for="item in sortOrderList" :key="item.value" @click="
+                            ((sortOrder = item.value), (openSelectSortOrder = false))
+                            "
+                            class="px-4 py-2 m-1 cursor-pointer rounded-md hover:bg-[#4AABAB]/10 flex items-center gap-3 transition capitalize"
+                            :class="item.value === sortOrder ? 'bg-[#4AABAB]/40' : ''
+                              ">
+                            {{ item.label }}
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -620,11 +702,11 @@
                 <img :src="`/icons/${item.exchange?.toLowerCase()}.png`" class="w-7 h-7" />
                 <span class="font-medium">{{ item?.exchange }}</span>
               </div>
-              <div class="flex justify-between my-1">
+              <div class="flex justify-between my-1 items-center">
                 <span class="font-medium">Coin</span>
                 <span>{{ item?.coin }}</span>
               </div>
-              <div class="flex justify-between my-1 flex-wrap">
+              <div class="flex justify-between my-1 flex-wrap items-center">
                 <span class="font-medium">Buy</span>
                 <span class="text-green-700 flex items-center gap-1 font-[Poppins] flex-wrap">
                   <Icon name="mdi:menu-up" class="w-8 h-8" />{{ item.buyPrice }}
@@ -632,7 +714,7 @@
                   <NuxtTime :datetime="item.buyDate" month="short" year="numeric" day="2-digit" />)
                 </span>
               </div>
-              <div class="flex justify-between my-1 flex-wrap">
+              <div class="flex justify-between my-1 flex-wrap items-center">
                 <span class="font-medium">Sell</span>
                 <span class="text-red-600 flex items-center gap-1 font-[Poppins] flex-wrap">
                   <Icon name="mdi:menu-down" class="w-8 h-8" />{{
@@ -641,13 +723,13 @@
                   <NuxtTime :datetime="item.sellDate" month="short" year="numeric" day="2-digit" />)
                 </span>
               </div>
-              <div class="flex justify-between my-1 flex-wrap">
+              <div class="flex justify-between my-1 flex-wrap items-center">
                 <span class="font-medium">Quantity</span>
                 <span class="font-[Poppins]">
                   {{ item?.quantity }}
                 </span>
               </div>
-              <div class="flex justify-between mb-1 flex-wrap">
+              <div class="flex justify-between mb-1 flex-wrap items-center">
                 <span class="font-medium">Balance</span>
                 <span class="font-[Poppins]">{{ item?.remaining }}</span>
               </div>
@@ -679,7 +761,7 @@ import { mainStore } from "~/store/mainstore";
 import { useAuthStore } from "~/store/auth";
 import { VueDatePicker } from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
-const allTransactions = ref([]);
+
 const openChooseAccount = ref(false);
 const router = useRouter();
 const selectedCoin = ref("");
@@ -699,6 +781,10 @@ const sortOrder = ref("");
 const buyDate = ref(null)
 const sellDate = ref(null)
 const isFilterDrawerOpen = ref(false)
+const openSelectCoin = ref(false)
+const openSelectExchange = ref(false)
+const openSelectSortBy = ref(false)
+const openSelectSortOrder = ref(false)
 const excelFields = {
   Exchange: "exchange",
   Coin: "coin",
@@ -710,16 +796,40 @@ const excelFields = {
   PNL: "pnl",
   Balance: "remaining",
 };
-const loadAllTransactions = async () => {
-  try {
-    const res = await useApi("users/pnl/details", {
-      method: "GET",
-    });
-    allTransactions.value = res?.data?.data || [];
-  } catch {
-    allTransactions.value = [];
-  }
-};
+// const loadAllTransactions = async () => {
+//   try {
+//     const res = await useApi("users/pnl/details", {
+//       method: "GET",
+//     });
+//     allTransactions.value = res?.data?.data || [];
+//   } catch {
+//     allTransactions.value = [];
+//   }
+// };
+const sortOrderList = ref([{
+  label: "asc",
+  value: "asc"
+}, {
+  label: "desc",
+  value: "desc"
+}])
+const sortByList = ref([{
+  label: "quantity",
+  value: "quantity"
+}, {
+  label: "buyPrice",
+  value: "buyPrice"
+},
+{
+  label: "sellPrice",
+  value: "sellPrice"
+},
+{
+  label: "pnl",
+  value: "pnl"
+},
+{ label: "balance", value: "balance" }
+])
 const getExchangeData = async () => {
   loading.value = true;
 
@@ -792,6 +902,21 @@ const clearFilters = () => {
   page.value = 1;
   applyFilters();
 };
+
+const exportPnl = async () => {
+  const { data, error } = await pnlExportToExcel()
+  if (data) {
+    const url = window.URL.createObjectURL(new Blob([data]));
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "pnl-report.xlsx");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+  }
+
+}
 watch([selectedAccount, selectedCoin, page, sortBy, sortOrder, buyDate, sellDate], async () => {
   await getExchangeData();
 });
@@ -799,7 +924,7 @@ onMounted(async () => {
   document.addEventListener("click", handleClickOutside);
   loading.value = true;
   await getExchangeData();
-  await loadAllTransactions();
+  // await loadAllTransactions();
   loading.value = false;
 });
 

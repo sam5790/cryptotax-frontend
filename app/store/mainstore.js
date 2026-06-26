@@ -8,11 +8,18 @@ export const mainStore = defineStore(
     const pnl = ref([]);
     const total_pnl = ref([]);
     const total = ref(0);
-    const totalTransactions = ref({})
+    const totalTransactions = ref({});
     const transactionsPagination = ref({});
     const taxPagination = ref({});
-    const showDetails = ref(false)
-    const wallet = ref([])
+    const showDetails = ref(false);
+    const wallet = ref([]);
+    const sellRemaining = ref([]);
+    const sellRemainingPagination = ref({});
+    const futureTransactions = ref([]);
+    const futureTransactionsPagination = ref({});
+    const earnTransactions = ref([]);
+    const earnTransactionsPagination = ref({});
+    const loading = ref(false);
     function setTransactions(value) {
       transactions.value = value;
     }
@@ -47,6 +54,27 @@ export const mainStore = defineStore(
     function addWallet(value) {
       wallet.value = value;
     }
+    function addSellRemaining(value) {
+      sellRemaining.value = value;
+    }
+    function addSellRemainingPagination(value) {
+      sellRemainingPagination.value = value;
+    }
+    function addFutureTransactions(value) {
+      futureTransactions.value = value;
+    }
+    function addFutureTransactionsPagination(value) {
+      futureTransactionsPagination.value = value;
+    }
+    function addEarnTransactions(value) {
+      earnTransactions.value = value;
+    }
+    function addEarnTransactionsPagination(value) {
+      earnTransactionsPagination.value = value;
+    }
+    function addLoading(value) {
+      loading.value = value;
+    }
     return {
       transactions,
       coin_balance,
@@ -58,6 +86,13 @@ export const mainStore = defineStore(
       showDetails,
       taxPagination,
       wallet,
+      sellRemaining,
+      sellRemainingPagination,
+      futureTransactions,
+      futureTransactionsPagination,
+      earnTransactions,
+      earnTransactionsPagination,
+      loading,
       setTransactions,
       setCoinBalance,
       setPnl,
@@ -67,12 +102,19 @@ export const mainStore = defineStore(
       addTotalTransactions,
       updateShowDetails,
       addTaxPagination,
-      addWallet
+      addWallet,
+      addSellRemaining,
+      addSellRemainingPagination,
+      addFutureTransactions,
+      addFutureTransactionsPagination,
+      addEarnTransactions,
+      addEarnTransactionsPagination,
+      addLoading,
     };
   },
   {
     persist: {
       storage: piniaPluginPersistedstate.localStorage(),
     },
-  }
+  },
 );
